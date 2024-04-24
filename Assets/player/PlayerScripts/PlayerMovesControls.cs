@@ -21,10 +21,26 @@ public class PlayerMovesControls : MonoBehaviour
     private Vector3 _playerVelocity; 
     private bool _isJumping;
 
-    private float desiredRotationSpeed = 0.1f;
-
     private CharacterController _controller;
     private Transform _camTransform;
+
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        _camTransform = Camera.main.transform;
+        _controller = GetComponent<CharacterController>();
+        _isJumping = false;
+    }
+
+    private void Update()
+    {
+        CheckIfGrounded();
+        MoveAndRotationRelativeToCamera();
+        Jump();
+    }
+
 
     #region Input Events From SO
 
@@ -66,26 +82,9 @@ public class PlayerMovesControls : MonoBehaviour
 
     #endregion
 
-    private void Start()
-    {
-        _camTransform = Camera.main.transform;
-        _controller = GetComponent<CharacterController>();
-        _isJumping = false;
-    }
 
-    private void Update()
-    {
-        CheckIfGrounded();
-        Move();
-        Jump();
-
-        //RotateToCamera();
-
-
-
-    }
-
-    private void Move()
+    #region Methods
+    private void MoveAndRotationRelativeToCamera()
     {
         Vector3 forward = _camTransform.forward;
         Vector3 right = _camTransform.right;
@@ -100,8 +99,9 @@ public class PlayerMovesControls : MonoBehaviour
 
 
         Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput; 
-        //_move = _camTransform.forward * _move.z + _camTransform.right * _move.x;
+
         _controller.Move(cameraRelativeMovement * Time.deltaTime * playerSpeed);
+        transform.rotation = Quaternion.LookRotation(forward);
     }
 
  
@@ -125,29 +125,18 @@ public class PlayerMovesControls : MonoBehaviour
         }
     }
 
-    /*public void RotateToCamera()
-    {
-        _camTransform.forward = _mouseMov;
-        //var camera = Camera.main;
-        var forward = _camTransform.forward;
-        var right = _camTransform.right;
+    #endregion
 
-         Vector3 desiredMoveDirection = forward;
-
-        _camTransform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
-    }*/
 
     #region Metods that subscribe the events
     private void OnMove(Vector2 movement)
     {
-        _move = new Vector3(movement.x, 0f,movement.y);
-        
+        _move = new Vector3(movement.x, 0f,movement.y);        
     }
 
     private void OnLook(Vector2 lookAt)
     {
         _mouseMov =new Vector3(lookAt.x, lookAt.y,0) ;
-       // Debug.Log("looking");
     }
     private void OnSprint()
     {
@@ -163,12 +152,12 @@ public class PlayerMovesControls : MonoBehaviour
     private void OnJump()
     {
         _isJumping = true;
-        Debug.Log("is jumping");
+
     }
     private void OnJumpCancelled()
     {
         _isJumping = false;
-        Debug.Log("not jumping");
+
     }
 
     private void OnCrouch()
