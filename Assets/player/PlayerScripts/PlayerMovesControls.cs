@@ -14,13 +14,14 @@ public class PlayerMovesControls : MonoBehaviour
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
-
+    [SerializeField] private bool groundedPlayer;
 
     private Vector3 _move;
-    private CharacterController controller;
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
-    
+    private Vector3 _playerVelocity; 
+    private bool _isJumping;
+
+    private CharacterController _controller;
+
     #region Input Events From SO
 
     // subscribe to events on SO
@@ -64,22 +65,19 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        _controller = GetComponent<CharacterController>();
+        _isJumping = false;
     }
 
     private void Update()
     {
-
+        CheckIfGrounded();
         Move();
+        Jump();
 
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
 
-        
-        
+
+
 
        /* if (move != Vector3.zero)
         {
@@ -87,22 +85,32 @@ public class PlayerMovesControls : MonoBehaviour
         }*/
 
         // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
 
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
     }
 
     private void Move()
     {
-        controller.Move(_move * Time.deltaTime * playerSpeed);
+        _controller.Move(_move * Time.deltaTime * playerSpeed);
+    }
+
+    private void Jump()
+    {
+        if (_isJumping && groundedPlayer)
+        {
+            _playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        _playerVelocity.y += gravityValue * Time.deltaTime;
+        _controller.Move(_playerVelocity * Time.deltaTime);
+
     }
     private void CheckIfGrounded()
     {
-
+        groundedPlayer = _controller.isGrounded;
+        if (groundedPlayer && _playerVelocity.y < 0)
+        {
+            _playerVelocity.y = 0f;
+        }
     }
 
     #region Metods that subscribe the events
@@ -111,7 +119,7 @@ public class PlayerMovesControls : MonoBehaviour
         _move = new Vector3(movement.x, 0,movement.y);
     }
 
-    private void OnLook(Vector2 arg0)
+    private void OnLook(Vector2 lookAt)
     {
         Debug.Log("looking");
     }
@@ -128,10 +136,12 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void OnJump()
     {
+        _isJumping = true;
         Debug.Log("is jumping");
     }
     private void OnJumpCancelled()
     {
+        _isJumping = false;
         Debug.Log("not jumping");
     }
 
