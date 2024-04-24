@@ -21,6 +21,8 @@ public class PlayerMovesControls : MonoBehaviour
     private Vector3 _playerVelocity; 
     private bool _isJumping;
 
+    private float _xRotSpeed = 5f;
+
     private CharacterController _controller;
     private Transform _camTransform;
 
@@ -78,24 +80,17 @@ public class PlayerMovesControls : MonoBehaviour
         Jump();
 
 
-
-
-
-        if (_move != Vector3.zero)
-        {
-            gameObject.transform.forward = _move;
-        }
-
-        // Changes the height position of the player..
+       
 
     }
 
     private void Move()
     {
-        _move = _camTransform.forward * _move.z + _camTransform.right * _move.x;
+        //_move = _camTransform.forward * _move.z + _camTransform.right * _move.x;
         _controller.Move(_move * Time.deltaTime * playerSpeed);
     }
 
+ 
     private void Jump()
     {
         if (_isJumping && groundedPlayer)
@@ -116,19 +111,19 @@ public class PlayerMovesControls : MonoBehaviour
         }
     }
 
+   
+
     #region Metods that subscribe the events
     private void OnMove(Vector2 movement)
     {
         _move = new Vector3(movement.x, 0f,movement.y);
         
-        //_move.y = 0;
     }
 
     private void OnLook(Vector2 lookAt)
     {
-
-
-        Debug.Log("looking");
+        _mouseMov = lookAt;
+       // Debug.Log("looking");
     }
     private void OnSprint()
     {
