@@ -28,9 +28,6 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
 
     //create reference to generated C# class 
     private PlayerInputs _playerInputs;
-    // Start is called before the first frame update
-
-
 
     // instantiate a player input, set the callbacks and enable it 
     private void OnEnable()
@@ -77,9 +74,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
         {
             OnJumpCanceledEvent.Invoke();
         }
-    }
-
-   
+    } 
 
     public void OnAttack(InputAction.CallbackContext context)
     {

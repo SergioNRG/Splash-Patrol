@@ -17,10 +17,12 @@ public class PlayerMovesControls : MonoBehaviour
     [SerializeField] private bool groundedPlayer;
 
     private Vector3 _move;
+    private Vector3 _mouseMov;
     private Vector3 _playerVelocity; 
     private bool _isJumping;
 
     private CharacterController _controller;
+    private Transform _camTransform;
 
     #region Input Events From SO
 
@@ -62,9 +64,9 @@ public class PlayerMovesControls : MonoBehaviour
 
     #endregion
 
-
     private void Start()
     {
+        _camTransform = Camera.main.transform;
         _controller = GetComponent<CharacterController>();
         _isJumping = false;
     }
@@ -79,10 +81,10 @@ public class PlayerMovesControls : MonoBehaviour
 
 
 
-       /* if (move != Vector3.zero)
+        if (_move != Vector3.zero)
         {
-            gameObject.transform.forward = move;
-        }*/
+            gameObject.transform.forward = _move;
+        }
 
         // Changes the height position of the player..
 
@@ -90,6 +92,7 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void Move()
     {
+        _move = _camTransform.forward * _move.z + _camTransform.right * _move.x;
         _controller.Move(_move * Time.deltaTime * playerSpeed);
     }
 
@@ -116,11 +119,15 @@ public class PlayerMovesControls : MonoBehaviour
     #region Metods that subscribe the events
     private void OnMove(Vector2 movement)
     {
-        _move = new Vector3(movement.x, 0,movement.y);
+        _move = new Vector3(movement.x, 0f,movement.y);
+        
+        //_move.y = 0;
     }
 
     private void OnLook(Vector2 lookAt)
     {
+
+
         Debug.Log("looking");
     }
     private void OnSprint()
@@ -174,7 +181,5 @@ public class PlayerMovesControls : MonoBehaviour
         Debug.Log(" Stop Attacking");
     }
 
-    #endregion
-
-   
+    #endregion   
 }
