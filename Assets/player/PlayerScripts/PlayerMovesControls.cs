@@ -79,15 +79,29 @@ public class PlayerMovesControls : MonoBehaviour
         Move();
         Jump();
 
+        //RotateToCamera();
 
-       
+
 
     }
 
     private void Move()
     {
+        Vector3 forward = _camTransform.forward;
+        Vector3 right = _camTransform.right;
+
+        forward.y = 0;
+        right.y = 0;
+        forward = forward.normalized;
+        right = right.normalized;
+
+        Vector3 forwardRelativeVerticalInput = _move.z *forward;
+        Vector3 rightRelativeHorizontalInput = _move.x * forward;
+
+
+        Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput; 
         //_move = _camTransform.forward * _move.z + _camTransform.right * _move.x;
-        _controller.Move(_move * Time.deltaTime * playerSpeed);
+        _controller.Move(cameraRelativeMovement * Time.deltaTime * playerSpeed);
     }
 
  
@@ -111,16 +125,16 @@ public class PlayerMovesControls : MonoBehaviour
         }
     }
 
-   /* public void RotateToCamera(Transform t)
+    /*public void RotateToCamera()
     {
-
+        _camTransform.forward = _mouseMov;
         //var camera = Camera.main;
         var forward = _camTransform.forward;
         var right = _camTransform.right;
 
          Vector3 desiredMoveDirection = forward;
 
-        t.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
+        _camTransform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
     }*/
 
     #region Metods that subscribe the events
@@ -132,7 +146,7 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void OnLook(Vector2 lookAt)
     {
-        _mouseMov = lookAt;
+        _mouseMov =new Vector3(lookAt.x, lookAt.y,0) ;
        // Debug.Log("looking");
     }
     private void OnSprint()
