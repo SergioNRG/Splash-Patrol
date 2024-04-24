@@ -21,7 +21,7 @@ public class PlayerMovesControls : MonoBehaviour
     private Vector3 _playerVelocity; 
     private bool _isJumping;
 
-    private float _xRotSpeed = 5f;
+    private float desiredRotationSpeed = 0.1f;
 
     private CharacterController _controller;
     private Transform _camTransform;
@@ -111,7 +111,17 @@ public class PlayerMovesControls : MonoBehaviour
         }
     }
 
-   
+   /* public void RotateToCamera(Transform t)
+    {
+
+        //var camera = Camera.main;
+        var forward = _camTransform.forward;
+        var right = _camTransform.right;
+
+         Vector3 desiredMoveDirection = forward;
+
+        t.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
+    }*/
 
     #region Metods that subscribe the events
     private void OnMove(Vector2 movement)
