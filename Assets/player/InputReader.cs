@@ -13,6 +13,8 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
     // create events to deal with the actions on player action map
     public event UnityAction<Vector2> OnMoveEvent;
     public event UnityAction<Vector2> OnLookEvent;
+    public event UnityAction OnSprintEvent;
+    public event UnityAction OnSprintCanceledEvent;
     public event UnityAction OnJumpEvent;
     public event UnityAction OnJumpCanceledEvent;   
     public event UnityAction OnAttackEvent;
@@ -115,6 +117,19 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
         if (OnAimCanceledEvent != null && context.canceled)
         {
             OnCrouchCanceledEvent.Invoke();
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (OnSprintEvent != null && context.performed)
+        {
+            OnSprintEvent.Invoke();
+        }
+
+        if (OnSprintCanceledEvent != null && context.canceled)
+        {
+            OnSprintCanceledEvent.Invoke();
         }
     }
 }
