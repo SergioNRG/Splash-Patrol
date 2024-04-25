@@ -29,7 +29,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
     //create reference to generated C# class 
     private PlayerInputs _playerInputs;
 
-    // instantiate a player input, set the callbacks and enable it 
+    // instantiate a player input and enable it 
     private void OnEnable()
     {
         
@@ -49,6 +49,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
         _playerInputs.Disable();
     }
 
+    #region SET CALLBACKS CONTEXTS
     public void OnMove(InputAction.CallbackContext context)
     {
         // check if the event is not null and invoke
@@ -127,4 +128,6 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
             OnSprintCanceledEvent.Invoke();
         }
     }
+
+    #endregion
 }

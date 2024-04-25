@@ -16,6 +16,7 @@ public class PlayerMovesControls : MonoBehaviour
     [SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private bool groundedPlayer;
 
+
     private Vector3 _move;
     private Vector3 _mouseMov;
     private Vector3 _playerVelocity; 
@@ -24,7 +25,7 @@ public class PlayerMovesControls : MonoBehaviour
     private CharacterController _controller;
     private Transform _camTransform;
 
-
+   
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -91,7 +92,7 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void OnLook(Vector2 lookAt)
     {
-        _mouseMov = new Vector3(lookAt.x, lookAt.y, 0);
+        _mouseMov = new Vector3(lookAt.x , lookAt.y , 0);
     }
     private void OnSprint()
     {
