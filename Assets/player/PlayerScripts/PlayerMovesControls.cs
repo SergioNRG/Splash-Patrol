@@ -83,60 +83,15 @@ public class PlayerMovesControls : MonoBehaviour
     #endregion
 
 
-    #region Methods
-    private void MoveAndRotationRelativeToCamera()
-    {
-        Vector3 forward = _camTransform.forward;
-        Vector3 right = _camTransform.right;
-
-        forward.y = 0;
-        right.y = 0;
-        forward = forward.normalized;
-        right = right.normalized;
-
-        Vector3 forwardRelativeVerticalInput = _move.z *forward;
-        Vector3 rightRelativeHorizontalInput = _move.x * forward;
-
-
-        Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput; 
-
-        _controller.Move(cameraRelativeMovement * Time.deltaTime * playerSpeed);
-        transform.rotation = Quaternion.LookRotation(forward);
-    }
-
- 
-    private void Jump()
-    {
-        if (_isJumping && groundedPlayer)
-        {
-            _playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        _playerVelocity.y += gravityValue * Time.deltaTime;
-        _controller.Move(_playerVelocity * Time.deltaTime);
-
-    }
-    private void CheckIfGrounded()
-    {
-        groundedPlayer = _controller.isGrounded;
-        if (groundedPlayer && _playerVelocity.y < 0)
-        {
-            _playerVelocity.y = 0f;
-        }
-    }
-
-    #endregion
-
-
-    #region Metods that subscribe the events
+    #region METHODS THAT SUBSCRIBE THE EVENTS
     private void OnMove(Vector2 movement)
     {
-        _move = new Vector3(movement.x, 0f,movement.y);        
+        _move = new Vector3(movement.x, 0f, movement.y);
     }
 
     private void OnLook(Vector2 lookAt)
     {
-        _mouseMov =new Vector3(lookAt.x, lookAt.y,0) ;
+        _mouseMov = new Vector3(lookAt.x, lookAt.y, 0);
     }
     private void OnSprint()
     {
@@ -190,4 +145,50 @@ public class PlayerMovesControls : MonoBehaviour
     }
 
     #endregion   
+
+
+    #region METHODS
+    private void MoveAndRotationRelativeToCamera()
+    {
+        Vector3 forward = _camTransform.forward;
+        Vector3 right = _camTransform.right;
+
+        forward.y = 0;
+        right.y = 0;
+        forward = forward.normalized;
+        right = right.normalized;
+
+        Vector3 forwardRelativeVerticalInput = _move.z * forward;
+        Vector3 rightRelativeHorizontalInput = _move.x * right;
+
+
+        Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput; 
+
+        _controller.Move(cameraRelativeMovement * Time.deltaTime * playerSpeed);
+        transform.rotation = Quaternion.LookRotation(forward);
+    }
+
+ 
+    private void Jump()
+    {
+        if (_isJumping && groundedPlayer)
+        {
+            _playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        _playerVelocity.y += gravityValue * Time.deltaTime;
+        _controller.Move(_playerVelocity * Time.deltaTime);
+
+    }
+    private void CheckIfGrounded()
+    {
+        groundedPlayer = _controller.isGrounded;
+        if (groundedPlayer && _playerVelocity.y < 0)
+        {
+            _playerVelocity.y = 0f;
+        }
+    }
+
+    #endregion
+
 }
