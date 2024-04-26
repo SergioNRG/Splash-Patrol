@@ -156,8 +156,8 @@ public class PlayerMovesControls : MonoBehaviour
 
         forward.y = 0;
         right.y = 0;
-        forward = forward.normalized;
-        right = right.normalized;
+        //forward = forward.normalized;
+        //right = right.normalized;
 
         Vector3 forwardRelativeVerticalInput = _move.z * forward;
         Vector3 rightRelativeHorizontalInput = _move.x * right;
@@ -165,7 +165,7 @@ public class PlayerMovesControls : MonoBehaviour
 
         Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput; 
 
-        _controller.Move(cameraRelativeMovement * Time.deltaTime * playerSpeed);
+        _controller.Move(cameraRelativeMovement.normalized * Time.deltaTime * playerSpeed);
         transform.rotation = Quaternion.LookRotation(forward);
     }
 
