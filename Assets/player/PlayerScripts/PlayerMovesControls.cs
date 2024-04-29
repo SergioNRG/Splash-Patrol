@@ -30,7 +30,7 @@ public class PlayerMovesControls : MonoBehaviour
     private Vector3 _playerVelocity; 
     private bool _isJumping;
     private bool _isCrouching;
-    private bool _isSprinting;  
+    private bool _isSprinting; 
 
     private CharacterController _controller;
     private Transform _camTransform;
