@@ -17,7 +17,7 @@ public class PlayerMovesControls : MonoBehaviour
     [SerializeField] private float _crouchingPlayerSpeed = 1.0f;
     [SerializeField] private float _jumpHeight = 1.0f;
     [SerializeField] private float _gravityValue = -9.81f;
-    [SerializeField] private bool _groundedPlayer;
+    [SerializeField] private bool _isPlayerGrounded;
 
 
 
@@ -63,13 +63,9 @@ public class PlayerMovesControls : MonoBehaviour
         _inputReader.OnSprintEvent += OnSprint;
         _inputReader.OnSprintCanceledEvent += OnSprintCanceled;
         _inputReader.OnJumpEvent += OnJump;
-        _inputReader.OnJumpCanceledEvent += OnJumpCancelled;
-        _inputReader.OnAimEvent += OnAim;
-        _inputReader.OnAimCanceledEvent += OnAimCancelled;
+        _inputReader.OnJumpCanceledEvent += OnJumpCancelled;       
         _inputReader.OnCrouchEvent += OnCrouch;
         _inputReader.OnCrouchCanceledEvent += OnCrouchCanceled;
-        _inputReader.OnAttackEvent += OnAttack;
-        _inputReader.OnAttackCanceledEvent += OnAttackCanceled;
     }
 
    
@@ -82,13 +78,9 @@ public class PlayerMovesControls : MonoBehaviour
         _inputReader.OnSprintEvent -= OnSprint;
         _inputReader.OnSprintCanceledEvent -= OnSprintCanceled;
         _inputReader.OnJumpEvent -= OnJump;
-        _inputReader.OnJumpCanceledEvent -= OnJumpCancelled;
-        _inputReader.OnAimEvent -= OnAim;
-        _inputReader.OnAimCanceledEvent -= OnAimCancelled;
+        _inputReader.OnJumpCanceledEvent -= OnJumpCancelled;        
         _inputReader.OnCrouchEvent -= OnCrouch;
         _inputReader.OnCrouchCanceledEvent -= OnCrouchCanceled;
-        _inputReader.OnAttackEvent -= OnAttack;
-        _inputReader.OnAttackCanceledEvent -= OnAttackCanceled;
     }
 
     #endregion
@@ -106,7 +98,7 @@ public class PlayerMovesControls : MonoBehaviour
     }
     private void OnSprint()
     {
-        if (_controller.isGrounded && !_isCrouching)
+        if (_isPlayerGrounded && !_isCrouching)
         {
             _currentPlayerSpeed = _sprintPlayerSpeed;
             Debug.Log("Sprinting");
@@ -134,7 +126,7 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void OnCrouch()
     {
-        if (_controller.isGrounded)
+        if (_isPlayerGrounded)
         {
             _isCrouching = true;
             _controller.height = _crouchHeight;
@@ -161,15 +153,7 @@ public class PlayerMovesControls : MonoBehaviour
     }
 
 
-    private void OnAttack()
-    {
-        Debug.Log("Attacking");
-    }
-
-    private void OnAttackCanceled()
-    {
-        Debug.Log(" Stop Attacking");
-    }
+   
 
     #endregion   
 
@@ -198,7 +182,7 @@ public class PlayerMovesControls : MonoBehaviour
  
     private void Jump()
     {
-        if (_isJumping && _groundedPlayer)
+        if (_isJumping && _isPlayerGrounded)
         {
             _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
         }
@@ -209,8 +193,8 @@ public class PlayerMovesControls : MonoBehaviour
     }
     private void CheckIfGrounded()
     {
-        _groundedPlayer = _controller.isGrounded;
-        if (_groundedPlayer && _playerVelocity.y < 0)
+        _isPlayerGrounded = _controller.isGrounded;
+        if (_isPlayerGrounded && _playerVelocity.y < 0)
         {
             _playerVelocity.y = 0f;
         }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7525581219631419755}
   - component: {fileID: 2978935632351152947}
   - component: {fileID: 1301742404129582290}
+  - component: {fileID: 299487304207247760}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -79,7 +80,20 @@ MonoBehaviour:
   _crouchingPlayerSpeed: 1
   _jumpHeight: 1
   _gravityValue: -9.81
-  _groundedPlayer: 0
+  _isPlayerGrounded: 0
+--- !u!114 &299487304207247760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572065963780710216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756baa5ab7d18e14e9adf12d1d41a8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 284b2db9c9a6e9848b758dbd19c01a67, type: 2}
 --- !u!1 &8809461110615554138
 GameObject:
   m_ObjectHideFlags: 0
