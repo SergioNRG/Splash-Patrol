@@ -29,6 +29,7 @@ public class PlayerMovesControls : MonoBehaviour
     private Vector3 _mouseMov;
     private Vector3 _playerVelocity; 
     private bool _isJumping;
+    private bool _isCrouching;
 
     private CharacterController _controller;
     private Transform _camTransform;
@@ -105,8 +106,12 @@ public class PlayerMovesControls : MonoBehaviour
     }
     private void OnSprint()
     {
-        _currentPlayerSpeed = _sprintPlayerSpeed;
-        Debug.Log("Sprinting");
+        if (_controller.isGrounded && !_isCrouching)
+        {
+            _currentPlayerSpeed = _sprintPlayerSpeed;
+            Debug.Log("Sprinting");
+        }
+        
     }
 
     private void OnSprintCanceled()
@@ -129,12 +134,18 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void OnCrouch()
     {
-        _controller.height = _crouchHeight;
-        _currentPlayerSpeed = _crouchingPlayerSpeed;
-        Debug.Log("Crouching");
+        if (_controller.isGrounded)
+        {
+            _isCrouching = true;
+            _controller.height = _crouchHeight;
+            _currentPlayerSpeed = _crouchingPlayerSpeed;
+            Debug.Log("Crouching");
+        }
+        
     }
     private void OnCrouchCanceled()
     {
+        _isCrouching = false;
         _controller.height = _normalHeight;
         _currentPlayerSpeed = _basePlayerSpeed;
         Debug.Log(" Stop Crouching");

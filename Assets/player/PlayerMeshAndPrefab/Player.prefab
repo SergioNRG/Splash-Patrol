@@ -74,10 +74,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 284b2db9c9a6e9848b758dbd19c01a67, type: 2}
-  playerSpeed: 2
-  jumpHeight: 1
-  gravityValue: -9.81
-  groundedPlayer: 0
+  _basePlayerSpeed: 2
+  _sprintPlayerSpeed: 4
+  _crouchingPlayerSpeed: 1
+  _jumpHeight: 1
+  _gravityValue: -9.81
+  _groundedPlayer: 0
 --- !u!1 &8809461110615554138
 GameObject:
   m_ObjectHideFlags: 0
