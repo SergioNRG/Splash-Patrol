@@ -109,8 +109,12 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void OnSprintCanceled()
     {
-        _currentPlayerSpeed = _basePlayerSpeed;
-        Debug.Log("Stop Sprinting");
+        if (!_isCrouching)
+        {
+            _currentPlayerSpeed = _basePlayerSpeed;
+            Debug.Log("Stop Sprinting");
+        }
+        
     }
 
 
@@ -143,18 +147,6 @@ public class PlayerMovesControls : MonoBehaviour
         _currentPlayerSpeed = _basePlayerSpeed;
         Debug.Log(" Stop Crouching");
     }
-
-    private void OnAim()
-    {
-        Debug.Log("Aiming");
-    }
-    private void OnAimCancelled()
-    {
-        Debug.Log(" stop Aiming");
-    }
-
-
-   
 
     #endregion   
 
