@@ -11,12 +11,20 @@ public class PlayerMovesControls : MonoBehaviour
     [SerializeField] private InputReader _inputReader;
 
     [Header("Values to adjust")]
-    [SerializeField] private float playerSpeed = 2.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = -9.81f;
-    [SerializeField] private bool groundedPlayer;
+    
+    [SerializeField] private float _basePlayerSpeed = 2.0f;
+    [SerializeField] private float _sprintPlayerSpeed = 4.0f;
+    [SerializeField] private float _crouchingPlayerSpeed = 1.0f;
+    [SerializeField] private float _jumpHeight = 1.0f;
+    [SerializeField] private float _gravityValue = -9.81f;
+    [SerializeField] private bool _groundedPlayer;
 
 
+
+    private float _currentPlayerSpeed;
+    private float _normalHeight = 2f;
+    private float _crouchHeight = 1f;
+   
     private Vector3 _move;
     private Vector3 _mouseMov;
     private Vector3 _playerVelocity; 
@@ -32,6 +40,7 @@ public class PlayerMovesControls : MonoBehaviour
         Cursor.visible = false;
         _camTransform = Camera.main.transform;
         _controller = GetComponent<CharacterController>();
+        _currentPlayerSpeed = _basePlayerSpeed;
         _isJumping = false;
     }
 
@@ -96,11 +105,13 @@ public class PlayerMovesControls : MonoBehaviour
     }
     private void OnSprint()
     {
+        _currentPlayerSpeed = _sprintPlayerSpeed;
         Debug.Log("Sprinting");
     }
 
     private void OnSprintCanceled()
     {
+        _currentPlayerSpeed = _basePlayerSpeed;
         Debug.Log("Stop Sprinting");
     }
 
@@ -118,10 +129,14 @@ public class PlayerMovesControls : MonoBehaviour
 
     private void OnCrouch()
     {
+        _controller.height = _crouchHeight;
+        _currentPlayerSpeed = _crouchingPlayerSpeed;
         Debug.Log("Crouching");
     }
     private void OnCrouchCanceled()
     {
+        _controller.height = _normalHeight;
+        _currentPlayerSpeed = _basePlayerSpeed;
         Debug.Log(" Stop Crouching");
     }
 
@@ -165,26 +180,26 @@ public class PlayerMovesControls : MonoBehaviour
 
         Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput; 
 
-        _controller.Move(cameraRelativeMovement.normalized * Time.deltaTime * playerSpeed);
+        _controller.Move(cameraRelativeMovement.normalized * Time.deltaTime * _currentPlayerSpeed);
         transform.rotation = Quaternion.LookRotation(forward);
     }
 
  
     private void Jump()
     {
-        if (_isJumping && groundedPlayer)
+        if (_isJumping && _groundedPlayer)
         {
-            _playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
         }
 
-        _playerVelocity.y += gravityValue * Time.deltaTime;
+        _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
 
     }
     private void CheckIfGrounded()
     {
-        groundedPlayer = _controller.isGrounded;
-        if (groundedPlayer && _playerVelocity.y < 0)
+        _groundedPlayer = _controller.isGrounded;
+        if (_groundedPlayer && _playerVelocity.y < 0)
         {
             _playerVelocity.y = 0f;
         }
