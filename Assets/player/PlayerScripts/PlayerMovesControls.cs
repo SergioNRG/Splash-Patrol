@@ -60,7 +60,6 @@ public class PlayerMovesControls : MonoBehaviour
     private void OnEnable()
     {
         _inputReader.OnMoveEvent += OnMove;
-        _inputReader.OnLookEvent += OnLook;
         _inputReader.OnSprintEvent += OnSprint;
         _inputReader.OnSprintCanceledEvent += OnSprintCanceled;
         _inputReader.OnJumpEvent += OnJump;
@@ -75,7 +74,6 @@ public class PlayerMovesControls : MonoBehaviour
     private void OnDisable()
     {
         _inputReader.OnMoveEvent -= OnMove;
-        _inputReader.OnLookEvent -= OnLook;
         _inputReader.OnSprintEvent -= OnSprint;
         _inputReader.OnSprintCanceledEvent -= OnSprintCanceled;
         _inputReader.OnJumpEvent -= OnJump;
@@ -91,11 +89,6 @@ public class PlayerMovesControls : MonoBehaviour
     private void OnMove(Vector2 movement)
     {
         _move = new Vector3(movement.x, 0f, movement.y);
-    }
-
-    private void OnLook(Vector2 lookAt)
-    {
-        _mouseMov = new Vector3(lookAt.x , lookAt.y , 0);
     }
     private void OnSprint()
     {
