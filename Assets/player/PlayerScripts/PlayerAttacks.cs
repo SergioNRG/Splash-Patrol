@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -8,17 +9,29 @@ public class PlayerAttacks : MonoBehaviour
     [Header("InputReaderSO")]
     [SerializeField] private InputReader _inputReader;
 
+    [Header("Zoom Camera")]
+    [SerializeField] private CinemachineVirtualCamera _cam;
+
+    [SerializeField] private float _aimFov = 30;
+    private float _normalFov = 60;
+
+    private bool _isAiming;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        _cam.m_Lens.FieldOfView = _normalFov;
+        _isAiming = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (_isAiming)
+        {
+            _cam.m_Lens.FieldOfView = Mathf.Clamp(Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, 5 * Time.deltaTime), _aimFov, _normalFov);
+        }
+      
     }
 
     #region Input Events From SO
@@ -43,11 +56,13 @@ public class PlayerAttacks : MonoBehaviour
     #region METHODS THAT SUBSCRIBE THE EVENTS
     private void OnAim()
     {
-        Debug.Log("Aiming");
+        _isAiming = true;
+
     }
     private void OnAimCancelled()
     {
-        Debug.Log(" stop Aiming");
+        _isAiming = false;
+        _cam.m_Lens.FieldOfView = _normalFov;
     }
 
 
@@ -62,4 +77,6 @@ public class PlayerAttacks : MonoBehaviour
     }
 
     #endregion
+
+
 }
