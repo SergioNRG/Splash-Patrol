@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 1009071149}
   - component: {fileID: 1009071148}
   m_Layer: 0
-  m_Name: NormalCam
+  m_Name: VCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
