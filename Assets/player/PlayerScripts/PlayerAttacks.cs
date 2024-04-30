@@ -12,26 +12,25 @@ public class PlayerAttacks : MonoBehaviour
     [Header("Zoom Camera")]
     [SerializeField] private CinemachineVirtualCamera _cam;
 
+    [Header("Camera Values To Adjust")]
     [SerializeField] private float _aimFov = 30;
-    private float _normalFov = 60;
+    [SerializeField] private float _zoomSpeed = 15;
+    [SerializeField] private float _normalFov = 60;
 
     private bool _isAiming;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         _cam.m_Lens.FieldOfView = _normalFov;
         _isAiming = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isAiming)
-        {
-            _cam.m_Lens.FieldOfView = Mathf.Clamp(Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, 5 * Time.deltaTime), _aimFov, _normalFov);
-        }
-      
+        AimCheck();
     }
 
     #region Input Events From SO
@@ -57,12 +56,13 @@ public class PlayerAttacks : MonoBehaviour
     private void OnAim()
     {
         _isAiming = true;
-
+        //_isNotAiming = false;
     }
     private void OnAimCancelled()
     {
         _isAiming = false;
-        _cam.m_Lens.FieldOfView = _normalFov;
+       // _isNotAiming = true;
+       // _cam.m_Lens.FieldOfView = _normalFov;
     }
 
 
@@ -78,5 +78,20 @@ public class PlayerAttacks : MonoBehaviour
 
     #endregion
 
+    #region METHODS
 
+    private void AimCheck()
+    {
+        if (_isAiming && _cam.m_Lens.FieldOfView != _aimFov)
+        {
+            _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, _zoomSpeed * Time.deltaTime);
+        }
+        else if (!_isAiming && _cam.m_Lens.FieldOfView != _normalFov)
+        {
+            _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
+        }
+    }
+
+
+    #endregion
 }
