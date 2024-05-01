@@ -16,14 +16,21 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private float _aimFov = 30;
     [SerializeField] private float _zoomSpeed = 15;
     [SerializeField] private float _normalFov = 60;
+    [SerializeField] private float _aimSpeedY = 50;
+    [SerializeField] private float _aimSpeedX = 50;
+    [SerializeField] private float _normalSpeedY ;
+    [SerializeField] private float _normalSpeedX ;
 
     private bool _isAiming;
 
     // Start is called before the first frame update
     void Start()
     {
+        _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
+        _normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
         _cam.m_Lens.FieldOfView = _normalFov;
         _isAiming = false;
+        Debug.Log(_normalSpeedX);
 
     }
 
@@ -85,10 +92,14 @@ public class PlayerAttacks : MonoBehaviour
         if (_isAiming && _cam.m_Lens.FieldOfView != _aimFov)
         {
             _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, _zoomSpeed * Time.deltaTime);
+            _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _aimSpeedX;
+            _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _aimSpeedY;
         }
         else if (!_isAiming && _cam.m_Lens.FieldOfView != _normalFov)
         {
             _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
+            _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
+            _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
         }
     }
 
