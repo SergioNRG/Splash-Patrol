@@ -13,6 +13,7 @@ public class PlayerAttacks : MonoBehaviour
         Idle,
         Aiming,
         NotAiming,
+        ChangeWeapon
     }
 
     private AimState _currentAimState;
@@ -51,9 +52,8 @@ public class PlayerAttacks : MonoBehaviour
         _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
         _normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
         _cam.m_Lens.FieldOfView = _normalFov;
-        //_isAiming = false;
-       // Debug.Log(_normalSpeedX);
         _weaponPos = 0;
+
         for (int i = 0; i < _weapons.Length; i++)
         {
             if (_weapons[i] != null)
@@ -71,24 +71,26 @@ public class PlayerAttacks : MonoBehaviour
         switch (_currentAimState)
         {
             case AimState.Idle:
+                if (_isScrolling) { _currentAimState = AimState.ChangeWeapon; }
                 break;
-
-            case AimState.Aiming:
-                if (_isScrolling)
-                {
-                    _currentAimState = AimState.NotAiming;
-                }
-                else { ZoomIn(); }
                 
+            case AimState.Aiming:
+                if (_isScrolling) { _currentAimState = AimState.ChangeWeapon; }
+                else { ZoomIn(); }
                 break;
 
             case AimState.NotAiming:
-                ZoomOut();
-                
+                if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()){ ZoomOut(); }
+                else if (_isScrolling) { _currentAimState = AimState.ChangeWeapon; }
+                else { _currentAimState = AimState.Idle; }                                              
+                break;
+
+            case AimState.ChangeWeapon:
+                SelectWeapon();               
                 break;
 
         }
-        SelectWeapon();
+        
     }
 
     #region Input Events From SO
@@ -162,37 +164,30 @@ public class PlayerAttacks : MonoBehaviour
 
     private void SelectWeapon()
     {
-
-        if (_isScrolling)
+        ZoomOut();
+        if (_scroll.y < 0)
         {
-            if (_scroll.y < 0)
+            _weaponPos--;
+            Debug.Log(_weaponPos);
+
+        }
+
+        if (_scroll.y > 0)
+        {
+            _weaponPos++;
+            Debug.Log(_weaponPos);
+        }
+
+        _weaponPos = Mathf.Clamp(_weaponPos, 0, _weapons.Length - 1);
+        for (int i = 0; i < _weapons.Length; i++)
+        {
+            if (_weapons[i] != null)
             {
-                _weaponPos--;
-                Debug.Log(_weaponPos);
-
+                if (_weapons[i] == _weapons[_weaponPos]) { _weapons[_weaponPos].SetActive(true); }
+                else { _weapons[i].SetActive(false); }
             }
-
-            if (_scroll.y > 0)
-            {
-                _weaponPos++;
-                Debug.Log(_weaponPos);
-            }
-
-            _weaponPos = Mathf.Clamp(_weaponPos, 0, _weapons.Length-1);
-            for (int i = 0; i < _weapons.Length; i++)
-            {
-                if (_weapons[i] != null)
-                {
-                    if (_weapons[i] == _weapons[_weaponPos]) { _weapons[_weaponPos].SetActive(true); }
-                    else { _weapons[i].SetActive(false); }
-                }
-            }
-        }  
-          
-    }
-
-    private void Reload()
-    {
+        }
+        _isScrolling = false;
 
     }
 
@@ -200,33 +195,26 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (_cam.m_Lens.FieldOfView.ToString() != _aimFov.ToString())
         {
-            //_timeToStopNotAiming = 0;
             _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, _zoomSpeed * Time.deltaTime);
             _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _aimSpeedX;
             _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _aimSpeedY;
-
         }
 
     }
 
     private void ZoomOut()
     {
-        if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString())// _timeToStopNotAiming < 0.45f)
-        {
-            //_timeToStopNotAiming += Time.deltaTime;
-            _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
-            _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
-            _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
-        }
-        else 
-        {
-            _currentAimState = AimState.Idle;
-            _isScrolling = false;
-        }
+       
+        _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
+        _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
+        _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
     }
 
 
+    private void Reload()
+    {
 
+    }
 
 
     #endregion
