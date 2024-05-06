@@ -74,11 +74,17 @@ public class PlayerAttacks : MonoBehaviour
                 break;
 
             case AimState.Aiming:
-                ZoomIn();
+                if (_isScrolling)
+                {
+                    _currentAimState = AimState.NotAiming;
+                }
+                else { ZoomIn(); }
+                
                 break;
 
             case AimState.NotAiming:
                 ZoomOut();
+                
                 break;
 
         }
@@ -212,7 +218,11 @@ public class PlayerAttacks : MonoBehaviour
             _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
             _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
         }
-        else { _currentAimState = AimState.Idle; }
+        else 
+        {
+            _currentAimState = AimState.Idle;
+            _isScrolling = false;
+        }
     }
 
 
