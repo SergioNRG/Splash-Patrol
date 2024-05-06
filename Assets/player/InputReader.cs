@@ -13,6 +13,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
     // create events to deal with the actions on player action map
     public event UnityAction<Vector2> OnMoveEvent;
     public event UnityAction<Vector2> OnLookEvent;
+    public event UnityAction<Vector2> OnWeaponSelectorEvent;
     public event UnityAction OnSprintEvent;
     public event UnityAction OnSprintCanceledEvent;
     public event UnityAction OnJumpEvent;
@@ -23,7 +24,8 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
     public event UnityAction OnAimCanceledEvent;
     public event UnityAction OnCrouchEvent;
     public event UnityAction OnCrouchCanceledEvent;
-
+    public event UnityAction OnReloadEvent;
+    public event UnityAction OnReloadCanceledEvent;
 
 
     //create reference to generated C# class 
@@ -59,6 +61,11 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
     public void OnLook(InputAction.CallbackContext context)
     {
         OnLookEvent?.Invoke(context.ReadValue<Vector2>());
+    }
+
+    public void OnWeaponSelector(InputAction.CallbackContext context)
+    {
+        OnWeaponSelectorEvent?.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -126,6 +133,19 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
         if (OnSprintCanceledEvent != null && context.canceled)
         {
             OnSprintCanceledEvent.Invoke();
+        }
+    }
+
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        if (OnReloadEvent != null && context.performed)
+        {
+            OnReloadEvent.Invoke();
+        }
+
+        if (OnReloadCanceledEvent != null && context.canceled)
+        {
+            OnReloadCanceledEvent.Invoke();
         }
     }
 

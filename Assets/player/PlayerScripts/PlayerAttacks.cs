@@ -1,7 +1,9 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Claims;
+using TMPro;
 using UnityEngine;
 
 public class PlayerAttacks : MonoBehaviour
@@ -10,10 +12,14 @@ public class PlayerAttacks : MonoBehaviour
     {
         Idle,
         Aiming,
-        NotAiming
+        NotAiming,
     }
 
     private AimState _currentAimState;
+
+
+    [Header("Weapons")]
+    [SerializeField ] private GameObject[] _weapons;
 
     [Header("InputReaderSO")]
     [SerializeField] private InputReader _inputReader;
@@ -31,12 +37,12 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private float _normalSpeedY ;
     [SerializeField] private float _normalSpeedX ;
 
+    private int _weaponPos;
+    private Vector2 _scroll;
 
+    private bool _isScrolling = false;
 
-
-    //private bool _isAiming;
-
-    private float _timeToStopNotAiming = 0;
+   // private float _timeToStopNotAiming = 0;
   
     // Start is called before the first frame update
     void Start()
@@ -46,8 +52,17 @@ public class PlayerAttacks : MonoBehaviour
         _normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
         _cam.m_Lens.FieldOfView = _normalFov;
         //_isAiming = false;
-        Debug.Log(_normalSpeedX);
-
+       // Debug.Log(_normalSpeedX);
+        _weaponPos = 0;
+        for (int i = 0; i < _weapons.Length; i++)
+        {
+            if (_weapons[i] != null)
+            {
+                if (_weapons[i] == _weapons[_weaponPos]) { _weapons[_weaponPos].SetActive(true); }
+                else { _weapons[i].SetActive(false); }
+                Debug.Log(_weapons[i]);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -59,28 +74,15 @@ public class PlayerAttacks : MonoBehaviour
                 break;
 
             case AimState.Aiming:
-                if (_cam.m_Lens.FieldOfView.ToString() != _aimFov.ToString())
-                {
-                    _timeToStopNotAiming = 0;
-                    _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, _zoomSpeed * Time.deltaTime);
-                    _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _aimSpeedX;
-                    _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _aimSpeedY;
-                    Debug.Log("oioi");
-                }
+                ZoomIn();
                 break;
 
             case AimState.NotAiming:
-                if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString())// _timeToStopNotAiming < 0.45f)
-                {
-                    _timeToStopNotAiming += Time.deltaTime;
-                    _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
-                    _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
-                    _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
-                    Debug.Log("fuifui");
-                }else { _currentAimState = AimState.Idle; }
+                ZoomOut();
                 break;
+
         }
-        //AimCheck();
+        SelectWeapon();
     }
 
     #region Input Events From SO
@@ -90,7 +92,13 @@ public class PlayerAttacks : MonoBehaviour
         _inputReader.OnAttackCanceledEvent += OnAttackCanceled;
         _inputReader.OnAimEvent += OnAim;
         _inputReader.OnAimCanceledEvent += OnAimCancelled;
+        _inputReader.OnReloadEvent += OnReload;
+        _inputReader.OnReloadCanceledEvent += OnReloadCancelled;
+        _inputReader.OnWeaponSelectorEvent += OnWeaponSelector;
+
     }
+
+  
 
     private void OnDisable()
     {
@@ -98,6 +106,9 @@ public class PlayerAttacks : MonoBehaviour
         _inputReader.OnAttackCanceledEvent -= OnAttackCanceled;
         _inputReader.OnAimEvent -= OnAim;
         _inputReader.OnAimCanceledEvent -= OnAimCancelled;
+        _inputReader.OnReloadEvent -= OnReload;
+        _inputReader.OnReloadCanceledEvent -= OnReloadCancelled;
+        _inputReader.OnWeaponSelectorEvent -= OnWeaponSelector;
     }
 
     #endregion
@@ -112,6 +123,12 @@ public class PlayerAttacks : MonoBehaviour
         _currentAimState = AimState.NotAiming;
     }
 
+    private void OnWeaponSelector(Vector2 scroll)
+    {
+        _scroll = scroll.normalized ;
+        _isScrolling = true;
+    }
+
 
     private void OnAttack()
     {
@@ -123,31 +140,82 @@ public class PlayerAttacks : MonoBehaviour
         Debug.Log(" Stop Attacking");
     }
 
+    private void OnReloadCancelled()
+    {
+        Debug.Log("reloading");
+    }
+
+    private void OnReload()
+    {
+        Debug.Log("stop reloading");
+    }
+
     #endregion
 
     #region METHODS
 
-   /* private void AimCheck()
+    private void SelectWeapon()
     {
-        if (_isAiming && (int)_cam.m_Lens.FieldOfView > _aimFov)
+
+        if (_isScrolling)
         {
-            _timeToStop = 0;
+            if (_scroll.y < 0)
+            {
+                _weaponPos--;
+                Debug.Log(_weaponPos);
+
+            }
+
+            if (_scroll.y > 0)
+            {
+                _weaponPos++;
+                Debug.Log(_weaponPos);
+            }
+
+            _weaponPos = Mathf.Clamp(_weaponPos, 0, _weapons.Length-1);
+            for (int i = 0; i < _weapons.Length; i++)
+            {
+                if (_weapons[i] != null)
+                {
+                    if (_weapons[i] == _weapons[_weaponPos]) { _weapons[_weaponPos].SetActive(true); }
+                    else { _weapons[i].SetActive(false); }
+                }
+            }
+        }  
+          
+    }
+
+    private void Reload()
+    {
+
+    }
+
+    private void ZoomIn() 
+    {
+        if (_cam.m_Lens.FieldOfView.ToString() != _aimFov.ToString())
+        {
+            //_timeToStopNotAiming = 0;
             _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, _zoomSpeed * Time.deltaTime);
             _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _aimSpeedX;
             _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _aimSpeedY;
-            Debug.Log("oioi");
+
         }
-        else if (!_isAiming && _timeToStop < 0.5f)
+
+    }
+
+    private void ZoomOut()
+    {
+        if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString())// _timeToStopNotAiming < 0.45f)
         {
-            _timeToStop += Time.deltaTime;
+            //_timeToStopNotAiming += Time.deltaTime;
             _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
             _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
             _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
-            Debug.Log("fuifui");
         }
-    }*/
+        else { _currentAimState = AimState.Idle; }
+    }
 
- 
+
 
 
 
