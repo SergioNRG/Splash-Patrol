@@ -81,11 +81,12 @@ public class PlayerAttacks : MonoBehaviour
 
             case AimState.NotAiming:
                 if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()){ ZoomOut(); }
-                else if (_isScrolling) { _currentAimState = AimState.ChangeWeapon; }
-                else { _currentAimState = AimState.Idle; }                                              
+                if (_isScrolling) { _currentAimState = AimState.ChangeWeapon;}
+                else if (_cam.m_Lens.FieldOfView.ToString() == _normalFov.ToString()){ _currentAimState = AimState.Idle; }
                 break;
 
             case AimState.ChangeWeapon:
+                if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()) { ZoomOut(); }
                 SelectWeapon();               
                 break;
 
@@ -164,7 +165,7 @@ public class PlayerAttacks : MonoBehaviour
 
     private void SelectWeapon()
     {
-        ZoomOut();
+        //ZoomOut();
         if (_scroll.y < 0)
         {
             _weaponPos--;
