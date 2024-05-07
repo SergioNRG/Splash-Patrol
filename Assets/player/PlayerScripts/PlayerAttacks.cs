@@ -42,8 +42,6 @@ public class PlayerAttacks : MonoBehaviour
     private Vector2 _scroll;
 
     private bool _isScrolling = false;
-
-   // private float _timeToStopNotAiming = 0;
   
     // Start is called before the first frame update
     void Start()
@@ -94,7 +92,7 @@ public class PlayerAttacks : MonoBehaviour
         
     }
 
-    #region Input Events From SO
+    #region  Subcribe methods from InputReader SO
     private void OnEnable()
     {
         _inputReader.OnAttackEvent += OnAttack;
@@ -165,7 +163,6 @@ public class PlayerAttacks : MonoBehaviour
 
     private void SelectWeapon()
     {
-        //ZoomOut();
         if (_scroll.y < 0)
         {
             _weaponPos--;

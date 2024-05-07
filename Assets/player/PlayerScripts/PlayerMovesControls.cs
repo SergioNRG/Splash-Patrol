@@ -54,7 +54,7 @@ public class PlayerMovesControls : MonoBehaviour
     }
 
 
-    #region Input Events From SO
+    #region  Subcribe methods from InputReader SO
 
     // subscribe to events on SO
     private void OnEnable()
