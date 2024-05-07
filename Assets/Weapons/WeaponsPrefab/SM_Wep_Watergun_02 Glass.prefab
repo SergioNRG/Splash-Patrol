@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4620310654051720295
+--- !u!1 &6182697093187845489
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 860408524129200895}
-  - component: {fileID: 5727320208758963534}
-  - component: {fileID: 1208338230292403778}
+  - component: {fileID: 6182697093187674449}
+  - component: {fileID: 6182697093191098737}
+  - component: {fileID: 6182697093190099889}
   m_Layer: 0
-  m_Name: Watergun_01_Refill
+  m_Name: Watergun_02_Refill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &860408524129200895
+--- !u!4 &6182697093187674449
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4620310654051720295}
+  m_GameObject: {fileID: 6182697093187845489}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000025013415, y: 0.1957548, z: 0.15349771}
+  m_LocalPosition: {x: 0.000011564192, y: 0.12711668, z: -0.11413599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2367830839382260793}
+  m_Father: {fileID: 6182697093187674453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5727320208758963534
+--- !u!33 &6182697093191098737
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4620310654051720295}
-  m_Mesh: {fileID: 4300006, guid: e42a245ddc40f744994b4b96b407ec47, type: 3}
---- !u!23 &1208338230292403778
+  m_GameObject: {fileID: 6182697093187845489}
+  m_Mesh: {fileID: 4300006, guid: 27d85ed0b41b13e4b931011bd61b932b, type: 3}
+--- !u!23 &6182697093190099889
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4620310654051720295}
+  m_GameObject: {fileID: 6182697093187845489}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6364349518342319806
+--- !u!1 &6182697093187845491
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,46 +91,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1645290037863107486}
-  - component: {fileID: 5656483990211560535}
-  - component: {fileID: 9016209943390337581}
+  - component: {fileID: 6182697093187674451}
+  - component: {fileID: 6182697093191098739}
+  - component: {fileID: 6182697093190099891}
   m_Layer: 0
-  m_Name: Watergun_01_Pump
+  m_Name: Watergun_02_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1645290037863107486
+--- !u!4 &6182697093187674451
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6364349518342319806}
+  m_GameObject: {fileID: 6182697093187845491}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3126689e-15, y: 0.06852238, z: 0.23233275}
+  m_LocalPosition: {x: 0.000011845813, y: 0.04271021, z: 0.059763357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2367830839382260793}
+  m_Father: {fileID: 6182697093187674453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5656483990211560535
+--- !u!33 &6182697093191098739
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6364349518342319806}
-  m_Mesh: {fileID: 4300004, guid: e42a245ddc40f744994b4b96b407ec47, type: 3}
---- !u!23 &9016209943390337581
+  m_GameObject: {fileID: 6182697093187845491}
+  m_Mesh: {fileID: 4300004, guid: 27d85ed0b41b13e4b931011bd61b932b, type: 3}
+--- !u!23 &6182697093190099891
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6364349518342319806}
+  m_GameObject: {fileID: 6182697093187845491}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -166,7 +166,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6396865646041003767
+--- !u!1 &6182697093187845493
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,49 +174,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2367830839382260793}
-  - component: {fileID: 931223199078156852}
-  - component: {fileID: 1367380363749652128}
+  - component: {fileID: 6182697093187674453}
+  - component: {fileID: 6182697093191098741}
+  - component: {fileID: 6182697093190099893}
   m_Layer: 0
-  m_Name: SM_Wep_Watergun_01 Glass
+  m_Name: SM_Wep_Watergun_02 Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2367830839382260793
+--- !u!4 &6182697093187674453
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6396865646041003767}
+  m_GameObject: {fileID: 6182697093187845493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000025271984, y: -0.0000000047486504, z: 0}
+  m_LocalPosition: {x: -0.0000002421753, y: -0.0000000026185716, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1645290037863107486}
-  - {fileID: 860408524129200895}
-  - {fileID: 2542594758176077339}
+  - {fileID: 6182697093187674455}
+  - {fileID: 6182697093187674449}
+  - {fileID: 6182697093187674451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &931223199078156852
+--- !u!33 &6182697093191098741
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6396865646041003767}
-  m_Mesh: {fileID: 4300000, guid: e42a245ddc40f744994b4b96b407ec47, type: 3}
---- !u!23 &1367380363749652128
+  m_GameObject: {fileID: 6182697093187845493}
+  m_Mesh: {fileID: 4300000, guid: 27d85ed0b41b13e4b931011bd61b932b, type: 3}
+--- !u!23 &6182697093190099893
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6396865646041003767}
+  m_GameObject: {fileID: 6182697093187845493}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -252,7 +252,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8847775102762453646
+--- !u!1 &6182697093187845495
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,46 +260,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2542594758176077339}
-  - component: {fileID: 3369225409251965956}
-  - component: {fileID: 5579940194394223507}
+  - component: {fileID: 6182697093187674455}
+  - component: {fileID: 6182697093191098743}
+  - component: {fileID: 6182697093190099895}
   m_Layer: 0
-  m_Name: Watergun_01_Trigger
+  m_Name: Watergun_02_Pump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2542594758176077339
+--- !u!4 &6182697093187674455
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8847775102762453646}
+  m_GameObject: {fileID: 6182697093187845495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0038197802, y: 0.019227577, z: 0.042835277}
+  m_LocalPosition: {x: 0.000011843128, y: 0.05088784, z: 0.49245462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2367830839382260793}
+  m_Father: {fileID: 6182697093187674453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3369225409251965956
+--- !u!33 &6182697093191098743
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8847775102762453646}
-  m_Mesh: {fileID: 4300002, guid: e42a245ddc40f744994b4b96b407ec47, type: 3}
---- !u!23 &5579940194394223507
+  m_GameObject: {fileID: 6182697093187845495}
+  m_Mesh: {fileID: 4300002, guid: 27d85ed0b41b13e4b931011bd61b932b, type: 3}
+--- !u!23 &6182697093190099895
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8847775102762453646}
+  m_GameObject: {fileID: 6182697093187845495}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
