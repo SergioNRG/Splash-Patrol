@@ -58,6 +58,7 @@ public class PlayerAttacks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         _currentAimState = AimState.Idle;
         _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
         _normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
