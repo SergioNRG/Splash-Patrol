@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8040a9546eac8547a961a378e178aa3, type: 3}
-  m_Name: PistolShoot
+  m_Name: SMGShoot
   m_EditorClassIdentifier: 
   HitMask:
     serializedVersion: 2
     m_Bits: 1
   Spread: {x: 0.03, y: 0.03, z: 0.03}
-  FireRate: 0.5
+  FireRate: 0.15

@@ -19,8 +19,9 @@ public class PlayerAttacks : MonoBehaviour
     private AimState _currentAimState;
 
 
-    [Header("Weapons")]
-    [SerializeField ] private GameObject[] _weapons;
+    [Header("Guns SO")]
+    [SerializeField] private List<GunsSO> _guns;
+    //[SerializeField ] private GameObject[] _weapons;
 
     [Header("InputReaderSO")]
     [SerializeField] private InputReader _inputReader;
@@ -40,7 +41,7 @@ public class PlayerAttacks : MonoBehaviour
 
     [SerializeField] private GunType _gunType;
     [SerializeField] private Transform _gunParent;
-    [SerializeField] private List<GunsSO> _guns;
+    
 
 
     [Header("Runtime Filled")]
@@ -52,6 +53,7 @@ public class PlayerAttacks : MonoBehaviour
     private Vector2 _scroll;
 
     private bool _isScrolling = false;
+    private bool _isAttacking;
   
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,7 @@ public class PlayerAttacks : MonoBehaviour
         _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
         _normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
         _cam.m_Lens.FieldOfView = _normalFov;
+        _isAttacking = false;
         // _weaponPos = 0;
 
         /*for (int i = 0; i < _weapons.Length; i++)
@@ -86,6 +89,10 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_isAttacking)
+        {
+            if (ActiveGun != null) { ActiveGun.Shoot(); }
+        }
         switch (_currentAimState)
         {
             case AimState.Idle:
@@ -159,12 +166,13 @@ public class PlayerAttacks : MonoBehaviour
 
     private void OnAttack()
     {
-        if (ActiveGun != null) { ActiveGun.Shoot(); }
+        _isAttacking = true;
+       
     }
 
     private void OnAttackCanceled()
     {
-        Debug.Log(" Stop Attacking");
+        _isAttacking = false;
     }
 
     private void OnReloadCancelled()
@@ -181,7 +189,7 @@ public class PlayerAttacks : MonoBehaviour
 
     #region METHODS
 
-    private void SelectWeapon()
+   /* private void SelectWeapon()
     {
         if (_scroll.y < 0)
         {
@@ -207,7 +215,7 @@ public class PlayerAttacks : MonoBehaviour
         }
         _isScrolling = false;
 
-    }
+    }*/
 
     private void ZoomIn() 
     {

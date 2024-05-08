@@ -6,5 +6,5 @@ public enum GunType
 {
     Pistol,
     SMG,
-    MG
+    AR
 }
