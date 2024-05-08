@@ -38,6 +38,16 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private float _normalSpeedY ;
     [SerializeField] private float _normalSpeedX ;
 
+    [SerializeField] private GunType _gunType;
+    [SerializeField] private Transform _gunParent;
+    [SerializeField] private List<GunsSO> _guns;
+
+
+    [Header("Runtime Filled")]
+    public GunsSO ActiveGun;
+
+    
+
     private int _weaponPos;
     private Vector2 _scroll;
 
@@ -50,9 +60,9 @@ public class PlayerAttacks : MonoBehaviour
         _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
         _normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
         _cam.m_Lens.FieldOfView = _normalFov;
-        _weaponPos = 0;
+        // _weaponPos = 0;
 
-        for (int i = 0; i < _weapons.Length; i++)
+        /*for (int i = 0; i < _weapons.Length; i++)
         {
             if (_weapons[i] != null)
             {
@@ -60,7 +70,17 @@ public class PlayerAttacks : MonoBehaviour
                 else { _weapons[i].SetActive(false); }
                 Debug.Log(_weapons[i]);
             }
+        }*/
+        GunsSO gun = _guns.Find(gun => gun.Type == _gunType);
+
+        if (gun == null)
+        {
+            Debug.Log("error ... no GunSO found");
+            return;
         }
+
+        ActiveGun = gun;
+        gun.Spawn(_gunParent, this);
     }
 
     // Update is called once per frame
@@ -84,8 +104,8 @@ public class PlayerAttacks : MonoBehaviour
                 break;
 
             case AimState.ChangeWeapon:
-                if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()) { ZoomOut(); }
-                SelectWeapon();               
+               // if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()) { ZoomOut(); }
+               //SelectWeapon();               
                 break;
 
         }
@@ -139,7 +159,7 @@ public class PlayerAttacks : MonoBehaviour
 
     private void OnAttack()
     {
-        Debug.Log("Attacking");
+        if (ActiveGun != null) { ActiveGun.Shoot(); }
     }
 
     private void OnAttackCanceled()

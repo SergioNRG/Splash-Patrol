@@ -260,6 +260,11 @@ MonoBehaviour:
   _aimSpeedX: 50
   _normalSpeedY: 0
   _normalSpeedX: 0
+  _gunType: 0
+  _gunParent: {fileID: 8727172577369918935}
+  _guns:
+  - {fileID: 11400000, guid: 5b60641ae4f2a5b4eb57bbf015033ce3, type: 2}
+  ActiveGun: {fileID: 0}
 --- !u!1 &3740495465317456883
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +489,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 59.99999
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
