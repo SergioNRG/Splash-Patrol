@@ -44,17 +44,16 @@ public class GunsSO : ScriptableObject
         trail.widthCurve = TrailConfig.WidthCurve;
         trail.time = TrailConfig.Duration;
         trail.minVertexDistance = TrailConfig.MinVertexDistance;
-
         trail.emitting = false;
         trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-
+      
         return trail;
     }
 
     private IEnumerator PlayTrail(Vector3 startPoint, Vector3 endPoint, RaycastHit hit)
     {
         TrailRenderer instance = _trailPool.Get();
-        instance .gameObject.SetActive(true);
+        instance.gameObject.SetActive(true);
         instance .transform.position = startPoint;
         yield return null; // avoid position carry-over from last frame if reused
 
