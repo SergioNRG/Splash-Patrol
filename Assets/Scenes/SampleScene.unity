@@ -606,7 +606,7 @@ PrefabInstance:
     - target: {fileID: 1079955071837122763, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 60
+      value: 59.99999
       objectReference: {fileID: 0}
     - target: {fileID: 3539843353391411813, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
@@ -681,7 +681,7 @@ PrefabInstance:
     - target: {fileID: 8937206939544910494, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: field of view
-      value: 60
+      value: 59.99999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

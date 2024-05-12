@@ -12,27 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c32749a92120e47b3db73f8162df64, type: 3}
   m_Name: ARTrail
   m_EditorClassIdentifier: 
-  Material: {fileID: 2100000, guid: 51a92d3db798d8645b82be3dcefc2eb2, type: 2}
+  Material: {fileID: 2100000, guid: aa27ca70aed5c7a4498be2ffb782421e, type: 2}
   WidthCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.05
-      inSlope: 0
-      outSlope: 0
+      value: 0.025
+      inSlope: -0.027712155
+      outSlope: -0.027712155
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08510638
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.022396108
+      outSlope: -0.022396108
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.094777584
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
