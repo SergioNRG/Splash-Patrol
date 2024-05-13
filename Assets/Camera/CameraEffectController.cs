@@ -19,7 +19,6 @@ public class CameraEffectController : MonoBehaviour
     private void Start()
     {
         _initialPosition = transform.localPosition;
-
     }
 
     private void Update()
