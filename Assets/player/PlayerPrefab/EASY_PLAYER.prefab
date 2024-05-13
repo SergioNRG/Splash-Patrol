@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &562022662524435381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8122887466188810848}
+  m_Layer: 0
+  m_Name: CameraHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8122887466188810848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562022662524435381}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.41, y: 0.97300005, z: 1.069}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6843803966952276900}
+  - {fileID: 7813880675224138466}
+  m_Father: {fileID: 4653338894424814741}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882106481537326581
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,8 +62,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6843803966952276900}
-  - {fileID: 7813880675224138466}
+  - {fileID: 8122887466188810848}
   - {fileID: 4107163833025345686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,12 +93,12 @@ Transform:
   m_GameObject: {fileID: 1086892049672583981}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.23, z: 0.68}
+  m_LocalPosition: {x: -0.41, y: 0.25699997, z: -0.389}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9081848233891163707}
-  m_Father: {fileID: 4653338894424814741}
+  m_Father: {fileID: 8122887466188810848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1079955071837122763
 MonoBehaviour:
@@ -263,6 +295,7 @@ MonoBehaviour:
   _gunType: 0
   _gunParent: {fileID: 8727172577369918935}
   ActiveGun: {fileID: 0}
+  _cameraEffectsScript: {fileID: 0}
 --- !u!1 &3740495465317456883
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,12 +477,12 @@ Transform:
   m_GameObject: {fileID: 8237158668219107603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.23, z: 0.68}
+  m_LocalPosition: {x: -0.41, y: 0.25699997, z: -0.389}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8727172577369918935}
-  m_Father: {fileID: 4653338894424814741}
+  m_Father: {fileID: 8122887466188810848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8937206939544910494
 Camera:

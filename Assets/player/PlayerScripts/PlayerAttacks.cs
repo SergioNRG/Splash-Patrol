@@ -13,7 +13,8 @@ public class PlayerAttacks : MonoBehaviour
         Idle,
         Aiming,
         NotAiming,
-        ChangeWeapon
+        ChangeWeapon,
+        Reloading
     }
 
     private AimState _currentAimState;
@@ -47,7 +48,8 @@ public class PlayerAttacks : MonoBehaviour
     [Header("Runtime Filled")]
     public GunsSO ActiveGun;
 
-    
+   // [Header("CamEffecttsSO")]
+    [SerializeField] private CameraEffectController _cameraEffectsScript;
 
     private int _weaponPos;
     private Vector2 _scroll;
@@ -90,10 +92,6 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isAttacking)
-        {
-            if (ActiveGun != null) { ActiveGun.Shoot(); }
-        }
         switch (_currentAimState)
         {
             case AimState.Idle:
@@ -118,6 +116,19 @@ public class PlayerAttacks : MonoBehaviour
 
         }
         
+    }
+
+    private void LateUpdate()
+    {
+        if (_isAttacking)
+        {
+            if (ActiveGun != null) 
+            {
+                ActiveGun.Shoot();
+                _cameraEffectsScript.recoil();
+            }
+        }
+       
     }
 
     #region  Subcribe methods from InputReader SO

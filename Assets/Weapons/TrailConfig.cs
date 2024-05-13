@@ -12,5 +12,5 @@ public class TrailConfig : ScriptableObject
     public Gradient Color;
 
     public float MissDistance = 100f; // how far we gona shoot if we miss the raycast
-    public float SimuylationSpeed = 100f; // how fast we move the trail from the tip of the gun to the hitpoint (unity defoult is meters/seg)
+    public float SimulationSpeed = 100f; // how fast we move the trail from the tip of the gun to the hitpoint (unity defoult is meters/seg)
 }

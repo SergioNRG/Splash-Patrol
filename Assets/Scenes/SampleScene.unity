@@ -606,12 +606,17 @@ PrefabInstance:
     - target: {fileID: 1079955071837122763, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 59.99999
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3539843353391411813, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: _gunType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539843353391411813, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _cameraEffectsScript
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4435757357188994864, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
@@ -670,20 +675,66 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843803966952276900, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843803966952276900, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.68
+      value: -0.389
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453183568514171000, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _recoilx
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453183568514171000, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _recoily
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453183568514171000, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _recoilz
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453183568514171000, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _recoil.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453183568514171000, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _recoil.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453183568514171000, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _recoil.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453183568514171000, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _snapiness
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813880675224138466, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25699997
       objectReference: {fileID: 0}
     - target: {fileID: 7813880675224138466, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.68
+      value: -0.389
       objectReference: {fileID: 0}
     - target: {fileID: 8937206939544910494, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: field of view
-      value: 59.99999
+      value: 60
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7453183568514171000, guid: 4ca68251e8346cd4cad0f2e5eac547f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

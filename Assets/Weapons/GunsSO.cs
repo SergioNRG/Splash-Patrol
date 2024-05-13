@@ -64,7 +64,7 @@ public class GunsSO : ScriptableObject
         while( remainingDistance > 0 )
         {
             instance.transform.position = Vector3.Lerp(startPoint, endPoint, Mathf.Clamp01(1 - (remainingDistance / distance)));
-            remainingDistance -= TrailConfig.SimuylationSpeed * Time.deltaTime;
+            remainingDistance -= TrailConfig.SimulationSpeed * Time.deltaTime;
 
             yield return null;
         }
