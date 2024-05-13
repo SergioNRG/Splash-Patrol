@@ -6,7 +6,7 @@ public class CameraEffectController : MonoBehaviour
 {
     // camera rotations
     private Vector3 _currentRotation, _targetRotation,_targetPosition,_currentPosition,_initialPosition;
-    [SerializeField] Transform _camTransform;
+    [SerializeField] Transform _camHolderTransform;
 
     [SerializeField] float _recoilx;
     [SerializeField] float _recoily;
@@ -26,7 +26,7 @@ public class CameraEffectController : MonoBehaviour
         _targetRotation = Vector3.Lerp(_targetRotation,Vector3.zero,Time.deltaTime* _returnAmount);
         _currentRotation = Vector3.Slerp(_currentRotation,_targetRotation,Time.fixedDeltaTime * _snappiness);
         transform.localRotation = Quaternion.Euler(_currentRotation);   
-        _camTransform.localRotation = Quaternion.Euler(_currentRotation);
+        _camHolderTransform.localRotation = Quaternion.Euler(_currentRotation);
         KickBack();
     }
 
