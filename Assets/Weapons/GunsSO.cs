@@ -71,7 +71,7 @@ public class GunsSO : ScriptableObject
 
         instance.emitting = true;
 
-        recoil();
+        
 
         float distance = Vector3.Distance (startPoint, endPoint);
         float remainingDistance = distance;
@@ -93,7 +93,7 @@ public class GunsSO : ScriptableObject
         instance.emitting = false;
         instance.gameObject.SetActive(false);
         _trailPool.Release(instance);
-
+        recoil();
     }
 
     public void Shoot()
