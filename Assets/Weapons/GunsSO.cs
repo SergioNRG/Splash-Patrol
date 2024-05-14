@@ -21,6 +21,11 @@ public class GunsSO : ScriptableObject
     private ParticleSystem _shootSystem;
     private ObjectPool<TrailRenderer> _trailPool;
 
+    //
+
+    private Vector3 _currentRotation, _targetRotation, _targetPosition, _currentPosition, _initialPosition;
+    Transform _camHolderTransform;
+
     public void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
     {
         this._activeMonoBehaviour = activeMonoBehaviour;
@@ -33,7 +38,14 @@ public class GunsSO : ScriptableObject
         _model.transform.localRotation = Quaternion.Euler(SpawnRotation);
 
         _shootSystem = _model.GetComponentInChildren<ParticleSystem>();
+
+        _initialPosition = _model.transform.localPosition;
+
+        // only works if the only cameras on the scene are the player cameras
+        _camHolderTransform = GameObject.FindObjectOfType<Camera>().transform.parent;
     }
+
+
 
     private TrailRenderer CreateTrail()
     {
@@ -58,6 +70,8 @@ public class GunsSO : ScriptableObject
         yield return null; // avoid position carry-over from last frame if reused
 
         instance.emitting = true;
+
+        recoil();
 
         float distance = Vector3.Distance (startPoint, endPoint);
         float remainingDistance = distance;
@@ -104,6 +118,31 @@ public class GunsSO : ScriptableObject
 
             }
         }
+       
     }
+
+    #region RECOIL METHODS
+    public void UpdateForWeaponRecoil()
+    {
+        _targetRotation = Vector3.Lerp(_targetRotation, Vector3.zero, Time.deltaTime * ShootConfig._returnAmount);
+        _currentRotation = Vector3.Slerp(_currentRotation, _targetRotation, Time.fixedDeltaTime * ShootConfig._snappiness);
+        _model.transform.localRotation = Quaternion.Euler(_currentRotation);
+        _camHolderTransform.localRotation = Quaternion.Euler(_currentRotation);
+        KickBack();
+    }
+
+    public void recoil()
+    {
+        _targetPosition -= new Vector3(0, 0, ShootConfig._kickBackz);
+        _targetRotation += new Vector3(ShootConfig._recoilx, Random.Range(-ShootConfig._recoily, ShootConfig._recoily), Random.Range(-ShootConfig._recoilz, ShootConfig._recoilz));
+        Debug.Log("recoiling");
+    }
+    public void KickBack()
+    {
+        _targetPosition = Vector3.Lerp(_targetPosition, _initialPosition, Time.deltaTime * ShootConfig._returnAmount);
+        _currentRotation = Vector3.Lerp(_currentPosition, _targetPosition, Time.fixedDeltaTime * ShootConfig._snappiness);
+        _model.transform.localPosition = _currentPosition;
+    }
+    #endregion
 
 }

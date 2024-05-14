@@ -17,3 +17,9 @@ MonoBehaviour:
     m_Bits: 1
   Spread: {x: 0.02, y: 0.02, z: 0.02}
   FireRate: 0.1
+  _recoilx: 0
+  _recoily: 2
+  _recoilz: 10
+  _kickBackz: 5
+  _snappiness: 8
+  _returnAmount: 5

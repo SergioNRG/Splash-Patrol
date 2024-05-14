@@ -92,6 +92,7 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         switch (_currentAimState)
         {
             case AimState.Idle:
@@ -120,12 +121,12 @@ public class PlayerAttacks : MonoBehaviour
 
     private void LateUpdate()
     {
+        ActiveGun.UpdateForWeaponRecoil();
         if (_isAttacking)
         {
             if (ActiveGun != null) 
             {
-                ActiveGun.Shoot();
-                _cameraEffectsScript.recoil();
+                ActiveGun.Shoot();                
             }
         }
        
