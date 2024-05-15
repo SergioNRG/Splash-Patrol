@@ -14,26 +14,13 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
 
-
+    [SerializeField] private EnemyEffectsManager _enemyEffectsManager;
     private void OnEnable()
     {
+        _enemyEffectsManager = GetComponent<EnemyEffectsManager>();
         CurrentHealth = MaxHealth;
-        OnTakeDamage += TakeDamage;
-        OnDeath += Die;
-    }
-
-    
-
-    private void TakeDamage(int damage)
-    {
-        Debug.Log("Taking Damage");
-        //apply effects
-    }
-
-    private void Die(Vector3 position)
-    {
-        Debug.Log("enemy morreu");
-        //apply effects
+        OnTakeDamage += _enemyEffectsManager.TakeDamageEffect;
+        OnDeath += _enemyEffectsManager.Die;
     }
 
     public void ApplyDamage(int damage)
