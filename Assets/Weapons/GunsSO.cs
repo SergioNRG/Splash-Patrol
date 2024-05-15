@@ -12,6 +12,7 @@ public class GunsSO : ScriptableObject
     public Vector3 SpawnPoint;
     public Vector3 SpawnRotation;
 
+    public DamageConfig DamageConfig;
     public ShootConfig ShootConfig;
     public TrailConfig TrailConfig;
 
@@ -85,7 +86,17 @@ public class GunsSO : ScriptableObject
 
         instance.transform.position = endPoint;
 
-        if (hit.collider != null ) { Debug.Log("hiting something"); }
+        if (hit.collider != null ) 
+        {
+
+            ////////////////////////////////
+            if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable)) 
+            {
+                damageable.ApplyDamage(DamageConfig.GetDamageToApply(distance));
+            }
+
+   
+        }
 
 
         yield return new WaitForSeconds(TrailConfig.Duration);
@@ -135,7 +146,6 @@ public class GunsSO : ScriptableObject
     {
         _targetPosition -= new Vector3(0, 0, ShootConfig._kickBackz);
         _targetRotation += new Vector3(ShootConfig._recoilx, Random.Range(-ShootConfig._recoily, ShootConfig._recoily), Random.Range(-ShootConfig._recoilz, ShootConfig._recoilz));
-        Debug.Log("recoiling");
     }
     public void KickBack()
     {
