@@ -19,7 +19,7 @@ MonoBehaviour:
   FireRate: 1
   _recoilx: 0
   _recoily: 5
-  _recoilz: 15
+  _recoilz: 7
   _kickBackz: 1
-  _snappiness: 15
+  _snappiness: 10
   _returnAmount: 8
