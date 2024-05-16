@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttacks : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerAttacks : MonoBehaviour
 
     private AimState _currentAimState;
 
+    [SerializeField] private Image _crosshair;
 
     [Header("Guns SO")]
     [SerializeField] private List<GunsSO> _guns;
@@ -49,13 +51,15 @@ public class PlayerAttacks : MonoBehaviour
     public GunsSO ActiveGun;
 
    // [Header("CamEffecttsSO")]
-    [SerializeField] private CameraEffectController _cameraEffectsScript;
+    private CameraEffectController _cameraEffectsScript;
 
     private int _weaponPos;
     private Vector2 _scroll;
 
     private bool _isScrolling = false;
     private bool _isAttacking;
+
+
   
     // Start is called before the first frame update
     void Start()
@@ -92,7 +96,8 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        UpdateCrosshair();
+        ActiveGun.UpdateForWeaponRecoil();
         switch (_currentAimState)
         {
             case AimState.Idle:
@@ -119,9 +124,31 @@ public class PlayerAttacks : MonoBehaviour
         
     }
 
+    private void UpdateCrosshair()
+    {
+        Vector3 gunTip = ActiveGun.GetRaycastOrigin();
+        Vector3 gunForward = ActiveGun.GetGunForward();
+        Vector3 hitPoint = gunTip + gunForward *20;
+
+       
+
+        if (Physics.Raycast(gunTip,gunForward,out RaycastHit hit, float.MaxValue,ActiveGun.ShootConfig.HitMask))
+        {
+            hitPoint = hit.point;
+        }
+
+        Vector3 screenSpaceLocation = Camera.main.WorldToScreenPoint(hitPoint);
+        if(RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)_crosshair.transform.parent,screenSpaceLocation,null,out Vector2 localPoint))
+        {
+            _crosshair.rectTransform.anchoredPosition = localPoint;
+            
+        }
+        else { _crosshair.rectTransform.anchoredPosition = Vector3.zero; }
+    }
+
     private void LateUpdate()
     {
-        ActiveGun.UpdateForWeaponRecoil();
+       
         if (_isAttacking)
         {
             if (ActiveGun != null) 

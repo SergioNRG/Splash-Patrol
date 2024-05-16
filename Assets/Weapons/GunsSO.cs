@@ -65,6 +65,7 @@ public class GunsSO : ScriptableObject
 
     private IEnumerator PlayTrail(Vector3 startPoint, Vector3 endPoint, RaycastHit hit)
     {
+       // Debug.DrawLine(startPoint, endPoint,Color.blue, 80);
         TrailRenderer instance = _trailPool.Get();
         instance.gameObject.SetActive(true);
         instance .transform.position = startPoint;
@@ -130,6 +131,19 @@ public class GunsSO : ScriptableObject
             }
         }
        
+    }
+
+    public Vector3 GetRaycastOrigin()
+    {
+        Vector3 origin = _shootSystem.transform.position;
+        return origin;
+    }
+
+    public Vector3 GetGunForward()
+    {
+        // Vector3 forward = ModelPrefab.transform.TransformDirection(Vector3.forward);
+        //return forward;
+        return _shootSystem.transform.forward;
     }
 
     #region RECOIL METHODS

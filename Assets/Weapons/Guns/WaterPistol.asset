@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: WaterPistol
   ModelPrefab: {fileID: 1121525155587680, guid: c6865c562fd3f2841a92dc0cbbd6b4b4,
     type: 3}
-  SpawnPoint: {x: -0.104, y: 0, z: 0.046}
+  SpawnPoint: {x: 0, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: 0}
   DamageConfig: {fileID: 11400000, guid: 6464b3d0fc272af40a2f8f166c9ec36b, type: 2}
   ShootConfig: {fileID: 11400000, guid: e57de934bd064d341965e8b1007804fe, type: 2}
