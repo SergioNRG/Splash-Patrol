@@ -140,9 +140,7 @@ public class GunsSO : ScriptableObject
     }
 
     public Vector3 GetGunForward()
-    {
-        // Vector3 forward = ModelPrefab.transform.TransformDirection(Vector3.forward);
-        //return forward;
+    {        
         return _shootSystem.transform.forward;
     }
 
