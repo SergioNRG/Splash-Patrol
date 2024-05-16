@@ -22,10 +22,9 @@ public class GunsSO : ScriptableObject
     private ParticleSystem _shootSystem;
     private ObjectPool<TrailRenderer> _trailPool;
 
-    //
 
     private Vector3 _currentRotation, _targetRotation, _targetPosition, _currentPosition, _initialPosition;
-    Transform _camHolderTransform;
+    private Transform _camHolderTransform;
 
     public void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
     {
@@ -65,7 +64,7 @@ public class GunsSO : ScriptableObject
 
     private IEnumerator PlayTrail(Vector3 startPoint, Vector3 endPoint, RaycastHit hit)
     {
-       // Debug.DrawLine(startPoint, endPoint,Color.blue, 80);
+        recoil();
         TrailRenderer instance = _trailPool.Get();
         instance.gameObject.SetActive(true);
         instance .transform.position = startPoint;
@@ -105,7 +104,7 @@ public class GunsSO : ScriptableObject
         instance.emitting = false;
         instance.gameObject.SetActive(false);
         _trailPool.Release(instance);
-        recoil();
+       
     }
 
     public void Shoot()
@@ -133,6 +132,8 @@ public class GunsSO : ScriptableObject
        
     }
 
+    #region GET METHODS TO GUNSSO
+
     public Vector3 GetRaycastOrigin()
     {
         Vector3 origin = _shootSystem.transform.position;
@@ -143,6 +144,8 @@ public class GunsSO : ScriptableObject
     {        
         return _shootSystem.transform.forward;
     }
+
+    #endregion
 
     #region RECOIL METHODS
     public void UpdateForWeaponRecoil()

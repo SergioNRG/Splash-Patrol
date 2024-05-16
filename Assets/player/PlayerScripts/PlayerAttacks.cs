@@ -124,6 +124,19 @@ public class PlayerAttacks : MonoBehaviour
         
     }
 
+    private void LateUpdate()
+    {
+
+        if (_isAttacking)
+        {
+            if (ActiveGun != null)
+            {
+                ActiveGun.Shoot();
+            }
+        }
+
+    }
+
     private void UpdateCrosshair()
     {
         Vector3 gunTip = ActiveGun.GetRaycastOrigin();
@@ -146,18 +159,7 @@ public class PlayerAttacks : MonoBehaviour
         else { _crosshair.rectTransform.anchoredPosition = Vector3.zero; }
     }
 
-    private void LateUpdate()
-    {
-       
-        if (_isAttacking)
-        {
-            if (ActiveGun != null) 
-            {
-                ActiveGun.Shoot();                
-            }
-        }
-       
-    }
+
 
     #region  Subcribe methods from InputReader SO
     private void OnEnable()
