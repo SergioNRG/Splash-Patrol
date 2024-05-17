@@ -50,6 +50,7 @@ public class PlayerAttacks : MonoBehaviour
     [Header("Runtime Filled")]
     public GunsSO ActiveGun;
 
+
    // [Header("CamEffecttsSO")]
     private CameraEffectController _cameraEffectsScript;
 

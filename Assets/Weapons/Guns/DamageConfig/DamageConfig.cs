@@ -5,7 +5,7 @@ using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
 
-[CreateAssetMenu(fileName ="DamageConfig", menuName = "Guns/DamageConfig", order = 1)]
+[CreateAssetMenu(fileName ="DamageConfig", menuName = "Weapons/Guns/DamageConfig", order = 1)]
 public class DamageConfig : ScriptableObject
 {
     public MinMaxCurve DamageCurve;

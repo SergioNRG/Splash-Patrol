@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Shoot Config", menuName = "Guns/Shoot Config", order = 2)]
+[CreateAssetMenu(fileName = "Shoot Config", menuName = "Weapons/Guns/Shoot Config", order = 2)]
 public class ShootConfig : ScriptableObject
 {
     public LayerMask HitMask;

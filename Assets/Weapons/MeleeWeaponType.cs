@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GunType 
+public enum MeleeWeaponType 
 {
-    WaterPistol,
-    WaterSMG,
-    WaterAR
+    PoliceBat,
+    Knife
 }

@@ -21,3 +21,5 @@ MonoBehaviour:
   DamageConfig: {fileID: 11400000, guid: 0c335f2f13fbcbf4c9a0c94bbb247f89, type: 2}
   ShootConfig: {fileID: 11400000, guid: 3238257b94cda7d4cad2c0730e3e07da, type: 2}
   TrailConfig: {fileID: 11400000, guid: ff3628952abe8f844886847d3591d579, type: 2}
+  MaxAmmo: 200
+  CurrentAmmo: 0

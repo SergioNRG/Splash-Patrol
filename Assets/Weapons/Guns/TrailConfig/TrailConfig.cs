@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Trail Config", menuName = "Guns/Trail Config", order = 4)]
+[CreateAssetMenu(fileName = "Trail Config", menuName = "Weapons/Guns/Trail Config", order = 4)]
 public class TrailConfig : ScriptableObject
 {
     public Material Material;

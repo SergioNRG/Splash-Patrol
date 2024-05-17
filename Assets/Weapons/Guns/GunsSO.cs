@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-[CreateAssetMenu(fileName = "Gun", menuName = "Guns/Gun", order = 0)]
+[CreateAssetMenu(fileName = "Gun", menuName = "Weapons/Guns/Gun", order = 0)]
 public class GunsSO : ScriptableObject
 {
     public GunType Type;
@@ -16,6 +16,8 @@ public class GunsSO : ScriptableObject
     public ShootConfig ShootConfig;
     public TrailConfig TrailConfig;
 
+    public int MaxAmmo;
+    public int CurrentAmmo;
     private MonoBehaviour _activeMonoBehaviour;
     private GameObject _model;
     private float _lastShootTime;
@@ -30,7 +32,10 @@ public class GunsSO : ScriptableObject
     {
         this._activeMonoBehaviour = activeMonoBehaviour;
         _lastShootTime = 0;
+        // check if is working
+        CurrentAmmo = MaxAmmo;
         _trailPool = new ObjectPool<TrailRenderer>(CreateTrail);
+
 
         _model = Instantiate(ModelPrefab);
         _model.transform.SetParent(Parent,false);
@@ -41,7 +46,7 @@ public class GunsSO : ScriptableObject
 
         _initialPosition = _model.transform.localPosition;
 
-        // only works if the only cameras on the scene are the player cameras
+        // only works if the only camera on the scene are the player camera
         _camHolderTransform = GameObject.FindObjectOfType<Camera>().transform.parent;
     }
 
@@ -109,30 +114,37 @@ public class GunsSO : ScriptableObject
 
     public void Shoot()
     {
-        if (Time.time > ShootConfig.FireRate + _lastShootTime)
+        if (CanShoot())
         {
-            _lastShootTime = Time.time;
-            _shootSystem.Play();
-            Vector3 shootDirection = _shootSystem.transform.forward
-                + new Vector3(Random.Range(-ShootConfig.Spread.x, ShootConfig.Spread.x),
-                              Random.Range(-ShootConfig.Spread.y, ShootConfig.Spread.y),
-                              Random.Range(-ShootConfig.Spread.z, ShootConfig.Spread.z));
-
-            shootDirection.Normalize();
-
-            if (Physics.Raycast(_shootSystem.transform.position,shootDirection,out RaycastHit hit, float.MaxValue, ShootConfig.HitMask))
+            if (Time.time > ShootConfig.FireRate + _lastShootTime)
             {
-                _activeMonoBehaviour.StartCoroutine(PlayTrail(_shootSystem.transform.position,hit.point,hit));
-            }else
-            {
-                _activeMonoBehaviour.StartCoroutine(PlayTrail(_shootSystem.transform.position, _shootSystem.transform.position + (shootDirection * TrailConfig.MissDistance), new RaycastHit()));
+                _lastShootTime = Time.time;
+                _shootSystem.Play();
+                Vector3 shootDirection = _shootSystem.transform.forward
+                    + new Vector3(Random.Range(-ShootConfig.Spread.x, ShootConfig.Spread.x),
+                                  Random.Range(-ShootConfig.Spread.y, ShootConfig.Spread.y),
+                                  Random.Range(-ShootConfig.Spread.z, ShootConfig.Spread.z));
 
+                shootDirection.Normalize();
+
+                if (Physics.Raycast(_shootSystem.transform.position, shootDirection, out RaycastHit hit, float.MaxValue, ShootConfig.HitMask))
+                {
+                    _activeMonoBehaviour.StartCoroutine(PlayTrail(_shootSystem.transform.position, hit.point, hit));
+                }
+                else
+                {
+                    _activeMonoBehaviour.StartCoroutine(PlayTrail(_shootSystem.transform.position, _shootSystem.transform.position + (shootDirection * TrailConfig.MissDistance), new RaycastHit()));
+
+                }
+
+                CurrentAmmo--;
             }
         }
+      
        
     }
 
-    #region GET METHODS TO GUNSSO
+    #region GET METHODS 
 
     public Vector3 GetRaycastOrigin()
     {
@@ -143,6 +155,16 @@ public class GunsSO : ScriptableObject
     public Vector3 GetGunForward()
     {        
         return _shootSystem.transform.forward;
+    }
+
+    public bool CanShoot()
+    {
+        return (CurrentAmmo > 0);
+    }
+
+    public bool CanGetAmmo()
+    {
+        return CurrentAmmo < MaxAmmo;
     }
 
     #endregion
