@@ -88,6 +88,9 @@ public class PlayerAttacks : MonoBehaviour
                 Debug.Log(_weapons[i]);
             }
         }*/
+
+
+
         GunsSO gun = _guns.Find(gun => gun.Type == _gunType);
 
         if (gun == null)
@@ -98,6 +101,8 @@ public class PlayerAttacks : MonoBehaviour
 
         ActiveGun = gun;
         gun.Spawn(_gunParent, this);
+
+
         // melle spawning
 
         MeleeSO melee = _melees.Find(melee => melee.MelleType == _meleeType);
@@ -110,6 +115,9 @@ public class PlayerAttacks : MonoBehaviour
 
         ActiveMelee = melee;
         melee.Spawn(_gunParent, this);
+
+
+
     }
 
     // Update is called once per frame
