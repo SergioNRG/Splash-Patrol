@@ -374,6 +374,17 @@ PrefabInstance:
       propertyPath: _gunType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3539843353391411813, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _melees.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539843353391411813, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _melees.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ef0e97da321809448c6087b6e8866ce,
+        type: 2}
     - target: {fileID: 4653338894424814741, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_LocalPosition.x

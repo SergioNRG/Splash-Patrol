@@ -24,6 +24,9 @@ public class PlayerAttacks : MonoBehaviour
 
     [Header("Guns SO")]
     [SerializeField] private List<GunsSO> _guns;
+
+    [Header("Melees SO")]
+    [SerializeField] private List<MeleeSO> _melees;
     //[SerializeField ] private GameObject[] _weapons;
 
     [Header("InputReaderSO")]
@@ -43,13 +46,16 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private float _normalSpeedX ;
 
     [SerializeField] private GunType _gunType;
+    //
+    [SerializeField] private MeleeWeaponType _meleeType;
+
     [SerializeField] private Transform _gunParent;
     
 
 
     [Header("Runtime Filled")]
     public GunsSO ActiveGun;
-
+    public MeleeSO ActiveMelee;
 
    // [Header("CamEffecttsSO")]
     private CameraEffectController _cameraEffectsScript;
@@ -92,6 +98,18 @@ public class PlayerAttacks : MonoBehaviour
 
         ActiveGun = gun;
         gun.Spawn(_gunParent, this);
+        // melle spawning
+
+        MeleeSO melee = _melees.Find(melee => melee.MelleType == _meleeType);
+
+        if (melee == null)
+        {
+            Debug.Log("error ... no GunSO found");
+            return;
+        }
+
+        ActiveMelee = melee;
+        melee.Spawn(_gunParent, this);
     }
 
     // Update is called once per frame
