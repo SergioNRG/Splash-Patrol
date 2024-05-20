@@ -16,10 +16,12 @@ public class GunsSO : WeaponSOBase
     public ShootConfig ShootConfig;
     public TrailConfig TrailConfig;
 
+    public GameObject _model;
+
     public int MaxAmmo;
     public int CurrentAmmo;
     private MonoBehaviour _activeMonoBehaviour;
-    private GameObject _model;
+    
     private float _lastShootTime;
     private ParticleSystem _shootSystem;
     private ObjectPool<TrailRenderer> _trailPool;

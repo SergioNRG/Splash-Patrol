@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 540305443504720549}
   - component: {fileID: 7667675997348757858}
   - component: {fileID: 3539843353391411813}
+  - component: {fileID: 7415601439489771938}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -280,10 +281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crosshair: {fileID: 3689301768962702231}
-  _guns:
-  - {fileID: 11400000, guid: 5b60641ae4f2a5b4eb57bbf015033ce3, type: 2}
-  - {fileID: 11400000, guid: b503e197109c5dd48af0e20f33f926e4, type: 2}
-  - {fileID: 11400000, guid: 886cad513c36a944da0d7c9581da8a11, type: 2}
   _inputReader: {fileID: 11400000, guid: 284b2db9c9a6e9848b758dbd19c01a67, type: 2}
   _cam: {fileID: 1079955071837122763}
   _aimFov: 30
@@ -293,9 +290,30 @@ MonoBehaviour:
   _aimSpeedX: 50
   _normalSpeedY: 0
   _normalSpeedX: 0
-  _gunType: 0
   _gunParent: {fileID: 8727172577369918935}
+--- !u!114 &7415601439489771938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211028679222146853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6969f8c2678850c41bc02568b9670d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gunType: 0
+  _meleeType: 0
+  _gunParent: {fileID: 8727172577369918935}
+  _guns:
+  - {fileID: 11400000, guid: 5b60641ae4f2a5b4eb57bbf015033ce3, type: 2}
+  - {fileID: 11400000, guid: b503e197109c5dd48af0e20f33f926e4, type: 2}
+  - {fileID: 11400000, guid: 886cad513c36a944da0d7c9581da8a11, type: 2}
+  _melees:
+  - {fileID: 11400000, guid: 7ef0e97da321809448c6087b6e8866ce, type: 2}
   ActiveGun: {fileID: 0}
+  ActiveMelee: {fileID: 0}
 --- !u!1 &3740495465317456883
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +713,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

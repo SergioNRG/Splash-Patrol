@@ -22,19 +22,15 @@ public class PlayerAttacks : MonoBehaviour
 
     [SerializeField] private Image _crosshair;
 
-    [Header("Guns SO")]
-    [SerializeField] private List<GunsSO> _guns;
-
-    [Header("Melees SO")]
-    [SerializeField] private List<MeleeSO> _melees;
-    //[SerializeField ] private GameObject[] _weapons;
-
     [Header("InputReaderSO")]
     [SerializeField] private InputReader _inputReader;
 
     [Header("Zoom Camera")]
     [SerializeField] private CinemachineVirtualCamera _cam;
 
+    [Header("CamEffecttsSO")]
+    private CameraEffectController _cameraEffectsScript;
+    private PlayerGunSelector _playerGunSelector;
 
     [Header("Camera Values To Adjust")]
     [SerializeField] private int _aimFov = 30;
@@ -45,23 +41,8 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private float _normalSpeedY ;
     [SerializeField] private float _normalSpeedX ;
 
-    [SerializeField] private GunType _gunType;
-    //
-    [SerializeField] private MeleeWeaponType _meleeType;
-
-    [SerializeField] private Transform _gunParent;
-    
-
-
-    [Header("Runtime Filled")]
-    public GunsSO ActiveGun;
-    public MeleeSO ActiveMelee;
-
-   // [Header("CamEffecttsSO")]
-    private CameraEffectController _cameraEffectsScript;
-
-    private int _weaponPos;
-    private Vector2 _scroll;
+   /* private int _weaponPos;
+    private Vector2 _scroll;*/
 
     private bool _isScrolling = false;
     private bool _isAttacking;
@@ -71,7 +52,7 @@ public class PlayerAttacks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _playerGunSelector = GetComponent<PlayerGunSelector>(); 
         _currentAimState = AimState.Idle;
         _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
         _normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
@@ -89,42 +70,21 @@ public class PlayerAttacks : MonoBehaviour
             }
         }*/
 
-
-
-        GunsSO gun = _guns.Find(gun => gun.Type == _gunType);
-
-        if (gun == null)
-        {
-            Debug.Log("error ... no GunSO found");
-            return;
-        }
-
-        ActiveGun = gun;
-        gun.Spawn(_gunParent, this);
-
-
-        // melle spawning
-
-        MeleeSO melee = _melees.Find(melee => melee.MelleType == _meleeType);
-
-        if (melee == null)
-        {
-            Debug.Log("error ... no GunSO found");
-            return;
-        }
-
-        ActiveMelee = melee;
-        melee.Spawn(_gunParent, this);
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateCrosshair();
-        ActiveGun.UpdateForWeaponRecoil();
+        if (_isAttacking)
+        {
+            if (_playerGunSelector.ActiveGun != null && _playerGunSelector.ActiveGun._model.activeInHierarchy)
+            {
+                _playerGunSelector.ActiveGun.Attack();
+                UpdateCrosshair();
+                _playerGunSelector.ActiveGun.UpdateForWeaponRecoil();
+            }else { _playerGunSelector.ActiveMelee.Attack(); }
+        }
+       
         switch (_currentAimState)
         {
             case AimState.Idle:
@@ -151,7 +111,7 @@ public class PlayerAttacks : MonoBehaviour
         
     }
 
-    private void LateUpdate()
+   /* private void LateUpdate()
     {
 
         if (_isAttacking)
@@ -162,17 +122,17 @@ public class PlayerAttacks : MonoBehaviour
             }
         }
 
-    }
+    }*/
 
     private void UpdateCrosshair()
     {
-        Vector3 gunTip = ActiveGun.GetRaycastOrigin();
-        Vector3 gunForward = ActiveGun.GetGunForward();
+        Vector3 gunTip = _playerGunSelector.ActiveGun.GetRaycastOrigin();
+        Vector3 gunForward = _playerGunSelector.ActiveGun.GetGunForward();
         Vector3 hitPoint = gunTip + gunForward *20;
 
        
 
-        if (Physics.Raycast(gunTip,gunForward,out RaycastHit hit, float.MaxValue,ActiveGun.ShootConfig.HitMask))
+        if (Physics.Raycast(gunTip,gunForward,out RaycastHit hit, float.MaxValue,_playerGunSelector.ActiveGun.ShootConfig.HitMask))
         {
             hitPoint = hit.point;
         }
@@ -228,7 +188,7 @@ public class PlayerAttacks : MonoBehaviour
 
     private void OnWeaponSelector(Vector2 scroll)
     {
-        _scroll = scroll.normalized ;
+       // _scroll = scroll.normalized ;
         _isScrolling = true;
     }
 
