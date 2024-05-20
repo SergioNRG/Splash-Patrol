@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 7415601439489771938, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: _gunType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7813880675224138466, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
