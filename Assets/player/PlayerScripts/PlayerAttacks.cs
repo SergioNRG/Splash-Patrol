@@ -158,7 +158,7 @@ public class PlayerAttacks : MonoBehaviour
         {
             if (ActiveGun != null)
             {
-                ActiveGun.Shoot();
+                ActiveGun.Attack();
             }
         }
 

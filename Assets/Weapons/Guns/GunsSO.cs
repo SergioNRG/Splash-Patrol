@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 
 [CreateAssetMenu(fileName = "Gun", menuName = "Weapons/Guns/Gun", order = 0)]
-public class GunsSO : ScriptableObject
+public class GunsSO : WeaponSOBase
 {
     public GunType Type;
     public string Name;
@@ -28,7 +28,7 @@ public class GunsSO : ScriptableObject
     private Vector3 _currentRotation, _targetRotation, _targetPosition, _currentPosition, _initialPosition;
     private Transform _camHolderTransform;
 
-    public void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
+    public override void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
     {
         this._activeMonoBehaviour = activeMonoBehaviour;
         _lastShootTime = 0;
@@ -112,7 +112,7 @@ public class GunsSO : ScriptableObject
        
     }
 
-    public void Shoot()
+    public override void Attack()
     {
         if (CanShoot())
         {
