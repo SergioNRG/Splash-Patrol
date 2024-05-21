@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4884914878476640}
   - component: {fileID: 33189934305827406}
   - component: {fileID: 23093887238237608}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Watergun_01_Pump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4593474181154118}
   - component: {fileID: 33334486229088510}
   - component: {fileID: 23495629886677690}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Watergun_01_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,9 +177,10 @@ GameObject:
   - component: {fileID: 4550259107800822}
   - component: {fileID: 33337001366160886}
   - component: {fileID: 23129292116529414}
-  - component: {fileID: 64286217476290082}
   - component: {fileID: -3302235327917356126}
-  m_Layer: 0
+  - component: {fileID: -5170385170234061543}
+  - component: {fileID: 2612897636720233963}
+  m_Layer: 6
   m_Name: SMGPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,28 +256,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64286217476290082
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607291360844622}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e42a245ddc40f744994b4b96b407ec47, type: 3}
 --- !u!54 &-3302235327917356126
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -304,6 +283,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-5170385170234061543
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607291360844622}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.05956604, y: 0.3122689, z: 0.54928774}
+  m_Center: {x: -0.000000052154064, y: 0.06794048, z: 0.16971797}
+--- !u!114 &2612897636720233963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607291360844622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4efccf069ce8e64eb7037c73619ce33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSO: {fileID: 11400000, guid: b503e197109c5dd48af0e20f33f926e4, type: 2}
+  spinDirection: {x: 0, y: 1, z: 0}
 --- !u!1 &1885017839708798
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +330,7 @@ GameObject:
   - component: {fileID: 33690329550877226}
   - component: {fileID: 23710368463689014}
   - component: {fileID: 64959717395248394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Watergun_01_Refill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,6 +432,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4550259107800822}
     m_Modifications:
+    - target: {fileID: 1271186294854669874, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2626158323867689943, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631614612473733674, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074345953107634853, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809944706084690921, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6809944706259094416, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -472,6 +511,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FX_Healing_AOE_AA
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809944706259094419, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529801204956692684, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198020450770373298, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

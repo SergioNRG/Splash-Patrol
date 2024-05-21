@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6510616437668524380}
   - component: {fileID: 6510616437671424380}
   - component: {fileID: 6510616437670294460}
-  - component: {fileID: 4786773326483239085}
   - component: {fileID: 1240352412594939517}
-  m_Layer: 0
+  - component: {fileID: 6394799451065363709}
+  - component: {fileID: -3166091716568645169}
+  m_Layer: 6
   m_Name: WaterPistolPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,28 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4786773326483239085
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6510616437668359548}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 1d2d5f0a598df4e4d833227a0b9dd82d, type: 3}
 --- !u!54 &1240352412594939517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,6 +115,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6394799451065363709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6510616437668359548}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.039801024, y: 0.17423527, z: 0.26135743}
+  m_Center: {x: -0.00000015646219, y: -0.0008434206, z: 0.06855758}
+--- !u!114 &-3166091716568645169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6510616437668359548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4efccf069ce8e64eb7037c73619ce33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSO: {fileID: 11400000, guid: 5b60641ae4f2a5b4eb57bbf015033ce3, type: 2}
+  spinDirection: {x: 0, y: 1, z: 0}
 --- !u!1 &6510616437668359550
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +161,7 @@ GameObject:
   - component: {fileID: 6510616437668524382}
   - component: {fileID: 6510616437671424382}
   - component: {fileID: 6510616437670294462}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WaterPistol_01_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,6 +241,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6510616437668524380}
     m_Modifications:
+    - target: {fileID: 1271186294854669874, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2626158323867689943, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631614612473733674, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074345953107634853, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809944706084690921, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6809944706259094416, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -281,6 +320,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FX_Healing_AOE_AA
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809944706259094419, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529801204956692684, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198020450770373298, guid: 2a871d07cb15c2e4497630ad0cbcb0ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

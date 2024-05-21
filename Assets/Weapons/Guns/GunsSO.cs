@@ -146,6 +146,14 @@ public class GunsSO : WeaponSOBase
        
     }
 
+    public void Despawn()
+    {
+        _model.SetActive(false);
+        Destroy(_model);    
+        _trailPool.Clear();
+        _shootSystem = null;
+    }
+
     #region GET METHODS 
 
     public Vector3 GetRaycastOrigin()

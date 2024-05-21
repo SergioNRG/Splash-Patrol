@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 7667675997348757858}
   - component: {fileID: 3539843353391411813}
   - component: {fileID: 7415601439489771938}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,6 @@ MonoBehaviour:
   _aimSpeedX: 50
   _normalSpeedY: 0
   _normalSpeedX: 0
-  _gunParent: {fileID: 8727172577369918935}
 --- !u!114 &7415601439489771938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,7 +712,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

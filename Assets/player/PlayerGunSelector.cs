@@ -30,8 +30,7 @@ public class PlayerGunSelector : MonoBehaviour
             return;
         }
 
-        ActiveGun = gun;
-        ActiveGun.Spawn(_gunParent, this);
+       SetupGun(gun);
        // ActiveGun._model.SetActive(false);
 
         // melle spawning
@@ -49,6 +48,24 @@ public class PlayerGunSelector : MonoBehaviour
 
 
 
+    }
+
+    private void SetupGun(GunsSO GunSO)
+    {
+        ActiveGun = GunSO;
+        ActiveGun.Spawn(_gunParent, this);
+    }
+
+    public void DespawnActiveGun()
+    {
+        ActiveGun.Despawn();
+        Destroy(ActiveGun);
+    }
+
+    public void PickupGun(GunsSO GunSO)
+    {
+        DespawnActiveGun();
+        SetupGun(GunSO);
     }
 }
 
