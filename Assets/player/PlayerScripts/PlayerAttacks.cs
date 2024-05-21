@@ -77,13 +77,10 @@ public class PlayerAttacks : MonoBehaviour
     {
         UpdateCrosshair();
         if (_isAttacking)
-        {
-            
+        {           
             if (_playerGunSelector.ActiveGun != null)
             {
-                Debug.Log("entrou");
-                _playerGunSelector.ActiveGun.Attack();
-                
+                _playerGunSelector.ActiveGun.Attack();              
                 _playerGunSelector.ActiveGun.UpdateForWeaponRecoil();
             }else { _playerGunSelector.ActiveMelee.Attack(); }
         }

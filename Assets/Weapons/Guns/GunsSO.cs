@@ -143,6 +143,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
                 }
 
                 CurrentAmmo--;
+                Debug.Log(CurrentAmmo);
             }
         }
       
