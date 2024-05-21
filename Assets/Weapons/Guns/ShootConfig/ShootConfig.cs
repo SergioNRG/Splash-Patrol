@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Shoot Config", menuName = "Weapons/Guns/Shoot Config", order = 2)]
-public class ShootConfig : ScriptableObject
+public class ShootConfig : ScriptableObject, System.ICloneable
 {
     public LayerMask HitMask;
     public Vector3 Spread = new Vector3(0.1f, 0.1f, 0.1f);
@@ -17,4 +18,11 @@ public class ShootConfig : ScriptableObject
     public float _kickBackz;
 
     public float _snappiness, _returnAmount;
+
+    public object Clone()
+    {
+        ShootConfig shootConfig = CreateInstance<ShootConfig>();
+        Utilities.CopyValues(this, shootConfig);
+        return shootConfig;
+    }
 }

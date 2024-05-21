@@ -75,12 +75,15 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateCrosshair();
         if (_isAttacking)
         {
-            if (_playerGunSelector.ActiveGun != null && _playerGunSelector.ActiveGun._model.activeInHierarchy)
+            
+            if (_playerGunSelector.ActiveGun != null)
             {
+                Debug.Log("entrou");
                 _playerGunSelector.ActiveGun.Attack();
-                UpdateCrosshair();
+                
                 _playerGunSelector.ActiveGun.UpdateForWeaponRecoil();
             }else { _playerGunSelector.ActiveMelee.Attack(); }
         }

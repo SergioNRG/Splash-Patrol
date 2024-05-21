@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using Random = UnityEngine.Random;
+
 
 [CreateAssetMenu(fileName = "Gun", menuName = "Weapons/Guns/Gun", order = 0)]
-public class GunsSO : WeaponSOBase
+public class GunsSO : WeaponSOBase,System.ICloneable
 {
     public GunType Type;
     public string Name;
@@ -200,6 +203,25 @@ public class GunsSO : WeaponSOBase
         _currentRotation = Vector3.Lerp(_currentPosition, _targetPosition, Time.fixedDeltaTime * ShootConfig._snappiness);
         _model.transform.localPosition = _currentPosition;
     }
+
+
     #endregion
 
+    public object Clone()
+    {
+        GunsSO gunsConfig = CreateInstance<GunsSO>();
+
+        gunsConfig.Type = Type;
+        gunsConfig.Name = Name;
+        gunsConfig.DamageConfig = DamageConfig.Clone() as DamageConfig; 
+        gunsConfig.ShootConfig = ShootConfig.Clone() as ShootConfig;
+        gunsConfig.TrailConfig = TrailConfig.Clone() as TrailConfig;
+
+        gunsConfig.ModelPrefab = ModelPrefab;
+        gunsConfig.SpawnPoint = SpawnPoint; 
+        gunsConfig.SpawnRotation = SpawnRotation;
+        gunsConfig.MaxAmmo = MaxAmmo;
+
+        return gunsConfig;
+    }
 }

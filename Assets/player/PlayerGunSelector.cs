@@ -52,7 +52,7 @@ public class PlayerGunSelector : MonoBehaviour
 
     private void SetupGun(GunsSO GunSO)
     {
-        ActiveGun = GunSO;
+        ActiveGun = GunSO.Clone() as GunsSO;
         ActiveGun.Spawn(_gunParent, this);
     }
 
