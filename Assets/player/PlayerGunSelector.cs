@@ -49,7 +49,7 @@ public class PlayerGunSelector : MonoBehaviour
 
 
     }
-
+    #region SETUP/DESPAWN/PICKUP
     private void SetupGun(GunsSO GunSO)
     {
         ActiveGun = GunSO.Clone() as GunsSO;
@@ -67,5 +67,6 @@ public class PlayerGunSelector : MonoBehaviour
         DespawnActiveGun();
         SetupGun(GunSO);
     }
+    #endregion
 }
 
