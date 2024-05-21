@@ -221,6 +221,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
         gunsConfig.SpawnPoint = SpawnPoint; 
         gunsConfig.SpawnRotation = SpawnRotation;
         gunsConfig.MaxAmmo = MaxAmmo;
+        gunsConfig.CurrentAmmo= CurrentAmmo;
 
         return gunsConfig;
     }
