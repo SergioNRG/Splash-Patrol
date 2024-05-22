@@ -151,10 +151,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
                     Debug.Log("Yes");
                     AmmoDisplay.UpdateAmount(CurrentAmmo, MaxAmmo); 
                 }
-                else 
-                { 
-                    Debug.Log(" nop"); 
-                }
+
                 Debug.Log(CurrentAmmo);
             }
         }
