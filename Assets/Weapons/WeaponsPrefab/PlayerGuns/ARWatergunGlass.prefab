@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxWobble: 0.1
-  WobbleSpeed: 0.8
+  WobbleSpeed: 0.2
   Recovery: 0.1
 --- !u!1001 &6848755534373480629
 PrefabInstance:
