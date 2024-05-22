@@ -20,6 +20,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
     public TrailConfig TrailConfig;
 
     public GameObject _model;
+    public LiquidAmmoDisplay AmmoDisplay;
 
     public int MaxAmmo;
     public int CurrentAmmo;
@@ -35,6 +36,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
 
     public override void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
     {
+        
         this._activeMonoBehaviour = activeMonoBehaviour;
         _lastShootTime = 0;
         // check if is working
@@ -48,7 +50,8 @@ public class GunsSO : WeaponSOBase,System.ICloneable
         _model.transform.localRotation = Quaternion.Euler(SpawnRotation);
 
         _shootSystem = _model.GetComponentInChildren<ParticleSystem>();
-
+        AmmoDisplay = _model.GetComponentInChildren<LiquidAmmoDisplay>();
+        AmmoDisplay.UpdateAmount(CurrentAmmo, MaxAmmo);
         _initialPosition = _model.transform.localPosition;
 
         // only works if the only camera on the scene are the player camera
@@ -143,6 +146,15 @@ public class GunsSO : WeaponSOBase,System.ICloneable
                 }
 
                 CurrentAmmo--;
+                if (AmmoDisplay) 
+                {
+                    Debug.Log("Yes");
+                    AmmoDisplay.UpdateAmount(CurrentAmmo, MaxAmmo); 
+                }
+                else 
+                { 
+                    Debug.Log(" nop"); 
+                }
                 Debug.Log(CurrentAmmo);
             }
         }
@@ -217,6 +229,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
         gunsConfig.DamageConfig = DamageConfig.Clone() as DamageConfig; 
         gunsConfig.ShootConfig = ShootConfig.Clone() as ShootConfig;
         gunsConfig.TrailConfig = TrailConfig.Clone() as TrailConfig;
+
 
         gunsConfig.ModelPrefab = ModelPrefab;
         gunsConfig.SpawnPoint = SpawnPoint; 

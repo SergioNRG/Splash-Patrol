@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Container: {fileID: 7348438956562069008}
-  MinLiquidAmount: 0
-  MaxLiquidAmount: 1
+  MinLiquidAmount: -0.58
+  MaxLiquidAmount: -0.46
 --- !u!114 &7348438956562069008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,9 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a2e34e38869d9498c0eec4a0875f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxWobble: 0
-  WobbleSpeed: 1
-  Recovery: 1
+  MaxWobble: 0.1
+  WobbleSpeed: 0.8
+  Recovery: 0.1
 --- !u!1 &8847775102762453646
 GameObject:
   m_ObjectHideFlags: 0
