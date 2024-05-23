@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   Spread: {x: 0.03, y: 0.03, z: 0.03}
   FireRate: 0.08
   _recoilx: 0

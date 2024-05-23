@@ -9,21 +9,22 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(fileName = "Gun", menuName = "Weapons/Guns/Gun", order = 0)]
 public class GunsSO : WeaponSOBase,System.ICloneable
 {
+    [Header ("Guns Propertyies")]
     public GunType Type;
     public string Name;
     public GameObject ModelPrefab;
+    public int MaxAmmo;
     public Vector3 SpawnPoint;
     public Vector3 SpawnRotation;
 
+    [Header("Config ScriptableObjects")]
     public DamageConfig DamageConfig;
     public ShootConfig ShootConfig;
     public TrailConfig TrailConfig;
 
-    public GameObject _model;
-    public LiquidAmmoDisplay AmmoDisplay;
-
-    public int MaxAmmo;
-    public int CurrentAmmo;
+    private GameObject _model;
+    private int CurrentAmmo;
+    private LiquidAmmoDisplay AmmoDisplay;
     private MonoBehaviour _activeMonoBehaviour;
     
     private float _lastShootTime;

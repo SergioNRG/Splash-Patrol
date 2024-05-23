@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Container: {fileID: 7348438956562069008}
-  MinLiquidAmount: -0.58
+  MinLiquidAmount: -0.59
   MaxLiquidAmount: -0.46
 --- !u!114 &7348438956562069008
 MonoBehaviour:
