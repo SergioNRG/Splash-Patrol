@@ -8,7 +8,7 @@ public class LiquidAmmoDisplay : MonoBehaviour
     public float MinLiquidAmount;
     public float MaxLiquidAmount;
     
-    public  void UpdateAmount(int current, int max)
+    public void UpdateAmount(int current, int max)
     {
         Container.ChangeLiquidAmount(Mathf.Lerp(MinLiquidAmount, MaxLiquidAmount, current/(float)max));
     }
