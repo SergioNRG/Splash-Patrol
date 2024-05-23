@@ -19,6 +19,7 @@ public class PlayerGunSelector : MonoBehaviour
     public GunsSO ActiveGun;
     public MeleeSO ActiveMelee;
 
+    [SerializeField] private List<ScriptableObject> _activeWeapons;
     private void Start()
     {
 
@@ -30,12 +31,13 @@ public class PlayerGunSelector : MonoBehaviour
             return;
         }
 
-       SetupGun(gun);
+        SetupGun(gun);
+        _activeWeapons.Add(ActiveGun);
        // ActiveGun._model.SetActive(false);
 
         // melle spawning
 
-      /*  MeleeSO melee = _melees.Find(melee => melee.MelleType == _meleeType);
+        MeleeSO melee = _melees.Find(melee => melee.MelleType == _meleeType);
 
         if (melee == null)
         {
@@ -44,8 +46,9 @@ public class PlayerGunSelector : MonoBehaviour
         }
 
         ActiveMelee = melee;
-        ActiveMelee.Spawn(_gunParent, this);*/
-
+        ActiveMelee.Spawn(_gunParent, this);
+        ActiveMelee.Model.SetActive(false);
+        _activeWeapons.Add(ActiveMelee);
 
 
     }

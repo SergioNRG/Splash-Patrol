@@ -12,7 +12,7 @@ public class MeleeSO : WeaponSOBase
     public Vector3 SpawnRotation;
 
     private MonoBehaviour _activeMonoBehaviour;
-    private GameObject _model;
+    public GameObject Model;
     // verify if they are all needed
     private Vector3 _currentRotation, _targetRotation, _targetPosition, _currentPosition, _initialPosition;
 
@@ -21,13 +21,13 @@ public class MeleeSO : WeaponSOBase
     {
         this._activeMonoBehaviour = activeMonoBehaviour;
 
-        _model = Instantiate(ModelPrefab);
-        _model.transform.SetParent(Parent, false);
-        _model.transform.localPosition = SpawnPoint;
-        _model.transform.localRotation = Quaternion.Euler(SpawnRotation);
+        Model = Instantiate(ModelPrefab);
+        Model.transform.SetParent(Parent, false);
+        Model.transform.localPosition = SpawnPoint;
+        Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
 
 
-        _initialPosition = _model.transform.localPosition;
+        _initialPosition = Model.transform.localPosition;
 
         // only works if the only camera on the scene are the player camera
         _camHolderTransform = GameObject.FindObjectOfType<Camera>().transform.parent;

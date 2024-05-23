@@ -22,7 +22,8 @@ public class GunsSO : WeaponSOBase,System.ICloneable
     public ShootConfig ShootConfig;
     public TrailConfig TrailConfig;
 
-    private GameObject _model;
+    public GameObject Model;
+
     private int CurrentAmmo;
     private LiquidAmmoDisplay AmmoDisplay;
     private MonoBehaviour _activeMonoBehaviour;
@@ -45,15 +46,15 @@ public class GunsSO : WeaponSOBase,System.ICloneable
         _trailPool = new ObjectPool<TrailRenderer>(CreateTrail);
 
 
-        _model = Instantiate(ModelPrefab);
-        _model.transform.SetParent(Parent,false);
-        _model.transform.localPosition = SpawnPoint;
-        _model.transform.localRotation = Quaternion.Euler(SpawnRotation);
+        Model = Instantiate(ModelPrefab);
+        Model.transform.SetParent(Parent,false);
+        Model.transform.localPosition = SpawnPoint;
+        Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
 
-        _shootSystem = _model.GetComponentInChildren<ParticleSystem>();
-        AmmoDisplay = _model.GetComponentInChildren<LiquidAmmoDisplay>();
+        _shootSystem = Model.GetComponentInChildren<ParticleSystem>();
+        AmmoDisplay = Model.GetComponentInChildren<LiquidAmmoDisplay>();
         AmmoDisplay.UpdateAmount(CurrentAmmo, MaxAmmo);
-        _initialPosition = _model.transform.localPosition;
+        _initialPosition = Model.transform.localPosition;
 
         // only works if the only camera on the scene are the player camera
         _camHolderTransform = GameObject.FindObjectOfType<Camera>().transform.parent;
@@ -162,8 +163,8 @@ public class GunsSO : WeaponSOBase,System.ICloneable
 
     public void Despawn()
     {
-        _model.SetActive(false);
-        Destroy(_model);    
+        Model.SetActive(false);
+        Destroy(Model);    
         _trailPool.Clear();
         _shootSystem = null;
     }
@@ -198,7 +199,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
     {
         _targetRotation = Vector3.Lerp(_targetRotation, Vector3.zero, Time.deltaTime * ShootConfig._returnAmount);
         _currentRotation = Vector3.Slerp(_currentRotation, _targetRotation, Time.fixedDeltaTime * ShootConfig._snappiness);
-        _model.transform.localRotation = Quaternion.Euler(_currentRotation);
+        Model.transform.localRotation = Quaternion.Euler(_currentRotation);
         _camHolderTransform.localRotation = Quaternion.Euler(_currentRotation);
         KickBack();
     }
@@ -212,7 +213,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
     {
         _targetPosition = Vector3.Lerp(_targetPosition, _initialPosition, Time.deltaTime * ShootConfig._returnAmount);
         _currentRotation = Vector3.Lerp(_currentPosition, _targetPosition, Time.fixedDeltaTime * ShootConfig._snappiness);
-        _model.transform.localPosition = _currentPosition;
+        Model.transform.localPosition = _currentPosition;
     }
 
 

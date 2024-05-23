@@ -14,8 +14,7 @@ public class PlayerAttacks : MonoBehaviour
         Idle,
         Aiming,
         NotAiming,
-        ChangeWeapon,
-        Reloading
+        ChangeWeapon
     }
 
     private AimState _currentAimState;
@@ -155,8 +154,6 @@ public class PlayerAttacks : MonoBehaviour
         _inputReader.OnAttackCanceledEvent += OnAttackCanceled;
         _inputReader.OnAimEvent += OnAim;
         _inputReader.OnAimCanceledEvent += OnAimCancelled;
-        _inputReader.OnReloadEvent += OnReload;
-        _inputReader.OnReloadCanceledEvent += OnReloadCancelled;
         _inputReader.OnWeaponSelectorEvent += OnWeaponSelector;
 
     }
@@ -169,8 +166,6 @@ public class PlayerAttacks : MonoBehaviour
         _inputReader.OnAttackCanceledEvent -= OnAttackCanceled;
         _inputReader.OnAimEvent -= OnAim;
         _inputReader.OnAimCanceledEvent -= OnAimCancelled;
-        _inputReader.OnReloadEvent -= OnReload;
-        _inputReader.OnReloadCanceledEvent -= OnReloadCancelled;
         _inputReader.OnWeaponSelectorEvent -= OnWeaponSelector;
     }
 
@@ -204,15 +199,7 @@ public class PlayerAttacks : MonoBehaviour
         _isAttacking = false;
     }
 
-    private void OnReloadCancelled()
-    {
-        Debug.Log("reloading");
-    }
 
-    private void OnReload()
-    {
-        Debug.Log("stop reloading");
-    }
 
     #endregion
 

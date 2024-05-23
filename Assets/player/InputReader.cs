@@ -24,8 +24,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
     public event UnityAction OnAimCanceledEvent;
     public event UnityAction OnCrouchEvent;
     public event UnityAction OnCrouchCanceledEvent;
-    public event UnityAction OnReloadEvent;
-    public event UnityAction OnReloadCanceledEvent;
+
 
 
     //create reference to generated C# class 
@@ -133,19 +132,6 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
         if (OnSprintCanceledEvent != null && context.canceled)
         {
             OnSprintCanceledEvent.Invoke();
-        }
-    }
-
-    public void OnReload(InputAction.CallbackContext context)
-    {
-        if (OnReloadEvent != null && context.performed)
-        {
-            OnReloadEvent.Invoke();
-        }
-
-        if (OnReloadCanceledEvent != null && context.canceled)
-        {
-            OnReloadCanceledEvent.Invoke();
         }
     }
 

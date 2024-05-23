@@ -91,15 +91,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Reload"",
-                    ""type"": ""Button"",
-                    ""id"": ""54c98199-0fff-43ed-af10-55503a883173"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""WeaponSelector"",
                     ""type"": ""Value"",
                     ""id"": ""be066660-b350-492d-b477-81216da8ce23"",
@@ -233,17 +224,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d9a1229d-8a9e-43d9-8943-0c33bbda0b07"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Reload"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""77def834-1bf9-4b53-9bd8-298223e34f7c"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
@@ -267,7 +247,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_WeaponSelector = m_Player.FindAction("WeaponSelector", throwIfNotFound: true);
     }
 
@@ -337,7 +316,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_WeaponSelector;
     public struct PlayerActions
     {
@@ -350,7 +328,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-        public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @WeaponSelector => m_Wrapper.m_Player_WeaponSelector;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -382,9 +359,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Reload.started += instance.OnReload;
-            @Reload.performed += instance.OnReload;
-            @Reload.canceled += instance.OnReload;
             @WeaponSelector.started += instance.OnWeaponSelector;
             @WeaponSelector.performed += instance.OnWeaponSelector;
             @WeaponSelector.canceled += instance.OnWeaponSelector;
@@ -413,9 +387,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Reload.started -= instance.OnReload;
-            @Reload.performed -= instance.OnReload;
-            @Reload.canceled -= instance.OnReload;
             @WeaponSelector.started -= instance.OnWeaponSelector;
             @WeaponSelector.performed -= instance.OnWeaponSelector;
             @WeaponSelector.canceled -= instance.OnWeaponSelector;
@@ -445,7 +416,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnReload(InputAction.CallbackContext context);
         void OnWeaponSelector(InputAction.CallbackContext context);
     }
 }
