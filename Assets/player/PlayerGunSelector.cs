@@ -19,7 +19,7 @@ public class PlayerGunSelector : MonoBehaviour
     public GunsSO ActiveGun;
     public MeleeSO ActiveMelee;
 
-    [SerializeField] private List<ScriptableObject> _activeWeapons;
+    public List<ScriptableObject> _activeWeapons;
     private void Start()
     {
 
@@ -32,7 +32,7 @@ public class PlayerGunSelector : MonoBehaviour
         }
 
         SetupGun(gun);
-        _activeWeapons.Add(ActiveGun);
+        
        // ActiveGun._model.SetActive(false);
 
         // melle spawning
@@ -49,7 +49,7 @@ public class PlayerGunSelector : MonoBehaviour
         ActiveMelee.Spawn(_gunParent, this);
         ActiveMelee.Model.SetActive(false);
         _activeWeapons.Add(ActiveMelee);
-
+       
 
     }
     #region SETUP/DESPAWN/PICKUP
@@ -57,10 +57,12 @@ public class PlayerGunSelector : MonoBehaviour
     {
         ActiveGun = GunSO.Clone() as GunsSO;
         ActiveGun.Spawn(_gunParent, this);
+        _activeWeapons.Add(ActiveGun);
     }
 
     public void DespawnActiveGun()
     {
+        _activeWeapons.Remove(ActiveGun);
         ActiveGun.Despawn();
         Destroy(ActiveGun);
     }

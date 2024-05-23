@@ -47,7 +47,7 @@ public class PlayerAttacks : MonoBehaviour
     private bool _isAttacking;
 
 
-  
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -250,12 +250,6 @@ public class PlayerAttacks : MonoBehaviour
         _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
         _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
         _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
-    }
-
-
-    private void Reload()
-    {
-
     }
 
 
