@@ -77,7 +77,7 @@ public class PlayerAttacks : MonoBehaviour
         UpdateCrosshair();
         if (_isAttacking)
         {           
-            if (_playerGunSelector.ActiveGun != null)
+            if (_playerGunSelector.ActiveGun != null && _playerGunSelector.ActiveGun.Model.activeInHierarchy)
             {
                 _playerGunSelector.ActiveGun.Attack();              
                 _playerGunSelector.ActiveGun.UpdateForWeaponRecoil();
