@@ -49,7 +49,6 @@ public class PlayerGunSelector : MonoBehaviour
 
         ActiveMelee = melee;
         ActiveMelee.Spawn(_gunParent, this);
-        //ActiveMelee.Model.SetActive(false);
         _activeWeapons.Add(ActiveMelee);
 
     }
@@ -70,6 +69,8 @@ public class PlayerGunSelector : MonoBehaviour
         ActiveGun.Despawn();
         Destroy(ActiveGun);
     }
+
+    
 
     public void PickupGun(GunsSO GunSO)
     {

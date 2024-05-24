@@ -40,8 +40,8 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private float _normalSpeedY ;
     [SerializeField] private float _normalSpeedX ;
 
-   /* private int _weaponPos;
-    private Vector2 _scroll;*/
+   // private int _weaponPos;
+    private Vector2 _scroll;
 
     private bool _isScrolling = false;
     private bool _isAttacking;
@@ -102,8 +102,9 @@ public class PlayerAttacks : MonoBehaviour
                 break;
 
             case AimState.ChangeWeapon:
-               // if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()) { ZoomOut(); }
-               //SelectWeapon();               
+                if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()) { ZoomOut(); }
+                //SelectWeapon();
+                WeaponSwap();
                 break;
 
         }
@@ -183,7 +184,7 @@ public class PlayerAttacks : MonoBehaviour
 
     private void OnWeaponSelector(Vector2 scroll)
     {
-       // _scroll = scroll.normalized ;
+        _scroll = scroll.normalized ;
         _isScrolling = true;
     }
 
@@ -205,33 +206,48 @@ public class PlayerAttacks : MonoBehaviour
 
     #region METHODS
 
-   /* private void SelectWeapon()
+    /* private void SelectWeapon()
+     {
+         if (_scroll.y < 0)
+         {
+             _weaponPos--;
+             Debug.Log(_weaponPos);
+
+         }
+
+         if (_scroll.y > 0)
+         {
+             _weaponPos++;
+             Debug.Log(_weaponPos);
+         }
+
+         _weaponPos = Mathf.Clamp(_weaponPos, 0, _weapons.Length - 1);
+         for (int i = 0; i < _weapons.Length; i++)
+         {
+             if (_weapons[i] != null)
+             {
+                 if (_weapons[i] == _weapons[_weaponPos]) { _weapons[_weaponPos].SetActive(true); }
+                 else { _weapons[i].SetActive(false); }
+             }
+         }
+         _isScrolling = false;
+
+     }*/
+
+    private void WeaponSwap()
     {
         if (_scroll.y < 0)
         {
-            _weaponPos--;
-            Debug.Log(_weaponPos);
-
+            _playerGunSelector.ActiveMelee.Model.SetActive(true);
+            _playerGunSelector.ActiveGun.Model.SetActive(false);
         }
-
         if (_scroll.y > 0)
         {
-            _weaponPos++;
-            Debug.Log(_weaponPos);
+            _playerGunSelector.ActiveMelee.Model.SetActive(false);
+            _playerGunSelector.ActiveGun.Model.SetActive(true);
         }
 
-        _weaponPos = Mathf.Clamp(_weaponPos, 0, _weapons.Length - 1);
-        for (int i = 0; i < _weapons.Length; i++)
-        {
-            if (_weapons[i] != null)
-            {
-                if (_weapons[i] == _weapons[_weaponPos]) { _weapons[_weaponPos].SetActive(true); }
-                else { _weapons[i].SetActive(false); }
-            }
-        }
-        _isScrolling = false;
-
-    }*/
+    }
 
     private void ZoomIn() 
     {
