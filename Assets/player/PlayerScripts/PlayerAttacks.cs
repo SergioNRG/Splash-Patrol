@@ -246,7 +246,7 @@ public class PlayerAttacks : MonoBehaviour
             _playerGunSelector.ActiveMelee.Model.SetActive(false);
             _playerGunSelector.ActiveGun.Model.SetActive(true);
         }
-
+        _isScrolling = false;
     }
 
     private void ZoomIn() 

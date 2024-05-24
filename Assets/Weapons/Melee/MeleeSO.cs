@@ -17,7 +17,7 @@ public class MeleeSO : WeaponSOBase
     private Vector3 _currentRotation, _targetRotation, _targetPosition, _currentPosition, _initialPosition;
 
     private Transform _camHolderTransform;
-    public override void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
+    public  override void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
     {
         this._activeMonoBehaviour = activeMonoBehaviour;
 

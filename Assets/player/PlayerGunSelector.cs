@@ -19,7 +19,7 @@ public class PlayerGunSelector : MonoBehaviour
     public GunsSO ActiveGun;
     public MeleeSO ActiveMelee;
 
-    public List<ScriptableObject> _activeWeapons;
+    public List<WeaponSOBase> _activeWeapons;
 
     private void Start()
     {
