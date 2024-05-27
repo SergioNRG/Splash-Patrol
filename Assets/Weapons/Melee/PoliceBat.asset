@@ -14,7 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MelleType: 0
   Name: PoliceBat
-  ModelPrefab: {fileID: 3048585823779829933, guid: 66d00583a9cb85948b8dbd0632d58d56,
+  ModelPrefab: {fileID: 1693118111489188425, guid: 45021168bb87d6640809697fa87efc7a,
     type: 3}
-  SpawnPoint: {x: -0.2, y: -0.3, z: 0}
+  SpawnPoint: {x: -0.15, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: -20}
+  attackDistance: 3
+  attackDelay: 0.4
+  attackSpeed: 1
+  attackDamage: 25
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 129
+  Model: {fileID: 0}

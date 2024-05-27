@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MeleeWeapons", menuName = "Weapons/MeleeWeapons/Bat", order = 0)]
 public class MeleeSO : WeaponSOBase
 {
+    [Header("Weapon Data")]
     public MeleeWeaponType MelleType;
     public string Name;
     public GameObject ModelPrefab;
     public Vector3 SpawnPoint;
     public Vector3 SpawnRotation;
+
+
+    [Header("Attacking")]
+    public float attackDistance = 3f;
+    public float attackDelay = 0.4f;
+    public float attackSpeed = 1f;
+    public int attackDamage = 25;
+    public LayerMask attackLayer;
 
     private MonoBehaviour _activeMonoBehaviour;
     public GameObject Model;
@@ -34,6 +44,19 @@ public class MeleeSO : WeaponSOBase
     }
     public override void Attack()
     {
-        Debug.Log("swiping");
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        {
+            if (hit.collider != null)
+            {
+                Debug.Log("swiping");
+                ////////////////////////////////
+                if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
+                {
+                    damageable.ApplyDamage(attackDamage);
+                }
+
+
+            }
+        }
     }
 }
