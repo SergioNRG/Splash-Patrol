@@ -36,7 +36,7 @@ public class MeleeSO : WeaponSOBase
     string _currentAnimationState = IDLE;
 
 
-    private Animator _animator;
+    public Animator _animator;
     public  override void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
     {
         this._activeMonoBehaviour = activeMonoBehaviour;

@@ -195,14 +195,17 @@ public class PlayerAttacks : MonoBehaviour
 
     private void OnAttack()
     {
-        _isAttacking = true;
-       
+        _isAttacking = true;       
     }
 
     private void OnAttackCanceled()
     {
         _isAttacking = false;
-        _playerGunSelector.ActiveMelee.ChangeAnimationState("Idle");
+        if (!_playerGunSelector.ActiveMelee.ISAnimationPlaying(_playerGunSelector.ActiveMelee._animator, "PoliceBatAttack"))
+        {
+            _playerGunSelector.ActiveMelee.ChangeAnimationState("Idle");
+        }
+            
     }
 
 
