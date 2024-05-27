@@ -31,7 +31,7 @@ public class MeleeSO : WeaponSOBase
     public  override void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
     {
         this._activeMonoBehaviour = activeMonoBehaviour;
-
+        _lastAttackTime = 0;
         Model = Instantiate(ModelPrefab);
         Model.transform.SetParent(Parent, false);
         Model.transform.localPosition = SpawnPoint;
@@ -45,12 +45,13 @@ public class MeleeSO : WeaponSOBase
     }
     public override void Attack()
     {
+        
         if (Time.time > attackSpeed + _lastAttackTime)
         {
             _lastAttackTime = Time.time;
-
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
             {
+                Debug.Log("entering");
                 if (hit.collider != null)
                 {
                     Debug.Log("swiping");
