@@ -20,6 +20,7 @@ public class MeleeSO : WeaponSOBase
     public float attackSpeed = 1f;
     public int attackDamage = 25;
     public LayerMask attackLayer;
+    private float _lastAttackTime;
 
     private MonoBehaviour _activeMonoBehaviour;
     public GameObject Model;
@@ -44,19 +45,26 @@ public class MeleeSO : WeaponSOBase
     }
     public override void Attack()
     {
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        if (Time.time > attackSpeed + _lastAttackTime)
         {
-            if (hit.collider != null)
+            _lastAttackTime = Time.time;
+
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
             {
-                Debug.Log("swiping");
-                ////////////////////////////////
-                if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
+                if (hit.collider != null)
                 {
-                    damageable.ApplyDamage(attackDamage);
+                    Debug.Log("swiping");
+                    ////////////////////////////////
+                    if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
+                    {
+                        damageable.ApplyDamage(attackDamage);
+                    }
+
+
                 }
-
-
             }
         }
+
+     
     }
 }
