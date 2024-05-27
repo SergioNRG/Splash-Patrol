@@ -59,6 +59,7 @@ public class MeleeSO : WeaponSOBase
         ChangeAnimationState(ATTACK);
         if (Time.time > attackSpeed + _lastAttackTime)
         {
+            ChangeAnimationState(IDLE);
             _lastAttackTime = Time.time;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
             {
