@@ -74,11 +74,11 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_playerGunSelector.ActiveGun != null && _playerGunSelector.ActiveGun.Model.activeInHierarchy)
+        /*if(_playerGunSelector.ActiveGun != null && _playerGunSelector.ActiveGun.Model.activeInHierarchy)
         {
             UpdateCrosshair();
-        }
-        
+        }*/
+        UpdateCrosshair();
         if (_isAttacking)
         {           
             if (_playerGunSelector.ActiveGun != null && _playerGunSelector.ActiveGun.Model.activeInHierarchy)
@@ -202,6 +202,7 @@ public class PlayerAttacks : MonoBehaviour
     private void OnAttackCanceled()
     {
         _isAttacking = false;
+        _playerGunSelector.ActiveMelee.ChangeAnimationState("Idle");
     }
 
 
