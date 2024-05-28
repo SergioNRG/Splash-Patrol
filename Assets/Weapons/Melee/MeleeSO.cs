@@ -28,7 +28,7 @@ public class MeleeSO : WeaponSOBase
 
     private Transform _camHolderTransform;
 
-
+    // animations data
     public const string IDLE = "Idle";
     public const string ATTACK = "PoliceBatAttack";
 
