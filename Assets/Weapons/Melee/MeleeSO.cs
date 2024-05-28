@@ -16,7 +16,6 @@ public class MeleeSO : WeaponSOBase
 
     [Header("Attacking")]
     public float attackDistance = 3f;
-    public float attackDelay = 0.4f;
     public float attackSpeed = 1f;
     public int attackDamage = 25;
     public LayerMask attackLayer;
