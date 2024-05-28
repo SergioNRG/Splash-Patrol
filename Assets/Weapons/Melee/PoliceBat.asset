@@ -26,3 +26,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 129
   Model: {fileID: 0}
+  _animator: {fileID: 0}

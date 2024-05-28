@@ -57,6 +57,7 @@ public class MeleeSO : WeaponSOBase
     public override void Attack()
     {
         ChangeAnimationState(ATTACK);
+        _animator.SetFloat("AttackFreq", 1/attackSpeed);
         if (Time.time > attackSpeed + _lastAttackTime)
         {
             ChangeAnimationState(IDLE);
