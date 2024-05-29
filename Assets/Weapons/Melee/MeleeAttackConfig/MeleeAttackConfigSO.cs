@@ -11,6 +11,4 @@ public class MeleeAttackConfigSO : ScriptableObject
     public float attackSpeed = 1f;
     public int attackDamage = 25;
     public LayerMask attackLayer;
-
-
 }
