@@ -15,23 +15,4 @@ public class Utilities
         }
     }
 
-    public static void ChangeAnimationState(Animator animator,string currentAnimationState, string newState)
-    {
-        // STOP THE SAME ANIMATION FROM INTERRUPTING WITH ITSELF //
-        if (currentAnimationState == newState) return;
-
-        // PLAY THE ANIMATION //
-        currentAnimationState = newState;
-        animator.Play(currentAnimationState);
-        //_animator.CrossFadeInFixedTime(currentAnimationState,0.4f);
-    }
-
-    public static bool ISAnimationPlaying(Animator animator, string stateName)
-    {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-        {
-            return true;
-        }
-        else { return false; }
-    }
 }

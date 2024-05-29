@@ -18,6 +18,6 @@ MonoBehaviour:
     type: 3}
   SpawnPoint: {x: -0.15, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: -20}
-  AttackConfig: {fileID: 11400000, guid: e574e7e2a9d5e3440a19947887ed892a, type: 2}
   Model: {fileID: 0}
-  _animator: {fileID: 0}
+  AttackConfig: {fileID: 11400000, guid: e574e7e2a9d5e3440a19947887ed892a, type: 2}
+  AnimsController: {fileID: 11400000, guid: a76c9b4dbb5697847b2874e35fd81484, type: 2}

@@ -16,7 +16,7 @@ public class MeleeSO : WeaponSOBase
 
     [Header("Config ScriptableObjects")]
     public MeleeAttackConfigSO AttackConfig;
-
+    public AnimsController AnimsController;
    
     private float _lastAttackTime;
     private MonoBehaviour _activeMonoBehaviour;
@@ -27,11 +27,11 @@ public class MeleeSO : WeaponSOBase
     private Vector3 _currentRotation, _targetRotation, _targetPosition, _currentPosition, _initialPosition;
 
 
-    #region CONSTANTS FOR ANIMATIONS NAMES  
+   /* #region CONSTANTS FOR ANIMATIONS NAMES  
     // animations data
     public const string IDLE = "Idle";
     public const string ATTACK = "PoliceBatAttack";
-    #endregion
+    #endregion*/
 
 
    // string _currentAnimationState = IDLE;
@@ -58,11 +58,11 @@ public class MeleeSO : WeaponSOBase
     }
     public override void Attack()
     {
-        Utilities.ChangeAnimationState(_animator,IDLE,ATTACK);
+        AnimsController.ChangeAnimationState(_animator, AnimsController.IDLE, AnimsController.ATTACK);
         _animator.SetFloat("AttackFreq", 1/ AttackConfig.attackSpeed);
         if (Time.time > AttackConfig.attackSpeed + _lastAttackTime)
         {
-            Utilities.ChangeAnimationState(_animator, ATTACK ,IDLE);
+            AnimsController.ChangeAnimationState(_animator, AnimsController.ATTACK, AnimsController.IDLE);
             _lastAttackTime = Time.time;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, AttackConfig.attackDistance, AttackConfig.attackLayer))
             {
@@ -80,24 +80,4 @@ public class MeleeSO : WeaponSOBase
             }
         }
     }
-
-    /*public void ChangeAnimationState(string newState)
-    {
-        // STOP THE SAME ANIMATION FROM INTERRUPTING WITH ITSELF //
-        if (_currentAnimationState == newState) return;
-
-        // PLAY THE ANIMATION //
-        _currentAnimationState = newState;
-        _animator.Play(_currentAnimationState);
-        //_animator.CrossFadeInFixedTime(currentAnimationState,0.4f);
-    }
-
-    public bool ISAnimationPlaying(Animator animator, string stateName)
-    {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-        {
-            return true;
-        }
-        else { return false; }
-    }*/
 }
