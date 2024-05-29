@@ -52,6 +52,7 @@ public class MeleeSO : WeaponSOBase
 
         // only works if the only camera on the scene are the player camera
         _camHolderTransform = GameObject.FindObjectOfType<Camera>().transform.parent;
+
         _animator= Model.GetComponent<Animator>();
         
     }
