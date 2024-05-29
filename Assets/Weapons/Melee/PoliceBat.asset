@@ -18,12 +18,6 @@ MonoBehaviour:
     type: 3}
   SpawnPoint: {x: -0.15, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: -20}
-  attackDistance: 3
-  attackDelay: 0.4
-  attackSpeed: 1
-  attackDamage: 25
-  attackLayer:
-    serializedVersion: 2
-    m_Bits: 129
+  AttackConfig: {fileID: 11400000, guid: e574e7e2a9d5e3440a19947887ed892a, type: 2}
   Model: {fileID: 0}
   _animator: {fileID: 0}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MeleeWeapons", menuName = "Weapons/MeleeWeapons/Bat", order = 0)]
+[CreateAssetMenu(fileName = "MeleeWeapons", menuName = "Weapons/MeleeWeapons/MeleeWeapon", order = 0)]
 public class MeleeSO : WeaponSOBase
 {
     [Header("Weapon Data")]
@@ -13,20 +13,19 @@ public class MeleeSO : WeaponSOBase
     public Vector3 SpawnPoint;
     public Vector3 SpawnRotation;
 
+    [Header("Config ScriptableObjects")]
+    public MeleeAttackConfigSO AttackConfig;
 
-    [Header("Attacking")]
-    public float attackDistance = 3f;
-    public float attackSpeed = 1f;
-    public int attackDamage = 25;
-    public LayerMask attackLayer;
-    private float _lastAttackTime;
-
-    private MonoBehaviour _activeMonoBehaviour;
     public GameObject Model;
+
+    private float _lastAttackTime;
+    private MonoBehaviour _activeMonoBehaviour;
+    private Transform _camHolderTransform;
+
     // verify if they are all needed
     private Vector3 _currentRotation, _targetRotation, _targetPosition, _currentPosition, _initialPosition;
 
-    private Transform _camHolderTransform;
+
 
     // animations data
     public const string IDLE = "Idle";
@@ -56,12 +55,12 @@ public class MeleeSO : WeaponSOBase
     public override void Attack()
     {
         ChangeAnimationState(ATTACK);
-        _animator.SetFloat("AttackFreq", 1/attackSpeed);
-        if (Time.time > attackSpeed + _lastAttackTime)
+        _animator.SetFloat("AttackFreq", 1/ AttackConfig.attackSpeed);
+        if (Time.time > AttackConfig.attackSpeed + _lastAttackTime)
         {
             ChangeAnimationState(IDLE);
             _lastAttackTime = Time.time;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, AttackConfig.attackDistance, AttackConfig.attackLayer))
             {
                 Debug.Log("entering");
                 if (hit.collider != null)
@@ -70,7 +69,7 @@ public class MeleeSO : WeaponSOBase
                     ////////////////////////////////
                     if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
                     {
-                        damageable.ApplyDamage(attackDamage);
+                        damageable.ApplyDamage(AttackConfig.attackDamage);
                        
                     }
                 }
