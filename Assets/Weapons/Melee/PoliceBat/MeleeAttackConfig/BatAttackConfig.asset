@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BatAttackConfig
   m_EditorClassIdentifier: 
   attackDistance: 3
-  attackSpeed: 1
+  attackSpeed: 0.7
   attackDamage: 25
   attackLayer:
     serializedVersion: 2
