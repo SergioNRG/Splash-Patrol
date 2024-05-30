@@ -43,7 +43,7 @@ public class PlayerGunSelector : MonoBehaviour
 
         if (melee == null)
         {
-            Debug.Log("error ... no GunSO found");
+            Debug.Log("error ... no MeleeSO found");
             return;
         }
 

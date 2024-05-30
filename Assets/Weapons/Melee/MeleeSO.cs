@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -27,17 +28,24 @@ public class MeleeSO : WeaponSOBase
     private Vector3 _currentRotation, _targetRotation, _targetPosition, _currentPosition, _initialPosition;
 
 
-   /* #region CONSTANTS FOR ANIMATIONS NAMES  
+    #region STRINGS FOR ANIMATIONS NAMES  
     // animations data
-    public const string IDLE = "Idle";
-    public const string ATTACK = "PoliceBatAttack";
-    #endregion*/
+
+    private string IdleAnim;
+    private string AttackAnim;
+
+    #endregion
 
 
-   // string _currentAnimationState = IDLE;
+    // string _currentAnimationState = IDLE;
 
+    public void OnEnable()
+    {
+       
+        IdleAnim = AnimsController.Anims.Single(IdleAnim => IdleAnim.AnimKey == "IDLE").AnimName;
+        AttackAnim = AnimsController.Anims.Single(AttackAnim => AttackAnim.AnimKey == "ATTACK").AnimName;
+    }
 
-    
     public  override void Spawn(Transform Parent, MonoBehaviour activeMonoBehaviour)
     {
         this._activeMonoBehaviour = activeMonoBehaviour;
@@ -54,15 +62,14 @@ public class MeleeSO : WeaponSOBase
         _camHolderTransform = GameObject.FindObjectOfType<Camera>().transform.parent;
 
         _animator= Model.GetComponent<Animator>();
-        
     }
     public override void Attack()
     {
-        AnimsController.ChangeAnimationState(_animator, AnimsController.IDLE, AnimsController.ATTACK);
+        AnimsController.ChangeAnimationState(_animator, IdleAnim, AttackAnim);
         _animator.SetFloat("AttackFreq", 1/ AttackConfig.attackSpeed);
         if (Time.time > AttackConfig.attackSpeed + _lastAttackTime)
         {
-            AnimsController.ChangeAnimationState(_animator, AnimsController.ATTACK, AnimsController.IDLE);
+            AnimsController.ChangeAnimationState(_animator, AttackAnim, IdleAnim );
             _lastAttackTime = Time.time;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, AttackConfig.attackDistance, AttackConfig.attackLayer))
             {
