@@ -24,7 +24,7 @@ public class EnemyEffectsManager : MonoBehaviour
     {
         if (_healthManager.CurrentHealth != 0 )
         {
-            ShowText();
+            ShowDamagePopUp();
             Debug.Log("enemy taking damage"); 
         }
         
@@ -33,15 +33,15 @@ public class EnemyEffectsManager : MonoBehaviour
     public void Die(Vector3 position)
     {
         Debug.Log("enemy morreu");
-        ShowText(); 
+        ShowDamagePopUp(); 
         Destroy(gameObject);
     }
 
-    public void ShowText()
+    public void ShowDamagePopUp()
     {
         _offset = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1f,2f),0);
-        var go =  Instantiate(_floatingTxt, transform.position + _offset, Quaternion.identity,transform);
-        go.transform.forward = Camera.main.transform.forward;
-        go.GetComponent<TextMeshPro>().text = _healthManager.CurrentHealth.ToString();
+        var popUp =  Instantiate(_floatingTxt, transform.position + _offset, Quaternion.identity,transform);
+        popUp.transform.forward = Camera.main.transform.forward;
+        popUp.GetComponent<TextMeshPro>().text = _healthManager.CurrentHealth.ToString();
     }
 }
