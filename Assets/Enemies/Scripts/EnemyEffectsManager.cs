@@ -51,7 +51,7 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void ShowDamagePopUp(Color color)
     {
-        _offset = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1f,2f),0);
+        _offset = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f,2f),0);
         var popUp =  Instantiate(_floatingTxt, transform.position + _offset, Quaternion.identity,transform);
         popUp.transform.forward = Camera.main.transform.forward;
         popUp.GetComponent<TextMeshPro>().faceColor = color;
