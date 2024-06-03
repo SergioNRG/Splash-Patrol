@@ -23,6 +23,12 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
         OnDeath += _enemyEffectsManager.Die;
     }
 
+    private void OnDisable()
+    {
+        OnTakeDamage -= _enemyEffectsManager.TakeDamageEffect;
+        OnDeath -= _enemyEffectsManager.Die;
+    }
+
     public void ApplyDamage(int damage)
     {
         int damageTaken = Mathf.Clamp(damage, 0, CurrentHealth);
