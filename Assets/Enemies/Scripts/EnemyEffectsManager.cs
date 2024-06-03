@@ -7,7 +7,7 @@ public class EnemyEffectsManager : MonoBehaviour
 {
     [SerializeField] private GameObject _floatingTxt;
     [SerializeField] private EnemyHealthManager _healthManager;
-    [SerializeField] private Vector3 _offset = new Vector3(0,2,0);
+     private Vector3 _offset;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,10 +38,9 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void ShowText()
     {
-
+        _offset = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1f,2f),0);
         var go =  Instantiate(_floatingTxt, transform.position + _offset, Quaternion.identity,transform);
         go.transform.forward = Camera.main.transform.forward;
-
         go.GetComponent<TextMeshPro>().text = _healthManager.CurrentHealth.ToString();
     }
 }

@@ -13,9 +13,4 @@ public class SelfDestroy : MonoBehaviour
         Destroy(gameObject,_destroyTime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
