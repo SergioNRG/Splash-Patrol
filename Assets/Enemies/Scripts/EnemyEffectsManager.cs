@@ -33,6 +33,7 @@ public class EnemyEffectsManager : MonoBehaviour
     public void Die(Vector3 position)
     {
         Debug.Log("enemy morreu");
+        ShowText(); 
         Destroy(gameObject);
     }
 
