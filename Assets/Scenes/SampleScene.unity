@@ -425,7 +425,7 @@ PrefabInstance:
     - target: {fileID: 1079955071837122763, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 59.99999
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1086892049672583981, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
@@ -532,12 +532,12 @@ PrefabInstance:
     - target: {fileID: 8118974775354799114, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 1
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8937206939544910494, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: field of view
-      value: 59.99999
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -964,9 +964,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9231d2ec837968745a0d5ad1dc552a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floatingTxt: {fileID: 5707193845672254498, guid: 225e7be84816e8b46bddbe0cd4753f8b,
+  _floatingTxt: {fileID: 6040749874942836074, guid: 406c84757ee3d1b46a45ce1c300b399f,
     type: 3}
   _healthManager: {fileID: 0}
+  _crosshair: {fileID: 0}
 --- !u!1 &1695524423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,9 +1263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9231d2ec837968745a0d5ad1dc552a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floatingTxt: {fileID: 5707193845672254498, guid: 225e7be84816e8b46bddbe0cd4753f8b,
+  _floatingTxt: {fileID: 6040749874942836074, guid: 406c84757ee3d1b46a45ce1c300b399f,
     type: 3}
   _healthManager: {fileID: 0}
+  _crosshair: {fileID: 0}
 --- !u!4 &1860391256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4691987367314160, guid: 787a31f2409a3f64c987faeb2a72ab86,
