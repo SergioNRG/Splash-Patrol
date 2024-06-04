@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _maxHealth;
 
     [SerializeField] private int _currentHealth;// just to see in inspector
     public int CurrentHealth { get => _currentHealth; private set => _currentHealth = value; }
