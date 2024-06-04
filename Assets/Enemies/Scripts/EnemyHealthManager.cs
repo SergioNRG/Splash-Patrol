@@ -15,6 +15,7 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
     public event IDamageable.DeathEvent OnDeath;
 
     [SerializeField] private EnemyEffectsManager _enemyEffectsManager;
+
     private void OnEnable()
     {
         _enemyEffectsManager = GetComponent<EnemyEffectsManager>();

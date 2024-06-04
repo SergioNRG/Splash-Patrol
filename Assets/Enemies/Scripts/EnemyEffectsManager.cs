@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class EnemyEffectsManager : MonoBehaviour
@@ -9,12 +10,17 @@ public class EnemyEffectsManager : MonoBehaviour
     [SerializeField] private GameObject _floatingTxt;
     [SerializeField] private EnemyHealthManager _healthManager;
     [SerializeField] private Image _crosshair;
+
      private Vector3 _offset;
+
+
+    public static ObjectPool<GameObject> _popUPPool;
     // Start is called before the first frame update
     void Start()
     {
         _healthManager = GetComponent<EnemyHealthManager>();
         _crosshair = Camera.main.GetComponentInChildren<Image>();
+        _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
     }
 
     // Update is called once per frame
@@ -55,10 +61,18 @@ public class EnemyEffectsManager : MonoBehaviour
     public void ShowDamagePopUp(Color color)
     {
         _offset = new Vector3(Random.Range(-30f, 60f), Random.Range(-30f,60f),0);
-        var popUp =  Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity,_crosshair.transform);
-       // popUp.transform.forward = Camera.main.transform.forward;
-        popUp.GetComponent<TextMeshProUGUI>().faceColor = color;
-        popUp.GetComponent<TextMeshProUGUI>().text = _healthManager.CurrentHealth.ToString();
-        
+        var popText = _popUPPool.Get();//Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity,_crosshair.transform);
+        popText.SetActive(true);
+        //popText.transform.forward = Camera.main.transform.forward;
+        popText.GetComponent<TextMeshProUGUI>().faceColor = color;
+        popText.GetComponent<TextMeshProUGUI>().text = _healthManager.CurrentHealth.ToString();
+    }
+
+    private GameObject CreatePopUp()
+    {
+        var popUp = Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity, _crosshair.transform);
+        //popUp.SetActive(false);
+        popUp.GetComponent<SelfReturnToPool>().SetPool(_popUPPool);
+        return popUp;
     }
 }
