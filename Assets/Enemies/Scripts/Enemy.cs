@@ -20,7 +20,7 @@ public class Enemy : EnemyBase
 
     protected override void Chase()
     {
-        transform.position = Vector3.MoveTowards(transform.position, base._target.position, base._movSpeed* Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
     }
     protected override void Attack()
     {
