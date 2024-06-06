@@ -12,6 +12,7 @@ public class EnemyBase : MonoBehaviour
     //protected int _attackSpeed;
     //[SerializeField] protected Transform _moveTarget;
 
+    protected virtual void Idle() { }
     protected virtual void Attack() { }
     protected virtual void Chase() { }
 }

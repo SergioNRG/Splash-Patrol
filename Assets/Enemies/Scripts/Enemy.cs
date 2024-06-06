@@ -17,13 +17,17 @@ public class Enemy : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        _idleLogic.IdleLogic();
+       
         Chase();
+    }
+
+    protected override void Idle()
+    {
+        _idleLogic.IdleLogic();
     }
 
     protected override void Chase()
     {
-        Debug.Log("entrou");
         _moveLogic.MoveLogic();
         //transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
     }
