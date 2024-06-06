@@ -625,14 +625,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906250747}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 3
+  _maxHealth: 0
+  MovSpeed: 0
   _attackDamage: 0
-  _moveTarget: {fileID: 0}
+  _idleLogic: {fileID: 0}
+  _moveLogic: {fileID: 0}
 --- !u!135 &906250749
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -856,9 +858,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 2
+  _maxHealth: 100
+  MovSpeed: 3
   _attackDamage: 0
-  _moveTarget: {fileID: 0}
+  _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
+  _moveLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
 --- !u!135 &1553292305
 SphereCollider:
   m_ObjectHideFlags: 0
