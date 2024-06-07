@@ -26,7 +26,7 @@ public class PlayerMovesControls : MonoBehaviour
     private float _crouchHeight = 1f;
    
     private Vector3 _move;
-    private Vector3 _mouseMov;
+    //private Vector3 _mouseMov;
     private Vector3 _playerVelocity; 
     private bool _isJumping;
     private bool _isCrouching;
@@ -152,8 +152,8 @@ public class PlayerMovesControls : MonoBehaviour
 
         forward.y = 0;
         right.y = 0;
-       // forward = forward.normalized;
-       // right = right.normalized;
+        forward = forward.normalized;
+        right = right.normalized;
 
         Vector3 forwardRelativeVerticalInput = _move.z * forward;
         Vector3 rightRelativeHorizontalInput = _move.x * right;
@@ -161,7 +161,7 @@ public class PlayerMovesControls : MonoBehaviour
 
         Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput; 
 
-        _controller.Move(cameraRelativeMovement.normalized * Time.deltaTime * _currentPlayerSpeed);
+        _controller.Move(cameraRelativeMovement * Time.deltaTime * _currentPlayerSpeed);
         transform.rotation = Quaternion.LookRotation(forward);
     }
 
