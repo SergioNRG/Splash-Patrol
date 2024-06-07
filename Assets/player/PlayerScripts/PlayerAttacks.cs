@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using TMPro;
 using UnityEngine;
@@ -13,7 +14,6 @@ public class PlayerAttacks : MonoBehaviour
     {
         Idle,
         Aiming,
-        NotAiming,
         ChangeWeapon
     }
 
@@ -24,8 +24,11 @@ public class PlayerAttacks : MonoBehaviour
     [Header("InputReaderSO")]
     [SerializeField] private InputReader _inputReader;
 
+    [Header("Normal Camera")]
+    [SerializeField] private CinemachineVirtualCamera _normalCam;
+
     [Header("Zoom Camera")]
-    [SerializeField] private CinemachineVirtualCamera _cam;
+    [SerializeField] private CinemachineVirtualCamera _aimCam;
 
     [Header("CamEffecttsSO")]
     private CameraEffectController _cameraEffectsScript;
@@ -53,9 +56,9 @@ public class PlayerAttacks : MonoBehaviour
     {
         _playerGunSelector = GetComponent<PlayerGunSelector>(); 
         _currentAimState = AimState.Idle;
-        _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
-        _normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
-        _cam.m_Lens.FieldOfView = _normalFov;
+       // _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
+        //_normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
+       // _cam.m_Lens.FieldOfView = _normalFov;
         _isAttacking = false;
         // _weaponPos = 0;
 
@@ -87,8 +90,8 @@ public class PlayerAttacks : MonoBehaviour
                 _playerGunSelector.ActiveGun.UpdateForWeaponRecoil();
             }else { _playerGunSelector.ActiveMelee.Attack(); }
         }
-       
-        switch (_currentAimState)
+       // WeaponSwap();
+      /*  switch (_currentAimState)
         {
             case AimState.Idle:
                 if (_isScrolling) { _currentAimState = AimState.ChangeWeapon; }
@@ -96,7 +99,7 @@ public class PlayerAttacks : MonoBehaviour
                 
             case AimState.Aiming:
                 if (_isScrolling) { _currentAimState = AimState.ChangeWeapon; }
-                else { ZoomIn(); }
+                //else { ZoomIn(); }
                 break;
 
             case AimState.NotAiming:
@@ -106,12 +109,12 @@ public class PlayerAttacks : MonoBehaviour
                 break;
 
             case AimState.ChangeWeapon:
-                if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()) { ZoomOut(); }
+                //if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()) { ZoomOut(); }
                 //SelectWeapon();
                 WeaponSwap();
                 break;
-
-        }
+                
+        }*/
         
     }
 
@@ -179,17 +182,21 @@ public class PlayerAttacks : MonoBehaviour
     #region METHODS THAT SUBSCRIBE THE EVENTS
     private void OnAim()
     {
-        _currentAimState = AimState.Aiming;
+        _aimCam.Priority = 20;
+       // _currentAimState = AimState.Aiming;
     }
     private void OnAimCancelled()
     {
-        _currentAimState = AimState.NotAiming;
+        _aimCam.Priority = 9;
+       // _currentAimState = AimState.NotAiming;
     }
 
     private void OnWeaponSelector(Vector2 scroll)
     {
         _scroll = scroll.normalized ;
-        _isScrolling = true;
+        OnAimCancelled();
+        // _isScrolling = true;
+        WeaponSwap();
     }
 
 
@@ -254,26 +261,28 @@ public class PlayerAttacks : MonoBehaviour
             _playerGunSelector.ActiveMelee.Model.SetActive(false);
             _playerGunSelector.ActiveGun.Model.SetActive(true);
         }
-        _isScrolling = false;
+       // _isScrolling = false;
     }
 
     private void ZoomIn() 
     {
-        if (_cam.m_Lens.FieldOfView.ToString() != _aimFov.ToString())
+
+       /* if (_cam.m_Lens.FieldOfView.ToString() != _aimFov.ToString())
         {
             _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, _zoomSpeed * Time.deltaTime);
             _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _aimSpeedX;
             _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _aimSpeedY;
-        }
+        }*/
 
     }
 
     private void ZoomOut()
     {
-       
+       /*
         _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
         _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
         _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
+       */
     }
 
 
