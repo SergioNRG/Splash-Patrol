@@ -60,7 +60,6 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void ShowDamagePopUp(Color color)
     {
-        _offset = new Vector3(Random.Range(-30f, 60f), Random.Range(-30f,60f),0);
         var popText = _popUPPool.Get();//Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity,_crosshair.transform);
         popText.SetActive(true);
         //popText.transform.forward = Camera.main.transform.forward;
@@ -70,6 +69,7 @@ public class EnemyEffectsManager : MonoBehaviour
 
     private GameObject CreatePopUp()
     {
+        _offset = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
         var popUp = Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity, _crosshair.transform);
         //popUp.SetActive(false);
         popUp.GetComponent<SelfReturnToPool>().SetPool(_popUPPool);
