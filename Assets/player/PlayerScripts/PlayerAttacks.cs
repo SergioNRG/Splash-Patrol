@@ -27,7 +27,7 @@ public class PlayerAttacks : MonoBehaviour
     [Header("Normal Camera")]
     [SerializeField] private CinemachineVirtualCamera _normalCam;
 
-    [Header("Zoom Camera")]
+    [Header("Aim Camera")]
     [SerializeField] private CinemachineVirtualCamera _aimCam;
 
     [Header("CamEffecttsSO")]
@@ -263,28 +263,28 @@ public class PlayerAttacks : MonoBehaviour
         }
        // _isScrolling = false;
     }
-
+/*
     private void ZoomIn() 
     {
 
-       /* if (_cam.m_Lens.FieldOfView.ToString() != _aimFov.ToString())
+        if (_cam.m_Lens.FieldOfView.ToString() != _aimFov.ToString())
         {
             _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, _zoomSpeed * Time.deltaTime);
             _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _aimSpeedX;
             _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _aimSpeedY;
-        }*/
+        }
 
     }
 
     private void ZoomOut()
     {
-       /*
+       
         _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
         _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
         _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
-       */
+       
     }
-
+*/
 
     #endregion
 }
