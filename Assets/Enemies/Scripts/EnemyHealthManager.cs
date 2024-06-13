@@ -16,10 +16,15 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
 
     [SerializeField] private EnemyEffectsManager _enemyEffectsManager;
 
-    private void OnEnable()
+    private void Awake()
     {
         _enemyEffectsManager = GetComponent<EnemyEffectsManager>();
         CurrentHealth = MaxHealth;
+    }
+
+    private void OnEnable()
+    {
+       
         OnTakeDamage += _enemyEffectsManager.TakeDamageEffect;
         OnDeath += _enemyEffectsManager.Die;
     }
