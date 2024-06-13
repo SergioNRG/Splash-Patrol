@@ -18,8 +18,9 @@ public class Enemy : EnemyBase
     private void Awake()
     {
         _healthManager = GetComponent<EnemyHealthManager>();
-        IdleBaseInstance = Instantiate(_idleLogic);
-        MoveBaseInstance = Instantiate(_moveLogic);
+        if (_idleLogic != null) { IdleBaseInstance = Instantiate(_idleLogic); }
+        if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
+        if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
         //AttackBaseInstance = Instantiate(_attackLogic);
     }
     void Start()
@@ -37,8 +38,7 @@ public class Enemy : EnemyBase
 
     protected override void Idle()
     {
-        if (IdleBaseInstance != null) { IdleBaseInstance.IdleLogic(); }
-    
+        if (IdleBaseInstance != null) { IdleBaseInstance.IdleLogic(); }   
     }
 
     protected override void Move()
