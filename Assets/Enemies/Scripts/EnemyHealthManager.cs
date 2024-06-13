@@ -23,8 +23,7 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
     }
 
     private void OnEnable()
-    {
-       
+    {       
         OnTakeDamage += _enemyEffectsManager.TakeDamageEffect;
         OnDeath += _enemyEffectsManager.Die;
     }
@@ -44,5 +43,16 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
         if (damageTaken != 0) { OnTakeDamage?.Invoke(damageTaken); }
 
         if (CurrentHealth == 0 && damageTaken != 0) { OnDeath?.Invoke(transform.position); }
+    }
+
+    public void ApplyHeal(int amount)
+    {
+        int healTaken = Mathf.Clamp(amount, 0, MaxHealth);
+
+        CurrentHealth += healTaken;
+
+        if (healTaken != 0) { OnTakeDamage?.Invoke(-healTaken); }
+
+      //  if (CurrentHealth == 0 && healTaken != 0) { OnDeath?.Invoke(transform.position); }
     }
 }
