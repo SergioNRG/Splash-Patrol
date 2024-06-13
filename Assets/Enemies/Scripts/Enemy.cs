@@ -7,12 +7,17 @@ public class Enemy : EnemyBase
 {
     [SerializeField] private IdleSOBase _idleLogic;
     [SerializeField] private MoveSOBase _moveLogic;
-    // Start is called before the first frame update
+
+
+   // private EnemyHealthManager _healthManager;
 
     private IdleSOBase IdleBaseInstance;// { get; set; }
     private MoveSOBase MoveBaseInstance;// { get; set; }
+
+
     private void Awake()
     {
+       _healthManager = GetComponent<EnemyHealthManager>();
        IdleBaseInstance = Instantiate(_idleLogic);
        MoveBaseInstance = Instantiate(_moveLogic);
     }
@@ -23,11 +28,11 @@ public class Enemy : EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+  /*  void Update()
     {
        
         Move();
-    }
+    }*/
 
     protected override void Idle()
     {

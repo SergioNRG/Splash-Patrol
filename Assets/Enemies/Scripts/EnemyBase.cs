@@ -12,6 +12,14 @@ public class EnemyBase : MonoBehaviour
     //protected int _attackSpeed;
     //[SerializeField] protected Transform _moveTarget;
 
+    protected EnemyHealthManager _healthManager;
+
+    void Update()
+    {
+
+        Move();
+    }
+
     protected virtual void Idle() { }
     protected virtual void Attack() { }
     protected virtual void Move() { }
