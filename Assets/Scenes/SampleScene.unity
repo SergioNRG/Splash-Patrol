@@ -706,10 +706,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovSpeed: 1
-  _attackDamage: 0
+  <MovSpeed>k__BackingField: 2
   _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
   _moveLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
+  _attackLogic: {fileID: 0}
 --- !u!135 &906250749
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -966,10 +966,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovSpeed: 2
-  _attackDamage: 0
+  <MovSpeed>k__BackingField: 1
   _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
   _moveLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
+  _attackLogic: {fileID: 0}
 --- !u!135 &1553292305
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1370,10 +1370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovSpeed: 1
-  _attackDamage: 0
+  <MovSpeed>k__BackingField: 0
   _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
   _moveLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
+  _attackLogic: {fileID: 0}
 --- !u!1 &1695524423
 GameObject:
   m_ObjectHideFlags: 0
