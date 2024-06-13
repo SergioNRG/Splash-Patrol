@@ -67,6 +67,8 @@ public class EnemyEffectsManager : MonoBehaviour
         popText.GetComponent<TextMeshProUGUI>().text = _healthManager.CurrentHealth.ToString();
     }
 
+
+
     private GameObject CreatePopUp()
     {
         _offset = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
