@@ -14,5 +14,5 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Idle() { }
     protected virtual void Attack() { }
-    protected virtual void Chase() { }
+    protected virtual void Move() { }
 }

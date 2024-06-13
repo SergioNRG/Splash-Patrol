@@ -18,7 +18,7 @@ public class Enemy : EnemyBase
     void Update()
     {
        
-        Chase();
+        Move();
     }
 
     protected override void Idle()
@@ -26,7 +26,7 @@ public class Enemy : EnemyBase
         _idleLogic.IdleLogic();
     }
 
-    protected override void Chase()
+    protected override void Move()
     {
         _moveLogic.MoveLogic();
         //transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
