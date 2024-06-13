@@ -8,10 +8,18 @@ public class Enemy : EnemyBase
     [SerializeField] private IdleSOBase _idleLogic;
     [SerializeField] private MoveSOBase _moveLogic;
     // Start is called before the first frame update
+
+    private IdleSOBase IdleBaseInstance;// { get; set; }
+    private MoveSOBase MoveBaseInstance;// { get; set; }
+    private void Awake()
+    {
+       IdleBaseInstance = Instantiate(_idleLogic);
+       MoveBaseInstance = Instantiate(_moveLogic);
+    }
     void Start()
     {
-        _idleLogic.Initialize(gameObject,this);
-        _moveLogic.Initialize(gameObject, this);
+        IdleBaseInstance.Initialize(gameObject,this);
+        MoveBaseInstance.Initialize(gameObject, this);
     }
 
     // Update is called once per frame
@@ -23,12 +31,12 @@ public class Enemy : EnemyBase
 
     protected override void Idle()
     {
-        _idleLogic.IdleLogic();
+        IdleBaseInstance.IdleLogic();
     }
 
     protected override void Move()
     {
-        _moveLogic.MoveLogic();
+        MoveBaseInstance.MoveLogic();
         //transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
     }
     protected override void Attack()

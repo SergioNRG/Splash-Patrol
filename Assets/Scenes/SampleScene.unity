@@ -685,6 +685,8 @@ GameObject:
   - component: {fileID: 906250750}
   - component: {fileID: 906250749}
   - component: {fileID: 906250748}
+  - component: {fileID: 906250754}
+  - component: {fileID: 906250753}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -699,16 +701,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906250747}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 0
-  MovSpeed: 0
+  MovSpeed: 1
   _attackDamage: 0
-  _idleLogic: {fileID: 0}
-  _moveLogic: {fileID: 0}
+  _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
+  _moveLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
 --- !u!135 &906250749
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -724,9 +725,9 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -795,6 +796,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &906250753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906250747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9231d2ec837968745a0d5ad1dc552a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingTxt: {fileID: 6040749874942836074, guid: 406c84757ee3d1b46a45ce1c300b399f,
+    type: 3}
+  _healthManager: {fileID: 0}
+  _crosshair: {fileID: 0}
+--- !u!114 &906250754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906250747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3736e9096bbd4f24da32d320b013e0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 25
+  _currentHealth: 0
+  _enemyEffectsManager: {fileID: 0}
 --- !u!4 &926045528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4550259107800822, guid: f528363d2aaa5d748ab9fcd16b601236,
@@ -913,6 +945,8 @@ GameObject:
   - component: {fileID: 1553292306}
   - component: {fileID: 1553292305}
   - component: {fileID: 1553292304}
+  - component: {fileID: 1553292310}
+  - component: {fileID: 1553292309}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -927,13 +961,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553292303}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  MovSpeed: 3
+  MovSpeed: 2
   _attackDamage: 0
   _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
   _moveLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
@@ -952,9 +985,9 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1023,6 +1056,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1553292309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553292303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9231d2ec837968745a0d5ad1dc552a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingTxt: {fileID: 6040749874942836074, guid: 406c84757ee3d1b46a45ce1c300b399f,
+    type: 3}
+  _healthManager: {fileID: 0}
+  _crosshair: {fileID: 0}
+--- !u!114 &1553292310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553292303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3736e9096bbd4f24da32d320b013e0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 50
+  _currentHealth: 0
+  _enemyEffectsManager: {fileID: 0}
 --- !u!1 &1588507632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,6 +1204,7 @@ GameObject:
   - component: {fileID: 1683398502}
   - component: {fileID: 1683398508}
   - component: {fileID: 1683398509}
+  - component: {fileID: 1683398510}
   m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1293,6 +1358,22 @@ MonoBehaviour:
     type: 3}
   _healthManager: {fileID: 0}
   _crosshair: {fileID: 0}
+--- !u!114 &1683398510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683398501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovSpeed: 1
+  _attackDamage: 0
+  _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
+  _moveLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
 --- !u!1 &1695524423
 GameObject:
   m_ObjectHideFlags: 0
