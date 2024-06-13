@@ -58,6 +58,11 @@ public class EnemyEffectsManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void HealEffect(int amount)
+    {
+        Debug.Log("healing");
+    }
+
     public void ShowDamagePopUp(Color color)
     {
         var popText = _popUPPool.Get();//Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity,_crosshair.transform);

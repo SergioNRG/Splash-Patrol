@@ -10,14 +10,14 @@ using UnityEngine.UI;
 
 public class PlayerAttacks : MonoBehaviour
 {
-    private enum AimState
+   /* private enum AimState
     {
         Idle,
         Aiming,
         ChangeWeapon
-    }
+    }*/
 
-    private AimState _currentAimState;
+    //private AimState _currentAimState;
 
     [SerializeField] private Image _crosshair;
 
@@ -34,19 +34,19 @@ public class PlayerAttacks : MonoBehaviour
     private CameraEffectController _cameraEffectsScript;
     private PlayerGunSelector _playerGunSelector;
 
-    [Header("Camera Values To Adjust")]
+   /* [Header("Camera Values To Adjust")]
     [SerializeField] private int _aimFov = 30;
     [SerializeField] private int _normalFov = 60;
     [SerializeField] private float _zoomSpeed = 15;
     [SerializeField] private float _aimSpeedY = 30;
     [SerializeField] private float _aimSpeedX = 50;
     [SerializeField] private float _normalSpeedY ;
-    [SerializeField] private float _normalSpeedX ;
+    [SerializeField] private float _normalSpeedX ;*/
 
    // private int _weaponPos;
     private Vector2 _scroll;
 
-    private bool _isScrolling = false;
+    //private bool _isScrolling = false;
     private bool _isAttacking;
 
 
@@ -55,7 +55,7 @@ public class PlayerAttacks : MonoBehaviour
     void Start()
     {
         _playerGunSelector = GetComponent<PlayerGunSelector>(); 
-        _currentAimState = AimState.Idle;
+       // _currentAimState = AimState.Idle;
        // _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
         //_normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
        // _cam.m_Lens.FieldOfView = _normalFov;

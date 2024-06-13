@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthManager : MonoBehaviour, IDamageable
+public class EnemyHealthManager : MonoBehaviour, IDamageable, IHealable
 {
     [SerializeField] private int _maxHealth;
 
@@ -13,6 +13,7 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
 
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
+    public event IHealable.TakeHealEvent OnTakeHeal;
 
     [SerializeField] private EnemyEffectsManager _enemyEffectsManager;
 
@@ -26,12 +27,14 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
     {       
         OnTakeDamage += _enemyEffectsManager.TakeDamageEffect;
         OnDeath += _enemyEffectsManager.Die;
+        OnTakeHeal += _enemyEffectsManager.HealEffect;
     }
 
     private void OnDisable()
     {
         OnTakeDamage -= _enemyEffectsManager.TakeDamageEffect;
         OnDeath -= _enemyEffectsManager.Die;
+        OnTakeHeal -= _enemyEffectsManager.HealEffect;
     }
 
     public void ApplyDamage(int damage)
@@ -51,7 +54,7 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable
 
         CurrentHealth += healTaken;
 
-        if (healTaken != 0) { OnTakeDamage?.Invoke(-healTaken); }
+        if (healTaken != 0) { OnTakeHeal?.Invoke(-healTaken); }
 
       //  if (CurrentHealth == 0 && healTaken != 0) { OnDeath?.Invoke(transform.position); }
     }
