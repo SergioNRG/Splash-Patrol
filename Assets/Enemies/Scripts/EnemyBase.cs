@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
 
     [field:SerializeField]public int MovSpeed { get; protected set; }
     //[SerializeField] protected int _movSpeed;
-    [SerializeField] protected int _attackDamage;
+   // [SerializeField] protected int _attackDamage;
     //protected int _attackSpeed;
     //[SerializeField] protected Transform _moveTarget;
 
