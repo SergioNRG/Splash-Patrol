@@ -129,6 +129,69 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1599597087}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &362438965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 362438967}
+  - component: {fileID: 362438966}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &362438966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362438965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 3ddcb79dbdea17848a728c81aec90d73, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &362438967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362438965}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.0611403, z: 0.100000024}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &391065563
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +209,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &391065564
 BoxCollider:
@@ -687,6 +750,7 @@ GameObject:
   - component: {fileID: 906250748}
   - component: {fileID: 906250754}
   - component: {fileID: 906250753}
+  - component: {fileID: 906250755}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -827,6 +891,28 @@ MonoBehaviour:
   _maxHealth: 25
   _currentHealth: 0
   _enemyEffectsManager: {fileID: 0}
+--- !u!195 &906250755
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906250747}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!4 &926045528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4550259107800822, guid: f528363d2aaa5d748ab9fcd16b601236,
@@ -947,6 +1033,7 @@ GameObject:
   - component: {fileID: 1553292304}
   - component: {fileID: 1553292310}
   - component: {fileID: 1553292309}
+  - component: {fileID: 1553292311}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1087,6 +1174,28 @@ MonoBehaviour:
   _maxHealth: 50
   _currentHealth: 0
   _enemyEffectsManager: {fileID: 0}
+--- !u!195 &1553292311
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553292303}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1588507632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,7 +1313,6 @@ GameObject:
   - component: {fileID: 1683398502}
   - component: {fileID: 1683398508}
   - component: {fileID: 1683398509}
-  - component: {fileID: 1683398510}
   m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1358,22 +1466,6 @@ MonoBehaviour:
     type: 3}
   _healthManager: {fileID: 0}
   _crosshair: {fileID: 0}
---- !u!114 &1683398510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683398501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3cd6f39625e714468694a9f2c6c0579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MovSpeed>k__BackingField: 0
-  _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
-  _moveLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
-  _attackLogic: {fileID: 0}
 --- !u!1 &1695524423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,3 +1844,4 @@ SceneRoots:
   - {fileID: 1588507633}
   - {fileID: 1553292308}
   - {fileID: 906250752}
+  - {fileID: 362438967}
