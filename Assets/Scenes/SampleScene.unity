@@ -747,6 +747,7 @@ GameObject:
   - component: {fileID: 906250751}
   - component: {fileID: 906250750}
   - component: {fileID: 906250749}
+  - component: {fileID: 906250756}
   - component: {fileID: 906250754}
   - component: {fileID: 906250753}
   - component: {fileID: 906250755}
@@ -896,6 +897,21 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &906250756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906250747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5be96b1e1b47c945a79c7404466f39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _idleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
+  _moveLogic: {fileID: 11400000, guid: ce0b84794b57981419bd7a50e58ea812, type: 2}
+  _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
 --- !u!4 &926045528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4550259107800822, guid: f528363d2aaa5d748ab9fcd16b601236,
