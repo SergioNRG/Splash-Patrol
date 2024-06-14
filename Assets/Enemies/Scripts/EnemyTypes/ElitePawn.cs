@@ -8,17 +8,19 @@ public class ElitePawn : EnemyBase
     [SerializeField] private IdleSOBase _idleLogic;
     [SerializeField] private MoveSOBase _moveLogic;
     [SerializeField] private MoveSOBase _chasePlayerLogic;
+    [SerializeField] private AttackSOBase _attackLogic;
 
     private IdleSOBase IdleBaseInstance;// { get; set; }
     private MoveSOBase MoveBaseInstance;// { get; set; }
     private MoveSOBase MoveBaseInstance2;// { get; set; }
-
+    private AttackSOBase AttackBaseInstance;// { get; set; }
     private void Awake()
     {
         _healthManager = GetComponent<EnemyHealthManager>();
         if (_idleLogic != null) { IdleBaseInstance = Instantiate(_idleLogic); }
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
         if (_chasePlayerLogic != null) { MoveBaseInstance2 = Instantiate(_chasePlayerLogic); }
+        if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
 
     // Start is called before the first frame update
@@ -27,11 +29,13 @@ public class ElitePawn : EnemyBase
         IdleBaseInstance.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
         MoveBaseInstance.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
         MoveBaseInstance2.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
+        AttackBaseInstance.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
     }
 
     void Update()
     {
         Move();
+        Attack();
     }
 
     protected override void Idle()
@@ -49,9 +53,11 @@ public class ElitePawn : EnemyBase
         {
             if (_moveLogic != null) { MoveBaseInstance.MoveLogic(); }
         }
+             //transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
+    }
 
-        
-
-        //transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
+    protected override void Attack()
+    {
+        if (_attackLogic != null) { AttackBaseInstance.AttackLogic(); }
     }
 }
