@@ -8,13 +8,13 @@ public class Enemy : EnemyBase
 {
     [SerializeField] private IdleSOBase _idleLogic;
     [SerializeField] private MoveSOBase _moveLogic;
-    [SerializeField] private MoveSOBase _attackLogic;
+    [SerializeField] private AttackSOBase _attackLogic;
 
     // private EnemyHealthManager _healthManager;
 
     private IdleSOBase IdleBaseInstance;// { get; set; }
     private MoveSOBase MoveBaseInstance;// { get; set; }
-    private MoveSOBase AttackBaseInstance;
+    private AttackSOBase AttackBaseInstance;
 
     private void Awake()
     {

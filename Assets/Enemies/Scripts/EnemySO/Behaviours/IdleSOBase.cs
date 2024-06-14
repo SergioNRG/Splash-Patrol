@@ -6,14 +6,14 @@ using UnityEngine.AI;
 
 public class IdleSOBase : ScriptableObject
 {
-    protected Enemy enemy;
+    protected EnemyBase enemy;
     protected NavMeshAgent enemyAgent;
     protected Transform transform;
     protected GameObject enemyObject;
 
     protected Transform playerTranform;
 
-    public virtual void Initialize(GameObject gameObject, Enemy enemy, NavMeshAgent enemyAgent)
+    public virtual void Initialize(GameObject gameObject, EnemyBase enemy, NavMeshAgent enemyAgent)
     {
         this.enemy = enemy;
         this.enemyAgent = enemyAgent;

@@ -7,7 +7,7 @@ public class EnemyBase : MonoBehaviour
     //protected int _maxHealth;
    //[SerializeField] protected int _maxHealth;
 
-    [field:SerializeField]public int MovSpeed { get; protected set; }
+   // [field:SerializeField]public int MovSpeed { get; protected set; }
     //[SerializeField] protected int _movSpeed;
    // [SerializeField] protected int _attackDamage;
     //protected int _attackSpeed;
