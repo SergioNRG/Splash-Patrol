@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : EnemyBase
 {
@@ -25,8 +26,8 @@ public class Enemy : EnemyBase
     }
     void Start()
     {
-        IdleBaseInstance.Initialize(gameObject,this);
-        MoveBaseInstance.Initialize(gameObject, this);
+        IdleBaseInstance.Initialize(gameObject,this, gameObject.GetComponent<NavMeshAgent>());
+        MoveBaseInstance.Initialize(gameObject, this,gameObject.GetComponent<NavMeshAgent>());
        // AttackBaseInstance.Initialize(gameObject, this);
     }
 
