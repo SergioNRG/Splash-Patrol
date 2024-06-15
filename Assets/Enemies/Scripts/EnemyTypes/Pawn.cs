@@ -12,7 +12,7 @@ public class Pawn : EnemyBase
     //private IdleSOBase IdleBaseInstance;// { get; set; }
     private MoveSOBase MoveBaseInstance;// { get; set; }
 
-
+    private NavMeshAgent _agent;
   
     private void OnEnable()
     {
@@ -22,6 +22,7 @@ public class Pawn : EnemyBase
 
     private void Awake()
     {
+        _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
        // if (_idleLogic != null) { IdleBaseInstance = Instantiate(_idleLogic); }
@@ -32,15 +33,21 @@ public class Pawn : EnemyBase
     void Start()
     {
         //IdleBaseInstance.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
-        MoveBaseInstance.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
-       
+        MoveBaseInstance.Initialize(gameObject, this, _agent);
+        
     }
 
     void Update()
     {
-        if (_healthManager.CurrentHealth <= 0) { AnimsController.ChangeAnimationState(_animator, MoveAnim, DieAnim); }
+        if (_healthManager.CurrentHealth <= 0)
+        {
+            Debug.Log("tatatat");
+            AnimsController.ChangeAnimationState(_animator, MoveAnim, DieAnim);
+            _agent.isStopped = true;
+        }
         else
         {
+            Debug.Log("oi");
             AnimsController.ChangeAnimationState(_animator, MoveAnim, MoveAnim);
             Move();
         }
