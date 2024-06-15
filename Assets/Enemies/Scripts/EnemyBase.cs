@@ -13,12 +13,13 @@ public class EnemyBase : MonoBehaviour
     //protected int _attackSpeed;
     //[SerializeField] protected Transform _moveTarget;
     #region STRINGS FOR ANIMATIONS NAMES  
+
     // animations data
 
     [field:SerializeField] public AnimsController AnimsController { get; protected set; }
-    [field: SerializeField] public Animator _animator { get; protected set; }
-    [field: SerializeField] public string MoveAnim { get; protected set; }
-    [field: SerializeField] public string DieAnim { get; protected set; }
+    [field: SerializeField] public Animator _animator { get; protected set; }// just to see
+    [field: SerializeField] public string MoveAnim { get; protected set; }// just to see
+    [field: SerializeField] public string DieAnim { get; protected set; }// just to see
 
     #endregion
 
