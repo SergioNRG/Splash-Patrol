@@ -22,5 +22,5 @@ public class AttackSOBase : ScriptableObject
         playerTranform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public virtual void AttackLogic() { }
+    public virtual void AttackLogic(int attackDistance, Animator animator, string animation) { }
 }

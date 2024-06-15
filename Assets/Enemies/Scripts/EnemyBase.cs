@@ -19,6 +19,8 @@ public class EnemyBase : MonoBehaviour
     [field:SerializeField] public AnimsController AnimsController { get; protected set; }
     [field: SerializeField] public Animator _animator { get; protected set; }// just to see
     [field: SerializeField] public string MoveAnim { get; protected set; }// just to see
+    [field: SerializeField] public string ChaseAnim { get; protected set; }// just to see
+    [field: SerializeField] public string AttackAnim { get; protected set; }// just to see
     [field: SerializeField] public string DieAnim { get; protected set; }// just to see
 
     #endregion

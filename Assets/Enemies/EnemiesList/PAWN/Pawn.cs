@@ -41,8 +41,8 @@ public class Pawn : EnemyBase
     {
         if (_healthManager.CurrentHealth <= 0)
         {
-            Debug.Log("tatatat");
-            AnimsController.ChangeAnimationState(_animator, MoveAnim, DieAnim);
+            ///Debug.Log("tatatat");
+            //AnimsController.ChangeAnimationState(_animator, MoveAnim, DieAnim);
             _agent.isStopped = true;
         }
         else

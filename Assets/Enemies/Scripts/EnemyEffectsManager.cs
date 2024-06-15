@@ -56,7 +56,7 @@ public class EnemyEffectsManager : MonoBehaviour
     public void Die(Vector3 position)
     {
         enemy.AnimsController.Playanimation(enemy._animator, enemy.DieAnim);
-        Destroy(gameObject,1.5f);
+        Destroy(gameObject,2f);
     }
 
     public void HealEffect(int amount)
