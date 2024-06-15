@@ -27,4 +27,9 @@ public class AnimsController : AnimsList
         }
         else { return false; }
     }
+
+    public void Playanimation(Animator animator,string animation)
+    {
+        animator.Play(animation);  
+    }
 }

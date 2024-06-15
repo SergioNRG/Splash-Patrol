@@ -10,6 +10,7 @@ public class EnemyEffectsManager : MonoBehaviour
     [SerializeField] private GameObject _floatingTxt;
     [SerializeField] private EnemyHealthManager _healthManager;
     [SerializeField] private Image _crosshair;
+    [SerializeField] private EnemyBase enemy;
 
      private Vector3 _offset;
 
@@ -18,6 +19,7 @@ public class EnemyEffectsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemy = GetComponent<EnemyBase>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _crosshair = Camera.main.GetComponentInChildren<Image>();
         _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
@@ -53,9 +55,8 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void Die(Vector3 position)
     {
-        Debug.Log("enemy morreu");
-        //ShowDamagePopUp(); 
-        Destroy(gameObject);
+        enemy.AnimsController.Playanimation(enemy._animator, enemy.DieAnim);
+        Destroy(gameObject,1.5f);
     }
 
     public void HealEffect(int amount)
@@ -65,9 +66,8 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void ShowDamagePopUp(Color color)
     {
-        var popText = _popUPPool.Get();//Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity,_crosshair.transform);
+        var popText = _popUPPool.Get();
         popText.SetActive(true);
-        //popText.transform.forward = Camera.main.transform.forward;
         popText.GetComponent<TextMeshProUGUI>().faceColor = color;
         popText.GetComponent<TextMeshProUGUI>().text = _healthManager.CurrentHealth.ToString();
     }
@@ -78,7 +78,6 @@ public class EnemyEffectsManager : MonoBehaviour
     {
         _offset = new Vector3(Random.Range(-50f, 50f), Random.Range(-50f, 50f), 0);
         var popUp = Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity, _crosshair.transform);
-        //popUp.SetActive(false);
         popUp.GetComponent<SelfReturnToPool>().SetPool(_popUPPool);
         return popUp;
     }
