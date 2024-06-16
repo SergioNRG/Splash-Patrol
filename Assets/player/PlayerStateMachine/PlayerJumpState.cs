@@ -11,8 +11,6 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void EnterState()
     {
-        //Jump();
-        Debug.Log(" oi from jump");
         _ctx.PlayerVelocityY += Mathf.Sqrt(_ctx.JumpHeight * -3.0f * _ctx.GravityValue);
     }
 
@@ -24,7 +22,6 @@ public class PlayerJumpState : PlayerBaseState
     {
         if (_ctx.Controller.isGrounded)
         {
-            Debug.Log("sair do jump entrar no groung");
             SwitchState(_factory.Grounded());
         }
     }
@@ -33,25 +30,13 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void UpdateState()
     {
-       // Debug.Log("hi from jump update");
         CheckSwitchStates();
-
     }
 
     public override void InitializeSubState()
     {
 
     }
-    private void Jump()
-    {
-        //if (_isJumping && _isPlayerGrounded)
-       // {
-            _ctx.PlayerVelocityY += Mathf.Sqrt(_ctx.JumpHeight * -3.0f * _ctx.GravityValue);
-       // }
 
-        _ctx.PlayerVelocityY +=_ctx.GravityValue * Time.deltaTime;
-        _ctx.Controller.Move(_ctx.PlayerVelocity * Time.deltaTime);
-
-    }
 
 }
