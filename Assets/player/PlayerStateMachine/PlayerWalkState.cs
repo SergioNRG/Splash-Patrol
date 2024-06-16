@@ -7,11 +7,7 @@ public class PlayerWalkState : PlayerBaseState
     public PlayerWalkState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     : base (currentContext,playerStateFactory){ }// pass the concrete states argumentes direct to base state constructer
 
-    public override void CheckSwitchStates()
-    {
-
-    }
-
+   
     public override void EnterState()
     {
 
@@ -31,16 +27,9 @@ public class PlayerWalkState : PlayerBaseState
     {
 
     }
-
-    // Start is called before the first frame update
-    void Start()
+    public override void CheckSwitchStates()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

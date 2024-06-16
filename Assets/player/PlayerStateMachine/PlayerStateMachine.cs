@@ -141,9 +141,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Awake()
     {
+        //_controller = GetComponent<CharacterController>();
         _stateFactory = new PlayerStateFactory(this);
         _currentState = _stateFactory.Grounded();
         _currentState.EnterState();
+       
     }
 
     // Start is called before the first frame update
@@ -186,7 +188,7 @@ public class PlayerStateMachine : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(forward);
     }
 
-    private void ApplyGravity()
+    public void ApplyGravity()
     {
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
