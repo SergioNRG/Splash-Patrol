@@ -161,11 +161,8 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _playerVelocity.y += _gravityValue * Time.deltaTime;
-        _controller.Move(_playerVelocity * Time.deltaTime);
-        // CheckIfGrounded();
+        ApplyGravity();
         _currentState.UpdateState();
-
         MoveAndRotationRelativeToCamera();
     }
 
@@ -187,6 +184,12 @@ public class PlayerStateMachine : MonoBehaviour
 
         _controller.Move(cameraRelativeMovement * Time.deltaTime * _currentPlayerSpeed);
         transform.rotation = Quaternion.LookRotation(forward);
+    }
+
+    private void ApplyGravity()
+    {
+        _playerVelocity.y += _gravityValue * Time.deltaTime;
+        _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
     private void CheckIfGrounded()
