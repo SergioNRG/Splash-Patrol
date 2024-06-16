@@ -47,7 +47,6 @@ public class Pawn : EnemyBase
         }
         else
         {
-            Debug.Log("oi");
             AnimsController.ChangeAnimationState(_animator, MoveAnim, MoveAnim);
             Move();
         }
