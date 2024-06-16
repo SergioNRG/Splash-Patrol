@@ -50,6 +50,13 @@ public class PlayerStateMachine : MonoBehaviour
     public float GravityValue { get { return _gravityValue; } }
     public CharacterController Controller { get { return _controller; } set { _controller = value; } }
 
+    /// <summary>
+    /// //////
+    /// </summary>
+    public Vector3 Move { get { return _move; } }
+
+    public bool IsSprinting {  get { return _isSprinting; } }
+
     //public bool IsPlayerGrounded { get { return _controller.isGrounded; }  }
     #region  Subcribe methods from InputReader SO
 

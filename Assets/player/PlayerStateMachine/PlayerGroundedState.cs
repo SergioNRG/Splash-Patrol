@@ -7,7 +7,7 @@ public class PlayerGroundedState : PlayerBaseState
 {
 
     public PlayerGroundedState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
-    : base (currentContext, playerStateFactory) { }
+    : base (currentContext, playerStateFactory) { InitializeSubState(); }
     public override void EnterState()
     {
         _ctx.PlayerVelocityY = 0f;
@@ -25,7 +25,16 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void InitializeSubState()
     {
-       
+        if (_ctx.Move == Vector3.zero && !_ctx.IsSprinting)
+        {
+            SetSubState(_factory.Idle());
+        }else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting)
+        {
+            SetSubState(_factory.Walk());
+        }else
+        {
+            SetSubState(_factory.Run());
+        }
     }
 
     public override void UpdateState()

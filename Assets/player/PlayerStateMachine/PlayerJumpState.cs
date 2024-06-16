@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.XR;
 public class PlayerJumpState : PlayerBaseState
 {
     public PlayerJumpState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
-    : base (currentContext, playerStateFactory) { } 
+    : base (currentContext, playerStateFactory) { InitializeSubState(); } 
 
 
     public override void EnterState()

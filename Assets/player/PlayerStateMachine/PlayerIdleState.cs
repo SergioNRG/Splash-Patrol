@@ -13,7 +13,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void EnterState()
     {
-       
+        Debug.Log("HELLO FROM IDLE");
     }
 
     public override void ExitState()
