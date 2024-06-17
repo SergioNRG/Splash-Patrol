@@ -22,6 +22,7 @@ public class PlayerJumpState : PlayerBaseState
     {
      
     }
+
     public override void CheckSwitchStates()
     {
         if (_ctx.Controller.isGrounded)
@@ -29,8 +30,6 @@ public class PlayerJumpState : PlayerBaseState
             SwitchState(_factory.Grounded());
         }
     }
-
- 
 
     public override void UpdateState()
     {

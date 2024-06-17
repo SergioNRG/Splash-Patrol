@@ -11,11 +11,9 @@ public class PlayerIdleState : PlayerBaseState
  
 
     public override void EnterState()
-    {
-        Debug.Log("HELLO FROM IDLE");
-       
-        //_ctx.MoveX = 0;
-        // _ctx.MoveZ = 0;
+    {       
+        _ctx.MoveX = 0;
+        _ctx.MoveZ = 0;
     }
 
     public override void ExitState()

@@ -15,11 +15,6 @@ public class PlayerGroundedState : PlayerBaseState
     public override void EnterState()
     {
         _ctx.PlayerVelocityY = 0f;
-       
-        //_ctx.PlayerVelocityY += _ctx.GravityValue * Time.deltaTime;
-        //_ctx.Controller.Move(_ctx.PlayerVelocity * Time.deltaTime);
-
-        Debug.Log("HI FROM GROUNDED");
     }
 
     public override void ExitState()

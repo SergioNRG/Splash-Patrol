@@ -56,9 +56,6 @@ public class PlayerStateMachine : MonoBehaviour
     public float GravityValue { get { return _gravityValue; } }
     public CharacterController Controller { get { return _controller; } set { _controller = value; } }
 
-    /// <summary>
-    /// //////
-    /// </summary>
     public Vector3 Move { get { return _move; } }
 
     public float MoveX { get { return _moveX; } set { _moveX = value; } }
@@ -71,7 +68,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     public bool IsSprinting {  get { return _isSprinting; } }
 
-    //public bool IsPlayerGrounded { get { return _controller.isGrounded; }  }
     #region  Subcribe methods from InputReader SO
 
     // subscribe to events on SO
@@ -218,12 +214,4 @@ public class PlayerStateMachine : MonoBehaviour
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
-    private void CheckIfGrounded()
-    {
-        _isPlayerGrounded = _controller.isGrounded;
-        if (_isPlayerGrounded && _playerVelocity.y < 0)
-        {
-            _playerVelocity.y = 0f;
-        }
-    }
 }
