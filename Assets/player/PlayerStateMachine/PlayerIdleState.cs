@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerBaseState
 {
+    Vector3 forward;
+
     public PlayerIdleState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     : base (currentContext, playerStateFactory) { }
  
@@ -11,8 +13,9 @@ public class PlayerIdleState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("HELLO FROM IDLE");
+       
         //_ctx.MoveX = 0;
-       // _ctx.MoveZ = 0;
+        // _ctx.MoveZ = 0;
     }
 
     public override void ExitState()
@@ -28,6 +31,10 @@ public class PlayerIdleState : PlayerBaseState
     public override void UpdateState()
     {
         CheckSwitchStates();
+        forward = _ctx.CamTransform.forward;
+        forward.y = 0f;
+        forward = forward.normalized;
+        _ctx.PlayerTransform.rotation = Quaternion.LookRotation(forward);
     }
 
     public override void CheckSwitchStates()
