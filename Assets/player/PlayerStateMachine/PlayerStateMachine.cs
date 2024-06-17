@@ -24,6 +24,8 @@ public class PlayerStateMachine : MonoBehaviour
     private float _currentPlayerSpeed;
     private float _normalHeight = 2f;
     private float _crouchHeight = 1f;
+    private float _normalCenter = 1f;
+    private float _crouchCenter = 0.65f;
 
     private Vector3 _move;
     private float _moveX;
@@ -67,6 +69,15 @@ public class PlayerStateMachine : MonoBehaviour
     public float SprintPlayerSpeed { get { return _sprintPlayerSpeed; } set { _sprintPlayerSpeed = value; }  }
 
     public bool IsSprinting {  get { return _isSprinting; } }
+
+    public float CrouchPlayerSpeed { get { return _crouchingPlayerSpeed; } }
+
+    public bool IsCrouching {  get { return _isCrouching; } }
+
+    public float NormalHeight { get { return _normalHeight; } set { _normalHeight = value; } }
+    public float CrouchHeight {  get { return _crouchHeight; } set { _crouchHeight = value; } }
+    public float NormalCenter {  get { return _normalCenter; } set { _normalCenter = value; } }
+    public float CrouchCenter {  get { return _crouchCenter; } set { _crouchCenter = value; } }
 
     #region  Subcribe methods from InputReader SO
 
@@ -139,21 +150,22 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void OnCrouch()
     {
-        if (_isPlayerGrounded)
-        {
-            _isCrouching = true;
-            _controller.height = _crouchHeight;
-            _currentPlayerSpeed = _crouchingPlayerSpeed;
-            Debug.Log("Crouching");
-        }
+        _isCrouching = true;
+        /* if (_isPlayerGrounded)
+         {
+             _isCrouching = true;
+             _controller.height = _crouchHeight;
+             _currentPlayerSpeed = _crouchingPlayerSpeed;
+             Debug.Log("Crouching");
+         }*/
 
     }
     private void OnCrouchCanceled()
     {
         _isCrouching = false;
-        _controller.height = _normalHeight;
+       /* _controller.height = _normalHeight;
         _currentPlayerSpeed = _basePlayerSpeed;
-        Debug.Log(" Stop Crouching");
+        Debug.Log(" Stop Crouching");*/
     }
 
     #endregion 
@@ -175,6 +187,7 @@ public class PlayerStateMachine : MonoBehaviour
         _camTransform = Camera.main.transform;
         _playerTransform = transform;
         _controller = GetComponent<CharacterController>();
+        _controller.height = _normalHeight;
         _currentPlayerSpeed = _basePlayerSpeed;
         _isJumping = false;
 

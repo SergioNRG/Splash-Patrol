@@ -38,11 +38,11 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void InitializeSubState()
     {
-        if (_ctx.Move == Vector3.zero && !_ctx.IsSprinting)
+        if (_ctx.Move == Vector3.zero && !_ctx.IsSprinting && !_ctx.IsCrouching)
         {
             SetSubState(_factory.Idle());
         }
-        else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting)
+        else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting && !_ctx.IsCrouching)
         {
             SetSubState(_factory.Walk());
         }

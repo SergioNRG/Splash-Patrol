@@ -27,6 +27,10 @@ public class PlayerStateFactory
     {
         return new PlayerRunningState(_context,this);
     }
+    public PlayerBaseState Crouch()
+    {
+        return new PlayerCrouchState(_context, this);
+    }
 
     public PlayerBaseState Jump()
     {

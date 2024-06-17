@@ -11,7 +11,8 @@ public class PlayerIdleState : PlayerBaseState
  
 
     public override void EnterState()
-    {       
+    {
+        Debug.Log("HI FROM IDLE");
         _ctx.MoveX = 0;
         _ctx.MoveZ = 0;
     }
@@ -37,11 +38,15 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-        if (_ctx.Move != Vector3.zero && _ctx.IsSprinting)
+        if (_ctx.Move != Vector3.zero && _ctx.IsSprinting && !_ctx.IsCrouching)
         {
             SwitchState(_factory.Run());
         }
-        else if(_ctx.Move != Vector3.zero){ SwitchState(_factory.Walk());}
+        else if (_ctx.IsCrouching && !_ctx.IsSprinting)
+        {
+            SwitchState(_factory.Crouch());
+        }
+        else if(_ctx.Move != Vector3.zero && !_ctx.IsCrouching){ SwitchState(_factory.Walk());}
     }
 
 }
