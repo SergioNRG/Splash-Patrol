@@ -27,7 +27,6 @@ public class PlayerRunningState : PlayerBaseState
     {
         CheckSwitchStates();
         _ctx.MoveAndRotationRelativeToCamera();
-        Debug.Log(_ctx.CurrentPlayerSpeed);
     }
 
     public override void CheckSwitchStates()

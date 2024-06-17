@@ -44,8 +44,7 @@ public class PlayerCrouchState : PlayerBaseState
 
     public override void UpdateState()
     {
-        CheckSwitchStates();
-       // _ctx.MoveAndRotationRelativeToCamera();     
+        CheckSwitchStates();  
     }
 
     public override void CheckSwitchStates()

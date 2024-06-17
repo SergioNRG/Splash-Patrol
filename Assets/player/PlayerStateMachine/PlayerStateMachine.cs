@@ -198,7 +198,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         ApplyGravity();
         _currentState.UpdateStates();
-       // MoveAndRotationRelativeToCamera();
     }
 
     public void MoveAndRotationRelativeToCamera()
