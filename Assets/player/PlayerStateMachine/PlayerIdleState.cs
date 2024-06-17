@@ -6,14 +6,13 @@ public class PlayerIdleState : PlayerBaseState
 {
     public PlayerIdleState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     : base (currentContext, playerStateFactory) { }
-    public override void CheckSwitchStates()
-    {
-       
-    }
+ 
 
     public override void EnterState()
     {
         Debug.Log("HELLO FROM IDLE");
+        //_ctx.MoveX = 0;
+       // _ctx.MoveZ = 0;
     }
 
     public override void ExitState()
@@ -28,18 +27,16 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void UpdateState()
     {
-       
+        CheckSwitchStates();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void CheckSwitchStates()
     {
-        
+        if (_ctx.Move != Vector3.zero && _ctx.IsSprinting)
+        {
+            SwitchState(_factory.Run());
+        }
+        else if(_ctx.Move != Vector3.zero){ SwitchState(_factory.Walk());}
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

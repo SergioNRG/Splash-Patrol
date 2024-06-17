@@ -6,7 +6,11 @@ using UnityEngine.InputSystem.XR;
 public class PlayerJumpState : PlayerBaseState
 {
     public PlayerJumpState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
-    : base (currentContext, playerStateFactory) { InitializeSubState(); } 
+    : base (currentContext, playerStateFactory)
+    {
+        _isRootState = true;
+        InitializeSubState();
+    } 
 
 
     public override void EnterState()
@@ -35,7 +39,18 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void InitializeSubState()
     {
-
+        if (_ctx.Move == Vector3.zero && !_ctx.IsSprinting)
+        {
+            SetSubState(_factory.Idle());
+        }
+        else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting)
+        {
+            SetSubState(_factory.Walk());
+        }
+        else
+        {
+            SetSubState(_factory.Run());
+        }
     }
 
 

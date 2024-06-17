@@ -7,7 +7,11 @@ public class PlayerGroundedState : PlayerBaseState
 {
 
     public PlayerGroundedState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
-    : base (currentContext, playerStateFactory) { InitializeSubState(); }
+    : base (currentContext, playerStateFactory) 
+    { 
+        _isRootState = true;
+        InitializeSubState();
+    }
     public override void EnterState()
     {
         _ctx.PlayerVelocityY = 0f;

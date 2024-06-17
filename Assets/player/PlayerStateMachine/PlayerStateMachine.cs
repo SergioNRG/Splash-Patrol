@@ -26,6 +26,9 @@ public class PlayerStateMachine : MonoBehaviour
     private float _crouchHeight = 1f;
 
     private Vector3 _move;
+    private float _moveX;
+    private float _moveZ;
+
     //private Vector3 _mouseMov;
     private Vector3 _playerVelocity;
     private bool _isJumping;
@@ -34,12 +37,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     private CharacterController _controller;
     private Transform _camTransform;
-
+    private Transform _playerTransform;
 
     private PlayerBaseState _currentState;
     private PlayerStateFactory _stateFactory;  // state fcatory
 
     // gets and sets
+
+    public Transform CamTransform { get { return _camTransform; } }
+    public Transform PlayerTransform { get { return _playerTransform; } }
 
     public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public bool IsJumping { get { return _isJumping; } }
@@ -54,6 +60,14 @@ public class PlayerStateMachine : MonoBehaviour
     /// //////
     /// </summary>
     public Vector3 Move { get { return _move; } }
+
+    public float MoveX { get { return _moveX; } set { _moveX = value; } }
+    public float MoveZ { get { return _moveZ; } set { _moveZ = value; } }
+
+    public float CurrentPlayerSpeed { get { return _currentPlayerSpeed; } set { _currentPlayerSpeed = value; } }
+    public float BasePlayerSpeed { get { return _basePlayerSpeed; } set { _basePlayerSpeed = value; } }
+
+    public float SprintPlayerSpeed { get { return _sprintPlayerSpeed; } set { _sprintPlayerSpeed = value; }  }
 
     public bool IsSprinting {  get { return _isSprinting; } }
 
@@ -95,21 +109,23 @@ public class PlayerStateMachine : MonoBehaviour
     }
     private void OnSprint()
     {
-        if (_isPlayerGrounded && !_isCrouching)
+        _isSprinting = true;
+       /* if (_isPlayerGrounded && !_isCrouching)
         {
             _currentPlayerSpeed = _sprintPlayerSpeed;
             Debug.Log("Sprinting");
-        }
+        }*/
 
     }
 
     private void OnSprintCanceled()
     {
-        if (!_isCrouching)
+        _isSprinting = false;
+       /* if (!_isCrouching)
         {
             _currentPlayerSpeed = _basePlayerSpeed;
             Debug.Log("Stop Sprinting");
-        }
+        }*/
 
     }
 
@@ -161,6 +177,7 @@ public class PlayerStateMachine : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _camTransform = Camera.main.transform;
+        _playerTransform = transform;
         _controller = GetComponent<CharacterController>();
         _currentPlayerSpeed = _basePlayerSpeed;
         _isJumping = false;
@@ -171,11 +188,11 @@ public class PlayerStateMachine : MonoBehaviour
     void Update()
     {
         ApplyGravity();
-        _currentState.UpdateState();
-        MoveAndRotationRelativeToCamera();
+        _currentState.UpdateStates();
+       // MoveAndRotationRelativeToCamera();
     }
 
-    private void MoveAndRotationRelativeToCamera()
+    public void MoveAndRotationRelativeToCamera()
     {
         Vector3 forward = _camTransform.forward;
         Vector3 right = _camTransform.right;
