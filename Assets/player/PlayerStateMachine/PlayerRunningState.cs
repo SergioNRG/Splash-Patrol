@@ -32,15 +32,13 @@ public class PlayerRunningState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-        if (_ctx.Move == Vector3.zero && !_ctx.IsCrouching)
+        if (_ctx.Move == Vector3.zero)
         {
             SwitchState(_factory.Idle());
-        }else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting && !_ctx.IsCrouching)
+        }
+        else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting)
         {
             SwitchState(_factory.Walk());
-        }else if (_ctx.IsCrouching && !_ctx.IsSprinting)
-        {
-            SwitchState(_factory.Crouch());
         }
     }
 }

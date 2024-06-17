@@ -24,21 +24,18 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void InitializeSubState()
     {
-        if (_ctx.Move == Vector3.zero && !_ctx.IsSprinting && !_ctx.IsCrouching)
+        if (_ctx.Move == Vector3.zero && !_ctx.IsSprinting)
         {
             SetSubState(_factory.Idle());
-        }else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting && !_ctx.IsCrouching)
+        }else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting)
         {
             SetSubState(_factory.Walk());
         }     
-        else if(_ctx.Move != Vector3.zero && _ctx.IsSprinting && !_ctx.IsCrouching)
+        else if(_ctx.Move != Vector3.zero && _ctx.IsSprinting)
         {
             SetSubState(_factory.Run());
         }
-        else if (_ctx.IsCrouching)
-        {
-            SetSubState(_factory.Crouch());
-        }
+       
     }
 
     public override void UpdateState()
@@ -49,7 +46,10 @@ public class PlayerGroundedState : PlayerBaseState
     }
     public override void CheckSwitchStates()
     {
-        if (_ctx.IsJumping && !_ctx.IsCrouching) { SwitchState(_factory.Jump()); }
+        if (_ctx.IsJumping) { SwitchState(_factory.Jump()); }
+        if (_ctx.IsCrouching && !_ctx.IsJumping)
+        {
+            SwitchState(_factory.Crouch());
+        }
     }
-
 }

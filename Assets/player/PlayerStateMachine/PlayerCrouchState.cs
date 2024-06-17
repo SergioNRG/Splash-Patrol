@@ -5,7 +5,11 @@ using UnityEngine;
 public class PlayerCrouchState : PlayerBaseState
 {
     public PlayerCrouchState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
-   : base(currentContext, playerStateFactory) { }
+   : base(currentContext, playerStateFactory)
+    {
+        _isRootState = true;
+        InitializeSubState();
+    }
 
     public override void EnterState()
     {
@@ -24,26 +28,32 @@ public class PlayerCrouchState : PlayerBaseState
 
     public override void InitializeSubState()
     {
-
+        if (_ctx.Move == Vector3.zero && !_ctx.IsSprinting)
+        {
+            SetSubState(_factory.Idle());
+        }
+        else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting )
+        {
+            SetSubState(_factory.Walk());
+        }
+        else if (_ctx.Move != Vector3.zero && _ctx.IsSprinting )
+        {
+            SetSubState(_factory.Run());
+        }
     }
 
     public override void UpdateState()
     {
         CheckSwitchStates();
-        _ctx.MoveAndRotationRelativeToCamera();     
+       // _ctx.MoveAndRotationRelativeToCamera();     
     }
 
     public override void CheckSwitchStates()
     {
-        if (_ctx.Move != Vector3.zero && _ctx.IsSprinting  && !_ctx.IsCrouching)
+        if (_ctx.Controller.isGrounded && !_ctx.IsCrouching)
         {
-            SwitchState(_factory.Run());
+            SwitchState(_factory.Grounded());
         }
-        else if (_ctx.Move != Vector3.zero && !_ctx.IsSprinting && !_ctx.IsCrouching)
-        {
-            SwitchState(_factory.Walk());
-        }
-        else if (_ctx.Move == Vector3.zero && !_ctx.IsCrouching) { SwitchState(_factory.Idle()); }
 
     }
 }
