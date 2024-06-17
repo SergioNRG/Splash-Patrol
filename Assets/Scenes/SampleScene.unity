@@ -611,7 +611,7 @@ PrefabInstance:
     - target: {fileID: 3539843353391411813, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3539843353391411813, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
@@ -712,7 +712,7 @@ PrefabInstance:
     - target: {fileID: 7415601439489771938, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7415601439489771938, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
@@ -753,11 +753,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3211028679222146853, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1623255279}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ca68251e8346cd4cad0f2e5eac547f3, type: 3}
 --- !u!114 &530684408 stripped
 MonoBehaviour:
@@ -1406,30 +1402,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b882e481b61d6e46aa7d53080a05e17, type: 3}
---- !u!1 &1623255277 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3211028679222146853, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 436611463}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1623255279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623255277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d54b8de427fb2244817a03c834ecae0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: 284b2db9c9a6e9848b758dbd19c01a67, type: 2}
-  _basePlayerSpeed: 2
-  _sprintPlayerSpeed: 4
-  _crouchingPlayerSpeed: 1
-  _jumpHeight: 1
-  _gravityValue: -9.81
 --- !u!1 &1683398501
 GameObject:
   m_ObjectHideFlags: 0

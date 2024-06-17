@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Vcam
   - Portal
+  - AimCam
   layers:
   - Default
   - TransparentFX

@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 7667675997348757858}
   - component: {fileID: 3539843353391411813}
   - component: {fileID: 7415601439489771938}
+  - component: {fileID: 1647580762093595936}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -372,14 +373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _crosshair: {fileID: 3689301768962702231}
   _inputReader: {fileID: 11400000, guid: 284b2db9c9a6e9848b758dbd19c01a67, type: 2}
-  _cam: {fileID: 1079955071837122763}
-  _aimFov: 30
-  _normalFov: 60
-  _zoomSpeed: 15
-  _aimSpeedY: 30
-  _aimSpeedX: 50
-  _normalSpeedY: 0
-  _normalSpeedX: 0
+  _normalCam: {fileID: 0}
+  _aimCam: {fileID: 0}
 --- !u!114 &7415601439489771938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +399,24 @@ MonoBehaviour:
   ActiveGun: {fileID: 0}
   ActiveMelee: {fileID: 0}
   _activeWeapons: []
+--- !u!114 &1647580762093595936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211028679222146853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d54b8de427fb2244817a03c834ecae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 284b2db9c9a6e9848b758dbd19c01a67, type: 2}
+  _basePlayerSpeed: 2
+  _sprintPlayerSpeed: 4
+  _crouchingPlayerSpeed: 1
+  _jumpHeight: 1
+  _gravityValue: -9.81
 --- !u!1 &3740495465317456883
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +937,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 30
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
