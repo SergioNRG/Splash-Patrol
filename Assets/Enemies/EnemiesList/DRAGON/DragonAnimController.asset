@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65c7ef5ccbe6a4f8d1ba5a65d9ef1a, type: 3}
   m_Name: DragonAnimController
   m_EditorClassIdentifier: 
-  Anims: []
+  Anims:
+  - AnimKey: CHASE
+    AnimName: Dragon_MoveFWD
+  - AnimKey: ATTACK
+    AnimName: Dragon_Attack
+  - AnimKey: DIE
+    AnimName: Dragon_Die
