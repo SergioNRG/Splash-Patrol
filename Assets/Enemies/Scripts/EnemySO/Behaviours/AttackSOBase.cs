@@ -10,7 +10,7 @@ public class AttackSOBase : ScriptableObject
     protected Transform transform;
     protected GameObject enemyObject;
 
-    protected Transform playerTranform;
+    public Transform playerTranform;
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy, NavMeshAgent enemyAgent)
     {
@@ -22,5 +22,5 @@ public class AttackSOBase : ScriptableObject
         playerTranform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public virtual void AttackLogic(int attackDistance, Animator animator, string animation) { }
+    public virtual void AttackLogic( Animator animator, string animation) { }
 }

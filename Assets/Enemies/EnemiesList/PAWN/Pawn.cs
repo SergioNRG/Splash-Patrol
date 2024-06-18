@@ -45,9 +45,6 @@ public class Pawn : EnemyBase
         {
             if (_moveLogic != null) { MoveBaseInstance.MoveLogic(); }
         }else { ChangeState(State.Die); }
-        
-
-        //transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
     }
 
     protected override void Die()

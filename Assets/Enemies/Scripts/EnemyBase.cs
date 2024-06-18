@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(EnemyEffectsManager))]
+[RequireComponent(typeof(EnemyHealthManager))]
+[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBase : MonoBehaviour
 {
     //protected int _maxHealth;
@@ -22,6 +28,7 @@ public class EnemyBase : MonoBehaviour
 
     protected State _currentState;
 
+   [SerializeField] protected Transform _playerTransform;
 
     #region STRINGS FOR ANIMATIONS NAMES  
 
