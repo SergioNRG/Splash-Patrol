@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerStateMachine : MonoBehaviour
 {
     [Header("InputReaderSO")]
