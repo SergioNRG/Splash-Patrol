@@ -46,54 +46,45 @@ public class ElitePawn : EnemyBase
         MoveBaseInstance.Initialize(gameObject, this, _agent);
         MoveBaseInstance2.Initialize(gameObject, this,_agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent);
+        ChangeState(State.Move);
     }
 
     void Update()
     {
-        if (_healthManager.CurrentHealth <= 0)
-        {
-            _agent.isStopped = true;
-            //AnimsController.ChangeAnimationState(_animator, DieAnim, DieAnim);
-        }
-        else
-        {
-            Move();
-            Attack();
-        }
-        
-       
+        StateMachine();      
     }
-
-   /* protected override void Idle()
-    {
-        if (IdleBaseInstance != null) { IdleBaseInstance.IdleLogic(); }
-    }*/
 
     protected override void Move()
     {
-        if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
+        if (_healthManager.CurrentHealth > 0)
         {
-            if (_healthManager.CurrentHealth < _healthManager.MaxHealth)
+            if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
             {
-                AnimsController.Playanimation(_animator, ChaseAnim);
-                //AnimsController.ChangeAnimationState(_animator, MoveAnim, ChaseAnim);
-                if (_chasePlayerLogic != null) { MoveBaseInstance2.MoveLogic(); }
+                if (_healthManager.CurrentHealth < _healthManager.MaxHealth)
+                {
+                    AnimsController.Playanimation(_animator, ChaseAnim);
+                    if (_chasePlayerLogic != null) { MoveBaseInstance2.MoveLogic(); }
+                }
+                else
+                {
+                    AnimsController.Playanimation(_animator, MoveAnim);
+                    if (_moveLogic != null) { MoveBaseInstance.MoveLogic(); }
+                }
             }
-            else
-            {
-                AnimsController.Playanimation(_animator, MoveAnim);
-                // AnimsController.ChangeAnimationState(_animator, MoveAnim, MoveAnim);
-                if (_moveLogic != null) { MoveBaseInstance.MoveLogic(); }
-            }
-        }
-        
-             //transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
+        }else { ChangeState(State.Die); }
     }
 
     protected override void Attack()
     {
-        if (_attackLogic != null) { AttackBaseInstance.AttackLogic(_attackDistance, _animator, AttackAnim); }
-        //AnimsController.Playanimation(_animator, AttackAnim);
+        if (_healthManager.CurrentHealth > 0)
+        {
+            if (_attackLogic != null) { AttackBaseInstance.AttackLogic(_attackDistance, _animator, AttackAnim); }
+        }else { ChangeState(State.Die); }
+    }
 
+
+    protected override void Die()
+    {
+        _agent.isStopped = true;
     }
 }
