@@ -12,6 +12,17 @@ public class EnemyBase : MonoBehaviour
     // [SerializeField] protected int _attackDamage;
     //protected int _attackSpeed;
     //[SerializeField] protected Transform _moveTarget;
+    public enum State
+    {
+        Idle,
+        Move,
+        Attack,
+        Die
+    }
+
+    protected State _currentState;
+
+
     #region STRINGS FOR ANIMATIONS NAMES  
 
     // animations data
@@ -31,5 +42,41 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Attack() { }
     protected virtual void Move() { }
 
+    protected virtual void Die() { }
+
     protected virtual void Heal() { }
+
+    public void ChangeState(State newState)
+    {
+        if (_currentState != newState)
+        {
+            _currentState = newState;
+        }
+
+    }
+
+    public void StateMachine()
+    {
+        switch (_currentState)
+        {
+            default:
+            case State.Idle:
+                Idle();
+                break;
+
+            case State.Move:
+                Move();
+                break;
+
+            case State.Attack:
+                Attack();
+                break;
+
+            case State.Die:
+                Die();
+                break;
+
+
+        }
+    }
 }

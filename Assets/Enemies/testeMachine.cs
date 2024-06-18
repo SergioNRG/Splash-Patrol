@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class testeMachine : MonoBehaviour
+public abstract class testeMachine// : MonoBehaviour
 {
     public enum State
     {
@@ -10,7 +10,7 @@ public abstract class testeMachine : MonoBehaviour
         Attacking,
     }
 
-    protected State _currentState = State.Idle;
+    protected State _currentState;// = State.Idle;
 
 
     public abstract void OnTriggerEnter(Collider other);

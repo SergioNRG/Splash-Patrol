@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +14,7 @@ public class Pawn : EnemyBase
     private MoveSOBase MoveBaseInstance;// { get; set; }
 
     private NavMeshAgent _agent;
-  
+ 
     private void OnEnable()
     {
         MoveAnim = AnimsController.Anims.Single(MoveAnim => MoveAnim.AnimKey == "MOVE").AnimName;
@@ -34,12 +35,14 @@ public class Pawn : EnemyBase
     {
         //IdleBaseInstance.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
         MoveBaseInstance.Initialize(gameObject, this, _agent);
-        
+        ChangeState(State.Move);
     }
 
     void Update()
     {
-        if (_healthManager.CurrentHealth <= 0)
+        StateMachine();
+
+       /* if (_healthManager.CurrentHealth <= 0)
         {
             ///Debug.Log("tatatat");
             //AnimsController.ChangeAnimationState(_animator, MoveAnim, DieAnim);
@@ -49,7 +52,7 @@ public class Pawn : EnemyBase
         {
             AnimsController.ChangeAnimationState(_animator, MoveAnim, MoveAnim);
             Move();
-        }
+        }*/
 
     }
 
@@ -60,8 +63,18 @@ public class Pawn : EnemyBase
 
     protected override void Move()
     {
-        if (_moveLogic != null) { MoveBaseInstance.MoveLogic(); }
+        if (_healthManager.CurrentHealth > 0)
+        {
+            if (_moveLogic != null) { MoveBaseInstance.MoveLogic(); }
+        }else { ChangeState(State.Die); }
+        
 
         //transform.position = Vector3.MoveTowards(transform.position, base._moveTarget.position, base._movSpeed* Time.deltaTime);
     }
+
+    protected override void Die()
+    {
+        _agent.isStopped = true;
+    }
+
 }
