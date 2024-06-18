@@ -36,10 +36,7 @@ public class PlayerCrouchState : PlayerBaseState
         {
             SetSubState(_factory.Walk());
         }
-        /*else if (_ctx.Move != Vector3.zero && _ctx.IsSprinting )
-        {
-            SetSubState(_factory.Run());
-        }*/
+
     }
 
     public override void UpdateState()
