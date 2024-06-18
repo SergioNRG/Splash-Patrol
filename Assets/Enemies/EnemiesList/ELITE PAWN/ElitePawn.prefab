@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 2862735693680805368}
   - component: {fileID: 8259838852698761257}
   - component: {fileID: 8758936758597236383}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ElitePawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,6 +895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5be96b1e1b47c945a79c7404466f39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 0}
   <AnimsController>k__BackingField: {fileID: 11400000, guid: bf9ed0a46af5e744f93cb9d1dd41abc0,
     type: 2}
   <_animator>k__BackingField: {fileID: 0}
@@ -946,7 +947,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7111392625255658810}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -334000983
   m_Radius: 0.5
   m_Speed: 1.5
   m_Acceleration: 8

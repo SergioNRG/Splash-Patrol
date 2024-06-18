@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 1967977785979805007}
   - component: {fileID: 6248894471001508088}
   - component: {fileID: 2545892592054211355}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631008564190387957}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -334000983
   m_Radius: 0.5
   m_Speed: 1
   m_Acceleration: 8
@@ -181,10 +181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0816b898739b74eb653f186ee418ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 0}
   <AnimsController>k__BackingField: {fileID: 11400000, guid: de79865611a989342bfe7929f9b5c1b6,
     type: 2}
   <_animator>k__BackingField: {fileID: 0}
   <MoveAnim>k__BackingField: 
+  <ChaseAnim>k__BackingField: 
+  <AttackAnim>k__BackingField: 
   <DieAnim>k__BackingField: 
   _moveLogic: {fileID: 11400000, guid: ce0b84794b57981419bd7a50e58ea812, type: 2}
 --- !u!114 &1967977785979805007
