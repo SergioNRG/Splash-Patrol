@@ -11,7 +11,7 @@ public class IdleSOBase : ScriptableObject
     protected Transform transform;
     protected GameObject enemyObject;
 
-    protected Transform playerTranform;
+    //protected Transform playerTranform;
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy, NavMeshAgent enemyAgent)
     {
@@ -20,7 +20,7 @@ public class IdleSOBase : ScriptableObject
         this.enemyObject = gameObject;
         this.transform = gameObject.transform;
 
-        playerTranform = GameObject.FindGameObjectWithTag("Player").transform;
+       // playerTranform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public virtual void IdleLogic() { }
