@@ -13,7 +13,7 @@ public class ProjectileAttack : AttackSOBase
         if (_isAttacking)
         {
             animator.Play(animation);
-            
+            enemyAgent.isStopped = true;
             _isAttacking = false;
             base.enemy.StartCoroutine(Attack());
         }                      
@@ -21,7 +21,7 @@ public class ProjectileAttack : AttackSOBase
 
     private IEnumerator Attack()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         GameObject projectile = Instantiate(_projectile, bulletPoint.position, Quaternion.identity);
         //GameObject projectile = Instantiate(_projectile, enemyObject.transform.position, Quaternion.identity);
         projectile.transform.parent = enemyObject.transform;

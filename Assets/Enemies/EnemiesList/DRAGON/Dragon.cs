@@ -72,11 +72,12 @@ public class Dragon : EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
+            transform.LookAt(_playerTransform.position);
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 if (_attackLogic != null)
                 {
-                    _agent.isStopped = true;
+                   // _agent.isStopped = true;
                     AttackBaseInstance.AttackLogic(_animator, AttackAnim);
                 }
             }
