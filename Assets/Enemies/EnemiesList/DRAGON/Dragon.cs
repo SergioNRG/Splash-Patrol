@@ -15,7 +15,8 @@ public class Dragon : EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
-    
+    [SerializeField] private float flyHeight;
+
     private NavMeshAgent _agent;
 
     private void OnEnable()
@@ -54,6 +55,9 @@ public class Dragon : EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
+            Vector3 position = transform.position;
+            position.y = _agent.nextPosition.y + flyHeight;
+            transform.position = position;
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 ChangeState(State.Attack);
@@ -72,17 +76,21 @@ public class Dragon : EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
+            Vector3 position = transform.position;
+            position.y = _agent.nextPosition.y + flyHeight;
+            transform.position = position;
             transform.LookAt(_playerTransform.position);
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 if (_attackLogic != null)
                 {
-                   // _agent.isStopped = true;
+                    _agent.isStopped = true;
                     AttackBaseInstance.AttackLogic(_animator, AttackAnim);
                 }
             }
             else 
             {
+
                 _agent.isStopped = false;
                 ChangeState(State.Move); 
             }
@@ -93,6 +101,9 @@ public class Dragon : EnemyBase
 
     protected override void Die()
     {
+        //Vector3 targetPosition = new Vector3(transform.position.x, 0, transform.position.z);
+        //_agent.destination = targetPosition;
+       // transform.position = Vector3.MoveTowards(transform.position, targetPosition, 2 * Time.deltaTime);
         _agent.isStopped = true;
     }
 }
