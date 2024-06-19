@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddea41a187ce645428db6acde333a200, type: 3}
   m_Name: ProjectileAttack
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  _spawnPoint: {fileID: 0}
+  playerTranform: {fileID: 0}
+  _projectile: {fileID: 387910211000296344, guid: 24d0a70a0b2bc8e42ae43faf061bac86,
+    type: 3}
