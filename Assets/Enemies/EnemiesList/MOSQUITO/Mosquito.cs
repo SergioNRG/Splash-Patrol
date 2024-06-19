@@ -72,7 +72,7 @@ public class Mosquito :EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
-            transform.LookAt(_playerTransform.position);
+           // transform.LookAt(_playerTransform.position);
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 if (_attackLogic != null)
