@@ -15,7 +15,7 @@ public class Dragon : EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
-
+    
     private NavMeshAgent _agent;
 
     private void OnEnable()
@@ -40,6 +40,7 @@ public class Dragon : EnemyBase
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent);
+        AttackBaseInstance.InitializePoint(gameObject.GetComponentInChildren<ParticleSystem>().transform);
         ChangeState(State.Move);
     }
 
@@ -79,7 +80,11 @@ public class Dragon : EnemyBase
                     AttackBaseInstance.AttackLogic(_animator, AttackAnim);
                 }
             }
-            else { ChangeState(State.Move); }
+            else 
+            {
+                _agent.isStopped = false;
+                ChangeState(State.Move); 
+            }
 
         }
         else { ChangeState(State.Die); }

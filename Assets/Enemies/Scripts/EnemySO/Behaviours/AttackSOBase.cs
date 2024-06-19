@@ -9,7 +9,7 @@ public class AttackSOBase : ScriptableObject
     protected NavMeshAgent enemyAgent;
     protected Transform transform;
     protected GameObject enemyObject;
-
+    protected Transform bulletPoint;
    // public Transform playerTranform;
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy, NavMeshAgent enemyAgent)
@@ -23,4 +23,9 @@ public class AttackSOBase : ScriptableObject
     }
 
     public virtual void AttackLogic( Animator animator, string animation) { }
+
+    public virtual void InitializePoint(Transform point)
+    {
+        this.bulletPoint = point;
+    }
 }

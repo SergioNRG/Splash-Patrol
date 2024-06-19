@@ -28,7 +28,7 @@ public class EnemyBase : MonoBehaviour
 
     protected State _currentState;
 
-   [SerializeField] protected Transform _playerTransform;
+    [SerializeField] protected Transform _playerTransform;
 
     #region STRINGS FOR ANIMATIONS NAMES  
 
