@@ -532,6 +532,7 @@ MonoBehaviour:
   _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
   _attackLogic: {fileID: 11400000, guid: ff65f108ce80f874f86f704ffac01562, type: 2}
   _attackDistance: 2
+  flyHeight: 2
 --- !u!114 &5444901325646913459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +609,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -633,7 +634,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &8249127435048053600
 GameObject:
   m_ObjectHideFlags: 0

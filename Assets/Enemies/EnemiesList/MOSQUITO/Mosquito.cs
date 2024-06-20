@@ -16,6 +16,7 @@ public class Mosquito :EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
+    [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;
 
@@ -54,6 +55,9 @@ public class Mosquito :EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
+            Vector3 position = transform.position;
+            position.y = _agent.nextPosition.y + flyHeight;
+            transform.position = position;
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 ChangeState(State.Attack);
@@ -72,7 +76,10 @@ public class Mosquito :EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
-           // transform.LookAt(_playerTransform.position);
+            Vector3 position = transform.position;
+            position.y = _agent.nextPosition.y + flyHeight;
+            transform.position = position;
+            // transform.LookAt(_playerTransform.position);
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 if (_attackLogic != null)
