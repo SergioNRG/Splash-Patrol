@@ -20,7 +20,6 @@ public class ProjectileAttack : AttackSOBase
             base.enemy.StartCoroutine(Attack(animator,animation));
         }                      
     }
-
     private IEnumerator Attack(Animator anim,string animation)
     {
         anim.Play(animation);
