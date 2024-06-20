@@ -17,7 +17,7 @@ public class ElitePawn : EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
-    [SerializeField] private int _attackSpeed;
+    [SerializeField] private float _attackSpeed;
 
     private NavMeshAgent _agent;
 

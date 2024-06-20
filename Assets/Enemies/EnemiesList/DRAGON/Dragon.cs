@@ -15,7 +15,7 @@ public class Dragon : EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
-    [SerializeField] private int _attackSpeed;
+    [SerializeField] private float _attackSpeed;
     [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;
@@ -80,13 +80,18 @@ public class Dragon : EnemyBase
             Vector3 position = transform.position;
             position.y = _agent.nextPosition.y + flyHeight;
             transform.position = position;
-            transform.LookAt(_playerTransform.position);
+           
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 if (_attackLogic != null)
                 {
-                    _agent.isStopped = true;
+                   // _agent.isStopped = true;
+                    Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
+                    transform.LookAt(lookTarget);
+                    // transform.LookAt(lookTarget);
+
                     AttackBaseInstance.AttackLogic(_animator, AttackAnim);
+                   
                 }
             }
             else 

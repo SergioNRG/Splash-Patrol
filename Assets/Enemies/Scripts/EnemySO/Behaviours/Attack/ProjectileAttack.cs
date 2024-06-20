@@ -14,15 +14,16 @@ public class ProjectileAttack : AttackSOBase
         if (_isAttacking)
         {
             animator.SetFloat("AttackSpeed", 1 / attackSpeed);
-            animator.Play(animation);
+           // animator.Play(animation);
             enemyAgent.isStopped = true;
             _isAttacking = false;
-            base.enemy.StartCoroutine(Attack(animator));
+            base.enemy.StartCoroutine(Attack(animator,animation));
         }                      
     }
 
-    private IEnumerator Attack(Animator anim)
+    private IEnumerator Attack(Animator anim,string animation)
     {
+        anim.Play(animation);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         GameObject projectile = Instantiate(_projectile, bulletPoint.position, Quaternion.identity);
         //GameObject projectile = Instantiate(_projectile, enemyObject.transform.position, Quaternion.identity);

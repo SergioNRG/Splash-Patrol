@@ -32,7 +32,7 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log("yuuup");
-        }
+        }else { Destroy(gameObject); }
         
     }
 }

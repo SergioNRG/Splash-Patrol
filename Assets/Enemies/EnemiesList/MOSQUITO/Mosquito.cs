@@ -16,7 +16,7 @@ public class Mosquito :EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
-    [SerializeField] private int _attackSpeed;
+    [SerializeField] private float _attackSpeed;
     [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;
