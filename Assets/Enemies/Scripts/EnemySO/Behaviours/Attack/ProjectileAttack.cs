@@ -11,7 +11,7 @@ public class ProjectileAttack : AttackSOBase
 
     public override void AttackLogic(Animator animator, string animation)
     {
-        animator.SetFloat("AttackSpeed", 1 / attackSpeed);
+        animator.SetFloat("AttackSpeed", 1 * attackSpeed);
         enemyAgent.isStopped = true;
         GameObject projectile = Instantiate(_projectile, bulletPoint.position, Quaternion.identity);
         projectile.transform.parent = enemyObject.transform;

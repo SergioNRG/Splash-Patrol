@@ -470,7 +470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9105253015149131132
 Transform:
   m_ObjectHideFlags: 0
@@ -532,7 +532,7 @@ MonoBehaviour:
   _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
   _attackLogic: {fileID: 11400000, guid: ff65f108ce80f874f86f704ffac01562, type: 2}
   _attackDistance: 2
-  _attackSpeed: 1
+  _attackSpeed: 0.5
   flyHeight: 2
 --- !u!114 &5444901325646913459
 MonoBehaviour:
