@@ -17,6 +17,7 @@ public class ElitePawn : EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
+    [SerializeField] private int _attackSpeed;
 
     private NavMeshAgent _agent;
 
@@ -46,7 +47,7 @@ public class ElitePawn : EnemyBase
        // IdleBaseInstance.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
         MoveBaseInstance.Initialize(gameObject, this, _agent);
         ChaseBaseInstance.Initialize(gameObject, this,_agent);
-        AttackBaseInstance.Initialize(gameObject, this, _agent);
+        AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
         ChangeState(State.Move);
     }
 

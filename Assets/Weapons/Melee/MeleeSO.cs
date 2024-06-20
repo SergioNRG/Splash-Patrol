@@ -73,11 +73,8 @@ public class MeleeSO : WeaponSOBase
             _lastAttackTime = Time.time;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, AttackConfig.attackDistance, AttackConfig.attackLayer))
             {
-                Debug.Log("entering");
                 if (hit.collider != null)
                 {
-                    Debug.Log("swiping");
-                    ////////////////////////////////
                     if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
                     {
                         damageable.ApplyDamage(AttackConfig.attackDamage);

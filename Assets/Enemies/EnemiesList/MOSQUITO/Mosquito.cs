@@ -16,6 +16,7 @@ public class Mosquito :EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
+    [SerializeField] private int _attackSpeed;
     [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;
@@ -41,7 +42,7 @@ public class Mosquito :EnemyBase
     void Start()
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
-        AttackBaseInstance.Initialize(gameObject, this, _agent);
+        AttackBaseInstance.Initialize(gameObject, this, _agent,_attackSpeed);
         ChangeState(State.Move);
     }
 

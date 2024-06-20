@@ -383,6 +383,7 @@ MonoBehaviour:
   _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
   _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
   _attackDistance: 8
+  _attackSpeed: 1
   flyHeight: 2
 --- !u!1 &1897643569460175871
 GameObject:
