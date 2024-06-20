@@ -23,7 +23,6 @@ public class ProjectileAttack : AttackSOBase
 
     private IEnumerator Attack(Animator anim)
     {
-        Debug.Log("oioi");
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         GameObject projectile = Instantiate(_projectile, bulletPoint.position, Quaternion.identity);
         //GameObject projectile = Instantiate(_projectile, enemyObject.transform.position, Quaternion.identity);

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb9f4a3c4e04fc41beeeacd1d780ff3, type: 3}
   m_Name: NormalAttack
   m_EditorClassIdentifier: 
+  playerTranform: {fileID: 0}

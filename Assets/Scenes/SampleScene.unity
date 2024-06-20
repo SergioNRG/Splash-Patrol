@@ -1647,36 +1647,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 333564178691003061, guid: e589de3474a8c4444984ba5b0ee4ef36,
-        type: 3}
-      propertyPath: m_Height
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 333564178691003061, guid: e589de3474a8c4444984ba5b0ee4ef36,
-        type: 3}
-      propertyPath: m_BaseOffset
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 333564178691003061, guid: e589de3474a8c4444984ba5b0ee4ef36,
-        type: 3}
-      propertyPath: m_ObstacleAvoidanceType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2459371029339547615, guid: e589de3474a8c4444984ba5b0ee4ef36,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2459371029339547615, guid: e589de3474a8c4444984ba5b0ee4ef36,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4981986019736114119, guid: e589de3474a8c4444984ba5b0ee4ef36,
-        type: 3}
-      propertyPath: _attackDistance
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7694977124826184390, guid: e589de3474a8c4444984ba5b0ee4ef36,
         type: 3}
       propertyPath: m_Name
@@ -1685,7 +1655,7 @@ PrefabInstance:
     - target: {fileID: 7694977124826184390, guid: e589de3474a8c4444984ba5b0ee4ef36,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9105253015149131132, guid: e589de3474a8c4444984ba5b0ee4ef36,
         type: 3}
@@ -1755,11 +1725,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dragon
       objectReference: {fileID: 0}
-    - target: {fileID: 1814146756987440013, guid: 4b8a3044079f5024487f19c045677c4b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6879544803304114649, guid: 4b8a3044079f5024487f19c045677c4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1811,8 +1776,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5313860039802342676, guid: 4b8a3044079f5024487f19c045677c4b, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b8a3044079f5024487f19c045677c4b, type: 3}
@@ -1824,30 +1788,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2862735693680805368, guid: c268d55824748f948bfd4c64a3561bb4,
-        type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2862735693680805368, guid: c268d55824748f948bfd4c64a3561bb4,
-        type: 3}
-      propertyPath: m_AgentTypeID
-      value: -334000983
-      objectReference: {fileID: 0}
-    - target: {fileID: 2862735693680805368, guid: c268d55824748f948bfd4c64a3561bb4,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7111392625255658810, guid: c268d55824748f948bfd4c64a3561bb4,
         type: 3}
       propertyPath: m_Name
       value: ElitePawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 7111392625255658810, guid: c268d55824748f948bfd4c64a3561bb4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8696071783618423351, guid: c268d55824748f948bfd4c64a3561bb4,
         type: 3}
