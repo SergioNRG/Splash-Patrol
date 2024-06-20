@@ -85,13 +85,11 @@ public class Dragon : EnemyBase
             {
                 if (_attackLogic != null)
                 {
-                   // _agent.isStopped = true;
                     Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
                     transform.LookAt(lookTarget);
                     // transform.LookAt(lookTarget);
-
-                    AttackBaseInstance.AttackLogic(_animator, AttackAnim);
-                   
+                   // _animator.SetFloat("AttackSpeed", 1 / _attackSpeed);
+                    AnimsController.Playanimation(_animator, AttackAnim);                  
                 }
             }
             else 
@@ -111,5 +109,10 @@ public class Dragon : EnemyBase
         //_agent.destination = targetPosition;
        // transform.position = Vector3.MoveTowards(transform.position, targetPosition, 2 * Time.deltaTime);
         _agent.isStopped = true;
+    }
+
+    public void spawnProjectile()
+    {
+        AttackBaseInstance.AttackLogic(_animator, AttackAnim);
     }
 }

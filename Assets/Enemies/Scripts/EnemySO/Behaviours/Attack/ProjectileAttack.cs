@@ -7,20 +7,27 @@ using static AnimsList;
 public class ProjectileAttack : AttackSOBase
 {
     [SerializeField] private GameObject _projectile; 
-    private bool _isAttacking = true;
+    //private bool _isAttacking = true;
 
     public override void AttackLogic(Animator animator, string animation)
     {
-        if (_isAttacking)
+        animator.SetFloat("AttackSpeed", 1 / attackSpeed);
+        enemyAgent.isStopped = true;
+        GameObject projectile = Instantiate(_projectile, bulletPoint.position, Quaternion.identity);
+        projectile.transform.parent = enemyObject.transform;
+       /* if (_isAttacking)
         {
             animator.SetFloat("AttackSpeed", 1 / attackSpeed);
            // animator.Play(animation);
             enemyAgent.isStopped = true;
-            _isAttacking = false;
-            base.enemy.StartCoroutine(Attack(animator,animation));
-        }                      
+            GameObject projectile = Instantiate(_projectile, bulletPoint.position, Quaternion.identity);
+            //GameObject projectile = Instantiate(_projectile, enemyObject.transform.position, Quaternion.identity);
+            projectile.transform.parent = enemyObject.transform;
+           // _isAttacking = false;
+           // base.enemy.StartCoroutine(Attack(animator,animation));
+        }     */                 
     }
-    private IEnumerator Attack(Animator anim,string animation)
+   /* private IEnumerator Attack(Animator anim,string animation)
     {
         anim.Play(animation);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
@@ -30,5 +37,5 @@ public class ProjectileAttack : AttackSOBase
         
         _isAttacking = true ;
        
-    }
+    }*/
 }
