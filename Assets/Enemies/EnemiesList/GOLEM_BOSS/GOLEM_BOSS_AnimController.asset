@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65c7ef5ccbe6a4f8d1ba5a65d9ef1a, type: 3}
   m_Name: GOLEM_BOSS_AnimController
   m_EditorClassIdentifier: 
-  Anims: []
+  Anims:
+  - AnimKey: IDLE
+    AnimName: BossGolemIdle
+  - AnimKey: CHASE
+    AnimName: BossGolemMove
+  - AnimKey: ATTACK
+    AnimName: BossGolemRockAttack
+  - AnimKey: ROAR
+    AnimName: BossGolemVictory
+  - AnimKey: GETHIT
+    AnimName: BossGolemGetHit
+  - AnimKey: DIE
+    AnimName: BossGolemDie
