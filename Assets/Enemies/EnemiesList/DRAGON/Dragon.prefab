@@ -384,6 +384,8 @@ MonoBehaviour:
   _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
   _attackDistance: 8
   _attackSpeed: 0.5
+  Projectile: {fileID: 387910211000296344, guid: 24d0a70a0b2bc8e42ae43faf061bac86,
+    type: 3}
   flyHeight: 2
 --- !u!1 &1897643569460175871
 GameObject:

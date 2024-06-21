@@ -1752,20 +1752,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2352503097353688277, guid: da9dac629d8c5ba4f8aa129d1731d3b9,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4641541689745229465, guid: da9dac629d8c5ba4f8aa129d1731d3b9,
         type: 3}
       propertyPath: m_Name
       value: Golem
-      objectReference: {fileID: 0}
-    - target: {fileID: 4641541689745229465, guid: da9dac629d8c5ba4f8aa129d1731d3b9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5432554270374231474, guid: da9dac629d8c5ba4f8aa129d1731d3b9,
         type: 3}
@@ -1780,7 +1770,7 @@ PrefabInstance:
     - target: {fileID: 5432554270374231474, guid: da9dac629d8c5ba4f8aa129d1731d3b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -16.7
       objectReference: {fileID: 0}
     - target: {fileID: 5432554270374231474, guid: da9dac629d8c5ba4f8aa129d1731d3b9,
         type: 3}

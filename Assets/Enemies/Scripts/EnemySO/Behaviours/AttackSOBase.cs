@@ -9,6 +9,7 @@ public class AttackSOBase : ScriptableObject
     protected NavMeshAgent enemyAgent;
     protected Transform transform;
     protected GameObject enemyObject;
+    protected GameObject projectile;
     protected Transform bulletPoint;
     protected float attackSpeed;
 
@@ -26,8 +27,9 @@ public class AttackSOBase : ScriptableObject
 
     public virtual void AttackLogic( Animator animator, string animation) { }
 
-    public virtual void InitializePoint(Transform point)
+    public virtual void InitProjectileData(Transform point, GameObject projectile)
     {
         this.bulletPoint = point;
+        this.projectile = projectile;
     }
 }
