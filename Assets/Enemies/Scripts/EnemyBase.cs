@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(EnemyEffectsManager))]
 [RequireComponent(typeof(EnemyHealthManager))]
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBase : MonoBehaviour
