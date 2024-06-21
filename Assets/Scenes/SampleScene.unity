@@ -1968,11 +1968,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem_Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 4909631027348230532, guid: dc34f9b28fa5f3e48b982862a2cf18fe,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
