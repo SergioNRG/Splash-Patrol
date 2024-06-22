@@ -34,6 +34,7 @@ public class ElitePawn : EnemyBase
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
+        _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         // if (_idleLogic != null) { IdleBaseInstance = Instantiate(_idleLogic); }
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
@@ -69,13 +70,23 @@ public class ElitePawn : EnemyBase
             {
                 if (_healthManager.CurrentHealth < _healthManager.MaxHealth)
                 {
-                    AnimsController.Playanimation(_animator, ChaseAnim);
-                    if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
+                    
+                   // AnimsController.Playanimation(_animator, ChaseAnim);
+                    if (_chasePlayerLogic != null)
+                    {
+                        _effectsManager.ChaseEffect();
+                        ChaseBaseInstance.MoveLogic(); 
+                    }
                 }
                 else
                 {
-                    AnimsController.Playanimation(_animator, MoveAnim);
-                    if (_moveLogic != null) { MoveBaseInstance.MoveLogic(); }
+                    // AnimsController.Playanimation(_animator, MoveAnim);
+                    
+                    if (_moveLogic != null)
+                    {
+                        _effectsManager.MoveEffect();
+                        MoveBaseInstance.MoveLogic();
+                    }
                 }
             }
         }else { ChangeState(State.Die); }
@@ -85,9 +96,14 @@ public class ElitePawn : EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
+
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
-            {
-                if (_attackLogic != null) { AttackBaseInstance.AttackLogic(_animator, AttackAnim); }
+            {               
+                if (_attackLogic != null) 
+                {
+                    _effectsManager.AttackEffect();
+                    AttackBaseInstance.AttackLogic(_animator, AttackAnim); 
+                }
             }else
             {
                 ChangeState(State.Move);

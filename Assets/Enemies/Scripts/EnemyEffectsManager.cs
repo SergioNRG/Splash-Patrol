@@ -31,6 +31,20 @@ public class EnemyEffectsManager : MonoBehaviour
 
     }
 
+    public void MoveEffect()
+    {
+        enemy.AnimsController.Playanimation(enemy._animator, enemy.MoveAnim);
+    }
+    public void ChaseEffect()
+    {
+        enemy.AnimsController.Playanimation(enemy._animator, enemy.ChaseAnim);
+    }
+
+    public void AttackEffect()
+    {
+        enemy.AnimsController.Playanimation(enemy._animator, enemy.AttackAnim);
+    }
+
     public void TakeDamageEffect(int damage)
     {
         if (_healthManager.CurrentHealth != 0 )

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(EnemyEffectsManager))]
 [RequireComponent(typeof(EnemyHealthManager))]
-[RequireComponent(typeof(Collider))]
+//[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBase : MonoBehaviour
@@ -45,6 +45,7 @@ public class EnemyBase : MonoBehaviour
     #endregion
 
     protected EnemyHealthManager _healthManager;
+    protected EnemyEffectsManager _effectsManager;
 
     protected virtual void Idle() { }
     protected virtual void Attack() { }
