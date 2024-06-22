@@ -6,8 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(EnemyEffectsManager))]
 [RequireComponent(typeof(EnemyHealthManager))]
 //[RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(NavMeshAgent))]
+//[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBase : MonoBehaviour
 {
     //protected int _maxHealth;

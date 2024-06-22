@@ -31,8 +31,8 @@ public class ElitePawn : EnemyBase
 
     private void Awake()
     {
-        _agent = GetComponent<NavMeshAgent>();
-        _animator = GetComponent<Animator>();
+        _agent = GetComponentInParent<NavMeshAgent>();
+        _animator = GetComponentInParent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
