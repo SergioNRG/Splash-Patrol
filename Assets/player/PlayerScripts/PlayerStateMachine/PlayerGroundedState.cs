@@ -14,8 +14,7 @@ public class PlayerGroundedState : PlayerBaseState
     }
     public override void EnterState()
     {
-        _ctx.PlayerVelocityY = -3f;
-        
+        _ctx.PlayerVelocityY = -3f;        
     }
 
     public override void ExitState()
