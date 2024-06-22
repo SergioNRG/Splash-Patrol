@@ -15,7 +15,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private float _basePlayerSpeed = 2.0f;
     [SerializeField] private float _sprintPlayerSpeed = 4.0f;
     [SerializeField] private float _crouchingPlayerSpeed = 1.0f;
-    [SerializeField] private float _jumpHeight = 1.0f;
+    [SerializeField] private float _jumpHeight = 3.0f;
     [SerializeField] private float _gravityValue = -9.81f;
     //[SerializeField] 
     private bool _isPlayerGrounded;

@@ -15,12 +15,13 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void EnterState()
     {
-        _ctx.PlayerVelocityY += Mathf.Sqrt(_ctx.JumpHeight * -3.0f * _ctx.GravityValue);
+        _ctx.PlayerVelocityY += Mathf.Sqrt(_ctx.JumpHeight * -6.0f * _ctx.GravityValue);
+
     }
 
     public override void ExitState()
     {
-     
+
     }
 
     public override void UpdateState()
