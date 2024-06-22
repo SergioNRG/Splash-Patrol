@@ -26,14 +26,23 @@ public class BossRockScript : MonoBehaviour
         transform.Rotate(Vector3.forward, _rotationSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-            // Debug.Log("yuuup");
-        }
-        else { Destroy(gameObject); }
+    /* private void OnTriggerEnter(Collider other)
+     {
+         if (other.CompareTag("Player"))
+         {
+             Destroy(gameObject);
+             // Debug.Log("yuuup");
+         }
+         //else { Destroy(gameObject); }
 
+     }*/
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            Debug.Log("yuuup");
+            Destroy(gameObject);
+        }
     }
 }
