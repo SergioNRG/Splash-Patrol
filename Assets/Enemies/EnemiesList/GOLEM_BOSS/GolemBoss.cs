@@ -93,6 +93,7 @@ public class GolemBoss : EnemyBase
                     transform.LookAt(lookTarget);
                     _agent.isStopped = true;
                     _effectsManager.AttackEffect();
+                   
                    // AnimsController.Playanimation(_animator, AttackAnim);
                 }
             }
