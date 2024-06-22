@@ -13,7 +13,6 @@ public class PlayerCrouchState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("HI FROM CROUCH");
         _ctx.CurrentPlayerSpeed = _ctx.CrouchPlayerSpeed;      
         _ctx.Controller.height = _ctx.CrouchHeight;
        // _ctx.Controller.center = new Vector3(0, _ctx.CrouchCenter, 0);
