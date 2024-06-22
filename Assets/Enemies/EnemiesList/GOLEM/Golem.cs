@@ -34,6 +34,7 @@ public class Golem : EnemyBase
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
+        _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
@@ -64,7 +65,8 @@ public class Golem : EnemyBase
             }
             else
             {
-                AnimsController.Playanimation(_animator, ChaseAnim);
+                _effectsManager.ChaseEffect();
+               // AnimsController.Playanimation(_animator, ChaseAnim);
                 if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
             }
 
@@ -89,8 +91,8 @@ public class Golem : EnemyBase
                     Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
                      transform.LookAt(lookTarget);
                     _agent.isStopped = true;
-                    
-                    AnimsController.Playanimation(_animator, AttackAnim);
+                    _effectsManager.AttackEffect();
+                    // AnimsController.Playanimation(_animator, AttackAnim);
                 }
             }
             else 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private float _force;
     private Transform _playerTransform;
     private Rigidbody _rb;
    
@@ -17,7 +17,7 @@ public class BulletScript : MonoBehaviour
 
     void Start()
     {
-        _rb.AddForce(transform.parent.forward * 15, ForceMode.Impulse);
+        _rb.AddForce(transform.parent.forward * _force, ForceMode.Impulse);
     }
 
     // Update is called once per frame
