@@ -25,7 +25,7 @@ public class AttackSOBase : ScriptableObject
         playerTranform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public virtual void AttackLogic( Animator animator, string animation) { }
+    public virtual void AttackLogic( Animator animator) { }
 
     public virtual void InitProjectileData(Transform point, GameObject projectile)
     {

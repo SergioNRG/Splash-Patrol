@@ -102,7 +102,7 @@ public class ElitePawn : EnemyBase
                 if (_attackLogic != null) 
                 {
                     _effectsManager.AttackEffect();
-                    AttackBaseInstance.AttackLogic(_animator, AttackAnim); 
+                    AttackBaseInstance.AttackLogic(_animator); 
                 }
             }else
             {

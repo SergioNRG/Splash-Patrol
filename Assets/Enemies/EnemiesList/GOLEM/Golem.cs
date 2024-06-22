@@ -117,6 +117,6 @@ public class Golem : EnemyBase
 
     public void spawnProjectile()
     {
-        AttackBaseInstance.AttackLogic(_animator, AttackAnim);
+        AttackBaseInstance.AttackLogic(_animator);
     }
 }

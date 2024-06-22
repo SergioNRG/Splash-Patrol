@@ -9,7 +9,7 @@ public class ProjectileAttack : AttackSOBase
    // [SerializeField] private GameObject _projectile; 
     //private bool _isAttacking = true;
 
-    public override void AttackLogic(Animator animator, string animation)
+    public override void AttackLogic(Animator animator)
     {
         animator.SetFloat("AttackSpeed", 1 * attackSpeed);
         enemyAgent.isStopped = true;
