@@ -77,7 +77,11 @@ public class GolemBoss : EnemyBase
                 if (AnimsController.ISAnimationEnded(_animator, IdleAnim))
                 {
                     AnimsController.ResetCurrentRepeat();
-                    StopCoroutine(_coroutine);
+                    if (_coroutine != null)
+                    {
+                        StopCoroutine(_coroutine);
+                    }
+                   
                     ChangeState(State.Roar);
                 }
                 
@@ -90,20 +94,24 @@ public class GolemBoss : EnemyBase
 
     protected override void Roar()
     {
-        _effectsManager.RoarEffect();
-
-        if (AnimsController.ISAnimationEnded(_animator, RoarAnim) == true)
+        if (_healthManager.CurrentHealth > 0)
         {
-            ChangeState(State.Attack);
+            _effectsManager.RoarEffect();
+
+            if (AnimsController.ISAnimationEnded(_animator, RoarAnim) == true)
+            {
+                ChangeState(State.Attack);
+            }
         }
-        // Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime< 1.0f);//_animator.GetCurrentAnimatorStateInfo(0).IsName(RoarAnim));
-
-
     }
     protected override void Move()
     {
         if (_healthManager.CurrentHealth > 0)
         {
+
+            _effectsManager.ChaseEffect();
+            Debug.Log(_chasePlayerLogic);
+            if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
 
 
         }
@@ -123,6 +131,7 @@ public class GolemBoss : EnemyBase
                 if (AnimsController.ISAnimationEnded(_animator, AttackAnim) == true)
                 {
                     Debug.Log("oi");
+                    _agent.isStopped = false;
                     ChangeState(State.Move);
                 }
                /* if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
