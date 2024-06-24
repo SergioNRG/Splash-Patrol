@@ -8,6 +8,8 @@ using UnityEngine;
 public class AnimsController : AnimsList
 {
     private int _currentRepeat=0;
+
+ 
     public void ChangeAnimationState(Animator animator, string currentAnimationState, string newState)
     {
         // STOP THE SAME ANIMATION FROM INTERRUPTING WITH ITSELF //

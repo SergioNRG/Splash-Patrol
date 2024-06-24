@@ -25,7 +25,7 @@ public class GolemBoss : EnemyBase
     private NavMeshAgent _agent;
 
     [SerializeField] private int repeatCount = 3; // Number of times to repeat the animation
-
+    private Coroutine _coroutine;
     private void OnEnable()
     {
         IdleAnim = AnimsController.Anims.Single(IdleAnim => IdleAnim.AnimKey == "IDLE").AnimName;
@@ -54,7 +54,7 @@ public class GolemBoss : EnemyBase
         AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, Projectile);
         AnimsController.ResetCurrentRepeat();
         ChangeState(State.Idle);
-        StartCoroutine(AnimsController.RepeatAnimation(repeatCount,_animator,IdleAnim));
+        _coroutine = StartCoroutine(AnimsController.RepeatAnimation(repeatCount,_animator,IdleAnim));
     }
 
     // Update is called once per frame
@@ -71,18 +71,17 @@ public class GolemBoss : EnemyBase
         
         if (_healthManager.CurrentHealth > 0)
         {
+           
             if (AnimsController.GetCurrentRepeat() == repeatCount)
             {
                 if (AnimsController.ISAnimationEnded(_animator, IdleAnim))
                 {
                     AnimsController.ResetCurrentRepeat();
+                    StopCoroutine(_coroutine);
                     ChangeState(State.Roar);
                 }
                 
             }
-
-           // StartCoroutine(RepeatAnimation());
-            //ChangeState(State.Roar);
         }
         else { ChangeState(State.Die); }
     }
@@ -124,7 +123,7 @@ public class GolemBoss : EnemyBase
                 if (AnimsController.ISAnimationEnded(_animator, AttackAnim) == true)
                 {
                     Debug.Log("oi");
-                    ChangeState(State.Idle);
+                    ChangeState(State.Move);
                 }
                /* if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
                 {
