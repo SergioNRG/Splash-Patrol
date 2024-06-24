@@ -42,8 +42,6 @@ public class PlayerGroundedState : PlayerBaseState
     {
         CheckSwitchStates();
         if (_ctx.PlayerVelocityY < 0) { _ctx.PlayerVelocityY = -5f; }
-        Debug.Log("Grounded "+_ctx.PlayerVelocityY);
-
     }
     public override void CheckSwitchStates()
     {

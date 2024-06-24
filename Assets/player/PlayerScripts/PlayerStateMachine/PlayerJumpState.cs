@@ -27,8 +27,6 @@ public class PlayerJumpState : PlayerBaseState
     public override void UpdateState()
     {
         CheckSwitchStates();
-        //if (_ctx.PlayerVelocityY < 0) { _ctx.PlayerVelocityY = -1f; }
-        Debug.Log(_ctx.PlayerVelocityY);
     }
 
     public override void InitializeSubState()
