@@ -31,6 +31,14 @@ public class EnemyEffectsManager : MonoBehaviour
 
     }
 
+    public void RoarEffect()
+    {
+        enemy.AnimsController.Playanimation(enemy._animator, enemy.RoarAnim);
+    }
+    public void Idleffect()
+    {
+        enemy.AnimsController.Playanimation(enemy._animator, enemy.IdleAnim);
+    }
     public void MoveEffect()
     {
         enemy.AnimsController.Playanimation(enemy._animator, enemy.MoveAnim);

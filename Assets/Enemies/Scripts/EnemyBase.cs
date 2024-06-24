@@ -22,7 +22,8 @@ public class EnemyBase : MonoBehaviour
         Idle,
         Move,
         Attack,
-        Die
+        Die,
+        Roar
     }
 
     protected State _currentState;
@@ -36,6 +37,7 @@ public class EnemyBase : MonoBehaviour
     [field:SerializeField] public AnimsController AnimsController { get; protected set; }
     [field: SerializeField] public Animator _animator { get; protected set; }// just to see
     [field: SerializeField] public string IdleAnim { get; protected set; }// just to see
+    [field: SerializeField] public string RoarAnim { get; protected set; }// just to see
     [field: SerializeField] public string MoveAnim { get; protected set; }// just to see
     [field: SerializeField] public string ChaseAnim { get; protected set; }// just to see
     [field: SerializeField] public string AttackAnim { get; protected set; }// just to see
@@ -51,6 +53,8 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Move() { }
 
     protected virtual void Die() { }
+
+    protected virtual void Roar() { }
 
     protected virtual void Heal() { }
 
@@ -82,6 +86,10 @@ public class EnemyBase : MonoBehaviour
 
             case State.Die:
                 Die();
+                break;
+
+            case State.Roar:
+                Roar();
                 break;
 
 
