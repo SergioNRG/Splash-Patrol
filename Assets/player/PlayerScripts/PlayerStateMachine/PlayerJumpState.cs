@@ -15,7 +15,7 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void EnterState()
     {
-        _ctx.PlayerVelocityY += Mathf.Sqrt(_ctx.JumpHeight * -4.0f * _ctx.GravityValue);
+        _ctx.PlayerVelocityY += Mathf.Sqrt(_ctx.JumpHeight * -10 * _ctx.GravityValue);
 
     }
 
@@ -27,6 +27,8 @@ public class PlayerJumpState : PlayerBaseState
     public override void UpdateState()
     {
         CheckSwitchStates();
+        //if (_ctx.PlayerVelocityY < 0) { _ctx.PlayerVelocityY = -1f; }
+        Debug.Log(_ctx.PlayerVelocityY);
     }
 
     public override void InitializeSubState()

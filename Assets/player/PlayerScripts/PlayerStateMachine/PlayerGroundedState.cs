@@ -14,7 +14,7 @@ public class PlayerGroundedState : PlayerBaseState
     }
     public override void EnterState()
     {
-        _ctx.PlayerVelocityY = -1f;        
+        _ctx.PlayerVelocityY = -5f;        
     }
 
     public override void ExitState()
@@ -41,8 +41,9 @@ public class PlayerGroundedState : PlayerBaseState
     public override void UpdateState()
     {
         CheckSwitchStates();
-       // if (_ctx.PlayerVelocityY < 0) { _ctx.PlayerVelocityY = -3f; }
-       
+        if (_ctx.PlayerVelocityY < 0) { _ctx.PlayerVelocityY = -5f; }
+        Debug.Log("Grounded "+_ctx.PlayerVelocityY);
+
     }
     public override void CheckSwitchStates()
     {
