@@ -133,20 +133,37 @@ public class GolemBoss : EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
-            if (_attackLogic != null)
+            if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
-                Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
-                transform.LookAt(lookTarget);
-                _agent.isStopped = true;
-                _effectsManager.AttackEffect();
-                if (AnimsController.ISAnimationEnded(_animator, AttackAnim) == true)
+                if (_attackLogic != null)
                 {
-                    Debug.Log("oi");
-                    _agent.isStopped = false;
-                    ChangeState(State.Move);
+                    Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
+                    transform.LookAt(lookTarget);
+                    _agent.isStopped = true;
+                    _effectsManager.AttackEffect();
+                    // AnimsController.Playanimation(_animator, AttackAnim);
                 }
- 
             }
+            else if (AnimsController.ISAnimationEnded(_animator, AttackAnim))
+            {
+                Debug.Log("oi");
+                _agent.isStopped = false;
+                ChangeState(State.Move);
+            }
+            /* if (_attackLogic != null)
+             {
+                 Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
+                 transform.LookAt(lookTarget);
+                 _agent.isStopped = true;
+                 _effectsManager.AttackEffect();
+                 if (AnimsController.ISAnimationEnded(_animator, AttackAnim) == true)
+                 {
+                     Debug.Log("oi");
+                     _agent.isStopped = false;
+                     ChangeState(State.Move);
+                 }
+
+             }*/
         }
         else { ChangeState(State.Die); }
     }

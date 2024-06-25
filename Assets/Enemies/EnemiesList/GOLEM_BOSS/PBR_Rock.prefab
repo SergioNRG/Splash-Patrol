@@ -120,10 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17f2fce439f3de46955af457e9838fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToSpawn: {fileID: 4641541689745229465, guid: da9dac629d8c5ba4f8aa129d1731d3b9,
+  _objectToSpawn: {fileID: 8807196204250226594, guid: e3d1ede77bd8de44d890010ed785c0a5,
     type: 3}
-  _force: 15
-  _rotationSpeed: 200
+  _force: 150
+  _rotationSpeed: 100
 --- !u!135 &6909079464136749357
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375754531036840}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
