@@ -108,10 +108,21 @@ public class GolemBoss : EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
+            if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
+            {
+                ChangeState(State.Attack);
+            }
+            else if (_chasePlayerLogic != null)
+            {
+                _effectsManager.ChaseEffect();
+                ChaseBaseInstance.MoveLogic();
+                // AnimsController.Playanimation(_animator, ChaseAnim);
+                // if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
+            }
 
-            _effectsManager.ChaseEffect();
+            /*_effectsManager.ChaseEffect();
             Debug.Log(_chasePlayerLogic);
-            if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
+            if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }*/
 
 
         }
