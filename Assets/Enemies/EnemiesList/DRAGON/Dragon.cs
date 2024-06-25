@@ -56,6 +56,7 @@ public class Dragon : EnemyBase
 
     protected override void Move()
     {
+
         if (_healthManager.CurrentHealth > 0)
         {
             Vector3 position = transform.position;
@@ -65,15 +66,32 @@ public class Dragon : EnemyBase
             {
                 ChangeState(State.Attack);
             }
-
-            if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
+            else if (_chasePlayerLogic != null)
             {
-                // AnimsController.Playanimation(_animator, ChaseAnim);
                 _effectsManager.ChaseEffect();
-                if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
+                ChaseBaseInstance.MoveLogic();
             }
         }
         else { ChangeState(State.Die); }
+        /* if (_healthManager.CurrentHealth > 0)
+         {
+             Vector3 position = transform.position;
+             position.y = _agent.nextPosition.y + flyHeight;
+             transform.position = position;
+             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
+             {
+                 ChangeState(State.Attack);
+             }
+
+             if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
+             {
+                 Debug.Log(!AnimsController.ISAnimationPlaying(_animator, AttackAnim));
+                 // AnimsController.Playanimation(_animator, ChaseAnim);
+                 _effectsManager.ChaseEffect();
+                 if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
+             }
+         }
+         else { ChangeState(State.Die); }*/
     }
 
     protected override void Attack()
@@ -96,9 +114,8 @@ public class Dragon : EnemyBase
                     AnimsController.Playanimation(_animator, AttackAnim);                  
                 }
             }
-            else 
+            else if(AnimsController.ISAnimationEnded(_animator,AttackAnim))
             {
-
                 _agent.isStopped = false;
                 ChangeState(State.Move); 
             }

@@ -64,16 +64,10 @@ public class Mosquito :EnemyBase
             {
                 ChangeState(State.Attack);
             }
-          
-            if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
+            else if (_chasePlayerLogic != null)
             {
-                // AnimsController.Playanimation(_animator, ChaseAnim);
-                
-                if (_chasePlayerLogic != null) 
-                {
-                    _effectsManager.ChaseEffect();
-                    ChaseBaseInstance.MoveLogic(); 
-                }
+                _effectsManager.ChaseEffect();
+                ChaseBaseInstance.MoveLogic();
             }
         }
         else { ChangeState(State.Die); }
@@ -95,7 +89,10 @@ public class Mosquito :EnemyBase
                     AttackBaseInstance.AttackLogic(_animator);
                    //AttackBaseInstance.AttackLogic(_animator, AttackAnim);
                 }
-            }else { ChangeState(State.Move); }
+            }else if (AnimsController.ISAnimationEnded(_animator,AttackAnim))
+            {
+                ChangeState(State.Move); 
+            }
               
         }
         else { ChangeState(State.Die); }

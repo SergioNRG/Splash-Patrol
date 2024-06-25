@@ -5332,6 +5332,7 @@ MonoBehaviour:
     type: 2}
   <_animator>k__BackingField: {fileID: 0}
   <IdleAnim>k__BackingField: 
+  <RoarAnim>k__BackingField: 
   <MoveAnim>k__BackingField: 
   <ChaseAnim>k__BackingField: 
   <AttackAnim>k__BackingField: 

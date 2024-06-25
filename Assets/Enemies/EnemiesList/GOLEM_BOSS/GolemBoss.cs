@@ -134,45 +134,15 @@ public class GolemBoss : EnemyBase
                     _agent.isStopped = false;
                     ChangeState(State.Move);
                 }
-               /* if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
-                {
-                    _agent.isStopped = false;
-                    ChangeState(State.Move);
-                    Debug.Log("oi finish attack");
-
-                }*/
-                    // AnimsController.Playanimation(_animator, AttackAnim);
+ 
             }
-            /*
-            if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
-            {
-                if (_attackLogic != null)
-                {
-                    Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
-                    transform.LookAt(lookTarget);
-                    _agent.isStopped = true;
-                    _effectsManager.AttackEffect();
-                    if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
-                    {
-                        _agent.isStopped = false;
-                        ChangeState(State.Move);
-                        Debug.Log("oi finish attack");
-                    }
-                   // AnimsController.Playanimation(_animator, AttackAnim);
-                }
-            }
-          /*  else
-            {
-                if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
-                {
-                    _agent.isStopped = false;
-                    ChangeState(State.Move);
-                }
-
-            }*/
-
         }
         else { ChangeState(State.Die); }
+    }
+
+    public void spawnProjectile()
+    {
+        AttackBaseInstance.AttackLogic(_animator);
     }
 
     protected override void Die()
@@ -183,8 +153,5 @@ public class GolemBoss : EnemyBase
         _agent.isStopped = true;
     }
 
-    public void spawnProjectile()
-    {
-        AttackBaseInstance.AttackLogic(_animator);
-    }
+   
 }

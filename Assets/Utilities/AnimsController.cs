@@ -22,6 +22,7 @@ public class AnimsController : AnimsList
 
     public bool ISAnimationPlaying(Animator animator, string stateName)
     {
+        Debug.Log(stateName);
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
             return true;
@@ -31,6 +32,7 @@ public class AnimsController : AnimsList
 
     public bool ISAnimationEnded(Animator animator, string stateName)
     {
+        Debug.Log(stateName);
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             return true;

@@ -6,6 +6,9 @@ public class BossRockScript : MonoBehaviour
 {
     private Transform _playerTransform;
     private Rigidbody _rb;
+    private float _timer = 0;
+    private bool _isCounting;
+    [SerializeField] private GameObject _objectToSpawn;
     [SerializeField] private float _force = 15f;
     [SerializeField] private float _rotationSpeed = 200f;
 
@@ -24,6 +27,7 @@ public class BossRockScript : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.forward, _rotationSpeed * Time.deltaTime);
+        if (_isCounting) { _timer += Time.deltaTime; }
     }
 
     /* private void OnTriggerEnter(Collider other)
@@ -45,4 +49,16 @@ public class BossRockScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+   private void OnCollisionStay(Collision collision)
+   {
+        _isCounting = true;
+        if (_timer >= 2)
+        {
+            GameObject go = Instantiate(_objectToSpawn, transform.position, Quaternion.identity);
+            _timer = 0;
+            Destroy(gameObject);
+        }                
+   }
+
 }

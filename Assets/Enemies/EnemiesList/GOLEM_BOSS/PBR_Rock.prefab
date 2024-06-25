@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17f2fce439f3de46955af457e9838fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectToSpawn: {fileID: 4641541689745229465, guid: da9dac629d8c5ba4f8aa129d1731d3b9,
+    type: 3}
   _force: 15
   _rotationSpeed: 200
 --- !u!135 &6909079464136749357

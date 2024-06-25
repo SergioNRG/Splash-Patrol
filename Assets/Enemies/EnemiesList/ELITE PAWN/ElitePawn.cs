@@ -36,16 +36,12 @@ public class ElitePawn : EnemyBase
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        // if (_idleLogic != null) { IdleBaseInstance = Instantiate(_idleLogic); }
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
-
-    // Start is called before the first frame update
     void Start()
     {
-       // IdleBaseInstance.Initialize(gameObject, this, gameObject.GetComponent<NavMeshAgent>());
         MoveBaseInstance.Initialize(gameObject, this, _agent);
         ChaseBaseInstance.Initialize(gameObject, this,_agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
@@ -64,30 +60,16 @@ public class ElitePawn : EnemyBase
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 ChangeState(State.Attack);
-            }
-
-            if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
+            } 
+            else if (_healthManager.CurrentHealth < _healthManager.MaxHealth)
             {
-                if (_healthManager.CurrentHealth < _healthManager.MaxHealth)
-                {
-                    
-                   // AnimsController.Playanimation(_animator, ChaseAnim);
-                    if (_chasePlayerLogic != null)
-                    {
-                        _effectsManager.ChaseEffect();
-                        ChaseBaseInstance.MoveLogic(); 
-                    }
-                }
-                else
-                {
-                    // AnimsController.Playanimation(_animator, MoveAnim);
-                    
-                    if (_moveLogic != null)
-                    {
-                        _effectsManager.MoveEffect();
-                        MoveBaseInstance.MoveLogic();
-                    }
-                }
+                _effectsManager.ChaseEffect();
+                ChaseBaseInstance.MoveLogic();
+            }
+            else
+            {
+                _effectsManager.MoveEffect();
+                MoveBaseInstance.MoveLogic();
             }
         }else { ChangeState(State.Die); }
     }
@@ -106,7 +88,11 @@ public class ElitePawn : EnemyBase
                 }
             }else
             {
-                ChangeState(State.Move);
+                if (AnimsController.ISAnimationEnded(_animator, AttackAnim))
+                {
+                    ChangeState(State.Move);
+                }
+                
             }
                
         }else { ChangeState(State.Die); }

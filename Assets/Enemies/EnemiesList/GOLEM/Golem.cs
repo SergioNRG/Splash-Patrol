@@ -63,11 +63,12 @@ public class Golem : EnemyBase
             {
                 ChangeState(State.Attack);
             }
-            else
+            else if (_chasePlayerLogic != null)
             {
                 _effectsManager.ChaseEffect();
-               // AnimsController.Playanimation(_animator, ChaseAnim);
-                if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
+                ChaseBaseInstance.MoveLogic();
+                // AnimsController.Playanimation(_animator, ChaseAnim);
+               // if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
             }
 
             /*if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
@@ -95,18 +96,18 @@ public class Golem : EnemyBase
                     // AnimsController.Playanimation(_animator, AttackAnim);
                 }
             }
-            else 
+            else if (AnimsController.ISAnimationEnded(_animator, AttackAnim))
             {
-                if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
-                {
-                    _agent.isStopped = false;
-                    ChangeState(State.Move);
-                }
-                   
+                Debug.Log("oi");
+                _agent.isStopped = false;
+                ChangeState(State.Move);
             }
-
         }
         else { ChangeState(State.Die); }
+    }
+    public void spawnProjectile()
+    {
+        AttackBaseInstance.AttackLogic(_animator);
     }
 
     protected override void Die()
@@ -117,8 +118,5 @@ public class Golem : EnemyBase
         _agent.isStopped = true;
     }
 
-    public void spawnProjectile()
-    {
-        AttackBaseInstance.AttackLogic(_animator);
-    }
+ 
 }
