@@ -12,6 +12,7 @@ public class AttackSOBase : ScriptableObject
     protected GameObject projectile;
     protected Transform bulletPoint;
     protected float attackSpeed;
+    protected float projectileForce;
 
     public Transform playerTranform;
 
@@ -27,9 +28,10 @@ public class AttackSOBase : ScriptableObject
 
     public virtual void AttackLogic( Animator animator) { }
 
-    public virtual void InitProjectileData(Transform point, GameObject projectile)
+    public virtual void InitProjectileData(Transform point, GameObject projectile,float force)
     {
         this.bulletPoint = point;
         this.projectile = projectile;
+        this.projectileForce = force;   
     }
 }

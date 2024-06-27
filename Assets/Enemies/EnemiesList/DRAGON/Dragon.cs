@@ -16,6 +16,7 @@ public class Dragon : EnemyBase
 
     [SerializeField] private int _attackDistance;
     [SerializeField] private float _attackSpeed;
+    [SerializeField] private float _projectileForce;
     public GameObject Projectile;
     [SerializeField] private float flyHeight;
 
@@ -44,7 +45,7 @@ public class Dragon : EnemyBase
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
-        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform,Projectile);
+        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform,Projectile, _projectileForce);
         ChangeState(State.Move);
     }
 

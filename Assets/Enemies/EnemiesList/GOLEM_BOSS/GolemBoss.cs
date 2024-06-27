@@ -18,8 +18,9 @@ public class GolemBoss : EnemyBase
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
     [SerializeField] private int _attackDistance;
-    public GameObject Projectile;
+    [SerializeField] private GameObject Projectile;
     [SerializeField] private float _attackSpeed;
+    [SerializeField] private float _projectileForce;
     // [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;
@@ -51,7 +52,7 @@ public class GolemBoss : EnemyBase
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
-        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, Projectile);
+        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, Projectile,_projectileForce);
         AnimsController.ResetCurrentRepeat();
         ChangeState(State.Idle);
         _coroutine = StartCoroutine(AnimsController.RepeatAnimation(repeatCount,_animator,IdleAnim));
@@ -146,7 +147,6 @@ public class GolemBoss : EnemyBase
             }
             else if (AnimsController.ISAnimationEnded(_animator, AttackAnim))
             {
-                Debug.Log("oi");
                 _agent.isStopped = false;
                 ChangeState(State.Move);
             }
