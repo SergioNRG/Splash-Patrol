@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
-public class BossRockScript : MonoBehaviour
+public class BossRockScript : MonoBehaviour,IPooled
 {
     private Transform _playerTransform;
     private Rigidbody _rb;
@@ -12,6 +14,8 @@ public class BossRockScript : MonoBehaviour
     [SerializeField] private float _force = 15f;
     [SerializeField] private float _rotationSpeed = 200f;
 
+    private ObjectPool<GameObject> _bossRocksPool;
+    private Transform _initPos;
     private void Awake()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -20,45 +24,45 @@ public class BossRockScript : MonoBehaviour
 
     void Start()
     {
-        _rb.AddForce(transform.parent.forward * _force, ForceMode.Impulse);
+        _rb.AddForce(transform.forward * _force, ForceMode.Impulse);
     }
+ 
 
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(Vector3.forward, _rotationSpeed * Time.deltaTime);
         if (_isCounting) { _timer += Time.deltaTime; }
     }
 
-    /* private void OnTriggerEnter(Collider other)
-     {
-         if (other.CompareTag("Player"))
-         {
-             Destroy(gameObject);
-             // Debug.Log("yuuup");
-         }
-         //else { Destroy(gameObject); }
-
-     }*/
-
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
             Debug.Log("yuuup");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
+            _bossRocksPool.Release(gameObject);
         }
-    }
+    }*/
 
-   private void OnCollisionStay(Collision collision)
-   {
+    private void OnCollisionStay(Collision collision)
+    {
         _isCounting = true;
         if (_timer >= 2)
         {
-            GameObject go = Instantiate(_objectToSpawn, transform.position, Quaternion.identity);
+           // GameObject go = Instantiate(_objectToSpawn, transform.position, Quaternion.identity);
             _timer = 0;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            
+            gameObject.SetActive(false);
+            //transform.position = _initPos.position;
+            _bossRocksPool.Release(gameObject);
         }                
-   }
+    }
 
+    public void SetPool(ObjectPool<GameObject> pool)//,Transform trans)
+    {
+        _bossRocksPool = pool;
+       // _initPos = trans;
+    }
 }
