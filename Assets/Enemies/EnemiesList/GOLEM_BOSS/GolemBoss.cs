@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.AI;
-using static AnimsList;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class GolemBoss : EnemyBase
 {

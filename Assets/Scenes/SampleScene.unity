@@ -1794,11 +1794,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem_Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 4836693439019630814, guid: e26b1394fd0015244b489986a29368cc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5086751501221070063, guid: e26b1394fd0015244b489986a29368cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1852,7 +1847,7 @@ PrefabInstance:
     - target: {fileID: 5296217792896732773, guid: e26b1394fd0015244b489986a29368cc,
         type: 3}
       propertyPath: _projectileForce
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -35,7 +35,8 @@ public class ProjectileAttack : AttackSOBase
         var rb = projectile.GetComponent<Rigidbody>();
         projectile.transform.position = bulletPoint.position;
         projectile.SetActive(true);
-        rb.AddForce(transform.forward * projectileForce, ForceMode.Impulse);
+        rb.velocity=  new Vector3(0, 0 , projectileForce);
+       // rb.AddForce(transform.forward * projectileForce,ForceMode.Impulse);
         // Debug.Log(rb);
         // rb.AddForce(transform.forward * 15, ForceMode.Impulse);
         //rock.transform.parent = enemyObject.transform;
@@ -49,7 +50,8 @@ public class ProjectileAttack : AttackSOBase
         GameObject projectille = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
         //var rb = projectile.GetComponent<Rigidbody>();
         var rb = projectille.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * projectileForce, ForceMode.Impulse);
+        rb.velocity = new Vector3(0, 0, projectileForce);
+        //rb.AddForce(transform.forward * projectileForce, ForceMode.Impulse);
         projectille.GetComponent<IPooled>().SetPool(Pool);//,bulletPoint);
         return projectille;
     }
