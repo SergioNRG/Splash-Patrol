@@ -22,10 +22,10 @@ public class BossRockScript : MonoBehaviour,IPooled
         _rb = GetComponent<Rigidbody>();
     }
 
-    void Start()
+    /*void Start()
     {
         _rb.AddForce(transform.forward * _force, ForceMode.Impulse);
-    }
+    }*/
  
 
     void Update()

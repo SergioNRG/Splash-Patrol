@@ -23,31 +23,34 @@ public class ProjectileAttack : AttackSOBase
     {
         animator.SetFloat("AttackSpeed", 1 * attackSpeed);
         enemyAgent.isStopped = true;
-        GetBossRock();
+        var bullet =  GetBossRock();
+       
         //GameObject projectile = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
         //projectile.transform.parent = enemyObject.transform;        
     }
 
     public GameObject GetBossRock()
     {
-        var rock = Pool.Get();
-        rock.transform.position = bulletPoint.position;
-        rock.SetActive(true);
-        var rb = rock.GetComponent<Rigidbody>();
-        Debug.Log(rb);
-        rb.AddForce(transform.forward * 15, ForceMode.Impulse);
+        var projectile = Pool.Get();
+        var rb = projectile.GetComponent<Rigidbody>();
+        projectile.transform.position = bulletPoint.position;
+        projectile.SetActive(true);
+        rb.AddForce(transform.forward * 50, ForceMode.Impulse);
+        // Debug.Log(rb);
+        // rb.AddForce(transform.forward * 15, ForceMode.Impulse);
         //rock.transform.parent = enemyObject.transform;
-        return rock;
+        return projectile;
     }
 
 
 
     private GameObject CreateProjectile()
     {
-        GameObject projectile = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
+        GameObject projectille = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
         //var rb = projectile.GetComponent<Rigidbody>();
-        
-        projectile.GetComponent<IPooled>().SetPool(Pool);//,bulletPoint);
-        return projectile;
+        var rb = projectille.GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * 50, ForceMode.Impulse);
+        projectille.GetComponent<IPooled>().SetPool(Pool);//,bulletPoint);
+        return projectille;
     }
 }
