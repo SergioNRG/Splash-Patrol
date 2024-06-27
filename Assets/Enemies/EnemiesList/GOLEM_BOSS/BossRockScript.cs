@@ -4,29 +4,31 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
-public class BossRockScript : MonoBehaviour,IPooled
+public class BossRockScript : MonoBehaviour,IPooled,IProjectile
 {
     private Transform _playerTransform;
     private Rigidbody _rb;
     private float _timer = 0;
     private bool _isCounting;
-    [SerializeField] private GameObject _objectToSpawn;
-    //[SerializeField] private float _force = 15f;
+    [SerializeField] private GameObject _enemyToSpawn;
+    private float _force;
     [SerializeField] private float _rotationSpeed = 200f;
 
     private ObjectPool<GameObject> _bossRocksPool;
-    private Transform _initPos;
     private void Awake()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _rb = GetComponent<Rigidbody>();
     }
 
-    /*void Start()
+    void Start()
     {
-        _rb.AddForce(transform.forward * _force, ForceMode.Impulse);
-    }*/
-    
+        _rb.velocity = new Vector3(0, 0, _force);
+    }
+    private void OnEnable()
+    {
+        _rb.velocity = new Vector3(0, 0, _force);
+    }
 
     void Update()
     {
@@ -51,12 +53,18 @@ public class BossRockScript : MonoBehaviour,IPooled
         {
             _timer = 0;           
             gameObject.SetActive(false);
+            //Instantiate(_enemyToSpawn,transform.position, Quaternion.identity);
             _bossRocksPool.Release(gameObject);
         }                
     }
 
-    public void SetPool(ObjectPool<GameObject> pool)//,Transform trans)
+    public void SetPool(ObjectPool<GameObject> pool)
     {
-        _bossRocksPool = pool;
+        _bossRocksPool = pool;        
+    }
+
+    public void SetProjectileForce(float force)
+    {
+        _force = force;
     }
 }

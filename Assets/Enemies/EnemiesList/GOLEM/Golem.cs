@@ -45,7 +45,7 @@ public class Golem : EnemyBase
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
-        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform,Projectile, _projectileForce);
+        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, Projectile, _projectileForce);
         ChangeState(State.Move);
     }
 

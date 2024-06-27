@@ -8,9 +8,6 @@ using TMPro;
 [CreateAssetMenu(fileName = "Enemy", menuName = "Enemy/EnemyLogic/AttackLogic/ProjectileAttack", order = 2)]
 public class ProjectileAttack : AttackSOBase
 {
-    // [SerializeField] private GameObject _projectile; 
-    //private bool _isAttacking = true;
-
     public static ObjectPool<GameObject> Pool;
 
     private void OnEnable()
@@ -23,23 +20,16 @@ public class ProjectileAttack : AttackSOBase
     {
         animator.SetFloat("AttackSpeed", 1 * attackSpeed);
         enemyAgent.isStopped = true;
-        var bullet =  GetBossRock();
-       
-        //GameObject projectile = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
-        //projectile.transform.parent = enemyObject.transform;        
+        GetProjectile();      
     }
 
-    public GameObject GetBossRock()
+    public GameObject GetProjectile()
     {
         var projectile = Pool.Get();
         var rb = projectile.GetComponent<Rigidbody>();
         projectile.transform.position = bulletPoint.position;
         projectile.SetActive(true);
-        rb.velocity=  new Vector3(0, 0 , projectileForce);
-       // rb.AddForce(transform.forward * projectileForce,ForceMode.Impulse);
-        // Debug.Log(rb);
-        // rb.AddForce(transform.forward * 15, ForceMode.Impulse);
-        //rock.transform.parent = enemyObject.transform;
+
         return projectile;
     }
 
@@ -48,11 +38,10 @@ public class ProjectileAttack : AttackSOBase
     private GameObject CreateProjectile()
     {
         GameObject projectille = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
-        //var rb = projectile.GetComponent<Rigidbody>();
-        var rb = projectille.GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0, 0, projectileForce);
-        //rb.AddForce(transform.forward * projectileForce, ForceMode.Impulse);
-        projectille.GetComponent<IPooled>().SetPool(Pool);//,bulletPoint);
+ 
+        projectille.GetComponent<IPooled>().SetPool(Pool);
+        projectille.GetComponent<IProjectile>().SetProjectileForce(projectileForce);
+
         return projectille;
     }
 }

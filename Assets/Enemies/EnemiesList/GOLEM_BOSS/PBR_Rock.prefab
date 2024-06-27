@@ -120,9 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17f2fce439f3de46955af457e9838fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToSpawn: {fileID: 8807196204250226594, guid: e3d1ede77bd8de44d890010ed785c0a5,
+  _enemyToSpawn: {fileID: 8807196204250226594, guid: e3d1ede77bd8de44d890010ed785c0a5,
     type: 3}
-  _force: 150
   _rotationSpeed: 100
 --- !u!135 &6909079464136749357
 SphereCollider:
