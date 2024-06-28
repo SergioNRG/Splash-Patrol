@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Pool;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,8 @@ public class AttackSOBase : ScriptableObject
     protected Transform bulletPoint;
     protected float attackSpeed;
     protected float projectileForce;
+
+    protected ObjectPool<GameObject> Pool;
 
     public Transform playerTranform;
 

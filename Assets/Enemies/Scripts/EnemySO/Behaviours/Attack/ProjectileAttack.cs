@@ -8,7 +8,7 @@ using TMPro;
 [CreateAssetMenu(fileName = "Enemy", menuName = "Enemy/EnemyLogic/AttackLogic/ProjectileAttack", order = 2)]
 public class ProjectileAttack : AttackSOBase
 {
-    public static ObjectPool<GameObject> Pool;
+    
 
     private void OnEnable()
     {
