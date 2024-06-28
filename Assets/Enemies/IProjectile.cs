@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IProjectile 
 {
-    public void SetProjectileForce(float force);
+    public void SetProjectileForce(float force,GameObject reference);
 
 }

@@ -20,17 +20,16 @@ public class ProjectileAttack : AttackSOBase
     {
         animator.SetFloat("AttackSpeed", 1 * attackSpeed);
         enemyAgent.isStopped = true;
-        GetProjectile();      
+        GetProjectile();
+       
     }
 
-    public GameObject GetProjectile()
+    public void GetProjectile()
     {
-        var projectile = Pool.Get();
-        var rb = projectile.GetComponent<Rigidbody>();
-        projectile.transform.position = bulletPoint.position;
-        projectile.SetActive(true);
-
-        return projectile;
+        var instance = Pool.Get();       
+        instance.transform.position = bulletPoint.position;
+        instance.SetActive(true);
+        ApplyForce(instance);
     }
 
 
@@ -38,10 +37,20 @@ public class ProjectileAttack : AttackSOBase
     private GameObject CreateProjectile()
     {
         GameObject projectille = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
- 
         projectille.GetComponent<IPooled>().SetPool(Pool);
-        projectille.GetComponent<IProjectile>().SetProjectileForce(projectileForce);
+        ApplyForce(projectille);
+       // projectille.GetComponent<IProjectile>().SetProjectileForce(projectileForce,enemyObject);
 
         return projectille;
+    }
+
+    private void ApplyForce(GameObject go)
+    {
+        Vector3 newVelocity = enemyObject.transform.forward * projectileForce;
+
+        var rb = go.GetComponent<Rigidbody>();
+
+        rb.velocity = newVelocity;
+        //rb.AddForce(newVelocity, ForceMode.Impulse);
     }
 }
