@@ -480,7 +480,7 @@ MonoBehaviour:
   _attackDistance: 15
   Projectile: {fileID: 1375754531036840, guid: 16d365169227ee64ab52b0edbc7ef1b3, type: 3}
   _attackSpeed: 1
-  _projectileForce: 50
+  _projectileForce: 10
   repeatCount: 3
 --- !u!1 &4950861214059729194
 GameObject:
@@ -670,7 +670,7 @@ Transform:
   m_GameObject: {fileID: 6961148780540827367}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.2, z: 1.87}
+  m_LocalPosition: {x: 0, y: 3.32, z: 2.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -36,12 +36,12 @@ public class ProjectileAttack : AttackSOBase
 
     private GameObject CreateProjectile()
     {
-        GameObject projectille = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
-        projectille.GetComponent<IPooled>().SetPool(Pool);
-        ApplyForce(projectille);
+        GameObject projectile = Instantiate(base.projectile, bulletPoint.position, Quaternion.identity);
+        projectile.GetComponent<IPooled>().SetPool(Pool);
+        ApplyForce(projectile);
        // projectille.GetComponent<IProjectile>().SetProjectileForce(projectileForce,enemyObject);
 
-        return projectille;
+        return projectile;
     }
 
     private void ApplyForce(GameObject go)
