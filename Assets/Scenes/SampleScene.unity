@@ -1794,6 +1794,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem_Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 4836693439019630814, guid: e26b1394fd0015244b489986a29368cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5086751501221070063, guid: e26b1394fd0015244b489986a29368cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1844,6 +1849,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5296217792896732773, guid: e26b1394fd0015244b489986a29368cc,
+        type: 3}
+      propertyPath: _attackDistance
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1860,7 +1870,7 @@ PrefabInstance:
     - target: {fileID: 2999520026464209414, guid: a635b10f2e7494c419594a9bc470e565,
         type: 3}
       propertyPath: _projectileForce
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4637070210680467880, guid: a635b10f2e7494c419594a9bc470e565,
         type: 3}
@@ -1920,7 +1930,7 @@ PrefabInstance:
     - target: {fileID: 9076291827353888695, guid: a635b10f2e7494c419594a9bc470e565,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

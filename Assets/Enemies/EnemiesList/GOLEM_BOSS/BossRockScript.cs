@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class BossRockScript : MonoBehaviour,IPooled
 {
     private Transform _playerTransform;
-    private Rigidbody _rb;
+   // private Rigidbody _rb;
     private float _timer = 0;
     private bool _isCounting;
     [SerializeField] private GameObject _enemyToSpawn;
