@@ -9,11 +9,14 @@ public class testespawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i <= 100; i++)
-        {
-             Instantiate(gameObject);
-        }
+        
     }
 
- 
+    private void Update()
+    {
+        for (int i = 0; i <= 10; i++)
+        {
+            Instantiate(gameObject);
+        }
+    }
 }
