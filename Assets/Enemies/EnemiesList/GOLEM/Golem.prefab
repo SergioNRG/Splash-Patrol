@@ -938,6 +938,7 @@ MonoBehaviour:
   Projectile: {fileID: 5298590762127773683, guid: 34c519010ba17554d90903e8ad9662c8,
     type: 3}
   _attackSpeed: 1
+  _projectileForce: 10
 --- !u!1 &8946608036991685445
 GameObject:
   m_ObjectHideFlags: 0

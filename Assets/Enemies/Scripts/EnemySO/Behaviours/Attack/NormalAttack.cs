@@ -9,12 +9,7 @@ public class NormalAttack : AttackSOBase
     public override void AttackLogic( Animator animator)
     {
         animator.SetFloat("AttackSpeed", 1 * attackSpeed);
-        //animator.Play(animation);
     }        
-        /*if (Vector3.Distance(transform.position,playerTranform.position) <= attackDistance)
-        {
-            animator.Play(animation);
-            Debug.Log("attack");
-        } */       
+             
     
 }

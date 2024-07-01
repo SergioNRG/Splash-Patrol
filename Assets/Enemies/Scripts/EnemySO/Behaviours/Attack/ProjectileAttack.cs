@@ -7,8 +7,6 @@ using TMPro;
 [CreateAssetMenu(fileName = "Enemy", menuName = "Enemy/EnemyLogic/AttackLogic/ProjectileAttack", order = 2)]
 public class ProjectileAttack : AttackSOBase
 {
-    
-
     private void OnEnable()
     {
         Pool = new ObjectPool<GameObject>(CreateProjectile);
@@ -39,7 +37,6 @@ public class ProjectileAttack : AttackSOBase
         projectile.transform.parent = enemyObject.transform;    
         projectile.GetComponent<IPooled>().SetPool(Pool);
         ApplyForce(projectile);
-       // projectille.GetComponent<IProjectile>().SetProjectileForce(projectileForce,enemyObject);
 
         return projectile;
     }
@@ -51,6 +48,5 @@ public class ProjectileAttack : AttackSOBase
         var rb = go.GetComponent<Rigidbody>();
 
         rb.velocity = newVelocity;
-        //rb.AddForce(newVelocity, ForceMode.Impulse);
     }
 }

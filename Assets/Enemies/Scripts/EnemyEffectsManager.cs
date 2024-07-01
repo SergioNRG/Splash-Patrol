@@ -12,10 +12,10 @@ public class EnemyEffectsManager : MonoBehaviour
     [SerializeField] private Image _crosshair;
     [SerializeField] private EnemyBase enemy;
 
-     private Vector3 _offset;
+    private Vector3 _offset;
 
 
-    public static ObjectPool<GameObject> _popUPPool;
+    private static ObjectPool<GameObject> _popUPPool;
     // Start is called before the first frame update
     void Start()
     {

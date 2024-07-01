@@ -7,13 +7,13 @@ public class SpawnerScript : MonoBehaviour
     public GameObject[] rocks;
     public GameObject[] enemies;
     private Vector2 screenBounds;
-    private GameManagerScript gameManagerScript;
+   // private GameManagerScript gameManagerScript;
     Coroutine spEnemies;
     Coroutine spMeteors;
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        gameManagerScript = GameObject.FindObjectOfType<GameManagerScript>();
+       // gameManagerScript = GameObject.FindObjectOfType<GameManagerScript>();
         spMeteors = StartCoroutine(spawnMeteor());
         spEnemies = StartCoroutine(spawnEnemies());
     }
@@ -21,11 +21,11 @@ public class SpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManagerScript.bossisdead == true )
+       /* if (gameManagerScript.bossisdead == true )
         {
             StopCoroutine(spEnemies);
             StopCoroutine(spMeteors);
-        }
+        }*/
     }
 
 

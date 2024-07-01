@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AnimController", menuName = "AnimController", order = 0)]
 public class AnimsController : AnimsList
 {
-    private int _currentRepeat=0;
+    private int _currentRepeat = 0;
 
  
     public void ChangeAnimationState(Animator animator, string currentAnimationState, string newState)

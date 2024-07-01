@@ -5,18 +5,9 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(EnemyEffectsManager))]
 [RequireComponent(typeof(EnemyHealthManager))]
-//[RequireComponent(typeof(Collider))]
-//[RequireComponent(typeof(NavMeshAgent))]
+
 public class EnemyBase : MonoBehaviour
 {
-    //protected int _maxHealth;
-    //[SerializeField] protected int _maxHealth;
-
-    // [field:SerializeField]public int MovSpeed { get; protected set; }
-    //[SerializeField] protected int _movSpeed;
-    // [SerializeField] protected int _attackDamage;
-    //protected int _attackSpeed;
-    //[SerializeField] protected Transform _moveTarget;
     public enum State
     {
         Idle,

@@ -68,15 +68,7 @@ public class Golem : EnemyBase
             {
                 _effectsManager.ChaseEffect();
                 ChaseBaseInstance.MoveLogic();
-                // AnimsController.Playanimation(_animator, ChaseAnim);
-               // if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
             }
-
-            /*if (!AnimsController.ISAnimationPlaying(_animator, AttackAnim))
-            {
-                AnimsController.Playanimation(_animator, ChaseAnim);
-                if (_chasePlayerLogic != null) { ChaseBaseInstance.MoveLogic(); }
-            }*/
         }
         else { ChangeState(State.Die); }
     }
@@ -85,7 +77,6 @@ public class Golem : EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
-
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 if (_attackLogic != null)
@@ -94,12 +85,10 @@ public class Golem : EnemyBase
                      transform.LookAt(lookTarget);
                     _agent.isStopped = true;
                     _effectsManager.AttackEffect();
-                    // AnimsController.Playanimation(_animator, AttackAnim);
                 }
             }
             else if (AnimsController.ISAnimationEnded(_animator, AttackAnim))
             {
-                Debug.Log("oi");
                 _agent.isStopped = false;
                 ChangeState(State.Move);
             }
@@ -113,9 +102,6 @@ public class Golem : EnemyBase
 
     protected override void Die()
     {
-        //Vector3 targetPosition = new Vector3(transform.position.x, 0, transform.position.z);
-        //_agent.destination = targetPosition;
-        // transform.position = Vector3.MoveTowards(transform.position, targetPosition, 2 * Time.deltaTime);
         _agent.isStopped = true;
     }
 

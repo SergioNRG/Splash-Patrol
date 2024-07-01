@@ -18,7 +18,6 @@ public class GolemBoss : EnemyBase
     [SerializeField] private GameObject Projectile;
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
-    // [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;
 
@@ -44,7 +43,7 @@ public class GolemBoss : EnemyBase
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
@@ -55,23 +54,20 @@ public class GolemBoss : EnemyBase
         _coroutine = StartCoroutine(AnimsController.RepeatAnimation(repeatCount,_animator,IdleAnim));
     }
 
-    // Update is called once per frame
+
     void Update()
-    {
-        
-        StateMachine();
-       
+    {        
+        StateMachine();      
     }
 
 
     protected override void Idle()
-    {
-        
+    {        
         if (_healthManager.CurrentHealth > 0)
-        {
-           
-            if (AnimsController.GetCurrentRepeat() == repeatCount)
+        {          
+            if (AnimsController.GetCurrentRepeat() >= repeatCount)
             {
+                
                 if (AnimsController.ISAnimationEnded(_animator, IdleAnim))
                 {
                     AnimsController.ResetCurrentRepeat();

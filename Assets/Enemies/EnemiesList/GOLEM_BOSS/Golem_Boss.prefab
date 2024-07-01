@@ -477,7 +477,7 @@ MonoBehaviour:
   _IdleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
   _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
   _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
-  _attackDistance: 15
+  _attackDistance: 30
   Projectile: {fileID: 1375754531036840, guid: 16d365169227ee64ab52b0edbc7ef1b3, type: 3}
   _attackSpeed: 1
   _projectileForce: 10

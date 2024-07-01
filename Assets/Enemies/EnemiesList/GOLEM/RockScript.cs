@@ -1,26 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Pool;
 using UnityEngine;
 
-public class RockScript : MonoBehaviour
+public class RockScript : MonoBehaviour, IPooled
 {
-    private Transform _playerTransform;
-    private Rigidbody _rb;
-    [SerializeField] private float _force = 15f;
     [SerializeField] private float _rotationSpeed = 200f;
+
+    private Transform _playerTransform;  
+    private ObjectPool<GameObject> _golemRocksPool;
 
     private void Awake()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        _rb = GetComponent<Rigidbody>();
     }
 
-    void Start()
-    {
-        _rb.AddForce(transform.parent.forward * _force, ForceMode.Impulse);
-    }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(Vector3.forward, _rotationSpeed * Time.deltaTime);
@@ -30,10 +25,20 @@ public class RockScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject);
-           // Debug.Log("yuuup");
+            gameObject.SetActive(false);
+            _golemRocksPool.Release(gameObject);
         }
-        else { Destroy(gameObject); }
+        else 
+        {
+            gameObject.SetActive(false);
+            _golemRocksPool.Release(gameObject);
+        }
 
     }
+
+    public void SetPool(ObjectPool<GameObject> pool)
+    {
+        _golemRocksPool = pool;
+    }
+
 }

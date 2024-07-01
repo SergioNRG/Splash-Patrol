@@ -6,20 +6,17 @@ using UnityEngine.UIElements;
 
 public class BossRockScript : MonoBehaviour,IPooled
 {
-    private Transform _playerTransform;
-   // private Rigidbody _rb;
-    private float _timer = 0;
-    private bool _isCounting;
     [SerializeField] private GameObject _enemyToSpawn;
-    //private float _force;
-    //private GameObject _refer;
     [SerializeField] private float _rotationSpeed = 200f;
 
+    private Transform _playerTransform;
+    private float _timer = 0;
+    private bool _isCounting;
     private ObjectPool<GameObject> _bossRocksPool;
+
     private void Awake()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-       // _rb = GetComponent<Rigidbody>();
     }
 
 
@@ -33,7 +30,6 @@ public class BossRockScript : MonoBehaviour,IPooled
     {
         if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("yuuup");
             gameObject.SetActive(false);
             _bossRocksPool.Release(gameObject);
         }
@@ -46,7 +42,6 @@ public class BossRockScript : MonoBehaviour,IPooled
         {
             _timer = 0;           
             gameObject.SetActive(false);
-            //Instantiate(_enemyToSpawn,transform.position, Quaternion.identity);
             _bossRocksPool.Release(gameObject);
         }                
     }
@@ -55,10 +50,4 @@ public class BossRockScript : MonoBehaviour,IPooled
     {
         _bossRocksPool = pool;        
     }
-
-   /* public void SetProjectileForce(float force, GameObject reference)
-    {
-        _force = force;
-        _refer = reference;
-    }*/
 }
