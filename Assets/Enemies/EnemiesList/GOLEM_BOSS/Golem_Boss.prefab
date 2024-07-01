@@ -318,7 +318,7 @@ Transform:
   m_GameObject: {fileID: 4836693439019630814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.511528, y: 0.049999237, z: -20.097715}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -477,7 +477,7 @@ MonoBehaviour:
   _IdleLogic: {fileID: 11400000, guid: 2d84faf786c7bbc43bab67c28fb62e98, type: 2}
   _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
   _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
-  _attackDistance: 30
+  _attackDistance: 20
   Projectile: {fileID: 1375754531036840, guid: 16d365169227ee64ab52b0edbc7ef1b3, type: 3}
   _attackSpeed: 1
   _projectileForce: 10

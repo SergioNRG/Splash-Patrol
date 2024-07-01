@@ -97,7 +97,7 @@ Transform:
   m_GameObject: {fileID: 1631008564190387957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.43681, y: 0.049999237, z: 2.2861328}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -185,6 +185,8 @@ MonoBehaviour:
   <AnimsController>k__BackingField: {fileID: 11400000, guid: de79865611a989342bfe7929f9b5c1b6,
     type: 2}
   <_animator>k__BackingField: {fileID: 0}
+  <IdleAnim>k__BackingField: 
+  <RoarAnim>k__BackingField: 
   <MoveAnim>k__BackingField: 
   <ChaseAnim>k__BackingField: 
   <AttackAnim>k__BackingField: 
