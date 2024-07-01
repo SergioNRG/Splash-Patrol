@@ -9,7 +9,6 @@ public class AnimsController : AnimsList
 {
     private int _currentRepeat = 0;
 
- 
     public void ChangeAnimationState(Animator animator, string currentAnimationState, string newState)
     {
         // STOP THE SAME ANIMATION FROM INTERRUPTING WITH ITSELF //
@@ -22,7 +21,7 @@ public class AnimsController : AnimsList
 
     public bool ISAnimationPlaying(Animator animator, string stateName)
     {
-        Debug.Log(stateName);
+        //Debug.Log(stateName);
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
             return true;
@@ -32,7 +31,7 @@ public class AnimsController : AnimsList
 
     public bool ISAnimationEnded(Animator animator, string stateName)
     {
-        Debug.Log(stateName);
+        //Debug.Log(stateName);
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             return true;
