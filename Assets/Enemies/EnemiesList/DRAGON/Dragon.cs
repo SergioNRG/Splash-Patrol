@@ -37,6 +37,7 @@ public class Dragon : EnemyBase
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        animControllerInstance = Instantiate(AnimsController);
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
@@ -91,10 +92,10 @@ public class Dragon : EnemyBase
                     Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
                     transform.LookAt(lookTarget);
                     _effectsManager.AttackEffect();
-                    AnimsController.Playanimation(_animator, AttackAnim);                  
+                    animControllerInstance.Playanimation(_animator, AttackAnim);                  
                 }
             }
-            else if(AnimsController.ISAnimationEnded(_animator,AttackAnim))
+            else if(animControllerInstance.ISAnimationEnded(_animator,AttackAnim))
             {
                 _agent.isStopped = false;
                 ChangeState(State.Move); 

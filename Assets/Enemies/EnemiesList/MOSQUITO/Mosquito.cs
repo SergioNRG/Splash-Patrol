@@ -37,6 +37,7 @@ public class Mosquito :EnemyBase
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        animControllerInstance = Instantiate(AnimsController);
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
@@ -90,7 +91,7 @@ public class Mosquito :EnemyBase
                     AttackBaseInstance.AttackLogic(_animator);
                    //AttackBaseInstance.AttackLogic(_animator, AttackAnim);
                 }
-            }else if (AnimsController.ISAnimationEnded(_animator,AttackAnim))
+            }else if (animControllerInstance.ISAnimationEnded(_animator,AttackAnim))
             {
                 ChangeState(State.Move); 
             }

@@ -38,6 +38,7 @@ public class Golem : EnemyBase
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        animControllerInstance = Instantiate(AnimsController);
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
@@ -88,7 +89,7 @@ public class Golem : EnemyBase
                     _effectsManager.AttackEffect();
                 }
             }
-            else if (AnimsController.ISAnimationEnded(_animator, AttackAnim))
+            else if (animControllerInstance.ISAnimationEnded(_animator, AttackAnim))
             {
                 _agent.isStopped = false;
                 ChangeState(State.Move);
