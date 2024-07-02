@@ -21,7 +21,7 @@ public class ElitePawn : EnemyBase
 
     private NavMeshAgent _agent;
 
-    public AnimsController AnimControllerInstance;
+   // public AnimsController AnimControllerInstance;
 
     private void OnEnable()
     {
@@ -39,7 +39,7 @@ public class ElitePawn : EnemyBase
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        AnimControllerInstance = Instantiate(AnimsController);
+        animControllerInstance = Instantiate(AnimsController);
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
@@ -92,7 +92,7 @@ public class ElitePawn : EnemyBase
                 }
             }else
             {
-                if (AnimControllerInstance.ISAnimationEnded(_animator, AttackAnim))
+                if (animControllerInstance.ISAnimationEnded(_animator, AttackAnim))
                 {
                     ChangeState(State.Move);
                 }
@@ -106,7 +106,7 @@ public class ElitePawn : EnemyBase
     protected override void Die()
     {
         _agent.isStopped = true;
-        if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
+        if (animControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
             
             EnemySpawner.instance.numbenemies--;
