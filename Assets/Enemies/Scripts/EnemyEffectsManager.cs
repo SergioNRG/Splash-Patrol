@@ -117,7 +117,6 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void ReturnToPool()
     {
-
         gameObject.SetActive(false);
     }
 }
