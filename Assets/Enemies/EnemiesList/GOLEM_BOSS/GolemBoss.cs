@@ -14,6 +14,8 @@ public class GolemBoss : EnemyBase
     private MoveSOBase ChaseBaseInstance;// { get; set; }
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
+    private AnimsController _animsController;
+
     [SerializeField] private int _attackDistance;
     [SerializeField] private GameObject Projectile;
     [SerializeField] private float _attackSpeed;
@@ -39,6 +41,7 @@ public class GolemBoss : EnemyBase
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _animsController = Instantiate(AnimsController);
         if (_IdleLogic != null) { IdleBaseInstance = Instantiate(_IdleLogic); }
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
@@ -52,9 +55,9 @@ public class GolemBoss : EnemyBase
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
         AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, Projectile,_projectileForce);
 
-        AnimsController.ResetCurrentRepeat();
+        _animsController.ResetCurrentRepeat();
         ChangeState(State.Idle);
-        _coroutine = StartCoroutine(AnimsController.RepeatAnimation(repeatCount,_animator,IdleAnim));
+        _coroutine = StartCoroutine(_animsController.RepeatAnimation(repeatCount,_animator,IdleAnim));
     }
 
 
@@ -69,12 +72,12 @@ public class GolemBoss : EnemyBase
         if (_healthManager.CurrentHealth > 0)
         {
             _effectsManager.Idleffect();
-            if (AnimsController.GetCurrentRepeat() >= repeatCount)
+            if (_animsController.GetCurrentRepeat() >= repeatCount)
             {
                
-                if (AnimsController.ISAnimationEnded(_animator, IdleAnim))
+                if (_animsController.ISAnimationEnded(_animator, IdleAnim))
                 {
-                    AnimsController.ResetCurrentRepeat();
+                    _animsController.ResetCurrentRepeat();
                     
                     if (_coroutine != null)
                     {
@@ -98,7 +101,7 @@ public class GolemBoss : EnemyBase
         {
             _effectsManager.RoarEffect();
 
-            if (AnimsController.ISAnimationEnded(_animator, RoarAnim))
+            if (_animsController.ISAnimationEnded(_animator, RoarAnim))
             {
                 
                 if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
@@ -108,7 +111,7 @@ public class GolemBoss : EnemyBase
                 {
                     if (_coroutine == null)
                     {
-                        _coroutine = StartCoroutine(AnimsController.RepeatAnimation(repeatCount, _animator, IdleAnim));
+                        _coroutine = StartCoroutine(_animsController.RepeatAnimation(repeatCount, _animator, IdleAnim));
                     }
 
                     ChangeState(State.Idle);
@@ -147,7 +150,7 @@ public class GolemBoss : EnemyBase
                     _effectsManager.AttackEffect();
                 }
             }
-            else if (AnimsController.ISAnimationEnded(_animator, AttackAnim))
+            else if (_animsController.ISAnimationEnded(_animator, AttackAnim))
             {
                 _agent.isStopped = false;
                 ChangeState(State.Move);
