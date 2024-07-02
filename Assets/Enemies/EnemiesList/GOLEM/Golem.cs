@@ -27,6 +27,7 @@ public class Golem : EnemyBase
         ChaseAnim = AnimsController.Anims.Single(ChaseAnim => ChaseAnim.AnimKey == "CHASE").AnimName;
         AttackAnim = AnimsController.Anims.Single(AttackAnim => AttackAnim.AnimKey == "ATTACK").AnimName;
         DieAnim = AnimsController.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
+        ChangeState(State.Move);
     }
 
     private void Awake()
@@ -46,7 +47,7 @@ public class Golem : EnemyBase
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
         AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, Projectile, _projectileForce);
-        ChangeState(State.Move);
+       
     }
 
     // Update is called once per frame

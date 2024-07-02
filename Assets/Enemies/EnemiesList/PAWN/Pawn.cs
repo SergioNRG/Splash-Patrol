@@ -17,7 +17,6 @@ public class Pawn : EnemyBase
     {
         MoveAnim = AnimsController.Anims.Single(MoveAnim => MoveAnim.AnimKey == "MOVE").AnimName;
         DieAnim = AnimsController.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
-        MoveBaseInstance.Initialize(gameObject, this, _agent);
         ChangeState(State.Move);
     }
 
@@ -34,7 +33,6 @@ public class Pawn : EnemyBase
     void Start()
     {
         MoveBaseInstance.Initialize(gameObject, this, _agent);
-        ChangeState(State.Move);
     }
 
     void Update()

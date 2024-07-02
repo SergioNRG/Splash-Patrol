@@ -27,6 +27,7 @@ public class Mosquito :EnemyBase
         ChaseAnim = AnimsController.Anims.Single(ChaseAnim => ChaseAnim.AnimKey == "CHASE").AnimName;
         AttackAnim = AnimsController.Anims.Single(AttackAnim => AttackAnim.AnimKey == "ATTACK").AnimName;
         DieAnim = AnimsController.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
+        ChangeState(State.Move);
     }
 
     private void Awake()
@@ -44,7 +45,7 @@ public class Mosquito :EnemyBase
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent,_attackSpeed);
-        ChangeState(State.Move);
+       
     }
 
     // Update is called once per frame

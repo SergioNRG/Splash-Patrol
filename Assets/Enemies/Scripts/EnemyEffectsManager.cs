@@ -87,6 +87,7 @@ public class EnemyEffectsManager : MonoBehaviour
     {
         enemy.AnimsController.Playanimation(enemy._animator, enemy.DieAnim);
     }
+   
 
     public void HealEffect(int amount)
     {
