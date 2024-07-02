@@ -19,7 +19,6 @@ public class Pawn : EnemyBase
         DieAnim = AnimsController.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
         MoveBaseInstance.Initialize(gameObject, this, _agent);
         ChangeState(State.Move);
-        Debug.Log(MoveAnim);
     }
 
     private void Awake()
@@ -50,7 +49,6 @@ public class Pawn : EnemyBase
             _agent.isStopped = false;
             if (_moveLogic != null) 
             {
-                //_effectsManager.MoveEffect();
                 MoveBaseInstance.MoveLogic(); 
             }
         }else { ChangeState(State.Die); }

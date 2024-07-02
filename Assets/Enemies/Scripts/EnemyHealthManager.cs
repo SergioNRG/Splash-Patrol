@@ -47,7 +47,10 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable, IHealable
 
         if (CurrentHealth == 0 && damageTaken != 0) 
         {
+            
+            EnemySpawner.instance.numbenemies--;
             CurrentHealth = MaxHealth;
+            ReturnToPool();
             OnDeath?.Invoke(transform.position); 
         }
     }
@@ -61,5 +64,10 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable, IHealable
         if (healTaken != 0) { OnTakeHeal?.Invoke(-healTaken); }
 
       //  if (CurrentHealth == 0 && healTaken != 0) { OnDeath?.Invoke(transform.position); }
+    }
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
     }
 }

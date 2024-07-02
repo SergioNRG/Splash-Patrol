@@ -86,10 +86,6 @@ public class EnemyEffectsManager : MonoBehaviour
     public void Die(Vector3 position)
     {
         enemy.AnimsController.Playanimation(enemy._animator, enemy.DieAnim);
-        EnemySpawner.instance.numbenemies--;
-        ReturnToPool();
-        
-        //Destroy(gameObject,2f);
     }
 
     public void HealEffect(int amount)
@@ -115,8 +111,5 @@ public class EnemyEffectsManager : MonoBehaviour
         return popUp;
     }
 
-    public void ReturnToPool()
-    {
-        gameObject.SetActive(false);
-    }
+ 
 }
