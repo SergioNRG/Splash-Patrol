@@ -16,14 +16,22 @@ public class EnemyEffectsManager : MonoBehaviour
 
 
     public static ObjectPool<GameObject> _popUPPool;
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
         enemy = GetComponent<EnemyBase>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _crosshair = Camera.main.GetComponentInChildren<Image>();
         _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
     }
+    // Start is called before the first frame update
+   /* void Start()
+    {
+        enemy = GetComponent<EnemyBase>();
+        _healthManager = GetComponent<EnemyHealthManager>();
+        _crosshair = Camera.main.GetComponentInChildren<Image>();
+        _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -79,7 +87,8 @@ public class EnemyEffectsManager : MonoBehaviour
     {
         enemy.AnimsController.Playanimation(enemy._animator, enemy.DieAnim);
         EnemySpawner.instance.numbenemies--;
-        gameObject.SetActive(false);
+        ReturnToPool();
+        
         //Destroy(gameObject,2f);
     }
 
@@ -104,5 +113,11 @@ public class EnemyEffectsManager : MonoBehaviour
         var popUp = Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity, _crosshair.transform);
         popUp.GetComponent<SelfReturnToPool>().SetPool(_popUPPool);
         return popUp;
+    }
+
+    public void ReturnToPool()
+    {
+
+        gameObject.SetActive(false);
     }
 }

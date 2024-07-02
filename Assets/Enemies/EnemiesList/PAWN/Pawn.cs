@@ -17,6 +17,9 @@ public class Pawn : EnemyBase
     {
         MoveAnim = AnimsController.Anims.Single(MoveAnim => MoveAnim.AnimKey == "MOVE").AnimName;
         DieAnim = AnimsController.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
+        MoveBaseInstance.Initialize(gameObject, this, _agent);
+        ChangeState(State.Move);
+        Debug.Log(MoveAnim);
     }
 
     private void Awake()
@@ -24,6 +27,7 @@ public class Pawn : EnemyBase
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
+        _effectsManager = GetComponent<EnemyEffectsManager>();
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
     }
 
@@ -43,7 +47,12 @@ public class Pawn : EnemyBase
     {
         if (_healthManager.CurrentHealth > 0)
         {
-            if (_moveLogic != null) { MoveBaseInstance.MoveLogic(); }
+            _agent.isStopped = false;
+            if (_moveLogic != null) 
+            {
+                //_effectsManager.MoveEffect();
+                MoveBaseInstance.MoveLogic(); 
+            }
         }else { ChangeState(State.Die); }
     }
 
