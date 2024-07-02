@@ -17,21 +17,21 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public static ObjectPool<GameObject> _popUPPool;
 
-    private void OnEnable()
-    {
-        enemy = GetComponent<EnemyBase>();
-        _healthManager = GetComponent<EnemyHealthManager>();
-        _crosshair = Camera.main.GetComponentInChildren<Image>();
-        _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
-    }
-    // Start is called before the first frame update
-   /* void Start()
+    /*private void OnEnable()
     {
         enemy = GetComponent<EnemyBase>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _crosshair = Camera.main.GetComponentInChildren<Image>();
         _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
     }*/
+    // Start is called before the first frame update
+    void Start()
+    {
+        enemy = GetComponent<EnemyBase>();
+        _healthManager = GetComponent<EnemyHealthManager>();
+        _crosshair = Camera.main.GetComponentInChildren<Image>();
+        _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,24 +41,24 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void RoarEffect()
     {
-        enemy.AnimsController.Playanimation(enemy._animator, enemy.RoarAnim);
+        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.RoarAnim);
     }
     public void Idleffect()
     {
-        enemy.AnimsController.Playanimation(enemy._animator, enemy.IdleAnim);
+        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.IdleAnim);
     }
     public void MoveEffect()
     {
-        enemy.AnimsController.Playanimation(enemy._animator, enemy.MoveAnim);
+        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.MoveAnim);
     }
     public void ChaseEffect()
     {
-        enemy.AnimsController.Playanimation(enemy._animator, enemy.ChaseAnim);
+        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.ChaseAnim);
     }
 
     public void AttackEffect()
     {
-        enemy.AnimsController.Playanimation(enemy._animator, enemy.AttackAnim);
+        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.AttackAnim);
     }
 
     public void TakeDamageEffect(int damage)
@@ -85,7 +85,7 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void Die(Vector3 position)
     {
-        enemy.AnimsController.Playanimation(enemy._animator, enemy.DieAnim);
+        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.DieAnim);
     }
    
 

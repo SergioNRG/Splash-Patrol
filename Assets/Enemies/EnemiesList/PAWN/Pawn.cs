@@ -12,7 +12,8 @@ public class Pawn : EnemyBase
     private MoveSOBase MoveBaseInstance;// { get; set; }
 
     private NavMeshAgent _agent;
- 
+
+    //public AnimsController AnimControllerInstance;
     private void OnEnable()
     {
         MoveAnim = AnimsController.Anims.Single(MoveAnim => MoveAnim.AnimKey == "MOVE").AnimName;
@@ -26,6 +27,7 @@ public class Pawn : EnemyBase
         _animator = GetComponent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
+        animControllerInstance = Instantiate(AnimsController);
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
     }
 
@@ -55,6 +57,18 @@ public class Pawn : EnemyBase
     protected override void Die()
     {
         _agent.isStopped = true;
+        if (animControllerInstance.ISAnimationEnded(_animator, DieAnim))
+        {
+
+            EnemySpawner.instance.numbenemies--;
+            _healthManager.CurrentHealth = _healthManager.MaxHealth;
+            ReturnToPool();
+        }
+    }
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
     }
 
 }

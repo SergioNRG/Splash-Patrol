@@ -35,7 +35,7 @@ public class EnemyBase : MonoBehaviour
     [field: SerializeField] public string DieAnim { get; protected set; }// just to see
 
     #endregion
-
+    public AnimsController animControllerInstance { get;protected set; }
     protected EnemyHealthManager _healthManager;
     protected EnemyEffectsManager _effectsManager;
 

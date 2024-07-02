@@ -6,8 +6,8 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable, IHealable
 {
     [SerializeField] private int _maxHealth;
 
-    [SerializeField] private int _currentHealth;// just to see in inspector
-    public int CurrentHealth { get => _currentHealth;  set => _currentHealth = value; }
+    public int CurrentHealth { get; set; }
+    //public int CurrentHealth { get => _currentHealth;  set => _currentHealth = value; }
 
     public int MaxHealth { get =>_maxHealth; private set =>_maxHealth = value; }
 
@@ -46,9 +46,7 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable, IHealable
         if (damageTaken != 0) { OnTakeDamage?.Invoke(damageTaken); }
 
         if (CurrentHealth == 0 && damageTaken != 0) 
-        {
-            
-           
+        {           
             OnDeath?.Invoke(transform.position); 
         }
     }
