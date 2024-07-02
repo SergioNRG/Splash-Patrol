@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a144d0cef5f2d4b83b651602f24733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plusenemies: 2
+  plusenemies: 3
   numbenemies: 0
   enemiestospawn: 0
   spawnpoints:
@@ -1578,7 +1578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentHealth: 0
   _enemyEffectsManager: {fileID: 0}
 --- !u!114 &1683398509
 MonoBehaviour:
@@ -1909,7 +1908,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 25
-  _currentHealth: 0
   _enemyEffectsManager: {fileID: 0}
 --- !u!114 &1834585029
 MonoBehaviour:
