@@ -23,14 +23,7 @@ public class ElitePawn : EnemyBase
 
    // public AnimsController AnimControllerInstance;
 
-    private void OnEnable()
-    {
-        MoveAnim = AnimsController.Anims.Single(MoveAnim => MoveAnim.AnimKey == "MOVE").AnimName;
-        ChaseAnim = AnimsController.Anims.Single(ChaseAnim => ChaseAnim.AnimKey == "CHASE").AnimName;
-        AttackAnim = AnimsController.Anims.Single(AttackAnim => AttackAnim.AnimKey == "ATTACK").AnimName;
-        DieAnim = AnimsController.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
-        ChangeState(State.Move);
-    }
+  
 
     private void Awake()
     {
@@ -39,7 +32,8 @@ public class ElitePawn : EnemyBase
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        animControllerInstance = Instantiate(AnimsController);
+
+        AnimControllerInstance = Instantiate(AnimsController);
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
@@ -50,6 +44,16 @@ public class ElitePawn : EnemyBase
         ChaseBaseInstance.Initialize(gameObject, this,_agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
         
+        MoveAnim = AnimControllerInstance.Anims.Single(MoveAnim => MoveAnim.AnimKey == "MOVE").AnimName;
+        ChaseAnim = AnimControllerInstance.Anims.Single(ChaseAnim => ChaseAnim.AnimKey == "CHASE").AnimName;
+        AttackAnim = AnimControllerInstance.Anims.Single(AttackAnim => AttackAnim.AnimKey == "ATTACK").AnimName;
+        DieAnim = AnimControllerInstance.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
+
+    }
+
+    private void OnEnable()
+    {
+        ChangeState(State.Move);
     }
 
     void Update()
@@ -92,7 +96,7 @@ public class ElitePawn : EnemyBase
                 }
             }else
             {
-                if (animControllerInstance.ISAnimationEnded(_animator, AttackAnim))
+                if (AnimControllerInstance.ISAnimationEnded(_animator, AttackAnim))
                 {
                     ChangeState(State.Move);
                 }
@@ -106,7 +110,7 @@ public class ElitePawn : EnemyBase
     protected override void Die()
     {
         _agent.isStopped = true;
-        if (animControllerInstance.ISAnimationEnded(_animator, DieAnim))
+        if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
             
             EnemySpawner.instance.numbenemies--;

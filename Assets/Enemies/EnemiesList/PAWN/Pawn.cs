@@ -10,16 +10,7 @@ public class Pawn : EnemyBase
     [SerializeField] private MoveSOBase _moveLogic;
 
     private MoveSOBase MoveBaseInstance;// { get; set; }
-
     private NavMeshAgent _agent;
-
-    //public AnimsController AnimControllerInstance;
-    private void OnEnable()
-    {
-        MoveAnim = AnimsController.Anims.Single(MoveAnim => MoveAnim.AnimKey == "MOVE").AnimName;
-        DieAnim = AnimsController.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
-        ChangeState(State.Move);
-    }
 
     private void Awake()
     {
@@ -27,14 +18,21 @@ public class Pawn : EnemyBase
         _animator = GetComponent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
-        animControllerInstance = Instantiate(AnimsController);
+
+        AnimControllerInstance = Instantiate(AnimsController);
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
     }
 
 
     void Start()
     {
-        MoveBaseInstance.Initialize(gameObject, this, _agent);
+        MoveBaseInstance.Initialize(gameObject, this, _agent);       
+        MoveAnim = AnimControllerInstance.Anims.Single(MoveAnim => MoveAnim.AnimKey == "MOVE").AnimName;
+        DieAnim = AnimControllerInstance.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
+    }
+    private void OnEnable()
+    {       
+        ChangeState(State.Move);
     }
 
     void Update()
@@ -57,7 +55,7 @@ public class Pawn : EnemyBase
     protected override void Die()
     {
         _agent.isStopped = true;
-        if (animControllerInstance.ISAnimationEnded(_animator, DieAnim))
+        if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
 
             EnemySpawner.instance.numbenemies--;

@@ -68,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        GameObject mob = ObjectPooler.instance.TakeFromPool("Pawn");
+        GameObject mob = ObjectPooler.instance.TakeFromPool("ElitePawn");
         mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
         mob.SetActive(true);
     }

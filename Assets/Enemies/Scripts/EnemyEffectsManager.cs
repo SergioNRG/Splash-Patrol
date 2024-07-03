@@ -41,24 +41,24 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void RoarEffect()
     {
-        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.RoarAnim);
+        enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.RoarAnim);
     }
     public void Idleffect()
     {
-        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.IdleAnim);
+        enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.IdleAnim);
     }
     public void MoveEffect()
     {
-        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.MoveAnim);
+        enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.MoveAnim);
     }
     public void ChaseEffect()
     {
-        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.ChaseAnim);
+        enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.ChaseAnim);
     }
 
     public void AttackEffect()
     {
-        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.AttackAnim);
+        enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.AttackAnim);
     }
 
     public void TakeDamageEffect(int damage)
@@ -85,7 +85,7 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void Die(Vector3 position)
     {
-        enemy.animControllerInstance.Playanimation(enemy._animator, enemy.DieAnim);
+        enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.DieAnim);
     }
    
 

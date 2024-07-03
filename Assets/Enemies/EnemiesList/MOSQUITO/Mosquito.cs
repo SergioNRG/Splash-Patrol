@@ -21,15 +21,6 @@ public class Mosquito :EnemyBase
 
     private NavMeshAgent _agent;
 
-
-    private void OnEnable()
-    {
-        ChaseAnim = AnimsController.Anims.Single(ChaseAnim => ChaseAnim.AnimKey == "CHASE").AnimName;
-        AttackAnim = AnimsController.Anims.Single(AttackAnim => AttackAnim.AnimKey == "ATTACK").AnimName;
-        DieAnim = AnimsController.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
-        ChangeState(State.Move);
-    }
-
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -37,7 +28,8 @@ public class Mosquito :EnemyBase
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        animControllerInstance = Instantiate(AnimsController);
+
+        AnimControllerInstance = Instantiate(AnimsController);
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
@@ -46,7 +38,16 @@ public class Mosquito :EnemyBase
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent,_attackSpeed);
-       
+
+        ChaseAnim = AnimControllerInstance.Anims.Single(ChaseAnim => ChaseAnim.AnimKey == "CHASE").AnimName;
+        AttackAnim = AnimControllerInstance.Anims.Single(AttackAnim => AttackAnim.AnimKey == "ATTACK").AnimName;
+        DieAnim = AnimControllerInstance.Anims.Single(DieAnim => DieAnim.AnimKey == "DIE").AnimName;
+
+    }
+
+    private void OnEnable()
+    {
+        ChangeState(State.Move);
     }
 
     // Update is called once per frame
@@ -91,7 +92,7 @@ public class Mosquito :EnemyBase
                     AttackBaseInstance.AttackLogic(_animator);
                    //AttackBaseInstance.AttackLogic(_animator, AttackAnim);
                 }
-            }else if (animControllerInstance.ISAnimationEnded(_animator,AttackAnim))
+            }else if (AnimControllerInstance.ISAnimationEnded(_animator,AttackAnim))
             {
                 ChangeState(State.Move); 
             }
