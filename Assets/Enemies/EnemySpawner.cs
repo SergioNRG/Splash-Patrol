@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -68,7 +69,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        GameObject mob = ObjectPooler.instance.TakeFromPool("ElitePawn");
+        List<string> keyList = new List<string>(ObjectPooler.instance.PoolDictionary.Keys);
+
+        System.Random rand = new System.Random();
+        string tag = keyList[rand.Next(keyList.Count-1)];//.ToString()
+        Debug.Log(tag);
+        GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
         mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
         mob.SetActive(true);
     }

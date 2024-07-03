@@ -5534,7 +5534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentHealth: 0
   _enemyEffectsManager: {fileID: 0}
 --- !u!135 &9118002745979203423
 SphereCollider:
@@ -5632,7 +5631,7 @@ MonoBehaviour:
   _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
   _attackDistance: 8
   _attackSpeed: 0.5
-  _projectileForce: 0
+  _projectileForce: 5
   Projectile: {fileID: 387910211000296344, guid: 24d0a70a0b2bc8e42ae43faf061bac86,
     type: 3}
   flyHeight: 2

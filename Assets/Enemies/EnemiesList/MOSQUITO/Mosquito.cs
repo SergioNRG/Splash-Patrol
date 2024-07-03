@@ -104,5 +104,17 @@ public class Mosquito :EnemyBase
     protected override void Die()
     {
         _agent.isStopped = true;
+        if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
+        {
+
+            EnemySpawner.instance.numbenemies--;
+            _healthManager.CurrentHealth = _healthManager.MaxHealth;
+            ReturnToPool();
+        }
+    }
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
     }
 }
