@@ -130,7 +130,8 @@ public class GolemBoss : EnemyBase
             {
                 if (_attackLogic != null)
                 {
-                    Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
+                    //Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
+                    Vector3 lookTarget = new Vector3(_playerTransform.position.x, 0, _playerTransform.position.z);
                     transform.LookAt(lookTarget);
                     _agent.isStopped = true;
                     _effectsManager.AttackEffect();
