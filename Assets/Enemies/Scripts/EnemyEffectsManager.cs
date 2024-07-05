@@ -11,7 +11,6 @@ public class EnemyEffectsManager : MonoBehaviour
     [SerializeField] private EnemyHealthManager _healthManager;
     [SerializeField] private Image _crosshair;
     [SerializeField] private EnemyBase enemy;
-
      private Vector3 _offset;
 
 

@@ -522,6 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 0}
+  <Points>k__BackingField: 5
   <AnimsController>k__BackingField: {fileID: 11400000, guid: a21c1b2faf4317b4dbbda1cd93e90e56,
     type: 2}
   <_animator>k__BackingField: {fileID: 0}
@@ -566,7 +567,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 50
-  _currentHealth: 0
   _enemyEffectsManager: {fileID: 0}
 --- !u!135 &6590266260470372311
 SphereCollider:

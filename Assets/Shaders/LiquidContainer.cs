@@ -39,7 +39,6 @@ public class LiquidContainer : MonoBehaviour
     public void ChangeLiquidAmount(float liquidAmount)
     {
         m_Material.SetFloat(m_FillAmountId, liquidAmount);
-        Debug.Log(m_Material.GetFloat(m_FillAmountId));
     }
     
     private void Update()

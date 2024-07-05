@@ -286,7 +286,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4107163833025345686}
   - component: {fileID: 540305443504720549}
-  - component: {fileID: 7667675997348757858}
   - component: {fileID: 3539843353391411813}
   - component: {fileID: 7415601439489771938}
   - component: {fileID: 1647580762093595936}
@@ -340,25 +339,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0.1}
---- !u!114 &7667675997348757858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211028679222146853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96a5996eeae5bd448f7656def61fe6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: 284b2db9c9a6e9848b758dbd19c01a67, type: 2}
-  _basePlayerSpeed: 2
-  _sprintPlayerSpeed: 4
-  _crouchingPlayerSpeed: 1
-  _jumpHeight: 1
-  _gravityValue: -9.81
-  _isPlayerGrounded: 0
 --- !u!114 &3539843353391411813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,7 +876,7 @@ Transform:
   m_GameObject: {fileID: 8237158668219107603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.41, y: 0.25699997, z: -1734.3889}
+  m_LocalPosition: {x: -0.41, y: 0.25699997, z: -0.38891602}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -937,7 +917,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

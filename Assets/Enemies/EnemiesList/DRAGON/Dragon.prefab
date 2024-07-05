@@ -5618,6 +5618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 0}
+  <Points>k__BackingField: 5
   <AnimsController>k__BackingField: {fileID: 11400000, guid: bba6edc2fae88dd4a9d5597e4ae43dd2,
     type: 2}
   <_animator>k__BackingField: {fileID: 0}

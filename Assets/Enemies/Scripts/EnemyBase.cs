@@ -20,6 +20,7 @@ public class EnemyBase : MonoBehaviour
     protected State _currentState;
 
     [SerializeField] protected Transform _playerTransform;
+    [field:SerializeField ]public int Points { get; protected set; }
 
     #region STRINGS FOR ANIMATIONS NAMES  
 
@@ -38,7 +39,7 @@ public class EnemyBase : MonoBehaviour
     public AnimsController AnimControllerInstance { get;protected set; }
     protected EnemyHealthManager _healthManager;
     protected EnemyEffectsManager _effectsManager;
-
+    
     protected virtual void Idle() { }
     protected virtual void Attack() { }
     protected virtual void Move() { }
@@ -86,4 +87,6 @@ public class EnemyBase : MonoBehaviour
 
         }
     }
+
+    
 }

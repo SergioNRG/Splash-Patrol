@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 50
-  _currentHealth: 0
   _enemyEffectsManager: {fileID: 0}
 --- !u!114 &9089780273631431933
 MonoBehaviour:
@@ -82,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 0}
+  <Points>k__BackingField: 3
   <AnimsController>k__BackingField: {fileID: 11400000, guid: bf9ed0a46af5e744f93cb9d1dd41abc0,
     type: 2}
   <_animator>k__BackingField: {fileID: 0}
