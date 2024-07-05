@@ -39,7 +39,7 @@ public class EnemyBase : MonoBehaviour
     public AnimsController AnimControllerInstance { get;protected set; }
     protected EnemyHealthManager _healthManager;
     protected EnemyEffectsManager _effectsManager;
-    
+    protected LootBag _lootBag;
     protected virtual void Idle() { }
     protected virtual void Attack() { }
     protected virtual void Move() { }

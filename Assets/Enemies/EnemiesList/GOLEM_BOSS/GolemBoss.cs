@@ -37,6 +37,7 @@ public class GolemBoss : EnemyBase
         _animator = GetComponent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
+        _lootBag = GetComponent<LootBag>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         AnimControllerInstance = Instantiate(AnimsController);
@@ -156,7 +157,7 @@ public class GolemBoss : EnemyBase
         _agent.isStopped = true;
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
-           
+            _lootBag.instantiateDrop(transform.position);
             ScoreManager.Instance.AddScore(Points);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;

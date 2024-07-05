@@ -12,12 +12,19 @@ public class Pawn : EnemyBase
     private MoveSOBase MoveBaseInstance;// { get; set; }
     private NavMeshAgent _agent;
 
+    /// <summary>
+    /// //////////////////////
+    /// </summary>
+    /// 
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _effectsManager = GetComponent<EnemyEffectsManager>();
+        _lootBag = GetComponent<LootBag>();
+
 
         AnimControllerInstance = Instantiate(AnimsController);
         if (_moveLogic != null) { MoveBaseInstance = Instantiate(_moveLogic); }
@@ -57,6 +64,7 @@ public class Pawn : EnemyBase
         _agent.isStopped = true;
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
+            _lootBag.instantiateDrop(transform.position);
             ScoreManager.Instance.AddScore(Points);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
