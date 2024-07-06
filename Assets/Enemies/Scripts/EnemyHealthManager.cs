@@ -57,7 +57,7 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable, IHealable
 
         CurrentHealth += healTaken;
 
-        if (healTaken != 0) { OnTakeHeal?.Invoke(-healTaken); }
+        if (healTaken != 0) { OnTakeHeal?.Invoke(healTaken); }
 
       //  if (CurrentHealth == 0 && healTaken != 0) { OnDeath?.Invoke(transform.position); }
     }
