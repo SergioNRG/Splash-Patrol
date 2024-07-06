@@ -6,12 +6,12 @@ using UnityEngine.AI;
 
 public class ElitePawn : EnemyBase
 {
-   // [SerializeField] private IdleSOBase _idleLogic;
+
     [SerializeField] private MoveSOBase _moveLogic;
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
-   // private IdleSOBase IdleBaseInstance;// { get; set; }
+
     private MoveSOBase MoveBaseInstance;// { get; set; }
     private MoveSOBase ChaseBaseInstance;// { get; set; }
     private AttackSOBase AttackBaseInstance;// { get; set; } 
@@ -21,9 +21,6 @@ public class ElitePawn : EnemyBase
 
     private NavMeshAgent _agent;
 
-   // public AnimsController AnimControllerInstance;
-
-  
 
     private void Awake()
     {
@@ -114,8 +111,9 @@ public class ElitePawn : EnemyBase
         _agent.isStopped = true;
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
-            _lootBag.instantiateDrop(transform.position);
-            ScoreManager.Instance.AddScore(Points);
+
+            _lootBag.instantiateDrop(transform.parent.position);
+            ScoreManager.Instance.AddScore(PointsToGive);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();

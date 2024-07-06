@@ -65,7 +65,7 @@ public class Pawn : EnemyBase
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
             _lootBag.instantiateDrop(transform.position);
-            ScoreManager.Instance.AddScore(Points);
+            ScoreManager.Instance.AddScore(PointsToGive);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();

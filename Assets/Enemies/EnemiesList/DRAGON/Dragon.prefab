@@ -5452,12 +5452,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4637070210680467880}
   - component: {fileID: 341767175947428944}
+  - component: {fileID: 9106943418379308749}
+  - component: {fileID: 589545120221745762}
+  - component: {fileID: 9118002745979203423}
+  - component: {fileID: 2999520026464209414}
   - component: {fileID: 2234206770530891649}
   - component: {fileID: 402042671224716779}
-  - component: {fileID: 9118002745979203423}
-  - component: {fileID: 589545120221745762}
-  - component: {fileID: 9106943418379308749}
-  - component: {fileID: 2999520026464209414}
+  - component: {fileID: 7819505782348858351}
   m_Layer: 7
   m_Name: Dragon
   m_TagString: Untagged
@@ -5504,6 +5505,107 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &9106943418379308749
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076291827353888695}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!54 &589545120221745762
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076291827353888695}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &9118002745979203423
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076291827353888695}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &2999520026464209414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076291827353888695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab69edd120aceb44d95e74cd1380e6c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 0}
+  <PointsToGive>k__BackingField: 0
+  <AnimsController>k__BackingField: {fileID: 11400000, guid: bba6edc2fae88dd4a9d5597e4ae43dd2,
+    type: 2}
+  <_animator>k__BackingField: {fileID: 0}
+  <IdleAnim>k__BackingField: 
+  <RoarAnim>k__BackingField: 
+  <MoveAnim>k__BackingField: 
+  <ChaseAnim>k__BackingField: 
+  <AttackAnim>k__BackingField: 
+  <DieAnim>k__BackingField: 
+  _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
+  _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
+  _attackDistance: 8
+  _attackSpeed: 0.5
+  _projectileForce: 5
+  Projectile: {fileID: 387910211000296344, guid: 24d0a70a0b2bc8e42ae43faf061bac86,
+    type: 3}
+  flyHeight: 2
 --- !u!114 &2234206770530891649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5535,77 +5637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _enemyEffectsManager: {fileID: 0}
---- !u!135 &9118002745979203423
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076291827353888695}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0.4, z: 0}
---- !u!54 &589545120221745762
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076291827353888695}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!195 &9106943418379308749
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076291827353888695}
-  m_Enabled: 1
-  m_AgentTypeID: -1372625422
-  m_Radius: 0.5
-  m_Speed: 1
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &2999520026464209414
+--- !u!114 &7819505782348858351
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5614,25 +5646,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9076291827353888695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab69edd120aceb44d95e74cd1380e6c9, type: 3}
+  m_Script: {fileID: 11500000, guid: b0c19deabebb31a41b91095ed504412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
-  <Points>k__BackingField: 5
-  <AnimsController>k__BackingField: {fileID: 11400000, guid: bba6edc2fae88dd4a9d5597e4ae43dd2,
-    type: 2}
-  <_animator>k__BackingField: {fileID: 0}
-  <IdleAnim>k__BackingField: 
-  <RoarAnim>k__BackingField: 
-  <MoveAnim>k__BackingField: 
-  <ChaseAnim>k__BackingField: 
-  <AttackAnim>k__BackingField: 
-  <DieAnim>k__BackingField: 
-  _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
-  _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
-  _attackDistance: 8
-  _attackSpeed: 0.5
-  _projectileForce: 5
-  Projectile: {fileID: 387910211000296344, guid: 24d0a70a0b2bc8e42ae43faf061bac86,
-    type: 3}
-  flyHeight: 2
+  LootList:
+  - {fileID: 11400000, guid: 32d592a4fdca1cb4db87cec3911dd0a1, type: 2}
+  - {fileID: 11400000, guid: fa57b59d061f18c4fa0cc72a6d5b29c2, type: 2}

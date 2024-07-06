@@ -20,7 +20,7 @@ public class EnemyBase : MonoBehaviour
     protected State _currentState;
 
     [SerializeField] protected Transform _playerTransform;
-    [field:SerializeField ]public int Points { get; protected set; }
+    [field:SerializeField ]public int PointsToGive { get; protected set; }
 
     #region STRINGS FOR ANIMATIONS NAMES  
 

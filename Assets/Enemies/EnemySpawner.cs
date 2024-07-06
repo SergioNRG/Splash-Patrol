@@ -38,18 +38,7 @@ public class EnemySpawner : MonoBehaviour
             timelapsed = 0;
         }
 
-
-        if (numbenemies == 0)
-        {
-
-            activatetimmer = true;
-            if (timelapsed >= timetonextwave)
-            {
-                WaveSpawner();
-                activatetimmer = false;
-            }
-
-        }
+        CheckEnemies();
     }
     public void WaveSpawner()
     {
@@ -63,8 +52,27 @@ public class EnemySpawner : MonoBehaviour
         numbenemies = enemiestospawn;
         wavecount++;
         Debug.Log(wavecount);
+        if (wavecount % 10 == 0)
+        {
+            Debug.Log("SPAWN BOSS");
+        }
         //Wavetxt.text = wavecount.ToString();
 
+    }
+
+    private void CheckEnemies()
+    {
+        if (numbenemies == 0)
+        {
+
+            activatetimmer = true;
+            if (timelapsed >= timetonextwave)
+            {
+                WaveSpawner();
+                activatetimmer = false;
+            }
+
+        }
     }
 
     private void SpawnEnemy()
@@ -72,10 +80,16 @@ public class EnemySpawner : MonoBehaviour
         List<string> keyList = new List<string>(ObjectPooler.instance.PoolDictionary.Keys);
 
         System.Random rand = new System.Random();
-        string tag = keyList[rand.Next(keyList.Count-1)];//.ToString()
-        Debug.Log(tag);
+        string tag = keyList[rand.Next(keyList.Count-1)];
         GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
         mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
+        mob.SetActive(true);
+    }
+
+    private void SpawnBoss(string tag)
+    {
+        GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
+        mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;// mudar para boss sopt
         mob.SetActive(true);
     }
 }

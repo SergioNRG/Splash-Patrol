@@ -7,13 +7,13 @@ using UnityEngine.AI;
 
 public class Mosquito :EnemyBase
 {
-    // [SerializeField] private IdleSOBase _idleLogic;
+
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
-    // private IdleSOBase IdleBaseInstance;// { get; set; }
-    private MoveSOBase ChaseBaseInstance;// { get; set; }
-    private AttackSOBase AttackBaseInstance;// { get; set; } 
+
+    private MoveSOBase ChaseBaseInstance;
+    private AttackSOBase AttackBaseInstance;
 
     [SerializeField] private int _attackDistance;
     [SerializeField] private float _attackSpeed;
@@ -34,7 +34,7 @@ public class Mosquito :EnemyBase
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
@@ -50,8 +50,6 @@ public class Mosquito :EnemyBase
     {
         ChangeState(State.Move);
     }
-
-    // Update is called once per frame
     void Update()
     {
         StateMachine();
@@ -84,14 +82,12 @@ public class Mosquito :EnemyBase
             Vector3 position = transform.position;
             position.y = _agent.nextPosition.y + flyHeight;
             transform.position = position;
-            // transform.LookAt(_playerTransform.position);
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
                 if (_attackLogic != null)
                 {
                     _effectsManager.AttackEffect();
                     AttackBaseInstance.AttackLogic(_animator);
-                   //AttackBaseInstance.AttackLogic(_animator, AttackAnim);
                 }
             }else if (AnimControllerInstance.ISAnimationEnded(_animator,AttackAnim))
             {
@@ -108,7 +104,7 @@ public class Mosquito :EnemyBase
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
             _lootBag.instantiateDrop(transform.position);
-            ScoreManager.Instance.AddScore(Points);
+            ScoreManager.Instance.AddScore(PointsToGive);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();

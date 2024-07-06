@@ -10,11 +10,11 @@ public class GolemBoss : EnemyBase
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
-    private IdleSOBase IdleBaseInstance;// { get; set; }
-    private MoveSOBase ChaseBaseInstance;// { get; set; }
-    private AttackSOBase AttackBaseInstance;// { get; set; } 
+    private IdleSOBase IdleBaseInstance;
+    private MoveSOBase ChaseBaseInstance;
+    private AttackSOBase AttackBaseInstance;
 
-   // public AnimsController AnimControllerInstance;
+
 
     [SerializeField] private int _attackDistance;
     [SerializeField] private GameObject Projectile;
@@ -158,7 +158,7 @@ public class GolemBoss : EnemyBase
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
             _lootBag.instantiateDrop(transform.position);
-            ScoreManager.Instance.AddScore(Points);
+            ScoreManager.Instance.AddScore(PointsToGive);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();

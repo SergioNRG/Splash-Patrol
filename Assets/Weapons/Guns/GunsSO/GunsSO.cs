@@ -152,8 +152,6 @@ public class GunsSO : WeaponSOBase,System.ICloneable
                 {
                     AmmoDisplay.UpdateAmount(CurrentAmmo, MaxAmmo); 
                 }
-
-                Debug.Log(CurrentAmmo);
             }
         }
       

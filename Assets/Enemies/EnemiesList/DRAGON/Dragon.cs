@@ -6,18 +6,17 @@ using UnityEngine.AI;
 
 public class Dragon : EnemyBase
 {
-    // [SerializeField] private IdleSOBase _idleLogic;
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
-    // private IdleSOBase IdleBaseInstance;// { get; set; }
-    private MoveSOBase ChaseBaseInstance;// { get; set; }
-    private AttackSOBase AttackBaseInstance;// { get; set; } 
+    private MoveSOBase ChaseBaseInstance;
+    private AttackSOBase AttackBaseInstance;
 
     [SerializeField] private int _attackDistance;
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
     public GameObject Projectile;
+
     [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;
@@ -35,7 +34,7 @@ public class Dragon : EnemyBase
         if (_chasePlayerLogic != null) { ChaseBaseInstance = Instantiate(_chasePlayerLogic); }
         if (_attackLogic != null) { AttackBaseInstance = Instantiate(_attackLogic); }
     }
-    // Start is called before the first frame update
+
     void Start()
     {     
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
@@ -52,7 +51,6 @@ public class Dragon : EnemyBase
         ChangeState(State.Move);
     }
 
-    // Update is called once per frame
     void Update()
     {
         StateMachine();
@@ -113,7 +111,7 @@ public class Dragon : EnemyBase
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
             _lootBag.instantiateDrop(transform.position);
-            ScoreManager.Instance.AddScore(Points);
+            ScoreManager.Instance.AddScore(PointsToGive);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();

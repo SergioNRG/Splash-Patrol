@@ -77,10 +77,11 @@ GameObject:
   - component: {fileID: 5775864486802916705}
   - component: {fileID: 7914949589492019804}
   - component: {fileID: 536675668920741807}
+  - component: {fileID: 2545892592054211355}
   - component: {fileID: 4394990553986643982}
   - component: {fileID: 1967977785979805007}
   - component: {fileID: 6248894471001508088}
-  - component: {fileID: 2545892592054211355}
+  - component: {fileID: 357611060807877860}
   m_Layer: 7
   m_Name: Pawn
   m_TagString: Untagged
@@ -169,6 +170,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &2545892592054211355
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631008564190387957}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &4394990553986643982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 0}
-  <Points>k__BackingField: 2
+  <PointsToGive>k__BackingField: 2
   <AnimsController>k__BackingField: {fileID: 11400000, guid: de79865611a989342bfe7929f9b5c1b6,
     type: 2}
   <_animator>k__BackingField: {fileID: 0}
@@ -224,33 +252,21 @@ MonoBehaviour:
   _healthManager: {fileID: 0}
   _crosshair: {fileID: 0}
   enemy: {fileID: 0}
---- !u!54 &2545892592054211355
-Rigidbody:
+--- !u!114 &357611060807877860
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631008564190387957}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c19deabebb31a41b91095ed504412d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LootList:
+  - {fileID: 11400000, guid: 32d592a4fdca1cb4db87cec3911dd0a1, type: 2}
+  - {fileID: 11400000, guid: fa57b59d061f18c4fa0cc72a6d5b29c2, type: 2}
 --- !u!1 &2408020418386215499
 GameObject:
   m_ObjectHideFlags: 0

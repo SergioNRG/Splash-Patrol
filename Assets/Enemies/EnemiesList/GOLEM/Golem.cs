@@ -6,19 +6,18 @@ using UnityEngine.AI;
 
 public class Golem : EnemyBase
 {
-    // [SerializeField] private IdleSOBase _idleLogic;
+
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
-    // private IdleSOBase IdleBaseInstance;// { get; set; }
-    private MoveSOBase ChaseBaseInstance;// { get; set; }
-    private AttackSOBase AttackBaseInstance;// { get; set; } 
+
+    private MoveSOBase ChaseBaseInstance;
+    private AttackSOBase AttackBaseInstance;
 
     [SerializeField] private int _attackDistance;
     public GameObject Projectile;
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
-    // [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;
 
@@ -85,7 +84,6 @@ public class Golem : EnemyBase
             {
                 if (_attackLogic != null)
                 {
-                    //Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
                     Vector3 lookTarget = new Vector3(_playerTransform.position.x, 0, _playerTransform.position.z);
                     transform.LookAt(lookTarget);
                     _agent.isStopped = true;
@@ -111,7 +109,7 @@ public class Golem : EnemyBase
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
             _lootBag.instantiateDrop(transform.position);
-            ScoreManager.Instance.AddScore(Points);
+            ScoreManager.Instance.AddScore(PointsToGive);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();
