@@ -19,8 +19,14 @@ public class EnemyBase : MonoBehaviour
 
     protected State _currentState;
 
+    [field: SerializeField] public int PointsToGive { get; protected set; }
+
+    [SerializeField] protected int damage;
     [SerializeField] protected Transform _playerTransform;
-    [field:SerializeField ]public int PointsToGive { get; protected set; }
+    
+    protected EnemyHealthManager _healthManager;
+    protected EnemyEffectsManager _effectsManager;
+    protected LootBag _lootBag;
 
     #region STRINGS FOR ANIMATIONS NAMES  
 
@@ -37,9 +43,7 @@ public class EnemyBase : MonoBehaviour
 
     #endregion
     public AnimsController AnimControllerInstance { get;protected set; }
-    protected EnemyHealthManager _healthManager;
-    protected EnemyEffectsManager _effectsManager;
-    protected LootBag _lootBag;
+    
     protected virtual void Idle() { }
     protected virtual void Attack() { }
     protected virtual void Move() { }
@@ -88,5 +92,14 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    
+    public void OnTriggerEnter(Collider other)
+    {
+        if (damage != 0)
+        {
+            if (other.CompareTag("Player"))
+            {
+                other.GetComponent<IDamageable>().ApplyDamage(damage);
+            }
+        }      
+    }
 }

@@ -42,13 +42,13 @@ public class PlayerEffectsManager : MonoBehaviour
 
     public void TakeDamageEffect(int damage)
     {
-       
 
+        Debug.Log("taking Damage " + _healthManager.CurrentHealth);
     }
 
     public void Die(Vector3 position)
     {
-  
+        Debug.Log("player DIE");
     }
 
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class RockScript : MonoBehaviour, IPooled
 {
     [SerializeField] private float _rotationSpeed = 200f;
-
+    [SerializeField] private int _rockDamage;
     private Transform _playerTransform;  
     private ObjectPool<GameObject> _golemRocksPool;
 
@@ -25,14 +25,15 @@ public class RockScript : MonoBehaviour, IPooled
     {
         if (other.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
-            _golemRocksPool.Release(gameObject);
+            if (_rockDamage != 0)
+            {
+                other.GetComponent<IDamageable>().ApplyDamage(_rockDamage);
+            }
+            //gameObject.SetActive(false);
+            //_dragonBulletPool.Release(gameObject);
         }
-        else 
-        {
-            gameObject.SetActive(false);
-            _golemRocksPool.Release(gameObject);
-        }
+        gameObject.SetActive(false);
+        _golemRocksPool.Release(gameObject);
 
     }
 

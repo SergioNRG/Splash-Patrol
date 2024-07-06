@@ -8,6 +8,7 @@ public class BossRockScript : MonoBehaviour,IPooled
 {
     [SerializeField] private GameObject _enemyToSpawn;
     [SerializeField] private float _rotationSpeed = 200f;
+    [SerializeField] private int _bossRockDamage;
 
     private Transform _playerTransform;
     private float _timer = 0;
@@ -30,9 +31,15 @@ public class BossRockScript : MonoBehaviour,IPooled
     {
         if (collision.collider.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
-            _bossRocksPool.Release(gameObject);
+            if (_bossRockDamage != 0)
+            {
+                collision.collider.GetComponent<IDamageable>().ApplyDamage(_bossRockDamage);
+            }
+            //gameObject.SetActive(false);
+            //_dragonBulletPool.Release(gameObject);
         }
+        gameObject.SetActive(false);
+        _bossRocksPool.Release(gameObject);
     }
 
     private void OnCollisionStay(Collision collision)

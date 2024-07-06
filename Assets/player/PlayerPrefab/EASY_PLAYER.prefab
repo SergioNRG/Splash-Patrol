@@ -289,6 +289,8 @@ GameObject:
   - component: {fileID: 3539843353391411813}
   - component: {fileID: 7415601439489771938}
   - component: {fileID: 1647580762093595936}
+  - component: {fileID: 7407643729635200172}
+  - component: {fileID: 273653617910601358}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -397,6 +399,33 @@ MonoBehaviour:
   _crouchingPlayerSpeed: 1
   _jumpHeight: 1
   _gravityValue: -9.81
+--- !u!114 &7407643729635200172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211028679222146853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93116050add2984dadb5af99ec3bba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 500
+  _playerEffectsManager: {fileID: 0}
+--- !u!114 &273653617910601358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211028679222146853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3590088c067a3d4eb8a8d50d1b95e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthManager: {fileID: 0}
 --- !u!1 &3740495465317456883
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +905,7 @@ Transform:
   m_GameObject: {fileID: 8237158668219107603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.41, y: 0.25699997, z: -0.38891602}
+  m_LocalPosition: {x: -0.41, y: 0.357, z: -1734.3889}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -917,7 +946,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

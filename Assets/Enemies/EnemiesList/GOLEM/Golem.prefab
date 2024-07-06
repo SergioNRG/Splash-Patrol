@@ -891,8 +891,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b26e56ab347d4408d748e8c8bffa57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PointsToGive>k__BackingField: 10
+  damage: 5
   _playerTransform: {fileID: 0}
-  <PointsToGive>k__BackingField: 0
   <AnimsController>k__BackingField: {fileID: 11400000, guid: 0d4ec44689f3fde4e9714587d7afd39c,
     type: 2}
   <_animator>k__BackingField: {fileID: 0}

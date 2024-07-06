@@ -123,6 +123,7 @@ MonoBehaviour:
   _enemyToSpawn: {fileID: 8807196204250226594, guid: e3d1ede77bd8de44d890010ed785c0a5,
     type: 3}
   _rotationSpeed: 100
+  _bossRockDamage: 10
 --- !u!135 &6909079464136749357
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour,IPooled
 {
     private Transform _playerTransform;
     private ObjectPool<GameObject> _dragonBulletPool;
-
+    [SerializeField] private int _bulletDamage;
     private void Awake()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -18,14 +18,20 @@ public class BulletScript : MonoBehaviour,IPooled
     {
         if (other.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
-            _dragonBulletPool.Release(gameObject);
+            if (_bulletDamage != 0)
+            {
+                other.GetComponent<IDamageable>().ApplyDamage(_bulletDamage);
+            }
+            //gameObject.SetActive(false);
+            //_dragonBulletPool.Release(gameObject);
         }
-        else 
+        gameObject.SetActive(false);
+        _dragonBulletPool.Release(gameObject);
+       /* else 
         {
             gameObject.SetActive(false);
             _dragonBulletPool.Release(gameObject);
-        }
+        }*/
         
     }
     public void SetPool(ObjectPool<GameObject> pool)
