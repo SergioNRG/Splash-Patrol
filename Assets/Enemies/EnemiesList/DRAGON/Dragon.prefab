@@ -5606,7 +5606,7 @@ MonoBehaviour:
   _projectileForce: 5
   Projectile: {fileID: 387910211000296344, guid: 24d0a70a0b2bc8e42ae43faf061bac86,
     type: 3}
-  flyHeight: 2
+  flyHeight: 1.5
 --- !u!114 &2234206770530891649
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -53,11 +53,11 @@ public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
 
     public void ApplyHeal(int amount)
     {
-        int healTaken = Mathf.Clamp(amount, 0, MaxHealth);
+        //int healTaken = Mathf.Clamp(amount, 0, MaxHealth);
 
-        CurrentHealth += healTaken;
-
-        if (healTaken != 0) { OnTakeHeal?.Invoke(healTaken); }
+        CurrentHealth += amount;
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+        if (amount != 0) { OnTakeHeal?.Invoke(amount); }
 
         //  if (CurrentHealth == 0 && healTaken != 0) { OnDeath?.Invoke(transform.position); }
     }

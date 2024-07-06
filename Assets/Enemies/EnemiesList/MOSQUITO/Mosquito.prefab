@@ -608,7 +608,7 @@ MonoBehaviour:
   _attackLogic: {fileID: 11400000, guid: ff65f108ce80f874f86f704ffac01562, type: 2}
   _attackDistance: 3
   _attackSpeed: 0.5
-  flyHeight: 2
+  flyHeight: 1.5
 --- !u!114 &2557276460638876834
 MonoBehaviour:
   m_ObjectHideFlags: 0
