@@ -29188,6 +29188,7 @@ GameObject:
   - component: {fileID: 3049428253405200659}
   - component: {fileID: 3049428253405200620}
   - component: {fileID: 3455498449517880852}
+  - component: {fileID: 2603876146771448787}
   m_Layer: 6
   m_Name: HPUP
   m_TagString: Untagged
@@ -34054,6 +34055,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2603876146771448787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3049428253405200621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963b0e03ea47fda44a663703af52630e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpBonus: 20
 --- !u!1 &4346457330195515198
 GameObject:
   m_ObjectHideFlags: 0

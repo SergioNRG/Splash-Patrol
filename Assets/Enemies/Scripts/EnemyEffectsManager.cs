@@ -76,8 +76,6 @@ public class EnemyEffectsManager : MonoBehaviour
             {
                 ShowDamagePopUp(Color.red);
             }
-
-            Debug.Log("enemy taking damage"); 
         }
         
     }

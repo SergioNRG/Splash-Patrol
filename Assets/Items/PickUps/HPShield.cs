@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HPShield : MonoBehaviour
 {
+    [SerializeField] private int _hpBonus;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,14 @@ public class HPShield : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<IHealable>().ApplyHeal(_hpBonus);
+            Debug.Log(other.GetComponent<PlayerHealthManager>().CurrentHealth);
+        }
     }
 }
