@@ -22,6 +22,8 @@ public class HPShield : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<IHealable>().ApplyHeal(_hpBonus);
+            gameObject.SetActive(false);
+            LootBag.LootPool.Release(gameObject);
             Debug.Log(other.GetComponent<PlayerHealthManager>().CurrentHealth);
         }
     }

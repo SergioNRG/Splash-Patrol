@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Coin : MonoBehaviour
 {
     [SerializeField] private int _coinPoints;
+   // private ObjectPool<GameObject> _coinPool;
     void Start()
     {
         
@@ -21,6 +23,13 @@ public class Coin : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ScoreManager.Instance.AddScore(_coinPoints);
+            gameObject.SetActive(false);
+            LootBag.LootPool.Release(gameObject);
         }
     }
+
+   /* public void SetPool(ObjectPool<GameObject> pool)
+    {
+        _coinPool = pool;
+    }*/
 }

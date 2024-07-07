@@ -112,7 +112,14 @@ public class ElitePawn : EnemyBase
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
 
-            _lootBag.instantiateDrop(transform.parent.position);
+            var loot = _lootBag.GetLoot(transform.parent.position);
+            /*if (loot != null)
+            {
+                loot.transform.position = transform.parent.position;
+            }*/
+
+                  
+            //loot.SetActive(true);
             ScoreManager.Instance.AddScore(PointsToGive);
             EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
