@@ -46,7 +46,7 @@ public class PlayerEffectsManager : MonoBehaviour
         Debug.Log("taking Damage " + _healthManager.CurrentHealth);
     }
 
-    public void Die(Vector3 position)
+    public void Die(Vector3 position, GameObject pl)
     {
         Debug.Log("player DIE");
     }

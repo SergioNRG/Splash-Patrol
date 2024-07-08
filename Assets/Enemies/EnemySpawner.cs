@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public int enemiestospawn = 0;
 
     [SerializeField] Transform[] spawnpoints;
-
+    public List<GameObject> _activEnemies = new List<GameObject>();
     private int wavecount = 0;
 
     public float timetonextwave, timelapsed;
@@ -19,26 +19,30 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) { instance = this; }
+        if (instance == null) 
+        { 
+            instance = this; 
+            DontDestroyOnLoad(gameObject);
+        }else { Destroy(gameObject); }
     }
     private void Start()
     {
         timelapsed = 0;
         timetonextwave = 3;
-        //WaveSpawner();
+        WaveSpawner();
     }
     private void Update()
     {
-        if (activatetimmer)
+        /*if (activatetimmer)
         {
             timelapsed += Time.deltaTime;
         }
         else
         {
             timelapsed = 0;
-        }
+        }*/
 
-        CheckEnemies();
+        //CheckEnemies();
     }
     public void WaveSpawner()
     {
@@ -47,9 +51,10 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 1; i <= enemiestospawn; i++)
         {
             SpawnEnemy();
+            
         }
 
-        numbenemies = enemiestospawn;
+       // numbenemies = enemiestospawn;
         wavecount++;
         Debug.Log(wavecount);
         if (wavecount % 10 == 0)
@@ -60,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    private void CheckEnemies()
+   /* private void CheckEnemies()
     {
         if (numbenemies == 0)
         {
@@ -73,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
         }
-    }
+    }*/
 
     private void SpawnEnemy()
     {
@@ -84,6 +89,7 @@ public class EnemySpawner : MonoBehaviour
         GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
         mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
         mob.SetActive(true);
+        _activEnemies.Add(mob);
     }
 
     private void SpawnBoss(string tag)
@@ -91,5 +97,23 @@ public class EnemySpawner : MonoBehaviour
         GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
         mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;// mudar para boss sopt
         mob.SetActive(true);
+        _activEnemies.Add(mob);
+    }
+
+    public void HandleEnemyKilled(Vector3 pos,GameObject enemy)
+    {
+        
+        _activEnemies.Remove(enemy);
+        if (_activEnemies.Count == 0)
+        {
+           /* activatetimmer = true;
+            if (timelapsed >= timetonextwave)
+            {
+                WaveSpawner();
+                activatetimmer = false;
+            }*/
+            //waveManager.OnWaveCompleted();
+            WaveSpawner();
+        }
     }
 }

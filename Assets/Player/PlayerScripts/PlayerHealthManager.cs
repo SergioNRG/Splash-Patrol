@@ -47,7 +47,7 @@ public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
 
         if (CurrentHealth == 0 && damageTaken != 0)
         {
-            OnDeath?.Invoke(transform.position);
+            OnDeath?.Invoke(transform.position, gameObject);
         }
     }
 

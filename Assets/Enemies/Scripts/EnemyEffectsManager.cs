@@ -80,7 +80,7 @@ public class EnemyEffectsManager : MonoBehaviour
         
     }
 
-    public void Die(Vector3 position)
+    public void Die(Vector3 position, GameObject go)
     {
         enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.DieAnim);
     }

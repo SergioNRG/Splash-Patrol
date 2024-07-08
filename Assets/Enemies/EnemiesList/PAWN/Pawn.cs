@@ -72,7 +72,7 @@ public class Pawn : EnemyBase
             
             //loot.SetActive(true);
             ScoreManager.Instance.AddScore(PointsToGive);
-            EnemySpawner.instance.numbenemies--;
+            //EnemySpawner.instance.numbenemies--;
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();
         }

@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a144d0cef5f2d4b83b651602f24733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plusenemies: 3
+  plusenemies: 2
   numbenemies: 0
   enemiestospawn: 0
   spawnpoints:
