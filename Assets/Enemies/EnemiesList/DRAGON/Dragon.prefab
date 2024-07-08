@@ -5651,6 +5651,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LootList:
-  - {fileID: 11400000, guid: 3ad2e4c26373d714a80a07c4be89a659, type: 2}
   - {fileID: 11400000, guid: 32d592a4fdca1cb4db87cec3911dd0a1, type: 2}
-  - {fileID: 11400000, guid: fa57b59d061f18c4fa0cc72a6d5b29c2, type: 2}

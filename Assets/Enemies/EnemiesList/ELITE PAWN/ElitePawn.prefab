@@ -160,8 +160,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LootList:
   - {fileID: 11400000, guid: 32d592a4fdca1cb4db87cec3911dd0a1, type: 2}
-  - {fileID: 11400000, guid: fa57b59d061f18c4fa0cc72a6d5b29c2, type: 2}
-  - {fileID: 11400000, guid: 50ad58cf16953b440a580d1722dc7a7e, type: 2}
 --- !u!1 &715471472148467159
 GameObject:
   m_ObjectHideFlags: 0
