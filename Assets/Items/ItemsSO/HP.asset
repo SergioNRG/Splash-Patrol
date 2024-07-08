@@ -15,4 +15,4 @@ MonoBehaviour:
   LootPrefab: {fileID: 3049428253405200621, guid: 5ea5e7cbd8235084d85af079c311d674,
     type: 3}
   LootName: hp
-  DropChance: 0
+  DropChance: 100
