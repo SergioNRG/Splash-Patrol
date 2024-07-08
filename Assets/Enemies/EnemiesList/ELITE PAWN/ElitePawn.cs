@@ -118,7 +118,7 @@ public class ElitePawn : EnemyBase
                 loot.transform.position = transform.parent.position;
             }*/
 
-                  
+
             //loot.SetActive(true);
             ScoreManager.Instance.AddScore(PointsToGive);
             //EnemySpawner.instance.numbenemies--;

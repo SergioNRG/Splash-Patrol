@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 4829897639145157404}
   - component: {fileID: 843873027705847701}
   - component: {fileID: 5296217792896732773}
+  - component: {fileID: 7149092025435488632}
   m_Layer: 7
   m_Name: Golem_Boss
   m_TagString: Untagged
@@ -483,6 +484,22 @@ MonoBehaviour:
   _attackSpeed: 1
   _projectileForce: 10
   repeatCount: 3
+--- !u!114 &7149092025435488632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4836693439019630814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c19deabebb31a41b91095ed504412d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LootList:
+  - {fileID: 11400000, guid: 3ad2e4c26373d714a80a07c4be89a659, type: 2}
+  - {fileID: 11400000, guid: 50ad58cf16953b440a580d1722dc7a7e, type: 2}
+  - {fileID: 11400000, guid: c9d4588325d746940a953f7fb2a530b5, type: 2}
 --- !u!1 &4950861214059729194
 GameObject:
   m_ObjectHideFlags: 0

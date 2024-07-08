@@ -113,7 +113,7 @@ public class Golem : EnemyBase
             {
                 loot.transform.position = transform.position;
             }*/
-            
+
             //loot.SetActive(true);
             ScoreManager.Instance.AddScore(PointsToGive);
            // EnemySpawner.instance.numbenemies--;
