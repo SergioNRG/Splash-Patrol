@@ -27,4 +27,5 @@ public class HPShield : MonoBehaviour
             Debug.Log(other.GetComponent<PlayerHealthManager>().CurrentHealth);
         }
     }
+
 }
