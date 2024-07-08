@@ -1003,6 +1003,7 @@ MonoBehaviour:
   - {fileID: 1819737368}
   - {fileID: 1274697710}
   - {fileID: 358051185}
+  _activEnemies: []
   timetonextwave: 0
   timelapsed: 0
   activatetimmer: 0

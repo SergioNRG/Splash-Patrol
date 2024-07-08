@@ -35,6 +35,7 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable, IHealable
     {
         OnTakeDamage -= _enemyEffectsManager.TakeDamageEffect;
         OnDeath -= _enemyEffectsManager.Die;
+        OnDeath -= EnemySpawner.instance.HandleEnemyKilled;
         OnTakeHeal -= _enemyEffectsManager.HealEffect;
     }
 
@@ -50,7 +51,6 @@ public class EnemyHealthManager : MonoBehaviour, IDamageable, IHealable
         {   
             if (gameObject.transform.parent != null)
             {
-                Debug.Log(" entrei para eleitepawn");
                 Transform parentTrans = gameObject.transform.parent;
                 GameObject parent = parentTrans.gameObject;
                 OnDeath?.Invoke(transform.position, parent);

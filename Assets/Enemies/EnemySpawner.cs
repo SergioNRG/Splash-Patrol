@@ -1,20 +1,19 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     public int plusenemies = 2;
-    public int numbenemies = 0;
     public int enemiestospawn = 0;
 
     [SerializeField] Transform[] spawnpoints;
     public List<GameObject> _activEnemies = new List<GameObject>();
     private int wavecount = 0;
+    public float waveDelay;
 
-    public float timetonextwave, timelapsed;
-    public bool activatetimmer;
-
+    private Coroutine _coroutine;
     public static EnemySpawner instance;
 
     private void Awake()
@@ -27,58 +26,42 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Start()
     {
-        timelapsed = 0;
-        timetonextwave = 3;
-        WaveSpawner();
+        _coroutine = StartCoroutine(WaveDelayCoroutine());
     }
     private void Update()
     {
-        /*if (activatetimmer)
-        {
-            timelapsed += Time.deltaTime;
-        }
-        else
-        {
-            timelapsed = 0;
-        }*/
-
-        //CheckEnemies();
     }
-    public void WaveSpawner()
+    public void WaveSpawn()
     {
         enemiestospawn += plusenemies;
 
         for (int i = 1; i <= enemiestospawn; i++)
         {
-            SpawnEnemy();
-            
+            SpawnEnemy();            
         }
-
-       // numbenemies = enemiestospawn;
         wavecount++;
-        Debug.Log(wavecount);
+        Debug.Log("WAVE " + wavecount);
         if (wavecount % 10 == 0)
         {
             Debug.Log("SPAWN BOSS");
+            SpawnBoss("GolemBoss");
+        }
+
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
         }
         //Wavetxt.text = wavecount.ToString();
 
     }
 
-   /* private void CheckEnemies()
+    private IEnumerator WaveDelayCoroutine()
     {
-        if (numbenemies == 0)
-        {
+        yield return new WaitForSeconds(waveDelay);
+        WaveSpawn();
+    }
 
-            activatetimmer = true;
-            if (timelapsed >= timetonextwave)
-            {
-                WaveSpawner();
-                activatetimmer = false;
-            }
-
-        }
-    }*/
 
     private void SpawnEnemy()
     {
@@ -101,19 +84,12 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void HandleEnemyKilled(Vector3 pos,GameObject enemy)
-    {
-        
+    {       
         _activEnemies.Remove(enemy);
-        if (_activEnemies.Count == 0)
+        if (_activEnemies.Count <= 0)
         {
-           /* activatetimmer = true;
-            if (timelapsed >= timetonextwave)
-            {
-                WaveSpawner();
-                activatetimmer = false;
-            }*/
-            //waveManager.OnWaveCompleted();
-            WaveSpawner();
+            _coroutine = StartCoroutine(WaveDelayCoroutine());
+            Debug.Log("entrou coroutina");
         }
     }
 }

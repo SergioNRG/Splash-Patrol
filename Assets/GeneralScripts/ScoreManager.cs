@@ -24,5 +24,6 @@ public class ScoreManager : MonoBehaviour
     {
         Score += amount;
         Debug.Log(Score);   
+        // fazer score aparecer no UI
     }
 }
