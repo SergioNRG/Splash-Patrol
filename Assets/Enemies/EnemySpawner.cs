@@ -73,6 +73,7 @@ public class EnemySpawner : MonoBehaviour
         mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
         mob.SetActive(true);
         _activEnemies.Add(mob);
+        Debug.Log(_activEnemies.Count); 
     }
 
     private void SpawnBoss(string tag)
@@ -81,6 +82,7 @@ public class EnemySpawner : MonoBehaviour
         mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;// mudar para boss sopt
         mob.SetActive(true);
         _activEnemies.Add(mob);
+        Debug.Log(_activEnemies.Count);
     }
 
     public void HandleEnemyKilled(Vector3 pos,GameObject enemy)
