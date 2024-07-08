@@ -24,7 +24,9 @@ public class GunPickUp : MonoBehaviour
         if (other.TryGetComponent(out PlayerGunSelector gunSelector))
         {
             gunSelector.PickupGun(GunSO);
-            Destroy(gameObject);
+            Transform parentTrans = transform.parent;
+            GameObject parent = parentTrans.gameObject;
+            Destroy(parent);
         }
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb86487d742903f4f840b94352f791ef, type: 3}
-  m_Name: HP
+  m_Name: ARGun
   m_EditorClassIdentifier: 
-  LootPrefab: {fileID: 3049428253405200621, guid: 5ea5e7cbd8235084d85af079c311d674,
+  LootPrefab: {fileID: 6809944706259094419, guid: 8636eac02c8e7e8469835d988d349b60,
     type: 3}
-  LootName: hp
-  DropChance: 0
+  LootName: ARGun
+  DropChance: 100
