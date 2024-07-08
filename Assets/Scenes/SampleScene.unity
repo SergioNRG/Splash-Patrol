@@ -995,8 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a144d0cef5f2d4b83b651602f24733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plusenemies: 2
-  numbenemies: 0
+  plusenemies: 500
   enemiestospawn: 0
   spawnpoints:
   - {fileID: 1472370813}
@@ -1004,9 +1003,7 @@ MonoBehaviour:
   - {fileID: 1274697710}
   - {fileID: 358051185}
   _activEnemies: []
-  timetonextwave: 0
-  timelapsed: 0
-  activatetimmer: 0
+  waveDelay: 2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
