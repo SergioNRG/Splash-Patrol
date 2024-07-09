@@ -29190,7 +29190,7 @@ GameObject:
   - component: {fileID: 3455498449517880852}
   - component: {fileID: 2603876146771448787}
   m_Layer: 6
-  m_Name: HPUP
+  m_Name: HPPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

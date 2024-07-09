@@ -5,17 +5,7 @@ using UnityEngine;
 public class HPShield : MonoBehaviour
 {
     [SerializeField] private int _hpBonus;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,7 +13,7 @@ public class HPShield : MonoBehaviour
         {
             other.GetComponent<IHealable>().ApplyHeal(_hpBonus);
             gameObject.SetActive(false);
-            LootBag.LootPool.Release(gameObject);
+
             Debug.Log(other.GetComponent<PlayerHealthManager>().CurrentHealth);
         }
     }

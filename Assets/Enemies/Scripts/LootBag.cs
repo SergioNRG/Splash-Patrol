@@ -8,12 +8,7 @@ public class LootBag : MonoBehaviour
 {
     public List<Loot> LootList = new List<Loot>();
 
-    public static ObjectPool<GameObject> LootPool;
 
-    private void Start()
-    {
-        LootPool = new ObjectPool<GameObject>(CreateDrop);
-    }
     private Loot ChoseDrop()
     {
         int randomChance = Random.Range(1, 101);
@@ -34,26 +29,16 @@ public class LootBag : MonoBehaviour
         return null;
     }
 
-    public GameObject GetLoot(Vector3 pos)
-    {
-        var loot = LootPool.Get();
-        if (loot!= null)
-        {   
-            loot.transform.position = pos;
-            loot.SetActive(true);
-            return loot;
-        }else { return null; }
-        
-    }
 
-    public GameObject CreateDrop()
+    public void SpawnLoot(Transform trans)
     {
         Loot drop = ChoseDrop();
         if (drop != null)
         {
-            GameObject dropItem = Instantiate(drop.LootPrefab, transform.position,Quaternion.identity); 
-            return dropItem;
+            Debug.Log(drop.name);
+            GameObject itemToDrop = LootPool.instance.TakeFromPool(drop.name);
+            itemToDrop.transform.position = trans.position;
+            itemToDrop.SetActive(true);
         }
-        return null;
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb86487d742903f4f840b94352f791ef, type: 3}
-  m_Name: PISTOLGun
+  m_Name: PISTOL
   m_EditorClassIdentifier: 
   LootPrefab: {fileID: 6809944706259094419, guid: 5af8952af82ce4b4b8685786aa6b1e0e,
     type: 3}
-  LootName: PISTOLGun
+  LootName: PISTOL
   DropChance: 100

@@ -108,15 +108,10 @@ public class Golem : EnemyBase
         _agent.isStopped = true;
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
-            var loot = _lootBag.GetLoot(transform.position);
-            /*if (loot != null)
-            {
-                loot.transform.position = transform.position;
-            }*/
+            _lootBag.SpawnLoot(transform);
 
-            //loot.SetActive(true);
             ScoreManager.Instance.AddScore(PointsToGive);
-           // EnemySpawner.instance.numbenemies--;
+
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();
         }

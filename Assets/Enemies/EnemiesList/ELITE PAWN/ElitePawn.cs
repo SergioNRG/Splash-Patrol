@@ -111,17 +111,10 @@ public class ElitePawn : EnemyBase
         _agent.isStopped = true;
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
-
-            var loot = _lootBag.GetLoot(transform.parent.position);
-            /*if (loot != null)
-            {
-                loot.transform.position = transform.parent.position;
-            }*/
-
-
-            //loot.SetActive(true);
+            _lootBag.SpawnLoot(transform.parent);
+ 
             ScoreManager.Instance.AddScore(PointsToGive);
-            //EnemySpawner.instance.numbenemies--;
+
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();
         }      
