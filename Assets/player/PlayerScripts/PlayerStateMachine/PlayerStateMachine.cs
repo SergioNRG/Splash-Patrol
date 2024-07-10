@@ -232,13 +232,11 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_currentStamina < _maxStamina)
         {
-            Debug.Log("entrou routine regen");
             yield return new WaitForSeconds(0.1f);
             _currentStamina += _staminaRegenAmount * 0.1f;
             yield return RegenRoutine();
         }else if (_currentStamina >= _maxStamina) 
         {
-            Debug.Log("ta full");
             _currentStamina = _maxStamina;
         }
       
