@@ -27,6 +27,7 @@ public class PlayerRunningState : PlayerBaseState
     {
         CheckSwitchStates();
         _ctx.MoveAndRotationRelativeToCamera();
+        _ctx.CurrentStamina -= _ctx.StaminaLoseAmount * Time.deltaTime;
     }
 
     public override void CheckSwitchStates()

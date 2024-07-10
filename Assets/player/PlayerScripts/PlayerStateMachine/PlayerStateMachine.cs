@@ -17,8 +17,6 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private float _crouchingPlayerSpeed = 1.0f;
     [SerializeField] private float _jumpHeight = 3.0f;
     [SerializeField] private float _gravityValue = -9.81f;
-    //[SerializeField] 
-    private bool _isPlayerGrounded;
 
 
 
@@ -27,12 +25,16 @@ public class PlayerStateMachine : MonoBehaviour
     private float _crouchHeight = 1f;
     private float _normalCenter = 1f;
     private float _crouchCenter = 0.65f;
+    private float _maxStamina = 100.0f;
+    [SerializeField] private float _staminaLoseAmount; // just to test
+    [SerializeField] private float _staminaRegenAmount; // just to test
+    private float _currentStamina;
+  
 
     private Vector3 _move;
     private float _moveX;
     private float _moveZ;
 
-    //private Vector3 _mouseMov;
     private Vector3 _playerVelocity;
     private bool _isJumping;
     private bool _isCrouching;
@@ -45,6 +47,7 @@ public class PlayerStateMachine : MonoBehaviour
     private PlayerBaseState _currentState;
     private PlayerStateFactory _stateFactory;  // state fcatory
 
+    #region GET's and SET's
     // gets and sets
 
     public Transform CamTransform { get { return _camTransform; } }
@@ -71,6 +74,13 @@ public class PlayerStateMachine : MonoBehaviour
 
     public bool IsSprinting {  get { return _isSprinting; } }
 
+    public float MaxStamina { get { return _maxStamina; } set { _maxStamina = value; } }
+    public float CurrentStamina { get { return _currentStamina; } set { _currentStamina = value; } }
+
+    public float StaminaLoseAmount { get { return _staminaLoseAmount; } set { _staminaLoseAmount = value; } }
+    public float StaminaRegenAmount { get { return _staminaRegenAmount; } set { _staminaRegenAmount = value; } }
+
+
     public float CrouchPlayerSpeed { get { return _crouchingPlayerSpeed; } }
 
     public bool IsCrouching {  get { return _isCrouching; } }
@@ -80,7 +90,9 @@ public class PlayerStateMachine : MonoBehaviour
     public float NormalCenter {  get { return _normalCenter; } set { _normalCenter = value; } }
     public float CrouchCenter {  get { return _crouchCenter; } set { _crouchCenter = value; } }
 
-    #region  Subcribe methods from InputReader SO
+    #endregion
+
+    #region  Subcribe methods from InputReader SO Events
 
     // subscribe to events on SO
     private void OnEnable()
@@ -118,23 +130,11 @@ public class PlayerStateMachine : MonoBehaviour
     private void OnSprint()
     {
         _isSprinting = true;
-       /* if (_isPlayerGrounded && !_isCrouching)
-        {
-            _currentPlayerSpeed = _sprintPlayerSpeed;
-            Debug.Log("Sprinting");
-        }*/
-
     }
 
     private void OnSprintCanceled()
     {
         _isSprinting = false;
-       /* if (!_isCrouching)
-        {
-            _currentPlayerSpeed = _basePlayerSpeed;
-            Debug.Log("Stop Sprinting");
-        }*/
-
     }
 
 
@@ -191,6 +191,7 @@ public class PlayerStateMachine : MonoBehaviour
         _controller.height = _normalHeight;
         _currentPlayerSpeed = _basePlayerSpeed;
         _isJumping = false;
+        _currentStamina = _maxStamina;
 
     }
 
