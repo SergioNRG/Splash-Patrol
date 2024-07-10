@@ -47,6 +47,8 @@ public class PlayerStateMachine : MonoBehaviour
     private PlayerBaseState _currentState;
     private PlayerStateFactory _stateFactory;  // state fcatory
 
+    public Coroutine RegenStaminaRoutine;
+
     #region GET's and SET's
     // gets and sets
 
@@ -129,12 +131,21 @@ public class PlayerStateMachine : MonoBehaviour
     }
     private void OnSprint()
     {
-        _isSprinting = true;
+        if (_currentStamina > 0)
+        {
+            _isSprinting = true;
+        }
+        
     }
 
     private void OnSprintCanceled()
     {
         _isSprinting = false;
+        if (CurrentStamina <= 0)
+        {
+            CurrentStamina = 0;
+
+        }
     }
 
 
@@ -152,21 +163,10 @@ public class PlayerStateMachine : MonoBehaviour
     private void OnCrouch()
     {
         _isCrouching = true;
-        /* if (_isPlayerGrounded)
-         {
-             _isCrouching = true;
-             _controller.height = _crouchHeight;
-             _currentPlayerSpeed = _crouchingPlayerSpeed;
-             Debug.Log("Crouching");
-         }*/
-
     }
     private void OnCrouchCanceled()
     {
         _isCrouching = false;
-       /* _controller.height = _normalHeight;
-        _currentPlayerSpeed = _basePlayerSpeed;
-        Debug.Log(" Stop Crouching");*/
     }
 
     #endregion 
@@ -226,6 +226,22 @@ public class PlayerStateMachine : MonoBehaviour
     {
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
+    }
+
+    public IEnumerator RegenRoutine()
+    {
+        if (_currentStamina < _maxStamina)
+        {
+            Debug.Log("entrou routine regen");
+            yield return new WaitForSeconds(0.1f);
+            _currentStamina += _staminaRegenAmount * 0.1f;
+            yield return RegenRoutine();
+        }else if (_currentStamina >= _maxStamina) 
+        {
+            Debug.Log("ta full");
+            _currentStamina = _maxStamina;
+        }
+      
     }
 
 }

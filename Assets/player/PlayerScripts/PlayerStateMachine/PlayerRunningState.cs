@@ -11,11 +11,17 @@ public class PlayerRunningState : PlayerBaseState
     public override void EnterState()
     {
         _ctx.CurrentPlayerSpeed = _ctx.SprintPlayerSpeed;
+        if (_ctx.RegenStaminaRoutine != null)
+        {
+            _ctx.StopCoroutine(_ctx.RegenStaminaRoutine);
+            _ctx.RegenStaminaRoutine = null;
+        }
+       
     }
 
     public override void ExitState()
     {
-      
+        _ctx.RegenStaminaRoutine = _ctx.StartCoroutine(_ctx.RegenRoutine());
     }
 
     public override void InitializeSubState()
@@ -28,6 +34,11 @@ public class PlayerRunningState : PlayerBaseState
         CheckSwitchStates();
         _ctx.MoveAndRotationRelativeToCamera();
         _ctx.CurrentStamina -= _ctx.StaminaLoseAmount * Time.deltaTime;
+        if (_ctx.CurrentStamina <= 0)
+        {
+            _ctx.CurrentStamina = 0;
+            _ctx.CurrentPlayerSpeed = _ctx.BasePlayerSpeed;
+        }
     }
 
     public override void CheckSwitchStates()

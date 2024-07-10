@@ -592,6 +592,11 @@ PrefabInstance:
       propertyPath: _staminaLoseAmount
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1647580762093595936, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: _staminaRegenAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2008450171031550127, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_VerticalAxis.m_MaxSpeed
