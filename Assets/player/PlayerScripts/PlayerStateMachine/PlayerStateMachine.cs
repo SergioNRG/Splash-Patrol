@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 
@@ -29,7 +30,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private float _staminaLoseAmount; // just to test
     [SerializeField] private float _staminaRegenAmount; // just to test
     private float _currentStamina;
-  
+    [SerializeField] private Slider _staminaSLider;
 
     private Vector3 _move;
     private float _moveX;
@@ -82,7 +83,7 @@ public class PlayerStateMachine : MonoBehaviour
     public float StaminaLoseAmount { get { return _staminaLoseAmount; } set { _staminaLoseAmount = value; } }
     public float StaminaRegenAmount { get { return _staminaRegenAmount; } set { _staminaRegenAmount = value; } }
 
-
+    public Slider StaminaSlider { get { return _staminaSLider; } set { _staminaSLider = value; } }
     public float CrouchPlayerSpeed { get { return _crouchingPlayerSpeed; } }
 
     public bool IsCrouching {  get { return _isCrouching; } }
@@ -192,6 +193,8 @@ public class PlayerStateMachine : MonoBehaviour
         _currentPlayerSpeed = _basePlayerSpeed;
         _isJumping = false;
         _currentStamina = _maxStamina;
+        _staminaSLider.maxValue = _maxStamina;
+        _staminaSLider.value = _maxStamina;
 
     }
 
@@ -234,12 +237,12 @@ public class PlayerStateMachine : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             _currentStamina += _staminaRegenAmount * 0.1f;
+            _staminaSLider.value = _currentStamina;
             yield return RegenRoutine();
         }else if (_currentStamina >= _maxStamina) 
         {
             _currentStamina = _maxStamina;
-        }
-      
+        }     
     }
 
 }

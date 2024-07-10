@@ -39,6 +39,7 @@ public class PlayerRunningState : PlayerBaseState
             _ctx.CurrentStamina = 0;
             _ctx.CurrentPlayerSpeed = _ctx.BasePlayerSpeed;
         }
+        _ctx.StaminaSlider.value = _ctx.CurrentStamina;
     }
 
     public override void CheckSwitchStates()

@@ -22,6 +22,7 @@ public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
     {
         _playerEffectsManager = GetComponent<PlayerEffectsManager>();
         CurrentHealth = MaxHealth;
+        HPSlider.maxValue = MaxHealth;
         SetHPSlider(MaxHealth);
     }
 

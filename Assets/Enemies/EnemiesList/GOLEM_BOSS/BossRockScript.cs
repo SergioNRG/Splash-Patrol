@@ -35,11 +35,11 @@ public class BossRockScript : MonoBehaviour,IPooled
             {
                 collision.collider.GetComponent<IDamageable>().ApplyDamage(_bossRockDamage);
             }
-            //gameObject.SetActive(false);
-            //_dragonBulletPool.Release(gameObject);
+            gameObject.SetActive(false);
+            _bossRocksPool.Release(gameObject);
         }
-        gameObject.SetActive(false);
-        _bossRocksPool.Release(gameObject);
+       // gameObject.SetActive(false);
+       // _bossRocksPool.Release(gameObject);
     }
 
     private void OnCollisionStay(Collision collision)

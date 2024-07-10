@@ -10,14 +10,6 @@ using UnityEngine.UI;
 
 public class PlayerAttacks : MonoBehaviour
 {
-   /* private enum AimState
-    {
-        Idle,
-        Aiming,
-        ChangeWeapon
-    }*/
-
-    //private AimState _currentAimState;
 
     [SerializeField] private Image _crosshair;
 
@@ -34,53 +26,19 @@ public class PlayerAttacks : MonoBehaviour
     private CameraEffectController _cameraEffectsScript;
     private PlayerGunSelector _playerGunSelector;
 
-   /* [Header("Camera Values To Adjust")]
-    [SerializeField] private int _aimFov = 30;
-    [SerializeField] private int _normalFov = 60;
-    [SerializeField] private float _zoomSpeed = 15;
-    [SerializeField] private float _aimSpeedY = 30;
-    [SerializeField] private float _aimSpeedX = 50;
-    [SerializeField] private float _normalSpeedY ;
-    [SerializeField] private float _normalSpeedX ;*/
-
-   // private int _weaponPos;
     private Vector2 _scroll;
 
-    //private bool _isScrolling = false;
+
     private bool _isAttacking;
-
-
-    
-    // Start is called before the first frame update
+   
     void Start()
     {
         _playerGunSelector = GetComponent<PlayerGunSelector>(); 
-       // _currentAimState = AimState.Idle;
-       // _normalSpeedX = _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
-        //_normalSpeedY = _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed;
-       // _cam.m_Lens.FieldOfView = _normalFov;
         _isAttacking = false;
-        // _weaponPos = 0;
-
-        /*for (int i = 0; i < _weapons.Length; i++)
-        {
-            if (_weapons[i] != null)
-            {
-                if (_weapons[i] == _weapons[_weaponPos]) { _weapons[_weaponPos].SetActive(true); }
-                else { _weapons[i].SetActive(false); }
-                Debug.Log(_weapons[i]);
-            }
-        }*/
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        /*if(_playerGunSelector.ActiveGun != null && _playerGunSelector.ActiveGun.Model.activeInHierarchy)
-        {
-            UpdateCrosshair();
-        }*/
         UpdateCrosshair();
         if (_isAttacking)
         {           
@@ -90,46 +48,7 @@ public class PlayerAttacks : MonoBehaviour
                 _playerGunSelector.ActiveGun.UpdateForWeaponRecoil();
             }else { _playerGunSelector.ActiveMelee.Attack(); }
         }
-       // WeaponSwap();
-      /*  switch (_currentAimState)
-        {
-            case AimState.Idle:
-                if (_isScrolling) { _currentAimState = AimState.ChangeWeapon; }
-                break;
-                
-            case AimState.Aiming:
-                if (_isScrolling) { _currentAimState = AimState.ChangeWeapon; }
-                //else { ZoomIn(); }
-                break;
-
-            case AimState.NotAiming:
-                if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()){ ZoomOut(); }
-                if (_isScrolling) { _currentAimState = AimState.ChangeWeapon;}
-                else if (_cam.m_Lens.FieldOfView.ToString() == _normalFov.ToString()){ _currentAimState = AimState.Idle; }
-                break;
-
-            case AimState.ChangeWeapon:
-                //if (_cam.m_Lens.FieldOfView.ToString() != _normalFov.ToString()) { ZoomOut(); }
-                //SelectWeapon();
-                WeaponSwap();
-                break;
-                
-        }*/
-        
     }
-
-   /* private void LateUpdate()
-    {
-
-        if (_isAttacking)
-        {
-            if (ActiveGun != null)
-            {
-                ActiveGun.Attack();
-            }
-        }
-
-    }*/
 
     private void UpdateCrosshair()
     {
@@ -183,19 +102,16 @@ public class PlayerAttacks : MonoBehaviour
     private void OnAim()
     {
         _aimCam.Priority = 20;
-       // _currentAimState = AimState.Aiming;
     }
     private void OnAimCancelled()
     {
         _aimCam.Priority = 9;
-       // _currentAimState = AimState.NotAiming;
     }
 
     private void OnWeaponSelector(Vector2 scroll)
     {
         _scroll = scroll.normalized ;
         OnAimCancelled();
-        // _isScrolling = true;
         WeaponSwap();
     }
 
@@ -207,47 +123,12 @@ public class PlayerAttacks : MonoBehaviour
 
     private void OnAttackCanceled()
     {
-        _isAttacking = false;
-      /*  if (!_playerGunSelector.ActiveMelee.ISAnimationPlaying(_playerGunSelector.ActiveMelee._animator, "PoliceBatAttack"))
-        {
-            _playerGunSelector.ActiveMelee.ChangeAnimationState("Idle");
-        }*/
-            
+        _isAttacking = false;           
     }
-
-
 
     #endregion
 
     #region METHODS
-
-    /* private void SelectWeapon()
-     {
-         if (_scroll.y < 0)
-         {
-             _weaponPos--;
-             Debug.Log(_weaponPos);
-
-         }
-
-         if (_scroll.y > 0)
-         {
-             _weaponPos++;
-             Debug.Log(_weaponPos);
-         }
-
-         _weaponPos = Mathf.Clamp(_weaponPos, 0, _weapons.Length - 1);
-         for (int i = 0; i < _weapons.Length; i++)
-         {
-             if (_weapons[i] != null)
-             {
-                 if (_weapons[i] == _weapons[_weaponPos]) { _weapons[_weaponPos].SetActive(true); }
-                 else { _weapons[i].SetActive(false); }
-             }
-         }
-         _isScrolling = false;
-
-     }*/
 
     private void WeaponSwap()
     {
@@ -261,30 +142,7 @@ public class PlayerAttacks : MonoBehaviour
             _playerGunSelector.ActiveMelee.Model.SetActive(false);
             _playerGunSelector.ActiveGun.Model.SetActive(true);
         }
-       // _isScrolling = false;
     }
-/*
-    private void ZoomIn() 
-    {
-
-        if (_cam.m_Lens.FieldOfView.ToString() != _aimFov.ToString())
-        {
-            _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _aimFov, _zoomSpeed * Time.deltaTime);
-            _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _aimSpeedX;
-            _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _aimSpeedY;
-        }
-
-    }
-
-    private void ZoomOut()
-    {
-       
-        _cam.m_Lens.FieldOfView = Mathf.Lerp(_cam.m_Lens.FieldOfView, _normalFov, _zoomSpeed * Time.deltaTime);
-        _cam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = _normalSpeedX;
-        _cam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = _normalSpeedY;
-       
-    }
-*/
 
     #endregion
 }
