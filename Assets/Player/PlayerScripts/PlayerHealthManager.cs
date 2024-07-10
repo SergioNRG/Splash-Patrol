@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
 {
     [SerializeField] private int _maxHealth;
-
+    [SerializeField] private PlayerEffectsManager _playerEffectsManager;
     public int CurrentHealth { get; set; }
     //public int CurrentHealth { get => _currentHealth;  set => _currentHealth = value; }
 
@@ -15,12 +16,13 @@ public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
     public event IDamageable.DeathEvent OnDeath;
     public event IHealable.TakeHealEvent OnTakeHeal;
 
-    [SerializeField] private PlayerEffectsManager _playerEffectsManager;
+    [SerializeField] private Slider HPSlider;
 
     private void Awake()
     {
         _playerEffectsManager = GetComponent<PlayerEffectsManager>();
         CurrentHealth = MaxHealth;
+        SetHPSlider(MaxHealth);
     }
 
     private void OnEnable()
@@ -43,6 +45,8 @@ public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
 
         CurrentHealth -= damageTaken;
 
+        SetHPSlider(CurrentHealth);
+
         if (damageTaken != 0) { OnTakeDamage?.Invoke(damageTaken); }
 
         if (CurrentHealth == 0 && damageTaken != 0)
@@ -57,8 +61,14 @@ public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
 
         CurrentHealth += amount;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+        SetHPSlider(CurrentHealth);
         if (amount != 0) { OnTakeHeal?.Invoke(amount); }
 
         //  if (CurrentHealth == 0 && healTaken != 0) { OnDeath?.Invoke(transform.position); }
+    }
+
+    private void SetHPSlider(int health)
+    {
+        HPSlider.value = health;
     }
 }
