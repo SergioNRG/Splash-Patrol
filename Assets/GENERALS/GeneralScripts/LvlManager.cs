@@ -10,7 +10,7 @@ public class LvlManager : MonoBehaviour
     public static LvlManager instance;
 
     [SerializeField] private GameObject _loadCanvas;
-    [SerializeField] private Image _loadBar;
+    [SerializeField] private Slider _loadBar;
 
     private float _target;
     private void Awake()
@@ -22,22 +22,18 @@ public class LvlManager : MonoBehaviour
         }
         else { Destroy(gameObject); }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+
     void Update()
     {
-        _loadBar.fillAmount = Mathf.MoveTowards(_loadBar.fillAmount,_target, 3 * Time.deltaTime);
+        _loadBar.value = Mathf.MoveTowards(_loadBar.value,_target, 3 * Time.deltaTime);
     }
 
     public async void LoadScene(string sceneName)
     {
+       
         _target = 0;
-        _loadBar.fillAmount = 0;
+        _loadBar.value= 0;
         
         var scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;

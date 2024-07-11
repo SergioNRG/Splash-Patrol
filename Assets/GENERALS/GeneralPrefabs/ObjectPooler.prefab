@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6945677576095481321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6602170947311289900}
+  - component: {fileID: 7838234656831375072}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6602170947311289900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6945677576095481321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7838234656831375072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6945677576095481321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3b5cc23ecf6024d8e7fe5d35a17e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PoolList:
+  - Tag: Pawn
+    ObjPrefab: {fileID: 1631008564190387957, guid: 7d65e12d1d1f3314dbef0d69af73bb90,
+      type: 3}
+    PoolSize: 50
+  - Tag: ElitePawn
+    ObjPrefab: {fileID: 5602179319034425549, guid: 36886a9a8bf04ce4a838424d7bad920c,
+      type: 3}
+    PoolSize: 50
+  - Tag: Mosquito
+    ObjPrefab: {fileID: 8644486573728004669, guid: 4bc8f6af73aa16648b4986c4068d1a9b,
+      type: 3}
+    PoolSize: 50
+  - Tag: Dragon
+    ObjPrefab: {fileID: 9076291827353888695, guid: a635b10f2e7494c419594a9bc470e565,
+      type: 3}
+    PoolSize: 50
+  - Tag: Golem
+    ObjPrefab: {fileID: 8807196204250226594, guid: e3d1ede77bd8de44d890010ed785c0a5,
+      type: 3}
+    PoolSize: 50
+  - Tag: GolemBoss
+    ObjPrefab: {fileID: 4836693439019630814, guid: e26b1394fd0015244b489986a29368cc,
+      type: 3}
+    PoolSize: 10

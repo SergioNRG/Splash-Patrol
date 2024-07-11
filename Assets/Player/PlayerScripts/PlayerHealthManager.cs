@@ -58,14 +58,10 @@ public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
 
     public void ApplyHeal(int amount)
     {
-        //int healTaken = Mathf.Clamp(amount, 0, MaxHealth);
-
         CurrentHealth += amount;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         SetHPSlider(CurrentHealth);
         if (amount != 0) { OnTakeHeal?.Invoke(amount); }
-
-        //  if (CurrentHealth == 0 && healTaken != 0) { OnDeath?.Invoke(transform.position); }
     }
 
     private void SetHPSlider(int health)

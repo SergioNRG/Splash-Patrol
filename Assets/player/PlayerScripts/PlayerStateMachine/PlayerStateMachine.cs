@@ -174,14 +174,12 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Awake()
     {
-        //_controller = GetComponent<CharacterController>();
         _stateFactory = new PlayerStateFactory(this);
         _currentState = _stateFactory.Grounded();
         _currentState.EnterState();
        
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -198,7 +196,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         ApplyGravity();
