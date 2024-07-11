@@ -552,6 +552,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EASY_PLAYER
       objectReference: {fileID: 0}
+    - target: {fileID: 4650201079651067892, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31.388916
+      objectReference: {fileID: 0}
     - target: {fileID: 4653338894424814741, guid: 4ca68251e8346cd4cad0f2e5eac547f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -628,7 +633,7 @@ GameObject:
   - component: {fileID: 500406909}
   - component: {fileID: 500406908}
   m_Layer: 0
-  m_Name: objectpooler
+  m_Name: ObjectPooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,7 +702,7 @@ GameObject:
   - component: {fileID: 641777281}
   - component: {fileID: 641777282}
   m_Layer: 0
-  m_Name: spawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1710,6 +1715,6 @@ SceneRoots:
   - {fileID: 997499593}
   - {fileID: 641777281}
   - {fileID: 500406909}
-  - {fileID: 70776579}
   - {fileID: 1293711071}
   - {fileID: 905665651}
+  - {fileID: 70776579}
