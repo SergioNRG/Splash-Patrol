@@ -23,6 +23,11 @@ public class LvlManager : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
+    private void Start()
+    {
+       // _loadCanvas.SetActive(true);
+    }
+
 
     void Update()
     {
