@@ -78,7 +78,7 @@ public class GolemBoss : EnemyBase
             if (AnimControllerInstance.GetCurrentRepeat() >= repeatCount )//&& _healthManager.CurrentHealth > 0)
             {
                
-                if (AnimControllerInstance.ISAnimationEnded(_animator, IdleAnim) )//&& _healthManager.CurrentHealth > 0)
+                if (AnimControllerInstance.ISAnimationEnded(_animator, IdleAnim ) && _healthManager.CurrentHealth > 0)
                 {
                     AnimControllerInstance.ResetCurrentRepeat();
                     
@@ -90,7 +90,7 @@ public class GolemBoss : EnemyBase
 
                     ChangeState(State.Roar);
                 }
-               // else { ChangeState(State.Die); }
+                else { ChangeState(State.Die); }
 
             }
             //else { ChangeState(State.Die); }

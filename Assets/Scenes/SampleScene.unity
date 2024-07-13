@@ -785,7 +785,7 @@ PrefabInstance:
     - target: {fileID: 2183710516522777639, guid: deecd6d6a4294fb47b64ef3e550b02f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.37
+      value: 4.69
       objectReference: {fileID: 0}
     - target: {fileID: 2183710516522777639, guid: deecd6d6a4294fb47b64ef3e550b02f2,
         type: 3}
@@ -839,7 +839,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 1116605632}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1514838442195789469, guid: deecd6d6a4294fb47b64ef3e550b02f2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1585450974}
   m_SourcePrefab: {fileID: 100100000, guid: deecd6d6a4294fb47b64ef3e550b02f2, type: 3}
 --- !u!1 &832575517
 GameObject:
@@ -1270,6 +1274,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 611177150}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1585450974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585450972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f050b2fffeee534ab2776304268250b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lvlImage: {fileID: 0}
+  _lvlSprites:
+  - {fileID: 21300000, guid: d764867ac62ca4e468457e17598ef345, type: 3}
+  - {fileID: 21300000, guid: a890bbf0c9d9ca6428591265648fb08c, type: 3}
 --- !u!1 &1588507632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1554,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a890bbf0c9d9ca6428591265648fb08c, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

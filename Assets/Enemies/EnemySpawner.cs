@@ -13,7 +13,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Transform[] spawnpoints;
 
     public List<GameObject> _activEnemies = new List<GameObject>();
-  
+    public int lvl = 1;
+
     private int wavecount = 0;   
     private Coroutine _coroutine;
 
@@ -98,6 +99,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (wavecount % _wavesToNextLvl == 0)
             {
+                lvl++;
                 StopMyCoroutine(_coroutine);
                 Debug.Log("entrou aki");
                 _portalToLVL.SetActive(true);
