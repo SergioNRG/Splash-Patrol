@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int _wavesToNextLvl = 10;
     [SerializeField] private float waveDelay;
     [SerializeField] private GameObject _portalToLVL;
-    [SerializeField] private Transform _lvlPortalPos;
     [SerializeField] Transform[] spawnpoints;
 
     public List<GameObject> _activEnemies = new List<GameObject>();
@@ -30,7 +29,12 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Start()
     {
+        _portalToLVL.SetActive(false);
         _coroutine = StartCoroutine(WaveDelayCoroutine());
+    }
+
+    private void OnEnable()
+    {
     }
     private void Update()
     {
@@ -52,13 +56,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         StopMyCoroutine(_coroutine);
-
-       /* if (_coroutine != null)            
-        {              
-            StopCoroutine(_coroutine);               
-            _coroutine = null;          
-        }*/
-
         
         Debug.Log("WAVE " + wavecount);            
         //Wavetxt.text = wavecount.ToString();
@@ -99,15 +96,14 @@ public class EnemySpawner : MonoBehaviour
             if (wavecount % _wavesToNextLvl == 0)
             {
                 StopMyCoroutine(_coroutine);
-                Instantiate(_portalToLVL, _lvlPortalPos.position, Quaternion.identity);
+                Debug.Log("entrou aki");
+                _portalToLVL.SetActive(true);
             }
             else
             {
                 _coroutine = StartCoroutine(WaveDelayCoroutine());
                 Debug.Log("entrou coroutina");
             }
-            //_coroutine = StartCoroutine(WaveDelayCoroutine());
-           // Debug.Log("entrou coroutina");
         }
     }
 

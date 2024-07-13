@@ -75,10 +75,10 @@ public class GolemBoss : EnemyBase
         if (_healthManager.CurrentHealth > 0)
         {
             _effectsManager.Idleffect();
-            if (AnimControllerInstance.GetCurrentRepeat() >= repeatCount)
+            if (AnimControllerInstance.GetCurrentRepeat() >= repeatCount )//&& _healthManager.CurrentHealth > 0)
             {
                
-                if (AnimControllerInstance.ISAnimationEnded(_animator, IdleAnim))
+                if (AnimControllerInstance.ISAnimationEnded(_animator, IdleAnim) )//&& _healthManager.CurrentHealth > 0)
                 {
                     AnimControllerInstance.ResetCurrentRepeat();
                     
@@ -90,8 +90,10 @@ public class GolemBoss : EnemyBase
 
                     ChangeState(State.Roar);
                 }
-                
+               // else { ChangeState(State.Die); }
+
             }
+            //else { ChangeState(State.Die); }
         }
         else { ChangeState(State.Die); }
     }
@@ -157,6 +159,7 @@ public class GolemBoss : EnemyBase
         _agent.isStopped = true;
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
+            Debug.Log("entrou die");
             _lootBag.SpawnLoot(transform);
 
             ScoreManager.Instance.AddScore(PointsToGive);
