@@ -17,6 +17,8 @@ public class EnemySpawner : MonoBehaviour
     private int wavecount = 0;   
     private Coroutine _coroutine;
 
+    private Canvas _canvas;
+
     public static EnemySpawner instance;
 
     private void Awake()
@@ -29,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Start()
     {
+        _canvas = _portalToLVL.GetComponentInChildren<Canvas>();    
         _portalToLVL.SetActive(false);
         _coroutine = StartCoroutine(WaveDelayCoroutine());
     }
@@ -98,6 +101,7 @@ public class EnemySpawner : MonoBehaviour
                 StopMyCoroutine(_coroutine);
                 Debug.Log("entrou aki");
                 _portalToLVL.SetActive(true);
+                //_canvas.transform.position = new Vector3(_portalToLVL.transform.position.x, _portalToLVL.transform.position.y + 5, _portalToLVL.transform.position.z);
             }
             else
             {

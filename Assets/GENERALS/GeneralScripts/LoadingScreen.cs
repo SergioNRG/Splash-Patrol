@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadinScreen : MonoBehaviour
+public class LoadingScreen : MonoBehaviour
 {
     [SerializeField] private GameObject _backGround;
     [SerializeField] private List<Sprite> _bGImages;
