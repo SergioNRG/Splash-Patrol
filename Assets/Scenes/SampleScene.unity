@@ -1243,6 +1243,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1770018451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1770018452}
+  m_Layer: 0
+  m_Name: LVLChangePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1770018452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770018451}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.78, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1815361471 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3558861125573832379, guid: 0bad66c41451aaa47897b48173ee781d,
@@ -1568,7 +1599,7 @@ PrefabInstance:
     - target: {fileID: 8015815815641003465, guid: 237694e3f8239784c9a43172b5788bb8,
         type: 3}
       propertyPath: m_Name
-      value: LVLManager
+      value: SceneLoaderManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1638,6 +1669,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8626499953376340018, guid: cd310e97cfb1cb04a9828c09f63199fe,
+        type: 3}
+      propertyPath: _lvlPortalPos
+      value: 
+      objectReference: {fileID: 1770018452}
     - target: {fileID: 8626499953376340018, guid: cd310e97cfb1cb04a9828c09f63199fe,
         type: 3}
       propertyPath: spawnpoints.Array.data[0]
@@ -1820,3 +1856,4 @@ SceneRoots:
   - {fileID: 70776579}
   - {fileID: 6487064980296830097}
   - {fileID: 996779227724649008}
+  - {fileID: 1770018452}

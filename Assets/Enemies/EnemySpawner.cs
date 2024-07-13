@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public int plusenemies = 2;
-    public int enemiestospawn = 0;
-
+    [SerializeField] private int plusenemies = 2;
+    [SerializeField] private int enemiestospawn = 0;
+    [SerializeField] private int _wavesToNextLvl = 10;
+    [SerializeField] private float waveDelay;
+    [SerializeField] private GameObject _portalToLVL;
+    [SerializeField] private Transform _lvlPortalPos;
     [SerializeField] Transform[] spawnpoints;
-    public List<GameObject> _activEnemies = new List<GameObject>();
-    private int wavecount = 0;
-    public float waveDelay;
 
+    public List<GameObject> _activEnemies = new List<GameObject>();
+  
+    private int wavecount = 0;   
     private Coroutine _coroutine;
+
     public static EnemySpawner instance;
 
     private void Awake()
@@ -33,27 +37,31 @@ public class EnemySpawner : MonoBehaviour
     }
     public void WaveSpawn()
     {
-        enemiestospawn += plusenemies;
-
-        for (int i = 1; i <= enemiestospawn; i++)
-        {
-            SpawnEnemy();            
+        enemiestospawn += plusenemies;          
+        for (int i = 1; i <= enemiestospawn; i++)           
+        {              
+            SpawnEnemy();           
         }
+
         wavecount++;
-        Debug.Log("WAVE " + wavecount);
-        if (wavecount % 10 == 0)
-        {
-            Debug.Log("SPAWN BOSS");
-            SpawnBoss("GolemBoss");
+
+        if ((wavecount % _wavesToNextLvl == 0) && (wavecount != 0))           
+        {                
+            Debug.Log("SPAWN BOSS");                
+            SpawnBoss("GolemBoss");           
         }
 
-        if (_coroutine != null)
-        {
-            StopCoroutine(_coroutine);
-            _coroutine = null;
-        }
+        StopMyCoroutine(_coroutine);
+
+       /* if (_coroutine != null)            
+        {              
+            StopCoroutine(_coroutine);               
+            _coroutine = null;          
+        }*/
+
+        
+        Debug.Log("WAVE " + wavecount);            
         //Wavetxt.text = wavecount.ToString();
-
     }
 
     private IEnumerator WaveDelayCoroutine()
@@ -88,8 +96,23 @@ public class EnemySpawner : MonoBehaviour
         _activEnemies.Remove(enemy);
         if (_activEnemies.Count <= 0)
         {
-            _coroutine = StartCoroutine(WaveDelayCoroutine());
-            Debug.Log("entrou coroutina");
+            if (wavecount % _wavesToNextLvl == 0)
+            {
+                StopMyCoroutine(_coroutine);
+                Instantiate(_portalToLVL, _lvlPortalPos.position, Quaternion.identity);
+            }
+            else
+            {
+                _coroutine = StartCoroutine(WaveDelayCoroutine());
+                Debug.Log("entrou coroutina");
+            }
+            //_coroutine = StartCoroutine(WaveDelayCoroutine());
+           // Debug.Log("entrou coroutina");
         }
+    }
+
+    private void StopMyCoroutine(Coroutine coroutine)
+    {
+        if (coroutine != null) {StopCoroutine(coroutine); }
     }
 }
