@@ -8,7 +8,16 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private GameObject _backGround;
     [SerializeField] private List<Sprite> _bGImages;
 
-
+    public static LoadingScreen instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else { Destroy(gameObject); }
+    }
     private void OnEnable()
     {
         var sprite = _backGround.GetComponent<Image>();
