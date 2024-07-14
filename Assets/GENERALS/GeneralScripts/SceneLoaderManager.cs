@@ -31,7 +31,7 @@ public class SceneLoaderManager : MonoBehaviour
 
     void Update()
     {
-        _loadBar.value = Mathf.MoveTowards(_loadBar.value,_target, 3 * Time.deltaTime);
+        _loadBar.value = Mathf.MoveTowards(_loadBar.value,_target, 2 * Time.deltaTime);
     }
 
     public async void LoadScene(string sceneName)
