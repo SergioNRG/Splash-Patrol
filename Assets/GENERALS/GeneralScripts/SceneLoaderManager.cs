@@ -31,7 +31,7 @@ public class SceneLoaderManager : MonoBehaviour
 
     void Update()
     {
-        _loadBar.value = Mathf.MoveTowards(_loadBar.value,_target, 1.5f * Time.deltaTime);
+       // _loadBar.value = Mathf.MoveTowards(_loadBar.value,_target, 1.5f* Time.deltaTime);
     }
 
     public async void LoadScene(string sceneName)
@@ -47,13 +47,15 @@ public class SceneLoaderManager : MonoBehaviour
 
         do
         {
+            
             await Task.Delay(100);
-            _target = scene.progress;
+            //_target = scene.progress;
+            _loadBar.value = scene.progress;
 
         } while (scene.progress < 0.9f);
 
-        
-        
+
+        Debug.Log(_loadBar.value);  
         scene.allowSceneActivation = true;
         await Task.Delay(100);
         _loadCanvas.SetActive(false);
