@@ -12,7 +12,7 @@ public class SceneLoaderManager : MonoBehaviour
     [SerializeField] private GameObject _loadCanvas;
     [SerializeField] private Slider _loadBar;
 
-    private float _target;
+    //private float _target;
     private void Awake()
     {
         if (instance == null)
@@ -37,7 +37,7 @@ public class SceneLoaderManager : MonoBehaviour
     public async void LoadScene(string sceneName)
     {
        
-        _target = 0;
+        //_target = 0;
         _loadBar.value= 0;
         
         var scene = SceneManager.LoadSceneAsync(sceneName);
