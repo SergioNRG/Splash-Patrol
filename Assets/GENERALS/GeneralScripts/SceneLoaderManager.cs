@@ -12,7 +12,8 @@ public class SceneLoaderManager : MonoBehaviour
     [SerializeField] private GameObject _loadCanvas;
     [SerializeField] private Slider _loadBar;
 
-    public int ActiveSceneIndex;
+    private int _nextSceneIndex;
+    private string _sceneName;
     //private float _target;
     private void Awake()
     {
@@ -54,19 +55,22 @@ public class SceneLoaderManager : MonoBehaviour
             _loadBar.value = scene.progress;
 
         } while (scene.progress < 0.9f);
-
-        ActiveSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log(_loadBar.value);  
+        
         scene.allowSceneActivation = true;
+      
         await Task.Delay(100);
         _loadCanvas.SetActive(false);
+       
+        _nextSceneIndex = SceneManager.GetActiveScene().buildIndex +1;
 
     }
 
     public void LoadSceneLVL()
     {
-        int loadSceneIndex = ActiveSceneIndex++;
-        string sceneName = SceneManager.GetSceneByBuildIndex(loadSceneIndex).name;
-        LoadSceneByName(sceneName);
+        int loadSceneIndex = _nextSceneIndex;
+        string pathToScene = SceneUtility.GetScenePathByBuildIndex(_nextSceneIndex);
+        _sceneName = System.IO.Path.GetFileNameWithoutExtension(pathToScene);
+
+        LoadSceneByName(_sceneName);
     }
 }
