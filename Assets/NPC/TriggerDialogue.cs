@@ -9,10 +9,12 @@ public class TriggerDialogue : MonoBehaviour
     [SerializeField] private DialogueSO _dialogue;
     [SerializeField] private GameObject _showTxtPanel;
     [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
+    private string _playerName;
     // Start is called before the first frame update
     void Start()
     {
         _showTxtPanel.SetActive(false);
+        _playerName = PlayerPrefs.GetString("PlayerName");
     }
 
     // Update is called once per frame
@@ -23,8 +25,9 @@ public class TriggerDialogue : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         _showTxtPanel.SetActive(true);
-        _textMeshProUGUI.text = _dialogue.DialogueText;
+        _textMeshProUGUI.text = "   Hi " +  _playerName + " " + _dialogue.DialogueText;
     }
 
     private void OnTriggerExit(Collider other)

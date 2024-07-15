@@ -5,6 +5,20 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +31,17 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void SettingsPanel(GameObject panel)
+    public void ActivatePanel(GameObject panel)
+    {
+        panel.SetActive(true);
+    }
+
+    public void DeactivatePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
+
+    public void ActivateAndDeactivatePanel(GameObject panel)
     {
         if (!panel.activeInHierarchy)
         {
