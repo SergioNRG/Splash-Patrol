@@ -25,13 +25,20 @@ public class TriggerDialogue : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        _showTxtPanel.SetActive(true);
-        _textMeshProUGUI.text = "   Hi " +  _playerName + " " + _dialogue.DialogueText;
+        if (other.CompareTag("Player"))
+        {
+            _showTxtPanel.SetActive(true);
+            _textMeshProUGUI.text = "   Hi " + _playerName + " " + _dialogue.DialogueText;
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _showTxtPanel.SetActive(false);
+        if (other.CompareTag("Player"))
+        {
+            _showTxtPanel.SetActive(false);
+        }
+        
     }
 }

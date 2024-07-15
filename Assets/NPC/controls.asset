@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c54c316ebcb3e846864e73b9a931079, type: 3}
-  m_Name: intro
+  m_Name: controls
   m_EditorClassIdentifier: 
-  DialogueText: 'take a look to see how things are made arround here. '
+  DialogueText: Use WASD to move .... Space to Jump...Look , Fire,Aim and scrool
+    weapons with mouse , Left Shift for Sprint and C letter for Crouch.... i know
+    i know the usual.

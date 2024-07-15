@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c54c316ebcb3e846864e73b9a931079, type: 3}
-  m_Name: intro
+  m_Name: portal
   m_EditorClassIdentifier: 
-  DialogueText: 'take a look to see how things are made arround here. '
+  DialogueText: That portal over here is the one you need to defend
