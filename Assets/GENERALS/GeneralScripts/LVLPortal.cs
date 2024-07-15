@@ -26,7 +26,11 @@ public class LVLPortal : MonoBehaviour
     {
         if (_lvlImage != null)
         {
-            _lvlImage.sprite = _lvlSprites[EnemySpawner.instance.lvl - 1];
+            if(EnemySpawner.instance != null)
+            {
+                _lvlImage.sprite = _lvlSprites[EnemySpawner.instance.lvl - 1];
+            }
+            
         }
         
     }
@@ -37,6 +41,7 @@ public class LVLPortal : MonoBehaviour
         {
             // fazer load do next lvl
             Debug.Log("entrou mudar lvl");
+            SceneLoaderManager.instance.LoadSceneLVL();
         }
     }
 }

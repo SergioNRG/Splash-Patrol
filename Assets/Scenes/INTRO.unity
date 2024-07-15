@@ -7929,6 +7929,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2931738600619537961, guid: deecd6d6a4294fb47b64ef3e550b02f2,
+        type: 3}
+      propertyPath: _lvlSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: a890bbf0c9d9ca6428591265648fb08c,
+        type: 3}
+    - target: {fileID: 2931738600619537961, guid: deecd6d6a4294fb47b64ef3e550b02f2,
+        type: 3}
+      propertyPath: _lvlSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: d764867ac62ca4e468457e17598ef345,
+        type: 3}
+    - target: {fileID: 5070759580806473258, guid: deecd6d6a4294fb47b64ef3e550b02f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a890bbf0c9d9ca6428591265648fb08c,
+        type: 3}
     - target: {fileID: 8997627446758184518, guid: deecd6d6a4294fb47b64ef3e550b02f2,
         type: 3}
       propertyPath: m_LocalPosition.x
