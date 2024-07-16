@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         _canvas = _portalToLVL.GetComponentInChildren<Canvas>();    
-        _portalToLVL.SetActive(false);
+       // _portalToLVL.SetActive(false);
         _coroutine = StartCoroutine(WaveDelayCoroutine());
     }
 
@@ -102,7 +102,8 @@ public class EnemySpawner : MonoBehaviour
                 lvl++;
                 StopMyCoroutine(_coroutine);
                 Debug.Log("entrou aki");
-                _portalToLVL.SetActive(true);
+                //_portalToLVL.SetActive(true);
+                Instantiate(_portalToLVL, enemy.transform.position, Quaternion.identity);
                 //_canvas.transform.position = new Vector3(_portalToLVL.transform.position.x, _portalToLVL.transform.position.y + 5, _portalToLVL.transform.position.z);
             }
             else

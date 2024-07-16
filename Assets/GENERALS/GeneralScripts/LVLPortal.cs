@@ -13,7 +13,14 @@ public class LVLPortal : MonoBehaviour
     {
         _lvlImage = GetComponentInChildren<Image>();
         //_lvlImage = GetComponent<Image>();
-        
+        if (_lvlImage != null)
+        {
+            if (EnemySpawner.instance != null)
+            {
+                _lvlImage.sprite = _lvlSprites[EnemySpawner.instance.lvl-1];
+            }
+
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +35,7 @@ public class LVLPortal : MonoBehaviour
         {
             if(EnemySpawner.instance != null)
             {
-                _lvlImage.sprite = _lvlSprites[EnemySpawner.instance.lvl - 1];
+                _lvlImage.sprite = _lvlSprites[EnemySpawner.instance.lvl-1];
             }
             
         }

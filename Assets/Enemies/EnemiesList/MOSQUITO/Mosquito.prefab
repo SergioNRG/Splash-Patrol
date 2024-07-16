@@ -520,7 +520,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -606,7 +606,7 @@ MonoBehaviour:
   <DieAnim>k__BackingField: 
   _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
   _attackLogic: {fileID: 11400000, guid: ff65f108ce80f874f86f704ffac01562, type: 2}
-  _attackDistance: 3
+  _attackDistance: 2
   _attackSpeed: 0.5
   flyHeight: 1.5
 --- !u!114 &2557276460638876834
