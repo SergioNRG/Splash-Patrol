@@ -12,7 +12,11 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ScoreManager.Instance.AddScore(_coinPoints);
+            if (ScoreManager.Instance != null)
+            {
+                ScoreManager.Instance.AddScore(_coinPoints);
+            }
+            
             gameObject.SetActive(false);
 
         }

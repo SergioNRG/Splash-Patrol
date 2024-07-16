@@ -10,7 +10,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int _wavesToNextLvl = 10;
     [SerializeField] private float waveDelay;
     [SerializeField] private GameObject _portalToLVL;
-    [SerializeField] Transform[] spawnpoints;
+    [SerializeField] private Transform[] _spawnpoints;
+    [SerializeField] private Transform _bossSpot;
 
     public List<GameObject> _activEnemies = new List<GameObject>();
     public int lvl = 1;
@@ -79,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
         System.Random rand = new System.Random();
         string tag = keyList[rand.Next(keyList.Count-1)];
         GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
-        mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;
+        mob.transform.position = _spawnpoints[Random.Range(0, _spawnpoints.Length)].transform.position;
         mob.SetActive(true);
         _activEnemies.Add(mob);
     }
@@ -87,7 +88,9 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnBoss(string tag)
     {
         GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
-        mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;// mudar para boss sopt
+        mob.transform.position = _bossSpot.transform.position;        
+        mob.transform.rotation = _bossSpot.transform.rotation;
+        // mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;// mudar para boss sopt
         mob.SetActive(true);
         _activEnemies.Add(mob);
     }
