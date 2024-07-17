@@ -79,7 +79,7 @@ public class GolemBoss : EnemyBase
                 _coroutine = StartCoroutine(AnimControllerInstance.RepeatAnimation(repeatCount, _animator, IdleAnim));
             }
             _effectsManager.Idleffect();
-            if (AnimControllerInstance.GetCurrentRepeat() >= repeatCount )//&& _healthManager.CurrentHealth > 0)
+            if (AnimControllerInstance.GetCurrentRepeat() >= repeatCount && _healthManager.CurrentHealth > 0)
             {
                 Debug.Log("tou repet");
                 if (AnimControllerInstance.ISAnimationEnded(_animator, IdleAnim ) && _healthManager.CurrentHealth > 0)
