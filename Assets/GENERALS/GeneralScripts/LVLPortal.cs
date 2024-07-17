@@ -8,16 +8,21 @@ public class LVLPortal : MonoBehaviour
 
     [SerializeField] private Image _lvlImage;
     [SerializeField] private List<Sprite> _lvlSprites;
-    // Start is called before the first frame update
+
     void Start()
     {
         _lvlImage = GetComponentInChildren<Image>();
+        /*if(EnemySpawner.instance != null)
+        {
+            gameObject.SetActive(false);
+        }*/
+        
         //_lvlImage = GetComponent<Image>();
         if (_lvlImage != null)
         {
             if (EnemySpawner.instance != null)
             {
-                _lvlImage.sprite = _lvlSprites[EnemySpawner.instance.lvl-1];
+                _lvlImage.sprite = _lvlSprites[GameManager.Instance.lvl-1];
             }
 
         }
@@ -29,7 +34,7 @@ public class LVLPortal : MonoBehaviour
         _lvlImage.transform.LookAt(Camera.main.transform.position, Vector3.up);
     }
 
-    private void OnEnable()
+  /*  private void OnEnable()
     {
         if (_lvlImage != null)
         {
@@ -40,13 +45,12 @@ public class LVLPortal : MonoBehaviour
             
         }
         
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // fazer load do next lvl
             Debug.Log("entrou mudar lvl");
             SceneLoaderManager.instance.LoadSceneLVL();
         }

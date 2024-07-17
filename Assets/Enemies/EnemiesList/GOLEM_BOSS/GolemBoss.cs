@@ -95,7 +95,7 @@ public class GolemBoss : EnemyBase
 
                     ChangeState(State.Roar);
                 }
-               // else { ChangeState(State.Die); }
+                else { ChangeState(State.Die); }
 
             }
             //else { ChangeState(State.Die); }

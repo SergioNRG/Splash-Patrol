@@ -16,12 +16,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform _lvlPortalSpot;
 
     public List<GameObject> _activEnemies = new List<GameObject>();
-    public int lvl = 1;
+
 
     private int wavecount = 0;   
     private Coroutine _coroutine;
 
     private Canvas _canvas;
+
+    public delegate void ChangeLvlEvent();
+    public event ChangeLvlEvent OnLvlChanged;
 
     public static EnemySpawner instance;
 
@@ -30,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
         if (instance == null) 
         { 
             instance = this; 
-           // DontDestroyOnLoad(gameObject);
         }else { Destroy(gameObject); }
     }
     private void Start()
@@ -42,9 +44,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        OnLvlChanged += GameManager.Instance.ChangeLvl;
+    }
+
+    private void OnDisable()
+    {
+        OnLvlChanged -= GameManager.Instance.ChangeLvl;
     }
     private void Update()
     {
+
     }
     public void WaveSpawn()
     {
@@ -104,11 +113,11 @@ public class EnemySpawner : MonoBehaviour
         {
             if (wavecount % _wavesToNextLvl == 0)
             {
-                lvl++;
+                OnLvlChanged?.Invoke();
                 StopMyCoroutine(_coroutine);
                 Debug.Log("entrou aki");
                 //_portalToLVL.SetActive(true);
-               // Transform spot = enemy.GetComponent<NavMeshAgent>().transform;
+                //Transform spot = enemy.GetComponent<NavMeshAgent>().transform;
                 Instantiate(_portalToLVL,_lvlPortalSpot.position, Quaternion.identity);
                 //_canvas.transform.position = new Vector3(_portalToLVL.transform.position.x, _portalToLVL.transform.position.y + 5, _portalToLVL.transform.position.z);
             }
