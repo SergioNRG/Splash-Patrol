@@ -134,6 +134,7 @@ MonoBehaviour:
   _lvlSprites:
   - {fileID: 21300000, guid: 0d9a8ef9b25b1894d9671a4731020fbb, type: 3}
   - {fileID: 21300000, guid: 359fe90ef4f8aa6448e2a2f2aa24aa7c, type: 3}
+  - {fileID: 21300000, guid: 82116b568de810d4db9b9e43960d0f22, type: 3}
 --- !u!65 &7267028687168100942
 BoxCollider:
   m_ObjectHideFlags: 0
