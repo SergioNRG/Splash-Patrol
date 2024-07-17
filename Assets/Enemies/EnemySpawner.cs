@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject _portalToLVL;
     [SerializeField] private Transform[] _spawnpoints;
     [SerializeField] private Transform _bossSpot;
+    [SerializeField] private Transform _lvlPortalSpot;
 
     public List<GameObject> _activEnemies = new List<GameObject>();
     public int lvl = 1;
@@ -28,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         if (instance == null) 
         { 
             instance = this; 
-            DontDestroyOnLoad(gameObject);
+           // DontDestroyOnLoad(gameObject);
         }else { Destroy(gameObject); }
     }
     private void Start()
@@ -106,7 +108,8 @@ public class EnemySpawner : MonoBehaviour
                 StopMyCoroutine(_coroutine);
                 Debug.Log("entrou aki");
                 //_portalToLVL.SetActive(true);
-                Instantiate(_portalToLVL, enemy.transform.position, Quaternion.identity);
+               // Transform spot = enemy.GetComponent<NavMeshAgent>().transform;
+                Instantiate(_portalToLVL,_lvlPortalSpot.position, Quaternion.identity);
                 //_canvas.transform.position = new Vector3(_portalToLVL.transform.position.x, _portalToLVL.transform.position.y + 5, _portalToLVL.transform.position.z);
             }
             else

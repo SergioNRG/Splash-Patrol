@@ -544,8 +544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 284b2db9c9a6e9848b758dbd19c01a67, type: 2}
-  _basePlayerSpeed: 2
-  _sprintPlayerSpeed: 4
+  _basePlayerSpeed: 4
+  _sprintPlayerSpeed: 6
   _crouchingPlayerSpeed: 1
   _jumpHeight: 1
   _gravityValue: -9.81

@@ -4866,6 +4866,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 869676529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &883681091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883681092}
+  m_Layer: 0
+  m_Name: LvlPortalSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &883681092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883681091}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -7.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &913569404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7266,6 +7297,11 @@ PrefabInstance:
       propertyPath: _bossSpot
       value: 
       objectReference: {fileID: 1142006096}
+    - target: {fileID: 8626499953376340018, guid: cd310e97cfb1cb04a9828c09f63199fe,
+        type: 3}
+      propertyPath: _lvlPortalSpot
+      value: 
+      objectReference: {fileID: 883681092}
     - target: {fileID: 8626499953376340018, guid: cd310e97cfb1cb04a9828c09f63199fe,
         type: 3}
       propertyPath: spawnpoints.Array.size
@@ -10985,3 +11021,4 @@ SceneRoots:
   - {fileID: 452120748}
   - {fileID: 2062007263}
   - {fileID: 381884221}
+  - {fileID: 883681092}

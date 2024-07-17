@@ -13,10 +13,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     [Header("Values to adjust")]
 
-    [SerializeField] private float _basePlayerSpeed = 2.0f;
-    [SerializeField] private float _sprintPlayerSpeed = 4.0f;
+    [SerializeField] private float _basePlayerSpeed = 4.0f;
+    [SerializeField] private float _sprintPlayerSpeed = 6.0f;
     [SerializeField] private float _crouchingPlayerSpeed = 1.0f;
-    [SerializeField] private float _jumpHeight = 3.0f;
+    [SerializeField] private float _jumpHeight = 1.0f;
     [SerializeField] private float _gravityValue = -9.81f;
 
 
