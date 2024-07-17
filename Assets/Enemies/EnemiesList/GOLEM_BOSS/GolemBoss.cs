@@ -95,7 +95,7 @@ public class GolemBoss : EnemyBase
 
                     ChangeState(State.Roar);
                 }
-                else { ChangeState(State.Die); }
+               // else { ChangeState(State.Die); }
 
             }
             //else { ChangeState(State.Die); }
@@ -126,25 +126,9 @@ public class GolemBoss : EnemyBase
                 }
             }
         }
+        else { ChangeState(State.Die); }
     }
 
-  /*  protected override void Move()
-    {
-
-        if (_healthManager.CurrentHealth > 0)
-        {
-            if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
-            {
-                ChangeState(State.Attack);
-            }
-            else if (_chasePlayerLogic != null)
-            {
-                _effectsManager.ChaseEffect();
-                ChaseBaseInstance.MoveLogic();
-            }
-        }
-        else { ChangeState(State.Die); }
-    }*/
 
     protected override void Attack()
     {
