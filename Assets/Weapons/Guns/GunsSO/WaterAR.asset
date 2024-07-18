@@ -16,10 +16,11 @@ MonoBehaviour:
   Name: WaterM4A1
   ModelPrefab: {fileID: 6182697093187845493, guid: 3d77e986f1384c44abf84f18ed58c215,
     type: 3}
+  MaxAmmo: 200
   SpawnPoint: {x: 0, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: 0}
   DamageConfig: {fileID: 11400000, guid: 0c335f2f13fbcbf4c9a0c94bbb247f89, type: 2}
   ShootConfig: {fileID: 11400000, guid: 3238257b94cda7d4cad2c0730e3e07da, type: 2}
   TrailConfig: {fileID: 11400000, guid: ff3628952abe8f844886847d3591d579, type: 2}
-  MaxAmmo: 200
-  CurrentAmmo: 0
+  Model: {fileID: 0}
+  _popSound: {fileID: 8300000, guid: 0d8be0eca99b5fe448186cdc6a2c5340, type: 3}

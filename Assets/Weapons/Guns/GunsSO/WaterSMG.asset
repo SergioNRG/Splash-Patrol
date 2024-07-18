@@ -16,10 +16,11 @@ MonoBehaviour:
   Name: WaterUZI
   ModelPrefab: {fileID: 6396865646041003767, guid: 17fd7dc9be272334ca410db53bdf720a,
     type: 3}
+  MaxAmmo: 120
   SpawnPoint: {x: 0, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: 0}
   DamageConfig: {fileID: 11400000, guid: 210399abdddc26448a795e4d4c986045, type: 2}
   ShootConfig: {fileID: 11400000, guid: fd5afd0ee8bad0c41ac4a9d01f647e1e, type: 2}
   TrailConfig: {fileID: 11400000, guid: 2e7afdfa5458ee1428eebb7456cc523c, type: 2}
-  MaxAmmo: 120
-  CurrentAmmo: 0
+  Model: {fileID: 0}
+  _popSound: {fileID: 8300000, guid: 0d8be0eca99b5fe448186cdc6a2c5340, type: 3}

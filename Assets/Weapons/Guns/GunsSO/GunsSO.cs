@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Pool;
 using Random = UnityEngine.Random;
@@ -23,7 +24,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
     public TrailConfig TrailConfig;
 
     public GameObject Model;
-
+    public AudioClip _popSound;
     private int CurrentAmmo;
     private LiquidAmmoDisplay AmmoDisplay;
     private MonoBehaviour _activeMonoBehaviour;
@@ -130,6 +131,8 @@ public class GunsSO : WeaponSOBase,System.ICloneable
             {
                 _lastShootTime = Time.time;
                 _shootSystem.Play();
+                Debug.Log(_popSound);
+                SoundFXManager.instance.PlayFXSound(_popSound,_shootSystem.transform,1f);
                 Vector3 shootDirection = _shootSystem.transform.forward
                     + new Vector3(Random.Range(-ShootConfig.Spread.x, ShootConfig.Spread.x),
                                   Random.Range(-ShootConfig.Spread.y, ShootConfig.Spread.y),
@@ -232,7 +235,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
         gunsConfig.SpawnRotation = SpawnRotation;
         gunsConfig.MaxAmmo = MaxAmmo;
         gunsConfig.CurrentAmmo= CurrentAmmo;
-
+        gunsConfig._popSound = _popSound;
         return gunsConfig;
     }
 }
