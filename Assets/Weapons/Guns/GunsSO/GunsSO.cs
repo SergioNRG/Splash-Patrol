@@ -131,8 +131,8 @@ public class GunsSO : WeaponSOBase,System.ICloneable
             {
                 _lastShootTime = Time.time;
                 _shootSystem.Play();
-                Debug.Log(_popSound);
-                SoundFXManager.instance.PlayFXSound(_popSound,_shootSystem.transform,1f);
+                SoundFXManager.instance.PlayFXSound(_popSound,_shootSystem.transform,1f); // play sound effect
+                
                 Vector3 shootDirection = _shootSystem.transform.forward
                     + new Vector3(Random.Range(-ShootConfig.Spread.x, ShootConfig.Spread.x),
                                   Random.Range(-ShootConfig.Spread.y, ShootConfig.Spread.y),

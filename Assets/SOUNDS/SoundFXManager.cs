@@ -21,14 +21,22 @@ public class SoundFXManager : MonoBehaviour
 
     public void PlayFXSound(AudioClip audioClip, Transform spawnTrans, float volume)
     {
-        AudioSource audioSource = Instantiate (_soundObjectPrefab, spawnTrans.position,Quaternion.identity) ;
-
+        //AudioSource audioSource = Instantiate (_soundObjectPrefab, spawnTrans.position,Quaternion.identity) ;
+        AudioSource audioSource = SoundFXPooler.instance.TakeFromPool("FXSound").GetComponent<AudioSource>();
+        Debug.Log(audioSource);
+        audioSource.gameObject.SetActive(true);
+        
         audioSource.clip = audioClip ;
         audioSource.volume = volume ;
         audioSource.Play();
 
         float clipLength = audioSource.clip.length ;
+        while (clipLength > 0) 
+        {
+            audioSource.gameObject.SetActive (true);
+        }
 
-        Destroy (audioSource.gameObject,clipLength ) ;
+        audioSource.gameObject.SetActive(false);
+        //Destroy (audioSource.gameObject,clipLength ) ;
     }
 }
