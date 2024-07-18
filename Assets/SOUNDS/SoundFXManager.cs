@@ -8,6 +8,7 @@ public class SoundFXManager : MonoBehaviour
 
     public static SoundFXManager instance;
 
+    private Coroutine _soundPlayCoroutine;
     private void Awake()
     {
         if (instance == null)
@@ -25,18 +26,27 @@ public class SoundFXManager : MonoBehaviour
         AudioSource audioSource = SoundFXPooler.instance.TakeFromPool("FXSound").GetComponent<AudioSource>();
         Debug.Log(audioSource);
         audioSource.gameObject.SetActive(true);
-        
-        audioSource.clip = audioClip ;
-        audioSource.volume = volume ;
-        audioSource.Play();
-
-        float clipLength = audioSource.clip.length ;
-        while (clipLength > 0) 
+        if(_soundPlayCoroutine == null)
         {
-            audioSource.gameObject.SetActive (true);
-        }
+            _soundPlayCoroutine = StartCoroutine(PlayAudioAndDeactivate(audioSource,audioClip,volume)); 
+        }else { StopCoroutine(_soundPlayCoroutine); }
+       // audioSource.clip = audioClip ;
+       // audioSource.volume = volume ;
+       // audioSource.Play();
 
-        audioSource.gameObject.SetActive(false);
+       // float clipLength = audioSource.clip.length ;
+       
+       // if (audioSource.time >= clipLength ) { audioSource.gameObject.SetActive (false); }
+        
         //Destroy (audioSource.gameObject,clipLength ) ;
+    }
+
+    private IEnumerator PlayAudioAndDeactivate(AudioSource audioSource,AudioClip clip, float volume)
+    {
+        audioSource.clip = clip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        yield return new WaitUntil(() => audioSource.time >= clip.length);
+        audioSource.gameObject.SetActive(false); //Whatever it is that you're wanting to do.
     }
 }
