@@ -20,25 +20,14 @@ public class SoundFXManager : MonoBehaviour
     }
 
 
-    public void PlayFXSound(AudioClip audioClip, Transform spawnTrans, float volume)
+    public void PlayFXSound(AudioClip audioClip, float volume)
     {
         //AudioSource audioSource = Instantiate (_soundObjectPrefab, spawnTrans.position,Quaternion.identity) ;
         AudioSource audioSource = SoundFXPooler.instance.TakeFromPool("FXSound").GetComponent<AudioSource>();
-        Debug.Log(audioSource);
         audioSource.gameObject.SetActive(true);
-        if(_soundPlayCoroutine == null)
-        {
-            _soundPlayCoroutine = StartCoroutine(PlayAudioAndDeactivate(audioSource,audioClip,volume)); 
-        }else { StopCoroutine(_soundPlayCoroutine); }
-       // audioSource.clip = audioClip ;
-       // audioSource.volume = volume ;
-       // audioSource.Play();
 
-       // float clipLength = audioSource.clip.length ;
-       
-       // if (audioSource.time >= clipLength ) { audioSource.gameObject.SetActive (false); }
-        
-        //Destroy (audioSource.gameObject,clipLength ) ;
+
+        _soundPlayCoroutine = StartCoroutine(PlayAudioAndDeactivate(audioSource, audioClip, volume));
     }
 
     private IEnumerator PlayAudioAndDeactivate(AudioSource audioSource,AudioClip clip, float volume)
@@ -46,7 +35,7 @@ public class SoundFXManager : MonoBehaviour
         audioSource.clip = clip;
         audioSource.volume = volume;
         audioSource.Play();
-        yield return new WaitUntil(() => audioSource.time >= clip.length);
-        audioSource.gameObject.SetActive(false); //Whatever it is that you're wanting to do.
+        yield return new WaitForSeconds(clip.length);
+        audioSource.gameObject.SetActive(false); 
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 public class Coin : MonoBehaviour
 {
     [SerializeField] private int _coinPoints;
-
+    [SerializeField] private AudioClip _coinsound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
             {
                 ScoreManager.Instance.AddScore(_coinPoints);
             }
-            
+            SoundFXManager.instance.PlayFXSound(_coinsound, 1f);
             gameObject.SetActive(false);
 
         }

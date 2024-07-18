@@ -34068,6 +34068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpBonus: 20
+  _hpUpSound: {fileID: 8300000, guid: cab7217bea8f7dc41a42f11bc4c790fc, type: 3}
 --- !u!1 &4346457330195515198
 GameObject:
   m_ObjectHideFlags: 0

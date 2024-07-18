@@ -34068,6 +34068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinPoints: 5
+  _coinsound: {fileID: 8300000, guid: 4b27164d690ea914ea725531595a2d1d, type: 3}
 --- !u!1 &4346457330195515198
 GameObject:
   m_ObjectHideFlags: 0
