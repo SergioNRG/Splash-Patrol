@@ -62,7 +62,7 @@ public class SceneLoaderManager : MonoBehaviour
         _loadCanvas.SetActive(false);
        
         _nextSceneIndex = SceneManager.GetActiveScene().buildIndex +1;
-       // Debug.Log(_nextSceneIndex);
+        Debug.Log(_nextSceneIndex);
     }
 
     public void LoadSceneLVL()
