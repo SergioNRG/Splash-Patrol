@@ -40,12 +40,13 @@ public class EnemySpawner : MonoBehaviour
         _canvas = _portalToLVL.GetComponentInChildren<Canvas>();    
        // _portalToLVL.SetActive(false);
         _coroutine = StartCoroutine(WaveDelayCoroutine());
-    }
-
-    private void OnEnable()
-    {
         OnLvlChanged += GameManager.Instance.ChangeLvl;
     }
+
+  /*  private void OnEnable()
+    {
+       
+    }*/
 
     private void OnDisable()
     {
