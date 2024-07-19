@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunPickUp : MonoBehaviour
 {
     public GunsSO GunSO;
-    public Vector3 spinDirection = Vector3.up;
+    private Vector3 _spinDirection = Vector3.up;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,7 @@ public class GunPickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(spinDirection);
+        transform.Rotate(_spinDirection);
     }
 
 
