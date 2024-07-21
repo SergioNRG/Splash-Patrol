@@ -38,13 +38,13 @@ public class SceneLoaderManager : MonoBehaviour
 
     public async void LoadSceneByName(string sceneName)
     {
-       
+        
         //_target = 0;
         _loadBar.value= 0;
-        
+        var cam = Camera.main;
         var scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
-        Camera.main.gameObject.SetActive(false);
+        if (cam != null) { cam.gameObject.SetActive(false); } 
         _loadCanvas.SetActive(true);
 
         do
@@ -60,7 +60,8 @@ public class SceneLoaderManager : MonoBehaviour
       
         await Task.Delay(100);
         _loadCanvas.SetActive(false);
-        Camera.main.gameObject.SetActive(true);
+
+        if (cam != null) { cam.gameObject.SetActive(true); }
         _nextSceneIndex = SceneManager.GetActiveScene().buildIndex +1;
         Debug.Log(_nextSceneIndex);
     }
