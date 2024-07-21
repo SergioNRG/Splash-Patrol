@@ -30,7 +30,11 @@ public class PlayerAttacks : MonoBehaviour
 
 
     private bool _isAttacking;
-   
+    private Camera _cam;
+    private void Awake()
+    {
+        _cam = Camera.main;
+    }
     void Start()
     {
         _playerGunSelector = GetComponent<PlayerGunSelector>(); 
@@ -63,7 +67,7 @@ public class PlayerAttacks : MonoBehaviour
             hitPoint = hit.point;
         }
 
-        Vector3 screenSpaceLocation = Camera.main.WorldToScreenPoint(hitPoint);
+        Vector3 screenSpaceLocation = _cam.WorldToScreenPoint(hitPoint);//Camera.main.WorldToScreenPoint(hitPoint);
         if(RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)_crosshair.transform.parent,screenSpaceLocation,null,out Vector2 localPoint))
         {
             _crosshair.rectTransform.anchoredPosition = localPoint;
