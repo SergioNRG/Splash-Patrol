@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public int lvl = 1;
+    public int Lvl = 1;
+    public int LastWaveNum;
 
+    
     private void Awake()
     {
         if (Instance == null)
@@ -21,6 +23,11 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLvl()
     {
-        lvl++;
+        Lvl++;
+    }
+
+    public void ResetValues()
+    {
+
     }
 }

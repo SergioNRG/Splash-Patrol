@@ -9,6 +9,8 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private List<Sprite> _bGImages;
 
     public static LoadingScreen instance;
+
+    private AudioListener _listener;
     private void Awake()
     {
         if (instance == null)
@@ -17,6 +19,7 @@ public class LoadingScreen : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
+
     }
     private void OnEnable()
     {

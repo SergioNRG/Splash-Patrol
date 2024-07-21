@@ -28,7 +28,7 @@ public class LVLPortal : MonoBehaviour
         {
             if (EnemySpawner.instance != null)
             {
-                _lvlImage.sprite = _lvlSprites[GameManager.Instance.lvl-1];
+                _lvlImage.sprite = _lvlSprites[GameManager.Instance.Lvl-1];
             }
 
         }
