@@ -22,7 +22,7 @@ public class GolemBoss : EnemyBase
     [SerializeField] private float _projectileForce;
 
 
-    [SerializeField] private AudioClip _fxSound;
+   
 
 
     private NavMeshAgent _agent;
@@ -98,10 +98,7 @@ public class GolemBoss : EnemyBase
                         StopCoroutine(_coroutine);
                         _coroutine = null;
                     }
-                    if (_fxSound != null)
-                    {
-                        SoundFXManager.instance.PlayFXSound(_fxSound, 0.08f);
-                    }
+                 
                     ChangeState(State.Roar);
                 }
                 else { ChangeState(State.Die); }

@@ -16,7 +16,7 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public static ObjectPool<GameObject> _popUPPool;
 
-    
+    [SerializeField] private AudioClip _fxSound;
 
     /*private void OnEnable()
     {
@@ -109,6 +109,16 @@ public class EnemyEffectsManager : MonoBehaviour
         var popUp = Instantiate(_floatingTxt, _crosshair.transform.position + _offset, Quaternion.identity, _crosshair.transform);
         popUp.GetComponent<SelfReturnToPool>().SetPool(_popUPPool);
         return popUp;
+    }
+
+
+    public void PlaySoundOnEvent()
+    {
+        if (_fxSound != null)
+        {
+            SoundFXManager.instance.PlayFXSound(_fxSound, 0.08f);
+        }
+
     }
 
  
