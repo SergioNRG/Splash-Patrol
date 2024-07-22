@@ -21,10 +21,16 @@ public class GolemBoss : EnemyBase
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
 
+
+    [SerializeField] private AudioClip _fxSound;
+
+
     private NavMeshAgent _agent;
 
     [SerializeField] private int repeatCount ; // Number of times to repeat the animation
     private Coroutine _coroutine;
+
+
     private void OnEnable()
     {
         
@@ -92,7 +98,10 @@ public class GolemBoss : EnemyBase
                         StopCoroutine(_coroutine);
                         _coroutine = null;
                     }
-
+                    if (_fxSound != null)
+                    {
+                        SoundFXManager.instance.PlayFXSound(_fxSound, 0.08f);
+                    }
                     ChangeState(State.Roar);
                 }
                 else { ChangeState(State.Die); }
@@ -109,6 +118,7 @@ public class GolemBoss : EnemyBase
         {
             _effectsManager.RoarEffect();
             Debug.Log("tou roar");
+
             if (AnimControllerInstance.ISAnimationEnded(_animator, RoarAnim))
             {
                 Debug.Log("tou roar ended");
@@ -147,8 +157,8 @@ public class GolemBoss : EnemyBase
             }
             else if (AnimControllerInstance.ISAnimationEnded(_animator, AttackAnim))
             {
-                _agent.isStopped = false;
-                ChangeState(State.Move);
+                //_agent.isStopped = false;
+                ChangeState(State.Idle);
             }
         }
         else { ChangeState(State.Die); }

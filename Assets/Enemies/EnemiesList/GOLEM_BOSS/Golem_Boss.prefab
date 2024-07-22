@@ -483,6 +483,7 @@ MonoBehaviour:
   Projectile: {fileID: 1375754531036840, guid: 16d365169227ee64ab52b0edbc7ef1b3, type: 3}
   _attackSpeed: 1
   _projectileForce: 10
+  _fxSound: {fileID: 8300000, guid: af1a10e156624e94e889a85d49fb829f, type: 3}
   repeatCount: 3
 --- !u!114 &7149092025435488632
 MonoBehaviour:

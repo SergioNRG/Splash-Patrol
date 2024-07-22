@@ -16,6 +16,8 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public static ObjectPool<GameObject> _popUPPool;
 
+    
+
     /*private void OnEnable()
     {
         enemy = GetComponent<EnemyBase>();
@@ -40,7 +42,7 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void RoarEffect()
     {
-        enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.RoarAnim);
+        enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.RoarAnim);       
     }
     public void Idleffect()
     {
