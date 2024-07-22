@@ -10,7 +10,6 @@ public class LoadingScreen : MonoBehaviour
 
     public static LoadingScreen instance;
 
-    private AudioListener _listener;
     private void Awake()
     {
         if (instance == null)

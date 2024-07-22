@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422880680786155352}
   - component: {fileID: 7820275686526373801}
+  - component: {fileID: 5772051419454427928}
   m_Layer: 0
   m_Name: SoundFXManager
   m_TagString: Untagged
@@ -46,3 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _soundObjectPrefab: {fileID: 4891442921178884975, guid: 36e55e65d57a1624f81e3bd44f2b131b,
     type: 3}
+--- !u!81 &5772051419454427928
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685054745100110044}
+  m_Enabled: 1
