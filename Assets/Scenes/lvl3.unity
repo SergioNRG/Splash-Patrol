@@ -23490,6 +23490,11 @@ PrefabInstance:
       objectReference: {fileID: 541921073}
     - target: {fileID: 8626499953376340018, guid: cd310e97cfb1cb04a9828c09f63199fe,
         type: 3}
+      propertyPath: enemiestospawn
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626499953376340018, guid: cd310e97cfb1cb04a9828c09f63199fe,
+        type: 3}
       propertyPath: _spawnpoints.Array.size
       value: 3
       objectReference: {fileID: 0}

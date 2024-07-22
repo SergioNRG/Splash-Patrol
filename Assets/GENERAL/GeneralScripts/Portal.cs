@@ -1,0 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Portal : MonoBehaviour
+{
+
+    public event ChangeLvlEvent OnPortalEnter;
+    public delegate void ChangeLvlEvent();
+
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance != null)
+            OnPortalEnter += GameManager.Instance.ChangePortalLife;
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+            OnPortalEnter -= GameManager.Instance.ChangePortalLife;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null)
+        {
+            OnPortalEnter?.Invoke();
+        }
+    }
+}

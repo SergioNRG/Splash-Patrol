@@ -8,9 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public int Lvl = 1;
-    public int LastWaveNum;
 
-    
+    [SerializeField ]private int EnemiesLeft;
     private void Awake()
     {
         if (Instance == null)
@@ -29,5 +28,10 @@ public class GameManager : MonoBehaviour
     public void ResetValues()
     {
 
+    }
+
+    public void ChangePortalLife()
+    {
+        EnemiesLeft--;
     }
 }

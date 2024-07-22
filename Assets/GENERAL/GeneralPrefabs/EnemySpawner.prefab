@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a144d0cef5f2d4b83b651602f24733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plusenemies: 2
-  enemiestospawn: 0
+  plusenemies: 3
+  enemiestospawn: 2
   _wavesToNextLvl: 2
   waveDelay: 2
   _portalToLVL: {fileID: 1514838442195789469, guid: deecd6d6a4294fb47b64ef3e550b02f2,

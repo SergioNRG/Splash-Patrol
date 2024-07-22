@@ -23,8 +23,10 @@ public class EnemySpawner : MonoBehaviour
 
     private Canvas _canvas;
 
-    public delegate void ChangeLvlEvent();
+
     public event ChangeLvlEvent OnLvlChanged;
+    public delegate void ChangeLvlEvent();
+   
 
     public static EnemySpawner instance;
 
