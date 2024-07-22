@@ -16,7 +16,7 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public static ObjectPool<GameObject> _popUPPool;
 
-    [SerializeField] private AudioClip _fxSound;
+   //[SerializeField] private AudioClip _fxSound;
 
     /*private void OnEnable()
     {
@@ -84,6 +84,7 @@ public class EnemyEffectsManager : MonoBehaviour
 
     public void Die(Vector3 position, GameObject go)
     {
+
         enemy.AnimControllerInstance.Playanimation(enemy._animator, enemy.DieAnim);
     }
    
@@ -112,7 +113,7 @@ public class EnemyEffectsManager : MonoBehaviour
     }
 
 
-    public void PlaySoundOnEvent()
+    public void PlaySoundOnEvent(AudioClip _fxSound)
     {
         if (_fxSound != null)
         {
