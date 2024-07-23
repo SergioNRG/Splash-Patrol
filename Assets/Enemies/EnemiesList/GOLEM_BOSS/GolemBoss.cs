@@ -21,10 +21,6 @@ public class GolemBoss : EnemyBase
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
 
-
-   
-
-
     private NavMeshAgent _agent;
 
     [SerializeField] private int repeatCount ; // Number of times to repeat the animation

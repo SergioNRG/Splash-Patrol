@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
 
     public event ChangeLvlEvent OnLvlChanged;
     public delegate void ChangeLvlEvent();
-   
+    
 
     public static EnemySpawner instance;
 

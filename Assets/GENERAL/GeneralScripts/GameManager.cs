@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int Lvl = 1;
 
     [SerializeField ]private int EnemiesLeft;
+
+    // maybe do a gameover event
     private void Awake()
     {
         if (Instance == null)
@@ -33,5 +35,6 @@ public class GameManager : MonoBehaviour
     public void ChangePortalLife()
     {
         EnemiesLeft--;
+        if (EnemiesLeft <= 0) { SceneLoaderManager.instance.LoadSceneByName("GameOver"); }
     }
 }
