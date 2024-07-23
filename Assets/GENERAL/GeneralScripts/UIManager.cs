@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject _startButton;
-
+    public GameObject GameOverPanel;
 
     public static UIManager instance;
 
@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _startButton.SetActive(false);
+        GameOverPanel.SetActive(false);
+
     }
 
     // Update is called once per frame
