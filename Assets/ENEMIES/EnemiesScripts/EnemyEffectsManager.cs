@@ -117,7 +117,7 @@ public class EnemyEffectsManager : MonoBehaviour
     {
         if (_fxSound != null)
         {
-            SoundFXManager.instance.PlayFXSound(_fxSound, 0.08f);
+            SoundFXManager.instance.PlayFXSound(_fxSound, 0.025f);
         }
 
     }

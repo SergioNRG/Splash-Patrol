@@ -83,10 +83,8 @@ public class GolemBoss : EnemyBase
             _effectsManager.Idleffect();
             if (AnimControllerInstance.GetCurrentRepeat() >= repeatCount && _healthManager.CurrentHealth > 0)
             {
-                Debug.Log("tou repet");
                 if (AnimControllerInstance.ISAnimationEnded(_animator, IdleAnim ) && _healthManager.CurrentHealth > 0)
                 {
-                    Debug.Log("anim ended");
                     AnimControllerInstance.ResetCurrentRepeat();
                     
                     if (_coroutine != null)
@@ -110,21 +108,14 @@ public class GolemBoss : EnemyBase
         if (_healthManager.CurrentHealth > 0)
         {
             _effectsManager.RoarEffect();
-            Debug.Log("tou roar");
 
             if (AnimControllerInstance.ISAnimationEnded(_animator, RoarAnim))
             {
-                Debug.Log("tou roar ended");
                 if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
                 {
                     ChangeState(State.Attack);
                 }else                  
                 {
-                   /* if (_coroutine == null)
-                    {
-                        _coroutine = StartCoroutine(AnimControllerInstance.RepeatAnimation(repeatCount, _animator, IdleAnim));
-                    }*/
-
                     ChangeState(State.Idle);
                 }
             }
@@ -141,7 +132,6 @@ public class GolemBoss : EnemyBase
             {
                 if (_attackLogic != null)
                 {
-                    //Vector3 lookTarget = new Vector3(_playerTransform.position.x, _playerTransform.position.y + 1f, _playerTransform.position.z);
                     Vector3 lookTarget = new Vector3(_playerTransform.position.x, 0, _playerTransform.position.z);
                     transform.LookAt(lookTarget);
                     _agent.isStopped = true;
@@ -150,7 +140,6 @@ public class GolemBoss : EnemyBase
             }
             else if (AnimControllerInstance.ISAnimationEnded(_animator, AttackAnim))
             {
-                //_agent.isStopped = false;
                 ChangeState(State.Idle);
             }
         }

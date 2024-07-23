@@ -31,15 +31,12 @@ public class Portal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(OnPortalEnter);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other != null)
         {
-            Debug.Log("entrou portal");
-            Debug.Log(OnPortalEnter);
             OnPortalEnter?.Invoke();
         }
     }

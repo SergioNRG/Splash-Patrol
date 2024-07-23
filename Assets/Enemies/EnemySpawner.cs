@@ -40,15 +40,9 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         _canvas = _portalToLVL.GetComponentInChildren<Canvas>();    
-       // _portalToLVL.SetActive(false);
         _coroutine = StartCoroutine(WaveDelayCoroutine());
         OnLvlChanged += GameManager.Instance.ChangeLvl;
     }
-
-  /*  private void OnEnable()
-    {
-       
-    }*/
 
     private void OnDisable()
     {
@@ -104,7 +98,6 @@ public class EnemySpawner : MonoBehaviour
         GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
         mob.transform.position = _bossSpot.transform.position;        
         mob.transform.rotation = _bossSpot.transform.rotation;
-        // mob.transform.position = spawnpoints[Random.Range(0, spawnpoints.Length)].transform.position;// mudar para boss sopt
         mob.SetActive(true);
         _activEnemies.Add(mob);
     }
@@ -118,16 +111,12 @@ public class EnemySpawner : MonoBehaviour
             {
                 OnLvlChanged?.Invoke();
                 StopMyCoroutine(_coroutine);
-                Debug.Log("entrou aki");
-                //_portalToLVL.SetActive(true);
-                //Transform spot = enemy.GetComponent<NavMeshAgent>().transform;
-                Instantiate(_portalToLVL,_lvlPortalSpot.position, Quaternion.identity);
-                //_canvas.transform.position = new Vector3(_portalToLVL.transform.position.x, _portalToLVL.transform.position.y + 5, _portalToLVL.transform.position.z);
+
+                Instantiate(_portalToLVL,_lvlPortalSpot.position, Quaternion.identity);              
             }
             else
             {
                 _coroutine = StartCoroutine(WaveDelayCoroutine());
-                Debug.Log("entrou coroutina");
             }
         }
     }

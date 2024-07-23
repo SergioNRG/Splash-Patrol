@@ -68,15 +68,14 @@ public class PlayerEffectsManager : MonoBehaviour
 
     public void TakeDamageEffect(int damage)
     {
-
-        Debug.Log("taking Damage " + _healthManager.CurrentHealth);
-        SoundFXManager.instance.PlayFXSound(_hurtSound, 0.5f);
+        SoundFXManager.instance.PlayFXSound(_hurtSound, 0.25f);
         StartCoroutine(DamageEffect());
     }
 
     public void Die(Vector3 position, GameObject pl)
     {
         Debug.Log("player DIE");
+        _fullScreenDamage.SetActive(false);
         SceneLoaderManager.instance.LoadSceneByName("GameOver");
     }
 

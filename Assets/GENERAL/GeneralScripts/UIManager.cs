@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         _startButton.SetActive(false);
