@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lvl: 1
-  EnemiesLeft: 50
+  EnemiesLeft: 1
