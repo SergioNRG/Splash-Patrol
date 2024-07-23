@@ -7,7 +7,7 @@ public class MoveToPortal : MoveSOBase
 {
     public override void MoveLogic()
     {
-        // base.enemyObject.transform.position = Vector3.MoveTowards(base.enemyObject.transform.position, base.playerTranform.position, base.enemy.MovSpeed * Time.deltaTime);
+        
         enemyAgent.destination = base.portalTranform.position;
     }
 }

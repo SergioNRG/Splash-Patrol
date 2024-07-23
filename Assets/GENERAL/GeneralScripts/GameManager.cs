@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public void ChangePortalLife()
     {
         EnemiesLeft--;
-        // if (EnemiesLeft <= 0) { SceneLoaderManager.instance.LoadSceneByName("GameOver"); }
-        if (EnemiesLeft <= 0) { UIManager.instance.ActivatePanel(UIManager.instance.GameOverPanel); }
+        if (EnemiesLeft <= 0) { SceneLoaderManager.instance.LoadSceneByName("GameOver"); }
+      
     }
 }
