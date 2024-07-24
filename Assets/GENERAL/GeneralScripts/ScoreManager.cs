@@ -23,7 +23,17 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int amount)
     {
         Score += amount;
-        Debug.Log(Score);   
+        Debug.Log("o score é "+Score);   
         // fazer score aparecer no UI
+    }
+
+    public int GetScore()
+    {
+        return Score;
+    }
+
+    public void ResetScore()
+    {
+        Score = 0;
     }
 }

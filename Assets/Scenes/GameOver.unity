@@ -708,7 +708,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 262611778}
         m_TargetAssemblyTypeName: GameOverMenuManager, Assembly-CSharp
-        m_MethodName: LoadMainMenu
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
