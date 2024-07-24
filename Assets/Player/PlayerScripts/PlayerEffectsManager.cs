@@ -75,7 +75,7 @@ public class PlayerEffectsManager : MonoBehaviour
     public void Die(Vector3 position, GameObject pl)
     {
         Debug.Log("player DIE");
-        //_fullScreenDamage.SetActive(false);
+        _fullScreenDamage.SetActive(true);
         SceneLoaderManager.instance.LoadSceneByName("GameOver");
 
     }
