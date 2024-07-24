@@ -39,9 +39,10 @@ public class SavesAndLoads : MonoBehaviour
         if (score >= PlayerPrefs.GetInt("Record"))
         {
             PlayerPrefs.SetInt("Record", score);
+            PlayerPrefs.SetString("RecordName", PlayerPrefs.GetString("PlayerName"));
         }
 
-        Debug.Log("o record é " + PlayerPrefs.GetInt("Record"));
+        Debug.Log("o record é "+PlayerPrefs.GetString("RecordName") +" " + PlayerPrefs.GetInt("Record"));
         ScoreManager.Instance.ResetScore();
     }
 
