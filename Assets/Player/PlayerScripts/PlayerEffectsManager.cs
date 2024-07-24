@@ -30,8 +30,6 @@ public class PlayerEffectsManager : MonoBehaviour
     private int _voronoiIntensity = Shader.PropertyToID("_VoronoiIntensity");
     private int _vignetteIntensity = Shader.PropertyToID("_VignetteIntensity");
 
-
- 
     void Start()
     {
         _healthManager = GetComponent<PlayerHealthManager>();
@@ -75,7 +73,9 @@ public class PlayerEffectsManager : MonoBehaviour
     public void Die(Vector3 position, GameObject pl)
     {
         Debug.Log("player DIE");
-        _fullScreenDamage.SetActive(true);
+        //_fullScreenDamage.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneLoaderManager.instance.LoadSceneByName("GameOver");
 
     }

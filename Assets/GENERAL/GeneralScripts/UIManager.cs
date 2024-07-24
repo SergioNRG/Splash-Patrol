@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if (_startButton != null)
         _startButton.SetActive(false);
 
     }
