@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ObjectPooler : MonoBehaviour
+public class EnemyPooler : MonoBehaviour
 {
     [System.Serializable]
     public class Pool
@@ -18,7 +18,7 @@ public class ObjectPooler : MonoBehaviour
     public Dictionary<string, List<GameObject>> PoolDictionary;
 
     
-    public static ObjectPooler instance;
+    public static EnemyPooler instance;
 
     private void Awake()
     {

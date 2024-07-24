@@ -83,11 +83,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        List<string> keyList = new List<string>(ObjectPooler.instance.PoolDictionary.Keys);
+        List<string> keyList = new List<string>(EnemyPooler.instance.PoolDictionary.Keys);
 
         System.Random rand = new System.Random();
         string tag = keyList[rand.Next(keyList.Count-1)];
-        GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
+        GameObject mob = EnemyPooler.instance.TakeFromPool(tag);
         mob.transform.position = _spawnpoints[Random.Range(0, _spawnpoints.Length)].transform.position;
         mob.SetActive(true);
         _activEnemies.Add(mob);
@@ -95,7 +95,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnBoss(string tag)
     {
-        GameObject mob = ObjectPooler.instance.TakeFromPool(tag);
+        GameObject mob = EnemyPooler.instance.TakeFromPool(tag);
         mob.transform.position = _bossSpot.transform.position;        
         mob.transform.rotation = _bossSpot.transform.rotation;
         mob.SetActive(true);
