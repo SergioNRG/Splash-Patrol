@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6602170947311289900}
   - component: {fileID: 7838234656831375072}
   m_Layer: 0
-  m_Name: ObjectPooler
+  m_Name: EnemyPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
