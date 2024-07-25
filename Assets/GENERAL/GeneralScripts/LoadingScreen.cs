@@ -25,5 +25,6 @@ public class LoadingScreen : MonoBehaviour
         var sprite = _backGround.GetComponent<Image>();
         int num = Random.Range(0, _bGImages.Count);
         sprite.sprite = _bGImages[num];
+        UIManager.instance.DeactivateBloodEffect();
     }
 }
