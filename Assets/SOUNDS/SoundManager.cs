@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundFXManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource _soundObjectPrefab;
 
-    public static SoundFXManager instance;
+    public static SoundManager instance;
 
     private Coroutine _soundPlayCoroutine;
     private void Awake()

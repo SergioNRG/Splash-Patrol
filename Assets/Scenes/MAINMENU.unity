@@ -1670,6 +1670,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d1c19e623d6ff439195e35c09bd307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hurtDisplayTime: 1
+  _hurtFadeTime: 1
+  _voronoiIntensityStartAmount: 2.5
+  _vignetteIntensityStartAmount: 1.5
+  _fullScreenDamage: {fileID: -8530858948063149269, guid: c40be3174f62c4acf8c1216858c64956,
+    type: 2}
+  _material: {fileID: 2100000, guid: 089364fb6b420684ba74f984488ec53d, type: 2}
   _startButton: {fileID: 746829537}
 --- !u!1 &461465855 stripped
 GameObject:
@@ -8888,7 +8895,7 @@ PrefabInstance:
     - target: {fileID: 3685054745100110044, guid: 21ab32c90fc4d334db465dfe23f8ead5,
         type: 3}
       propertyPath: m_Name
-      value: SoundFXManager
+      value: SoundManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

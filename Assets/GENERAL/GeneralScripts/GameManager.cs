@@ -27,9 +27,9 @@ public class GameManager : MonoBehaviour
         Lvl++;
     }
 
-    public void ResetValues()
+    public void ReStart()
     {
-
+        GameManager.Instance.Lvl = 1;
     }
 
     public void ChangePortalLife()
@@ -37,10 +37,14 @@ public class GameManager : MonoBehaviour
         EnemiesLeft--;
         if (EnemiesLeft <= 0) 
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            // Cursor.lockState = CursorLockMode.None;
+            // Cursor.visible = true;
+            UIManager.instance.ActivateCursor();
+            ReStart();
             SceneLoaderManager.instance.LoadSceneByName("GameOver"); 
         }
       
     }
+
+
 }

@@ -8,32 +8,33 @@ public class PlayerEffectsManager : MonoBehaviour
 
     [SerializeField] private PlayerHealthManager _healthManager;// just to see
 
-    [Header("Screen effects time")]
+   /* [Header("Screen effects time")]
     [SerializeField] private float _hurtDisplayTime;
     [SerializeField] private float _hurtFadeTime;
    
 
     [Header("Effects Intensity")]
     [SerializeField] private float _voronoiIntensityStartAmount = 2.5f;
-    [SerializeField] private float _vignetteIntensityStartAmount = 1.25f;
+    [SerializeField] private float _vignetteIntensityStartAmount = 1.5f;*/
 
 
     [Header("Sounds")]
     [SerializeField] private AudioClip _hurtSound;
 
 
-    [Header("References")]
+   /* [Header("References")]
     [SerializeField] private ScriptableRendererFeature _fullScreenDamage;
     [SerializeField] private Material _material;
 
 
     private int _voronoiIntensity = Shader.PropertyToID("_VoronoiIntensity");
-    private int _vignetteIntensity = Shader.PropertyToID("_VignetteIntensity");
+    private int _vignetteIntensity = Shader.PropertyToID("_VignetteIntensity");*/
 
     void Start()
     {
         _healthManager = GetComponent<PlayerHealthManager>();
-        _fullScreenDamage.SetActive(false);
+       // _fullScreenDamage.SetActive(false);
+       UIManager.instance.DeactivateBloodEffect();
     }
 
     // Update is called once per frame
@@ -66,18 +67,21 @@ public class PlayerEffectsManager : MonoBehaviour
 
     public void TakeDamageEffect(int damage)
     {
-        SoundFXManager.instance.PlayFXSound(_hurtSound, 0.25f);
-        StartCoroutine(DamageEffect());
+        SoundManager.instance.PlayFXSound(_hurtSound, 0.25f);
+        StartCoroutine(UIManager.instance.DamageEffect());
     }
 
     public void Die(Vector3 position, GameObject pl)
     {
         Debug.Log("player DIE");
         //_fullScreenDamage.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        SceneLoaderManager.instance.LoadSceneByName("GameOver");
+        // Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
 
+        UIManager.instance.ActivateCursor();
+        GameManager.Instance.ReStart();
+        SceneLoaderManager.instance.LoadSceneByName("GameOver");
+        
     }
 
 
@@ -86,11 +90,13 @@ public class PlayerEffectsManager : MonoBehaviour
         Debug.Log("healing");
     }
 
-    private IEnumerator DamageEffect()
+ /*   private IEnumerator DamageEffect()
     {
-        _fullScreenDamage.SetActive(true);
+        /*_fullScreenDamage.SetActive(true);
         _material.SetFloat(_voronoiIntensity,_voronoiIntensityStartAmount);
         _material.SetFloat(_vignetteIntensity,_vignetteIntensityStartAmount);
+
+        ActivateBloodEffect();
 
         yield return new WaitForSeconds(_hurtDisplayTime);
 
@@ -109,5 +115,5 @@ public class PlayerEffectsManager : MonoBehaviour
         }
 
         _fullScreenDamage.SetActive(false);
-    }
+    }*/
 }

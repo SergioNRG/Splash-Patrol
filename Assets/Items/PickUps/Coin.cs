@@ -23,7 +23,7 @@ public class Coin : MonoBehaviour
             {
                 ScoreManager.Instance.AddScore(_coinPoints);
             }
-            SoundFXManager.instance.PlayFXSound(_coinsound, 1f);
+            SoundManager.instance.PlayFXSound(_coinsound, 1f);
             gameObject.SetActive(false);
 
         }

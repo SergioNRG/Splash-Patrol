@@ -19,7 +19,7 @@ public class HPShield : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<IHealable>().ApplyHeal(_hpBonus);
-            SoundFXManager.instance.PlayFXSound(_hpUpSound, 0.1f);
+            SoundManager.instance.PlayFXSound(_hpUpSound, 0.1f);
             gameObject.SetActive(false);
 
             Debug.Log(other.GetComponent<PlayerHealthManager>().CurrentHealth);
