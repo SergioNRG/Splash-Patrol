@@ -10,9 +10,7 @@ public class GameOverMenuManager : MonoBehaviour
     
 
     private void Start()
-    {
-       
-        
+    {        
         UIManager.instance.ActivateBloodEffect();
         SavesAndLoads.Instance.SaveRecord();
     }
