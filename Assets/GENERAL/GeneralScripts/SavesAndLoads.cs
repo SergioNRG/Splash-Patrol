@@ -21,6 +21,11 @@ public class SavesAndLoads : MonoBehaviour
         LoadRecord();
     }
 
+
+    private void Start()
+    {
+        
+    }
     // Update is called once per frame
     void Update()
     {
@@ -46,8 +51,13 @@ public class SavesAndLoads : MonoBehaviour
         ScoreManager.Instance.ResetScore();
     }
 
-    public void LoadRecord()
+    public int LoadRecord()
     {
-        PlayerPrefs.GetInt("Record");
+       return PlayerPrefs.GetInt("Record");
+    }
+
+    public string LoadRecordName()
+    {
+       return PlayerPrefs.GetString("RecordName");
     }
 }

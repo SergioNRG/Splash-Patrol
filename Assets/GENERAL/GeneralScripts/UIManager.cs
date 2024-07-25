@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -14,9 +15,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float _voronoiIntensityStartAmount = 2.5f;
     [SerializeField] private float _vignetteIntensityStartAmount = 1.5f;
 
-    [Header("References")]
+    [Header("FullScreen References")]
     [SerializeField] private ScriptableRendererFeature _fullScreenDamage;
     [SerializeField] private Material _material;
+
+    [Header("UI References")]
+    [SerializeField] private GameObject _startButton;
+    [SerializeField] private TextMeshProUGUI _recordName;
+    [SerializeField] private TextMeshProUGUI _recordScore;
 
     private int _voronoiIntensity = Shader.PropertyToID("_VoronoiIntensity");
     private int _vignetteIntensity = Shader.PropertyToID("_VignetteIntensity");
@@ -24,7 +30,7 @@ public class UIManager : MonoBehaviour
 
 
 
-    [SerializeField] private GameObject _startButton;
+    
 
     public static UIManager instance;
 
@@ -45,9 +51,15 @@ public class UIManager : MonoBehaviour
     {
         _startButton.SetActive(false);
         ActivateBloodEffect();
-
+        _recordName.text = SavesAndLoads.Instance.LoadRecordName();
+        _recordScore.text = SavesAndLoads.Instance.LoadRecord().ToString();
     }
 
+
+    private void OnEnable()
+    {
+        
+    }
     // Update is called once per frame
     void Update()
     {

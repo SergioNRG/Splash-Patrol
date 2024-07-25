@@ -1823,6 +1823,8 @@ MonoBehaviour:
     type: 2}
   _material: {fileID: 2100000, guid: 089364fb6b420684ba74f984488ec53d, type: 2}
   _startButton: {fileID: 746829537}
+  _recordName: {fileID: 808296509}
+  _recordScore: {fileID: 1566410056}
 --- !u!1 &461465855 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4978856207186256730, guid: 0bad66c41451aaa47897b48173ee781d,
@@ -6998,7 +7000,7 @@ GameObject:
   - component: {fileID: 1566410057}
   - component: {fileID: 1566410056}
   m_Layer: 5
-  m_Name: nametxt (1)
+  m_Name: scoretxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
