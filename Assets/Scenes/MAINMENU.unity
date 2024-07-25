@@ -10203,6 +10203,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
+        type: 3}
+      propertyPath: _hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ceda663e9bd86ca458554f7e4634927d, type: 3}
+    - target: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
+        type: 3}
+      propertyPath: _lvlPassSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a5f6287bbb2e95547a33fde7bf21425b, type: 3}
+    - target: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
+        type: 3}
+      propertyPath: _gameOverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 01ef12c097c2feb45820accf45906906, type: 3}
+    - target: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
+        type: 3}
+      propertyPath: _soundOfRecord
+      value: 
+      objectReference: {fileID: 8300000, guid: e9caa8c8a3e88ef4996216240404cf28, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

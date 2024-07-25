@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    [Header("Sound Prefab")]
     [SerializeField] private AudioSource _soundObjectPrefab;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioClip _soundOfRecord;
+    [SerializeField] private AudioClip _gameOverSound;
+    [SerializeField] private AudioClip _hurtSound;
+    [SerializeField] private AudioClip _lvlPassSound;
+
+    private Coroutine _soundPlayCoroutine;
 
     public static SoundManager instance;
 
-    private Coroutine _soundPlayCoroutine;
+
+    public AudioClip SoundOfRecord {  get { return _soundOfRecord; } }
+    public AudioClip GameOverSound { get { return _gameOverSound; } }
+    public AudioClip HurtSound { get { return _hurtSound; } }
+    public AudioClip LvlPassSound { get { return _lvlPassSound; } }
     private void Awake()
     {
         if (instance == null)

@@ -8,32 +8,10 @@ public class PlayerEffectsManager : MonoBehaviour
 
     [SerializeField] private PlayerHealthManager _healthManager;// just to see
 
-   /* [Header("Screen effects time")]
-    [SerializeField] private float _hurtDisplayTime;
-    [SerializeField] private float _hurtFadeTime;
-   
-
-    [Header("Effects Intensity")]
-    [SerializeField] private float _voronoiIntensityStartAmount = 2.5f;
-    [SerializeField] private float _vignetteIntensityStartAmount = 1.5f;*/
-
-
-    [Header("Sounds")]
-    [SerializeField] private AudioClip _hurtSound;
-
-
-   /* [Header("References")]
-    [SerializeField] private ScriptableRendererFeature _fullScreenDamage;
-    [SerializeField] private Material _material;
-
-
-    private int _voronoiIntensity = Shader.PropertyToID("_VoronoiIntensity");
-    private int _vignetteIntensity = Shader.PropertyToID("_VignetteIntensity");*/
 
     void Start()
     {
         _healthManager = GetComponent<PlayerHealthManager>();
-       // _fullScreenDamage.SetActive(false);
        UIManager.instance.DeactivateBloodEffect();
     }
 
@@ -67,7 +45,7 @@ public class PlayerEffectsManager : MonoBehaviour
 
     public void TakeDamageEffect(int damage)
     {
-        SoundManager.instance.PlayFXSound(_hurtSound, 0.25f);
+        SoundManager.instance.PlayFXSound(SoundManager.instance.HurtSound, 0.25f);
         StartCoroutine(UIManager.instance.DamageEffect());
     }
 

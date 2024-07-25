@@ -6,7 +6,10 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class SavesAndLoads : MonoBehaviour
 {
+
     [SerializeField] private TextMeshProUGUI _nameTMPro;
+
+
 
     public static SavesAndLoads Instance;
     private void Awake()
@@ -45,7 +48,8 @@ public class SavesAndLoads : MonoBehaviour
         {
             PlayerPrefs.SetInt("Record", score);
             PlayerPrefs.SetString("RecordName", PlayerPrefs.GetString("PlayerName"));
-        }
+            SoundManager.instance.PlayFXSound(SoundManager.instance.SoundOfRecord, 0.03f);
+        }else { SoundManager.instance.PlayFXSound(SoundManager.instance.GameOverSound, 0.05f); }
 
         Debug.Log("o record é "+PlayerPrefs.GetString("RecordName") +" " + PlayerPrefs.GetInt("Record"));
         ScoreManager.Instance.ResetScore();

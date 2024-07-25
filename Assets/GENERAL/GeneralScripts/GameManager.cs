@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public void ChangeLvl()
     {
         Lvl++;
+        SoundManager.instance.PlayFXSound(SoundManager.instance.LvlPassSound, 0.02f);
     }
 
     public void ReStart()

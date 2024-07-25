@@ -55,14 +55,16 @@ public class SceneLoaderManager : MonoBehaviour
             _loadBar.value = scene.progress;
 
         } while (scene.progress < 0.9f);
-        
+
+
+
         scene.allowSceneActivation = true;
       
         await Task.Delay(100);
         _loadCanvas.SetActive(false);
 
         if (cam != null) { cam.gameObject.SetActive(true); }
-        _nextSceneIndex = SceneManager.GetActiveScene().buildIndex +1;
+        _nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         Debug.Log(_nextSceneIndex);
     }
 
