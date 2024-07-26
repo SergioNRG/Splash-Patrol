@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -11,33 +10,17 @@ public class EnemyEffectsManager : MonoBehaviour
     [SerializeField] private EnemyHealthManager _healthManager;
     [SerializeField] private Image _crosshair;
     [SerializeField] private EnemyBase enemy;
-     private Vector3 _offset;
 
+     private Vector3 _offset;
 
     public static ObjectPool<GameObject> _popUPPool;
 
-   //[SerializeField] private AudioClip _fxSound;
-
-    /*private void OnEnable()
-    {
-        enemy = GetComponent<EnemyBase>();
-        _healthManager = GetComponent<EnemyHealthManager>();
-        _crosshair = Camera.main.GetComponentInChildren<Image>();
-        _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
-    }*/
-    // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponent<EnemyBase>();
         _healthManager = GetComponent<EnemyHealthManager>();
         _crosshair = Camera.main.GetComponentInChildren<Image>();
         _popUPPool = new ObjectPool<GameObject>(CreatePopUp);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void RoarEffect()
