@@ -26,9 +26,13 @@ public class EnemySpawner : MonoBehaviour
 
     public event ChangeLvlEvent OnLvlChanged;
     public delegate void ChangeLvlEvent();
-    
+
+    public event ChangeWaveEvent OnWaveChanged;
+    public delegate void ChangeWaveEvent();
 
     public static EnemySpawner instance;
+
+    public int WaveCount { get { return wavecount; } }
 
     private void Awake()
     {
@@ -61,6 +65,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         wavecount++;
+        OnWaveChanged?.Invoke();
+        Debug.Log("o evento ta " + OnWaveChanged);
 
         if ((wavecount % _wavesToNextLvl == 0) && (wavecount != 0))           
         {                
@@ -70,8 +76,9 @@ public class EnemySpawner : MonoBehaviour
 
         StopMyCoroutine(_coroutine);
         
+
         Debug.Log("WAVE " + wavecount);            
-        //Wavetxt.text = wavecount.ToString();
+     
     }
 
     private IEnumerator WaveDelayCoroutine()

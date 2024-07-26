@@ -10,6 +10,11 @@ public class ScoreManager : MonoBehaviour
 
     public static int Score = 0;
 
+
+    public event ChangeScoreEvent OnScoreChanged;
+    public delegate void ChangeScoreEvent();
+
+    
     private void Awake()
     {
         if (Instance == null)
@@ -23,7 +28,8 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int amount)
     {
         Score += amount;
-        Debug.Log("o score é "+Score);   
+        OnScoreChanged?.Invoke();
+       // Debug.Log("o score é "+Score);   
         // fazer score aparecer no UI
     }
 
