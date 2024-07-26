@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Pool;
-using Random = UnityEngine.Random;
+//using Random = UnityEngine.Random;
 
 
 [CreateAssetMenu(fileName = "Gun", menuName = "Weapons/Guns/Gun", order = 0)]

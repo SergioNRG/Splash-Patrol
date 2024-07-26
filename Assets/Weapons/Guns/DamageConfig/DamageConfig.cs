@@ -1,15 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
-using Random = UnityEngine.Random;
 
 
 
 [CreateAssetMenu(fileName ="DamageConfig", menuName = "Weapons/Guns/DamageConfig", order = 1)]
-public class DamageConfig : ScriptableObject//,ICloneable
+public class DamageConfig : ScriptableObject,System.ICloneable
 {
     public MinMaxCurve DamageCurve;
 

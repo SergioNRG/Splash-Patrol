@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Shoot Config", menuName = "Weapons/Guns/Shoot Config", order = 2)]

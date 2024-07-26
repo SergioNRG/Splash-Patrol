@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MeleeWeapons", menuName = "Weapons/MeleeWeapons/MeleeWeapon", order = 0)]

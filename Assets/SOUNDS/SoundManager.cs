@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
 
@@ -41,7 +40,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlayFXSound(AudioClip audioClip, float volume)
     {
-        //AudioSource audioSource = Instantiate (_soundObjectPrefab, spawnTrans.position,Quaternion.identity) ;
         AudioSource audioSource = SoundFXPooler.instance.TakeFromPool("FXSound").GetComponent<AudioSource>();
         audioSource.gameObject.SetActive(true);
 
@@ -60,19 +58,16 @@ public class SoundManager : MonoBehaviour
 
     public void SetMasterVolume(float value)
     {
-        //_audioMixer.SetFloat("MasterVolume", value);
         _audioMixer.SetFloat("MasterVolume", Mathf.Log10(value)*20f);
     }
 
     public void SetSFXVolume(float value)
     {
-        //_audioMixer.SetFloat("SFXVolume", value);
         _audioMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20f);
     }
 
     public void SetMusicVolume(float value)
     {
-        //_audioMixer.SetFloat("MusicVolume", value);
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20f);
     }
 }
