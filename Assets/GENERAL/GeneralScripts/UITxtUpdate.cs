@@ -9,7 +9,7 @@ public class UITxtUpdate : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _waveNum;
     [SerializeField] private TextMeshProUGUI _scoreNum;
-    // Start is called before the first frame update
+
     void Start()
     {
         EnemySpawner.instance.OnWaveChanged += UpdateWaveText;

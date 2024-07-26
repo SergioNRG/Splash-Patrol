@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,21 +23,9 @@ public class SceneLoaderManager : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
-    private void Start()
-    {
-       // _loadCanvas.SetActive(true);
-    }
-
-
-    void Update()
-    {
-       // _loadBar.value = Mathf.MoveTowards(_loadBar.value,_target, 1.5f* Time.deltaTime);
-    }
-
     public async void LoadSceneByName(string sceneName)
     {
-        
-        //_target = 0;
+
         _loadBar.value= 0;
         var cam = Camera.main;
         var scene = SceneManager.LoadSceneAsync(sceneName);
@@ -51,7 +37,6 @@ public class SceneLoaderManager : MonoBehaviour
         {
             
             await Task.Delay(100);
-            //_target = scene.progress;
             _loadBar.value = scene.progress;
 
         } while (scene.progress < 0.9f);

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 public class SavesAndLoads : MonoBehaviour
 {
@@ -24,16 +22,6 @@ public class SavesAndLoads : MonoBehaviour
         LoadRecord();
     }
 
-
-    private void Start()
-    {
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SaveName()
     {

@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -66,10 +64,6 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator DamageEffect()
     {
-        /*_fullScreenDamage.SetActive(true);
-        _material.SetFloat(_voronoiIntensity,_voronoiIntensityStartAmount);
-        _material.SetFloat(_vignetteIntensity,_vignetteIntensityStartAmount);*/
-
         ActivateBloodEffect();
 
         yield return new WaitForSeconds(_hurtDisplayTime);
