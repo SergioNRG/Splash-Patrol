@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.InputSystem.XR.Haptics;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerStateMachine : MonoBehaviour
@@ -182,8 +179,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
         UIManager.instance.DeactivateCursor();
         _camTransform = Camera.main.transform;
         _playerTransform = transform;

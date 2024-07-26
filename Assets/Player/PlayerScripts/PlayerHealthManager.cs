@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -8,7 +6,6 @@ public class PlayerHealthManager : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private int _maxHealth;
     [SerializeField] private PlayerEffectsManager _playerEffectsManager;
     public int CurrentHealth { get; set; }
-    //public int CurrentHealth { get => _currentHealth;  set => _currentHealth = value; }
 
     public int MaxHealth { get => _maxHealth; private set => _maxHealth = value; }
 

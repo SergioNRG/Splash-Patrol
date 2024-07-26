@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerIdleState : PlayerBaseState
@@ -12,7 +10,6 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void EnterState()
     {
-        //Debug.Log("HI FROM IDLE");
         _ctx.MoveX = 0;
         _ctx.MoveZ = 0;
     }

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
+
 
 public class PlayerWalkState : PlayerBaseState
 {
@@ -11,7 +9,6 @@ public class PlayerWalkState : PlayerBaseState
    
     public override void EnterState()
     {
-        //Debug.Log("HI FROM Walk");
         _ctx.CurrentPlayerSpeed = _ctx.BasePlayerSpeed;
     }
 

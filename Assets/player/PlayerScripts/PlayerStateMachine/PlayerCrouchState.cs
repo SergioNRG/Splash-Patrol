@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCrouchState : PlayerBaseState
@@ -15,13 +13,11 @@ public class PlayerCrouchState : PlayerBaseState
     {
         _ctx.CurrentPlayerSpeed = _ctx.CrouchPlayerSpeed;      
         _ctx.Controller.height = _ctx.CrouchHeight;
-       // _ctx.Controller.center = new Vector3(0, _ctx.CrouchCenter, 0);
     }
 
     public override void ExitState()
     {
         _ctx.Controller.height = _ctx.NormalHeight;
-        //_ctx.Controller.center = new Vector3(0, _ctx.NormalCenter, 0);
         _ctx.CurrentPlayerSpeed = _ctx.BasePlayerSpeed;
     }
 

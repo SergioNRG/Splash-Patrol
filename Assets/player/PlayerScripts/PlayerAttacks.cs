@@ -1,10 +1,4 @@
 using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Claims;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
