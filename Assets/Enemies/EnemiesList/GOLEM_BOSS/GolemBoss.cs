@@ -152,11 +152,9 @@ public class GolemBoss : EnemyBase
     }
 
     protected override void Die()
-    {
-        _agent.isStopped = true;
+    {        
         if (AnimControllerInstance.ISAnimationEnded(_animator, DieAnim))
         {
-            Debug.Log("Tou Die");
             _lootBag.SpawnLoot(transform);
 
             ScoreManager.Instance.AddScore(PointsToGive);
@@ -164,7 +162,6 @@ public class GolemBoss : EnemyBase
             _healthManager.CurrentHealth = _healthManager.MaxHealth;
             ReturnToPool();
         }
-        
     }
 
     public void ReturnToPool()

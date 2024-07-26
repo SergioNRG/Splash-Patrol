@@ -39,7 +39,6 @@ public class SavesAndLoads : MonoBehaviour
             SoundManager.instance.PlayFXSound(SoundManager.instance.SoundOfRecord, 0.03f);
         }else { SoundManager.instance.PlayFXSound(SoundManager.instance.GameOverSound, 0.05f); }
 
-        Debug.Log("o record é "+PlayerPrefs.GetString("RecordName") +" " + PlayerPrefs.GetInt("Record"));
         ScoreManager.Instance.ResetScore();
     }
 

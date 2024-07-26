@@ -13,11 +13,6 @@ public class PlayerEffectsManager : MonoBehaviour
        UIManager.instance.DeactivateBloodEffect();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void RoarEffect()
     {
@@ -58,6 +53,5 @@ public class PlayerEffectsManager : MonoBehaviour
 
     public void HealEffect(int amount)
     {
-        Debug.Log("healing");
     }
 }

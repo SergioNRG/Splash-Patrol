@@ -65,8 +65,7 @@ public class AnimsController : AnimsList
             yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
             _currentRepeat++;
- 
-            Debug.Log(_currentRepeat);
+
         }
 
     }

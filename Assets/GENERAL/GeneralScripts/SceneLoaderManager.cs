@@ -50,7 +50,6 @@ public class SceneLoaderManager : MonoBehaviour
 
         if (cam != null) { cam.gameObject.SetActive(true); }
         _nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        Debug.Log(_nextSceneIndex);
     }
 
     public void LoadSceneLVL()
@@ -58,7 +57,6 @@ public class SceneLoaderManager : MonoBehaviour
         int loadSceneIndex = _nextSceneIndex;
         string pathToScene = SceneUtility.GetScenePathByBuildIndex(_nextSceneIndex);
         _sceneName = System.IO.Path.GetFileNameWithoutExtension(pathToScene);
-        Debug.Log(_sceneName);
         LoadSceneByName(_sceneName);
     }
 }
