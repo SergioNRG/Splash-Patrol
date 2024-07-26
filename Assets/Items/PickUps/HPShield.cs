@@ -20,7 +20,6 @@ public class HPShield : MonoBehaviour
             SoundManager.instance.PlayFXSound(_hpUpSound, 0.1f);
             gameObject.SetActive(false);
 
-            Debug.Log(other.GetComponent<PlayerHealthManager>().CurrentHealth);
         }
     }
 

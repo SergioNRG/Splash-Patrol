@@ -34,7 +34,6 @@ public class LootBag : MonoBehaviour
         Loot drop = ChoseDrop();
         if (drop != null)
         {
-            Debug.Log(drop.name);
             GameObject itemToDrop = LootPool.instance.TakeFromPool(drop.name);
             itemToDrop.transform.position = trans.position;
             itemToDrop.SetActive(true);

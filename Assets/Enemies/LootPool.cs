@@ -25,7 +25,6 @@ public class LootPool : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-           // DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
     }
