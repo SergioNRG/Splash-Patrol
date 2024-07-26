@@ -27,11 +27,6 @@ public class UIManager : MonoBehaviour
     private int _voronoiIntensity = Shader.PropertyToID("_VoronoiIntensity");
     private int _vignetteIntensity = Shader.PropertyToID("_VignetteIntensity");
 
-
-
-
-    
-
     public static UIManager instance;
 
     private void Awake()
@@ -55,16 +50,6 @@ public class UIManager : MonoBehaviour
         _recordScore.text = SavesAndLoads.Instance.LoadRecord().ToString();
     }
 
-
-    private void OnEnable()
-    {
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void ActivateBloodEffect()

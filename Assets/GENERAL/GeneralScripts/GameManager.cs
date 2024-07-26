@@ -5,13 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager Instance;
+
+    
+
+    [SerializeField] private int _portalLife;
 
     public int Lvl = 1;
+    public static GameManager Instance;
 
-    [SerializeField ]private int EnemiesLeft;
 
-    // maybe do a gameover event
+    public int PortalLife {  get { return _portalLife; } }
     private void Awake()
     {
         if (Instance == null)
@@ -35,11 +38,9 @@ public class GameManager : MonoBehaviour
 
     public void ChangePortalLife()
     {
-        EnemiesLeft--;
-        if (EnemiesLeft <= 0) 
+        _portalLife--;
+        if (_portalLife <= 0) 
         {
-            // Cursor.lockState = CursorLockMode.None;
-            // Cursor.visible = true;
             UIManager.instance.ActivateCursor();
             ReStart();
             SceneLoaderManager.instance.LoadSceneByName("GameOver"); 

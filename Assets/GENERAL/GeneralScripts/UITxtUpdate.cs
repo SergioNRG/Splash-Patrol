@@ -16,12 +16,6 @@ public class UITxtUpdate : MonoBehaviour
         ScoreManager.Instance.OnScoreChanged += UpdateScoreText;
     }
 
-    private void OnEnable()
-    {
-        
-       
-    }
-
     private void OnDisable()
     {
         EnemySpawner.instance.OnWaveChanged -= UpdateWaveText;

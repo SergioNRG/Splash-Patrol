@@ -18,12 +18,6 @@ public class LVLPortal : MonoBehaviour
     void Start()
     {
         _lvlImage = GetComponentInChildren<Image>();
-        /*if(EnemySpawner.instance != null)
-        {
-            gameObject.SetActive(false);
-        }*/
-        
-        //_lvlImage = GetComponent<Image>();
         if (_lvlImage != null)
         {
             if (EnemySpawner.instance != null)
@@ -34,31 +28,15 @@ public class LVLPortal : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //_lvlImage.transform.LookAt(Camera.main.transform.position, Vector3.up);
         _lvlImage.transform.LookAt(_cam.transform.position, Vector3.up);
     }
-
-  /*  private void OnEnable()
-    {
-        if (_lvlImage != null)
-        {
-            if(EnemySpawner.instance != null)
-            {
-                _lvlImage.sprite = _lvlSprites[EnemySpawner.instance.lvl-1];
-            }
-            
-        }
-        
-    }*/
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("entrou mudar lvl");
             SceneLoaderManager.instance.LoadSceneLVL();
         }
     }

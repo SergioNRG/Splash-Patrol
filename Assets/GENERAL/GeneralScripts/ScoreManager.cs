@@ -29,8 +29,6 @@ public class ScoreManager : MonoBehaviour
     {
         Score += amount;
         OnScoreChanged?.Invoke();
-       // Debug.Log("o score é "+Score);   
-        // fazer score aparecer no UI
     }
 
     public int GetScore()

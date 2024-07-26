@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LoadingScreen : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private GameObject _backGround;
     [SerializeField] private List<Sprite> _bGImages;
 

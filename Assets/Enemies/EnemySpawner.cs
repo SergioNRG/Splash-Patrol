@@ -52,10 +52,6 @@ public class EnemySpawner : MonoBehaviour
     {
         OnLvlChanged -= GameManager.Instance.ChangeLvl;
     }
-    private void Update()
-    {
-
-    }
     public void WaveSpawn()
     {
         enemiestospawn += plusenemies;          
