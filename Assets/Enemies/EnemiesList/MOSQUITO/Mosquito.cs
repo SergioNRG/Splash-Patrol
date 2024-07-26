@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class Mosquito :EnemyBase
 {
-
+    [Header("Behaviour SOs")]
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
@@ -15,6 +15,7 @@ public class Mosquito :EnemyBase
     private MoveSOBase ChaseBaseInstance;
     private AttackSOBase AttackBaseInstance;
 
+    [Header("Attack data")]
     [SerializeField] private int _attackDistance;
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float flyHeight;

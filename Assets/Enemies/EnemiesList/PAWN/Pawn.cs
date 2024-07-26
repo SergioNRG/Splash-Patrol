@@ -7,15 +7,12 @@ using UnityEngine.AI;
 
 public class Pawn : EnemyBase
 {
+    [Header("Behaviour SO")]
     [SerializeField] private MoveSOBase _moveLogic;
 
-    private MoveSOBase MoveBaseInstance;// { get; set; }
+    private MoveSOBase MoveBaseInstance;
     private NavMeshAgent _agent;
 
-    /// <summary>
-    /// //////////////////////
-    /// </summary>
-    /// 
 
     private void Awake()
     {
