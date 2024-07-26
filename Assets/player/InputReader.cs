@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -32,8 +30,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
 
     // instantiate a player input and enable it 
     private void OnEnable()
-    {
-        
+    {        
         if (_playerInputs == null)
         {
             _playerInputs = new PlayerInputs();
