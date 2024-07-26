@@ -10241,6 +10241,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
         type: 3}
+      propertyPath: _popSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d8be0eca99b5fe448186cdc6a2c5340, type: 3}
+    - target: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
+        type: 3}
       propertyPath: _hurtSound
       value: 
       objectReference: {fileID: 8300000, guid: ceda663e9bd86ca458554f7e4634927d, type: 3}

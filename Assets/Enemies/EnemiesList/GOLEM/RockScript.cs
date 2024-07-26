@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine.Pool;
 using UnityEngine;
 
 public class RockScript : MonoBehaviour, IPooled
 {
+    [Header("Projectile data")]
     [SerializeField] private float _rotationSpeed = 200f;
     [SerializeField] private int _rockDamage;
+
     private Transform _playerTransform;  
     private ObjectPool<GameObject> _golemRocksPool;
 
@@ -29,8 +30,6 @@ public class RockScript : MonoBehaviour, IPooled
             {
                 other.GetComponent<IDamageable>().ApplyDamage(_rockDamage);
             }
-            //gameObject.SetActive(false);
-            //_dragonBulletPool.Release(gameObject);
         }
         gameObject.SetActive(false);
         _golemRocksPool.Release(gameObject);

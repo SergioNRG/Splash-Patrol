@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class ElitePawn : EnemyBase
 {
-
+    [Header("Behaviour SOs")]
     [SerializeField] private MoveSOBase _moveLogic;
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
@@ -16,6 +16,7 @@ public class ElitePawn : EnemyBase
     private MoveSOBase ChaseBaseInstance;// { get; set; }
     private AttackSOBase AttackBaseInstance;// { get; set; } 
 
+    [Header("Attack data")]
     [SerializeField] private int _attackDistance;
     [SerializeField] private float _attackSpeed;
 

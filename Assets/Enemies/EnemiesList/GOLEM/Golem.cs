@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Golem : EnemyBase
 {
-
+    [Header("Behaviour SOs")]
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
@@ -14,14 +13,12 @@ public class Golem : EnemyBase
     private MoveSOBase ChaseBaseInstance;
     private AttackSOBase AttackBaseInstance;
 
-    [SerializeField] private int _attackDistance;
-    public GameObject Projectile;
+    [SerializeField] private int _attackDistance;   
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
+    public GameObject Projectile;
 
     private NavMeshAgent _agent;
-
-
 
     private void Awake()
     {

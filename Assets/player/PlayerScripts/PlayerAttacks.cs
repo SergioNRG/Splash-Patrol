@@ -22,15 +22,13 @@ public class PlayerAttacks : MonoBehaviour
     [Header("Aim Camera")]
     [SerializeField] private CinemachineVirtualCamera _aimCam;
 
-    [Header("CamEffecttsSO")]
-    private CameraEffectController _cameraEffectsScript;
+    [Header("PlayerGunSelector")]
     private PlayerGunSelector _playerGunSelector;
 
     private Vector2 _scroll;
-
-
     private bool _isAttacking;
     private Camera _cam;
+
     private void Awake()
     {
         _cam = Camera.main;

@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip _gameOverSound;
     [SerializeField] private AudioClip _hurtSound;
     [SerializeField] private AudioClip _lvlPassSound;
+    [SerializeField] private AudioClip _popSound;
 
     private Coroutine _soundPlayCoroutine;
 
@@ -26,6 +27,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip GameOverSound { get { return _gameOverSound; } }
     public AudioClip HurtSound { get { return _hurtSound; } }
     public AudioClip LvlPassSound { get { return _lvlPassSound; } }
+    public AudioClip PopSound { get { return _popSound; } }
     private void Awake()
     {
         if (instance == null)

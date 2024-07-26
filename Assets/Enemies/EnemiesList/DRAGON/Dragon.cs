@@ -1,22 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Dragon : EnemyBase
 {
+    [Header("Behaviour SOs")]
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
     private MoveSOBase ChaseBaseInstance;
     private AttackSOBase AttackBaseInstance;
 
+    [Header("Projectile data")]
     [SerializeField] private int _attackDistance;
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
     public GameObject Projectile;
 
+    [Header("flyheigth")]
     [SerializeField] private float flyHeight;
 
     private NavMeshAgent _agent;

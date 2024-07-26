@@ -24,7 +24,6 @@ public class GunsSO : WeaponSOBase,System.ICloneable
     public TrailConfig TrailConfig;
 
     public GameObject Model;
-    public AudioClip _popSound;
     private int CurrentAmmo;
     private LiquidAmmoDisplay AmmoDisplay;
     private MonoBehaviour _activeMonoBehaviour;
@@ -42,8 +41,8 @@ public class GunsSO : WeaponSOBase,System.ICloneable
         
         this._activeMonoBehaviour = activeMonoBehaviour;
         _lastShootTime = 0;
-        // check if is working
         CurrentAmmo = MaxAmmo;
+
         _trailPool = new ObjectPool<TrailRenderer>(CreateTrail);
 
 
@@ -105,7 +104,6 @@ public class GunsSO : WeaponSOBase,System.ICloneable
         if (hit.collider != null ) 
         {
 
-            ////////////////////////////////
             if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable)) 
             {
                 damageable.ApplyDamage(DamageConfig.GetDamageToApply(distance));
@@ -131,7 +129,7 @@ public class GunsSO : WeaponSOBase,System.ICloneable
             {
                 _lastShootTime = Time.time;
                 _shootSystem.Play();
-                SoundManager.instance.PlayFXSound(_popSound,1f); // play sound effect
+                SoundManager.instance.PlayFXSound(SoundManager.instance.PopSound,1f); // play sound effect
                 
                 Vector3 shootDirection = _shootSystem.transform.forward
                     + new Vector3(Random.Range(-ShootConfig.Spread.x, ShootConfig.Spread.x),
@@ -235,7 +233,6 @@ public class GunsSO : WeaponSOBase,System.ICloneable
         gunsConfig.SpawnRotation = SpawnRotation;
         gunsConfig.MaxAmmo = MaxAmmo;
         gunsConfig.CurrentAmmo= CurrentAmmo;
-        gunsConfig._popSound = _popSound;
         return gunsConfig;
     }
 }
