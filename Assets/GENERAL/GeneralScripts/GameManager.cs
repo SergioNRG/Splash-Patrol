@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.Lvl = 1;
     }
 
-    public void ChangePortalLife()
+    public void ChangePortalLife(Vector3 pos, GameObject enemy)
     {
         _portalLife--;
         if (_portalLife <= 0) 

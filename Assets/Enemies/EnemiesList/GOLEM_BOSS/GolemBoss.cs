@@ -99,6 +99,7 @@ public class GolemBoss : EnemyBase
                 else { ChangeState(State.Die); }
 
             }
+            else { ChangeState(State.Die); }
         }
         else { ChangeState(State.Die); }
     }

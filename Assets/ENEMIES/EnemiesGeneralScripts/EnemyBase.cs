@@ -27,6 +27,7 @@ public class EnemyBase : MonoBehaviour
     protected EnemyEffectsManager _effectsManager;
     protected LootBag _lootBag;
 
+
     #region STRINGS FOR ANIMATIONS NAMES  
 
     // animations data
@@ -99,6 +100,6 @@ public class EnemyBase : MonoBehaviour
             {
                 other.GetComponent<IDamageable>().ApplyDamage(damage);
             }
-        }      
+        }
     }
 }

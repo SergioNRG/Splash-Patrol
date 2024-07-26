@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -62,19 +62,14 @@ public class EnemySpawner : MonoBehaviour
 
         wavecount++;
         OnWaveChanged?.Invoke();
-        Debug.Log("o evento ta " + OnWaveChanged);
 
         if ((wavecount % _wavesToNextLvl == 0) && (wavecount != 0))           
-        {                
-            Debug.Log("SPAWN BOSS");                
+        {                             
             SpawnBoss("GolemBoss");           
         }
 
         StopMyCoroutine(_coroutine);
-        
-
-        Debug.Log("WAVE " + wavecount);            
-     
+                      
     }
 
     private IEnumerator WaveDelayCoroutine()
