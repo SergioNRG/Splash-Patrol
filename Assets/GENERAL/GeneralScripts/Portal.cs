@@ -32,8 +32,7 @@ public class Portal : MonoBehaviour
     {
         if(Camera.main != null)
         {
-            _potalHPTxt.gameObject.transform.LookAt(Camera.main.transform.position);
-            _potalHPTxt.gameObject.transform.Rotate(0,180,0);
+            _potalHPTxt.gameObject.transform.rotation = Quaternion.LookRotation(_potalHPTxt.gameObject.transform.position - Camera.main.transform.position);
         }
        
     }
