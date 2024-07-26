@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
+    [Header("Portal HP Text")]
     [SerializeField] private TextMeshPro _potalHPTxt;
 
     public event ChangePortalHPEvent OnPortalEnter;
@@ -18,9 +19,6 @@ public class Portal : MonoBehaviour
             _potalHPTxt.text = GameManager.Instance.PortalLife.ToString();
             OnPortalEnter += GameManager.Instance.ChangePortalLife;
         }
-
-        
-
     }
     private void OnDisable()
     {
