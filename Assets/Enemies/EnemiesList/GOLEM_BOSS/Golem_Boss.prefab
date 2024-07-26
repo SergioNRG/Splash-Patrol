@@ -389,7 +389,6 @@ MonoBehaviour:
   _healthManager: {fileID: 0}
   _crosshair: {fileID: 0}
   enemy: {fileID: 0}
-  _fxSound: {fileID: 8300000, guid: af1a10e156624e94e889a85d49fb829f, type: 3}
 --- !u!114 &108653072924537525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,9 +480,10 @@ MonoBehaviour:
   _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
   _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
   _attackDistance: 50
-  Projectile: {fileID: 1375754531036840, guid: 16d365169227ee64ab52b0edbc7ef1b3, type: 3}
   _attackSpeed: 1
   _projectileForce: 10
+  _projectile: {fileID: 1375754531036840, guid: 16d365169227ee64ab52b0edbc7ef1b3,
+    type: 3}
   repeatCount: 3
 --- !u!114 &7149092025435488632
 MonoBehaviour:

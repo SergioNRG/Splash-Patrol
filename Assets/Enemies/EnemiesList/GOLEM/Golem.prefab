@@ -906,10 +906,10 @@ MonoBehaviour:
   _chasePlayerLogic: {fileID: 11400000, guid: 9cebe52ae37db394ab3fafd712be930e, type: 2}
   _attackLogic: {fileID: 11400000, guid: 74d103409e89f7b4daeae142520bc7a3, type: 2}
   _attackDistance: 15
-  Projectile: {fileID: 5298590762127773683, guid: 34c519010ba17554d90903e8ad9662c8,
-    type: 3}
   _attackSpeed: 1
   _projectileForce: 10
+  _projectile: {fileID: 5298590762127773683, guid: 34c519010ba17554d90903e8ad9662c8,
+    type: 3}
 --- !u!114 &6298836957036948586
 MonoBehaviour:
   m_ObjectHideFlags: 0

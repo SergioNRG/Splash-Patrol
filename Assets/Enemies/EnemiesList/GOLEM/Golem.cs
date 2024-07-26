@@ -16,7 +16,7 @@ public class Golem : EnemyBase
     [SerializeField] private int _attackDistance;   
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
-    public GameObject Projectile;
+    [SerializeField] private GameObject _projectile;
 
     private NavMeshAgent _agent;
 
@@ -38,7 +38,7 @@ public class Golem : EnemyBase
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
-        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, Projectile, _projectileForce);
+        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, _projectile, _projectileForce);
 
         ChaseAnim = AnimControllerInstance.Anims.Single(ChaseAnim => ChaseAnim.AnimKey == "CHASE").AnimName;
         AttackAnim = AnimControllerInstance.Anims.Single(AttackAnim => AttackAnim.AnimKey == "ATTACK").AnimName;

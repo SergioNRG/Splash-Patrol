@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class GolemBoss : EnemyBase
 {
+    [Header("Behaviour SOs")]
     [SerializeField] private IdleSOBase _IdleLogic;
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
@@ -17,9 +18,9 @@ public class GolemBoss : EnemyBase
 
 
     [SerializeField] private int _attackDistance;
-    [SerializeField] private GameObject Projectile;
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
+    [SerializeField] private GameObject _projectile;
 
     private NavMeshAgent _agent;
 
@@ -52,7 +53,7 @@ public class GolemBoss : EnemyBase
     {
         ChaseBaseInstance.Initialize(gameObject, this, _agent);
         AttackBaseInstance.Initialize(gameObject, this, _agent, _attackSpeed);
-        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, Projectile,_projectileForce);
+        AttackBaseInstance.InitProjectileData(gameObject.GetComponentInChildren<ParticleSystem>().transform, _projectile,_projectileForce);
 
         IdleAnim = AnimControllerInstance.Anims.Single(IdleAnim => IdleAnim.AnimKey == "IDLE").AnimName;
         RoarAnim = AnimControllerInstance.Anims.Single(RoarAnim => RoarAnim.AnimKey == "ROAR").AnimName;
@@ -98,7 +99,6 @@ public class GolemBoss : EnemyBase
                 else { ChangeState(State.Die); }
 
             }
-            //else { ChangeState(State.Die); }
         }
         else { ChangeState(State.Die); }
     }
