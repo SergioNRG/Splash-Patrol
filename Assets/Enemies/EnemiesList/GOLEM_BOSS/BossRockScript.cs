@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.UIElements;
+
 
 public class BossRockScript : MonoBehaviour,IPooled
 {
-    [SerializeField] private GameObject _enemyToSpawn;
+    [SerializeField] private GameObject _enemyToSpawn;// LATER make the rock spawn a golem 
     [SerializeField] private float _rotationSpeed = 200f;
     [SerializeField] private int _bossRockDamage;
 
@@ -38,8 +37,6 @@ public class BossRockScript : MonoBehaviour,IPooled
             gameObject.SetActive(false);
             _bossRocksPool.Release(gameObject);
         }
-       // gameObject.SetActive(false);
-       // _bossRocksPool.Release(gameObject);
     }
 
     private void OnCollisionStay(Collision collision)

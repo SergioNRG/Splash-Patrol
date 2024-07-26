@@ -11,9 +11,9 @@ public class ElitePawn : EnemyBase
     [SerializeField] private AttackSOBase _attackLogic;
 
 
-    private MoveSOBase MoveBaseInstance;// { get; set; }
-    private MoveSOBase ChaseBaseInstance;// { get; set; }
-    private AttackSOBase AttackBaseInstance;// { get; set; } 
+    private MoveSOBase MoveBaseInstance;
+    private MoveSOBase ChaseBaseInstance;
+    private AttackSOBase AttackBaseInstance;
 
     [Header("Attack data")]
     [SerializeField] private int _attackDistance;

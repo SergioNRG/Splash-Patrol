@@ -9,10 +9,10 @@ public class Golem : EnemyBase
     [SerializeField] private MoveSOBase _chasePlayerLogic;
     [SerializeField] private AttackSOBase _attackLogic;
 
-
     private MoveSOBase ChaseBaseInstance;
     private AttackSOBase AttackBaseInstance;
 
+    [Header("Projectile data")]
     [SerializeField] private int _attackDistance;   
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _projectileForce;
