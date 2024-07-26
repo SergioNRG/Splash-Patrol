@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    [Header("Audio Mixer")]
+    [SerializeField] private AudioMixer _audioMixer;
+
     [Header("Sound Prefab")]
     [SerializeField] private AudioSource _soundObjectPrefab;
 
@@ -50,5 +54,20 @@ public class SoundManager : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(clip.length);
         audioSource.gameObject.SetActive(false); 
+    }
+
+    public void SetMasterVolume(float value)
+    {
+        _audioMixer.SetFloat("MasterVolume", value);
+    }
+
+    public void SetSFXVolume(float value)
+    {
+        _audioMixer.SetFloat("SFXVolume", value);
+    }
+
+    public void SetMusicVolume(float value)
+    {
+        _audioMixer.SetFloat("MusicVolume", value);
     }
 }

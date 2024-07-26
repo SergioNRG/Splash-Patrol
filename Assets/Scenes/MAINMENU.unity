@@ -5037,13 +5037,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 91936274}
   m_HandleRect: {fileID: 731690143}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2562653833425947111}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SetMasterVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1183660065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5459,13 +5471,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1480635917}
   m_HandleRect: {fileID: 1832582639}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2562653833425947111}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SetSFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1241811123
 GameObject:
   m_ObjectHideFlags: 0
@@ -7375,13 +7399,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 811170482}
   m_HandleRect: {fileID: 1679374569}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2562653833425947111}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SetMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1655156393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 833854997431449644, guid: dadecae318be19749ac4fbd62bd9a632,
@@ -10210,6 +10246,12 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: ceda663e9bd86ca458554f7e4634927d, type: 3}
     - target: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
         type: 3}
+      propertyPath: _audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: caeb95a5422dd984a8ecca6597f3b759,
+        type: 2}
+    - target: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
+        type: 3}
       propertyPath: _lvlPassSound
       value: 
       objectReference: {fileID: 8300000, guid: a5f6287bbb2e95547a33fde7bf21425b, type: 3}
@@ -10228,6 +10270,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21ab32c90fc4d334db465dfe23f8ead5, type: 3}
+--- !u!114 &2562653833425947111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7820275686526373801, guid: 21ab32c90fc4d334db465dfe23f8ead5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2562653833425947110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6001495ea83d9ab48af348fbdb9b5e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2964956020342332883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10309,6 +10363,12 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 15f909204855b6149acde93498d7ad0d, type: 3}
+    - target: {fileID: 2112726193067923361, guid: ff0520e97edb28642adf18a01a216c5d,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -2517945752425780011, guid: caeb95a5422dd984a8ecca6597f3b759,
+        type: 2}
     - target: {fileID: 5477952705368437067, guid: ff0520e97edb28642adf18a01a216c5d,
         type: 3}
       propertyPath: m_LocalPosition.x
