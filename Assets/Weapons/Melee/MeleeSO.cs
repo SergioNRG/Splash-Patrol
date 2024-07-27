@@ -68,14 +68,17 @@ public class MeleeSO : WeaponSOBase
         {
             AnimsController.ChangeAnimationState(_animator, AttackAnim, IdleAnim );
             _lastAttackTime = Time.time;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, AttackConfig.attackDistance, AttackConfig.attackLayer))
+            if (Camera.main != null)
             {
-                if (hit.collider != null)
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, AttackConfig.attackDistance, AttackConfig.attackLayer))
                 {
-                    if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
+                    if (hit.collider != null)
                     {
-                        damageable.ApplyDamage(AttackConfig.attackDamage);
-                       
+                        if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
+                        {
+                            damageable.ApplyDamage(AttackConfig.attackDamage);
+
+                        }
                     }
                 }
             }

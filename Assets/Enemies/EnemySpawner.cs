@@ -123,4 +123,11 @@ public class EnemySpawner : MonoBehaviour
     {
         if (coroutine != null) {StopCoroutine(coroutine); }
     }
+
+    public void AddToActiveEnemies(GameObject enemy, Vector3 pos)
+    {
+        enemy.transform.position = pos;
+        enemy.SetActive(true);
+        _activEnemies.Add(enemy);
+    }
 }

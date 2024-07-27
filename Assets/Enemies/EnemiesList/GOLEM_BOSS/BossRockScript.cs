@@ -34,8 +34,9 @@ public class BossRockScript : MonoBehaviour,IPooled
             {
                 collision.collider.GetComponent<IDamageable>().ApplyDamage(_bossRockDamage);
             }
-            gameObject.SetActive(false);
             _bossRocksPool.Release(gameObject);
+            gameObject.SetActive(false);
+            
         }
     }
 
@@ -44,9 +45,12 @@ public class BossRockScript : MonoBehaviour,IPooled
         _isCounting = true;
         if (_timer >= 2)
         {
-            _timer = 0;           
-            gameObject.SetActive(false);
+            _timer = 0;
             _bossRocksPool.Release(gameObject);
+            gameObject.SetActive(false);
+            
+            GameObject enemy = EnemyPooler.instance.TakeFromPool("Golem");
+            EnemySpawner.instance.AddToActiveEnemies(enemy, transform.position);
         }                
     }
 

@@ -31,7 +31,7 @@ public class EnemyPooler : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
         PoolDictionary = new Dictionary<string, List<GameObject>>();
