@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public int Lvl = 1;
     public static GameManager Instance;
 
-
+    private int _portalRestartLife;
     public int PortalLife {  get { return _portalLife; } }
     private void Awake()
     {
@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
+    private void Start()
+    {
+        _portalRestartLife = _portalLife;
+    }
+
     public void ChangeLvl()
     {
         Lvl++;
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour
     public void ReStart()
     {
         GameManager.Instance.Lvl = 1;
+        GameManager.Instance._portalLife = _portalRestartLife;
     }
 
     public void ChangePortalLife(Vector3 pos, GameObject enemy)
