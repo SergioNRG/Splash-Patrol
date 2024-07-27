@@ -79,10 +79,14 @@ public class Golem : EnemyBase
         {
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _attackDistance)
             {
-                if (_attackLogic != null)
+                if (_attackLogic != null )
                 {
-                    Vector3 lookTarget = new Vector3(_playerTransform.position.x, 0, _playerTransform.position.z);
-                    transform.LookAt(lookTarget);
+                    Vector3 direction = _playerTransform.position - transform.position;
+                    direction.y = 0;
+
+                    Quaternion targetRotation = Quaternion.LookRotation(direction);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
+
                     _agent.isStopped = true;
                     _effectsManager.AttackEffect();
                 }
