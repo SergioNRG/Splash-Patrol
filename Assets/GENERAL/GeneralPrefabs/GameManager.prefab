@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bee742678d9b02478303569b150fc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _portalLife: 2
+  _portalLife: 10
   Lvl: 1

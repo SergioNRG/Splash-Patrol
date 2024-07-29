@@ -43,15 +43,19 @@ public class BossRockScript : MonoBehaviour,IPooled
     private void OnCollisionStay(Collision collision)
     {
         _isCounting = true;
-        if (_timer >= 2)
+        if (!collision.collider.CompareTag("Player"))
         {
-            _timer = 0;
-            _bossRocksPool.Release(gameObject);
-            gameObject.SetActive(false);
-            
-            GameObject enemy = EnemyPooler.instance.TakeFromPool("Golem");
-            EnemySpawner.instance.AddToActiveEnemies(enemy, transform.position);
-        }                
+            if (_timer >= 2)
+            {
+                _timer = 0;
+                _bossRocksPool.Release(gameObject);
+                gameObject.SetActive(false);
+
+                GameObject enemy = EnemyPooler.instance.TakeFromPool("Golem");
+                EnemySpawner.instance.AddToActiveEnemies(enemy, transform.position);
+            }
+        }
+                     
     }
 
     public void SetPool(ObjectPool<GameObject> pool)
