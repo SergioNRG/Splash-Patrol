@@ -34,5 +34,6 @@ public class PlayerWalkState : PlayerBaseState
             SwitchState(_factory.Run());
         }
         else if(_ctx.Move == Vector3.zero) { SwitchState(_factory.Idle()); }
+        else if (_ctx.IsCrouching && _ctx.Controller.isGrounded) { SwitchState(_factory.Crouch()); }
     }
 }

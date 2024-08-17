@@ -38,7 +38,8 @@ public class PlayerIdleState : PlayerBaseState
         if (_ctx.Move != Vector3.zero && _ctx.IsSprinting )
         {
             SwitchState(_factory.Run());
-        }       
+        }
+        else if (_ctx.IsCrouching && _ctx.Controller.isGrounded) { SwitchState(_factory.Crouch()); }       
         else{ SwitchState(_factory.Walk()); }
     }
 

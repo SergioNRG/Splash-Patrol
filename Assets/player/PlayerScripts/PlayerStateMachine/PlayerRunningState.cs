@@ -50,5 +50,6 @@ public class PlayerRunningState : PlayerBaseState
         {
             SwitchState(_factory.Walk());
         }
+        else if (_ctx.IsCrouching && _ctx.Controller.isGrounded) { SwitchState(_factory.Crouch()); }
     }
 }
