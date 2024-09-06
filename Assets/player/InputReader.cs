@@ -3,6 +3,9 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 
+//TROLOLOLO RODOLFO TROLOLOLO
+
+
 [CreateAssetMenu(menuName = "Input/Input Reader" , fileName = "InputReader")]
 
 public class InputReader : ScriptableObject, PlayerInputs.IPlayerActions
