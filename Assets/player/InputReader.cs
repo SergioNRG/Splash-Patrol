@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 //TROLOLOLO RODOLFO TROLOLOLO
 
+//TROLOLOLO 123 TROLOLOLO
 
 [CreateAssetMenu(menuName = "Input/Input Reader" , fileName = "InputReader")]
 
